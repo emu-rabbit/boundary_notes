@@ -28,16 +28,31 @@
 
 ## Project Direction
 
-本 repository 的長期使命尚未定義。除非使用者明確提供，Agent 不得自行替本專案發明產品使命、受眾、架構、domain model 或品牌語氣。
+本 repository 的長期使命已建立於：
 
-在專案專屬 mission 文件建立前，Agent 應保護以下預設：
+1. `.agents/mission/project_mission.md`
+
+後續 Agent 在處理產品方向、功能規劃、UI/UX、文案、題庫、資料模型、分享流程或風險警示前，必須讀取該 mission 文件，並以其作為本專案的產品 source of truth。
+
+目前已確認的核心方向：
+
+- 專案名稱為「XX的祕密檔案」，`XX` 會根據使用者輸入名稱改變；使用者尚未填入暱稱時，預設名稱與畫面顯示應為「兔子的祕密檔案」。
+- 本專案是用於教育、協助自我理解，以及協助人與人之間核對 BDSM（愉虐）互動項目界限的工具。
+- 本專案不做社交、配對、鼓勵項目、鼓吹 BDSM 行為本身，或把使用者分類成 BDSM 屬性/角色標籤。
+- 題庫以「互動項目」為導向，而不是以「個人屬性」為導向。
+- 產品核心理念是知情同意；秘密檔案與分享連結只能支援溝通，不代表永久、即時或不可撤回的同意。
+- 產品語氣應溫和、溫柔、有溫度，並以教育與工具為導向，避免露骨、高刺激慾望或 NSFW 呈現。
+- 插畫兔子是主要互動角色，但應以可愛、隱晦、陪伴式呈現，不可露骨。
+- 高風險或可能觸及法律風險的項目需特別警示，但不得提供操作教學或規避法律建議。
+
+在 mission 文件之外，Agent 仍應保護以下預設：
 
 - 將 `AGENTS.md`、`.agents/*`、既有 repository 檔案與使用者最新明確指示視為 source of truth。
 - 變更應低噪音、範圍精準、容易回退，且讓後續 Agent 容易理解。
 - 優先選擇符合目前 repo 狀態的簡單、可維護做法，不從 sibling project 匯入未確認假設。
 - 不把 `emu-rabbit.github.io` 的靜態網站定位、個人檔案語氣、視覺方向或部署假設複製到本 repository。
 - 不把 Freezer Space 的產品目標、關係脈絡、Flutter/Firebase 假設、私密空間規則、auth model 或 domain features 複製到本 repository，除非使用者明確要求。
-- 若任務揭露可長期沿用的專案目標、限制、非目標或 workflow，需同步到最適合的 `.agents` 文件。若沒有合適文件，建立新的專案 mission 或 architecture 文件前要先詢問使用者。
+- 若任務揭露可長期沿用的專案目標、限制、非目標或 workflow，需同步到最適合的 `.agents` 文件。
 
 ## Scope Of Imported Skills
 
@@ -48,7 +63,15 @@
 - `professional/`：不預設特定 stack 或 product domain 的一般開發與 UI/UX 標準。
 - `workflows/add-commit-all.md`：依內容分類變更，再分組 stage 與 commit。
 
-專案 mission、architecture、product experience、feature domains、visual identity 與 technology choices 都刻意保留給未來工作。
+專案 architecture、technology choices 與更細的 feature specs 尚未確認；除非使用者明確提供，Agent 不得自行發明技術棧、部署方式、資料庫、後端服務、登入模型或正式品牌識別。
+
+## Domain Skill
+
+本專案含有大量 BDSM（愉虐）相關內容。處理題庫、知情同意、limits、safeword、高風險警示、分享語意或敏感文案時，必須讀取：
+
+1. `.agents/skills/domain/bdsm_consent_background.md`
+
+該 skill 文件是本專案的正式領域規範與產品風險邊界，不是臨時備忘，也不是實踐教學。後續 Agent 應直接依該 skill 內容執行，不需要再從決策歷史推導其正式性。若需要新增具體法律、醫療或高風險項目判斷，Agent 應另外查證可靠來源並保守撰寫。
 
 ## Language
 
