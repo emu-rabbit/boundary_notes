@@ -55,4 +55,4 @@
 
 1. 進行技術或資料相關工作前，先檢查本文件是否與現有程式碼、Firebase 設定、README 或其他 architecture 文件一致。
 2. 若新增正式資料 schema、Firestore rules、GA event taxonomy 或 asset preload policy，優先更新本文件或未來正式 architecture/privacy 文件。
-3. 若未來使用者明確改變技術方向，需同步更新本文件、`AGENTS.md`、`.agents/skills/professional/development_standards.md`，並視影響程度更新 `.agents/decisions/decision_history.md`。
+3. 若未來使用者明確改變技術方向，需優先同步更新本文件、`AGENTS.md` 與 `.agents/skills/professional/development_standards.md`；不得自行新增或修訂 `.agents/decisions/decision_history.md`，除非已依 `.agents/skills/core/decision_traceability.md` 通過守衛並取得使用者明確同意。
