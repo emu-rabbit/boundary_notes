@@ -1,171 +1,330 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
-import rabbitLandingUrl from './assets/rabbit-landing.png';
+import rabbitFolderUrl from './assets/story/rabbit-folder.png';
+import rabbitGreetingUrl from './assets/story/rabbit-greeting.png';
+import rabbitNamingUrl from './assets/story/rabbit-naming.png';
+import rabbitThinkingUrl from './assets/story/rabbit-thinking.png';
 
-type SceneId = 'entrance' | 'promise' | 'ready';
+type AppMode = 'story' | 'home';
+type StepId =
+  | 'self-question'
+  | 'self-yes'
+  | 'self-no'
+  | 'self-unsure'
+  | 'other-question'
+  | 'other-yes'
+  | 'other-no'
+  | 'other-who'
+  | 'name'
+  | 'file';
+type StepKind = 'choice' | 'message' | 'name' | 'file';
+type RabbitPose = 'greeting' | 'thinking' | 'naming' | 'folder';
+type SceneTone = 'welcome' | 'mirror' | 'naming' | 'archive';
 
-interface Scene {
-  id: SceneId;
-  eyebrow: string;
-  title: string;
-  body: string;
-  note: string;
-  action: string;
+interface Choice {
+  label: string;
+  next: StepId;
 }
 
-const scenes: Scene[] = [
+interface StoryStep {
+  id: StepId;
+  kind: StepKind;
+  lines?: string[];
+  message?: string;
+  body?: string[];
+  choices?: Choice[];
+  action?: string;
+  next?: StepId;
+  pose: RabbitPose;
+  tone: SceneTone;
+}
+
+const rabbitPoseUrls: Record<RabbitPose, string> = {
+  greeting: rabbitGreetingUrl,
+  thinking: rabbitThinkingUrl,
+  naming: rabbitNamingUrl,
+  folder: rabbitFolderUrl,
+};
+
+const storySteps: StoryStep[] = [
   {
-    id: 'entrance',
-    eyebrow: '兔子的祕密檔案',
-    title: '先把界線，好好放進一個安靜的地方。',
-    body:
-      '這是一份協助你整理興趣、經驗與保留態度的工具。它不替任何人下判斷，也不催促你變成某種樣子。',
-    note: '不確定本身就是很重要的答案。',
-    action: '靠近檔案',
+    id: 'self-question',
+    kind: 'choice',
+    lines: ['嗨！不知道甚麼風把你吹來的！', '但……你了解自己嗎？'],
+    choices: [
+      { label: '了解', next: 'self-yes' },
+      { label: '不了解', next: 'self-no' },
+      { label: '不太確定', next: 'self-unsure' },
+    ],
+    pose: 'greeting',
+    tone: 'welcome',
   },
   {
-    id: 'promise',
-    eyebrow: '知情同意',
-    title: '祕密檔案是溝通起點，不是同意書。',
-    body:
-      '分享出去的內容只代表填寫當下的自我描述。任何界線、興趣與狀態，都可以因對象、時間與身心狀態改變。',
-    note: '所有分享都應該回到現實中的再次確認。',
-    action: '查看提醒',
+    id: 'self-yes',
+    kind: 'message',
+    message: '太好了，那我想你接下來一定得心應手！',
+    action: '繼續',
+    next: 'other-question',
+    pose: 'greeting',
+    tone: 'welcome',
   },
   {
-    id: 'ready',
-    eyebrow: '開始前',
-    title: '兔子會陪你慢慢核對，不需要急著回答。',
-    body:
-      '正式測驗會把互動方向、強度與備註拆開記錄。低分、空白、拒絕與保留，都會被當成需要尊重的訊號。',
-    note: '下一步會進入測驗流程；目前先停在第一版入口。',
-    action: '先停在這裡',
+    id: 'self-no',
+    kind: 'message',
+    message: '那我想，我可以陪你更摸得清楚自己！',
+    action: '繼續',
+    next: 'other-question',
+    pose: 'greeting',
+    tone: 'welcome',
+  },
+  {
+    id: 'self-unsure',
+    kind: 'message',
+    message: '那真是好消息，探索未知有時最迷人了！',
+    action: '繼續',
+    next: 'other-question',
+    pose: 'thinking',
+    tone: 'mirror',
+  },
+  {
+    id: 'other-question',
+    kind: 'choice',
+    lines: ['不過……那個人了解你嗎？'],
+    choices: [
+      { label: '了解', next: 'other-yes' },
+      { label: '不了解', next: 'other-no' },
+      { label: '那個人是誰', next: 'other-who' },
+    ],
+    pose: 'thinking',
+    tone: 'mirror',
+  },
+  {
+    id: 'other-yes',
+    kind: 'message',
+    message: '那這是個玩遊戲的機會，來看看他可以得幾分！',
+    action: '繼續',
+    next: 'name',
+    pose: 'thinking',
+    tone: 'mirror',
+  },
+  {
+    id: 'other-no',
+    kind: 'message',
+    message: '沒事的，現在有個跨出第一步的機會。',
+    action: '繼續',
+    next: 'name',
+    pose: 'thinking',
+    tone: 'mirror',
+  },
+  {
+    id: 'other-who',
+    kind: 'message',
+    message:
+      '那個人？也許是你的下個約會對象……也許是你的伴侶，也或許是任何你想要讓對方了解你的人。',
+    action: '了解了',
+    next: 'other-question',
+    pose: 'thinking',
+    tone: 'mirror',
+  },
+  {
+    id: 'name',
+    kind: 'name',
+    lines: ['該怎麼稱呼你呢？'],
+    action: '寫進檔案',
+    next: 'file',
+    pose: 'naming',
+    tone: 'naming',
+  },
+  {
+    id: 'file',
+    kind: 'file',
+    body: [
+      '在這裡，我們好好地記錄下了你對於各個BDSM項目的喜好和接受程度。這裡沒有正確答案，只有你仍然是你，慾望仍然是慾望。',
+      '你可以保存，也可以分享給心中的那個人，更可以用來和誰溝通。也許過一段時間後，我還能再次看到你的到來，到時再跟我聊聊你的變化吧！',
+    ],
+    action: 'OK',
+    pose: 'folder',
+    tone: 'archive',
   },
 ];
 
-const sceneId = ref<SceneId>(readSceneFromPath());
-const activeIndex = computed(() => scenes.findIndex((scene) => scene.id === sceneId.value));
-const activeScene = computed(() => scenes[activeIndex.value] ?? scenes[0]);
-const canGoBack = computed(() => activeIndex.value > 0);
-const canGoNext = computed(() => activeIndex.value < scenes.length - 1);
+const storyIndex = new Map(storySteps.map((step, index) => [step.id, index]));
+const mode = ref<AppMode>('story');
+const stepId = ref<StepId>('self-question');
+const nameInput = ref('');
 
-function readSceneFromPath(): SceneId {
-  const slug = window.location.pathname.replace(/^\/+/, '').split('/')[0];
-  return scenes.some((scene) => scene.id === slug) ? (slug as SceneId) : 'entrance';
+const activeStep = computed(() => storySteps[storyIndex.get(stepId.value) ?? 0]);
+const displayName = computed(() => nameInput.value.trim() || '兔子');
+const appTitle = computed(() => `${displayName.value}的祕密檔案`);
+const activeRabbitUrl = computed(() => rabbitPoseUrls[activeStep.value.pose]);
+const homeRabbitUrl = rabbitFolderUrl;
+
+function goToStep(next: StepId): void {
+  stepId.value = next;
 }
 
-function pushScene(id: SceneId): void {
-  sceneId.value = id;
-  const nextUrl = id === 'entrance' ? '/' : `/${id}`;
-  window.history.pushState({ scene: id }, '', nextUrl);
-}
-
-function goNext(): void {
-  const next = scenes[activeIndex.value + 1];
-  if (next) {
-    pushScene(next.id);
+function continueFromMessage(): void {
+  if (activeStep.value.next) {
+    goToStep(activeStep.value.next);
   }
 }
 
-function goBack(): void {
-  const previous = scenes[activeIndex.value - 1];
-  if (previous) {
-    pushScene(previous.id);
+function enterHome(): void {
+  mode.value = 'home';
+  window.history.pushState({ mode: 'home' }, '', '/home');
+}
+
+function resetStory(): void {
+  mode.value = 'story';
+  stepId.value = 'self-question';
+  window.history.pushState({ mode: 'story' }, '', '/');
+}
+
+function warmStoryAssets(): void {
+  Object.values(rabbitPoseUrls).forEach((src) => {
+    const image = new Image();
+    image.decoding = 'async';
+    image.src = src;
+  });
+}
+
+function syncModeFromHistory(): void {
+  if (window.location.pathname === '/home') {
+    mode.value = 'home';
+    return;
   }
-}
 
-function warmRabbitAsset(): void {
-  const preload = new Image();
-  preload.decoding = 'async';
-  preload.src = rabbitLandingUrl;
-}
-
-function syncSceneFromHistory(): void {
-  sceneId.value = readSceneFromPath();
+  mode.value = 'story';
+  stepId.value = 'self-question';
 }
 
 onMounted(() => {
-  warmRabbitAsset();
-  window.addEventListener('popstate', syncSceneFromHistory);
+  warmStoryAssets();
+
+  if (window.location.pathname !== '/') {
+    window.history.replaceState({ mode: 'story' }, '', '/');
+  }
+
+  window.addEventListener('popstate', syncModeFromHistory);
 });
 
 onUnmounted(() => {
-  window.removeEventListener('popstate', syncSceneFromHistory);
+  window.removeEventListener('popstate', syncModeFromHistory);
 });
 </script>
 
 <template>
-  <main class="min-h-dvh overflow-hidden bg-ink-950 text-paper">
-    <section class="relative isolate flex min-h-dvh items-center justify-center px-5 py-5 sm:px-8">
-      <div class="absolute inset-0 -z-30 bg-[radial-gradient(circle_at_50%_26%,rgba(242,223,168,0.2),transparent_23rem),linear-gradient(135deg,#070706_0%,#10100e_48%,#1b1a17_100%)]" />
-      <div class="night-grain absolute inset-0 -z-20 opacity-70" />
-      <div class="absolute bottom-0 left-1/2 -z-10 h-48 w-[34rem] max-w-[92vw] -translate-x-1/2 rounded-[50%] bg-candle/10 blur-3xl" />
+  <main class="app-shell min-h-dvh overflow-hidden text-ink-900">
+    <section v-if="mode === 'story'" class="story-route" :data-tone="activeStep.tone">
+      <div class="ambient-grid" aria-hidden="true" />
 
-      <div class="grid h-[min(820px,calc(100dvh-2.5rem))] w-full max-w-6xl grid-rows-[auto_1fr_auto] gap-4">
-        <header class="flex items-center justify-between">
-          <a href="/" class="inline-flex items-center gap-3 text-sm text-paper/82" @click.prevent="pushScene('entrance')">
-            <span class="grid size-8 place-items-center rounded-full border border-candle/35 bg-paper/7 shadow-candle">
-              <span class="size-2 rounded-full bg-candle" />
-            </span>
-            <span>兔子的祕密檔案</span>
-          </a>
-          <nav aria-label="場景進度" class="flex items-center gap-2">
-            <a
-              v-for="(scene, index) in scenes"
-              :key="scene.id"
-              :href="scene.id === 'entrance' ? '/' : `/${scene.id}`"
-              class="progress-dot"
-              :class="{ 'progress-dot-active': index === activeIndex }"
-              :aria-label="`前往第 ${index + 1} 個畫面`"
-              @click.prevent="pushScene(scene.id)"
-            />
-          </nav>
-        </header>
+      <header class="story-header">
+        <button class="brand-mark" type="button" @click="resetStory">
+          <span class="brand-orbit" aria-hidden="true" />
+          <span>{{ appTitle }}</span>
+        </button>
+      </header>
 
-        <Transition name="scene" mode="out-in">
-          <div :key="activeScene.id" class="grid min-h-0 items-center gap-8 lg:grid-cols-[1.08fr_0.92fr]">
-            <div class="order-2 flex min-h-0 flex-col justify-center lg:order-1">
-              <p class="mb-4 text-sm font-medium text-candle/80">
-                {{ activeScene.eyebrow }}
+      <div class="story-layout">
+        <aside class="illustration-scene" :data-pose="activeStep.pose" aria-hidden="true">
+          <div class="scene-backdrop">
+            <span class="shelf shelf-one" />
+            <span class="shelf shelf-two" />
+            <span class="lantern" />
+          </div>
+          <div class="scene-table">
+            <span class="paper-stack stack-left" />
+            <span class="paper-stack stack-right" />
+            <span class="privacy-card" />
+            <span class="tiny-lock" />
+          </div>
+          <img
+            :src="activeRabbitUrl"
+            alt=""
+            class="rabbit-pose"
+            width="1024"
+            height="1536"
+            decoding="async"
+            fetchpriority="high"
+          />
+        </aside>
+
+        <Transition name="dialogue" mode="out-in">
+          <article :key="activeStep.id" class="dialogue-panel">
+            <div v-if="activeStep.kind === 'choice'" class="dialogue-copy">
+              <p v-for="line in activeStep.lines" :key="line" class="rabbit-speech">
+                {{ line }}
               </p>
-              <h1 class="max-w-3xl text-balance text-[clamp(2.25rem,8vw,6.75rem)] font-semibold leading-[0.96]">
-                {{ activeScene.title }}
-              </h1>
-              <p class="mt-6 max-w-2xl text-pretty text-base leading-8 text-paper/76 sm:text-lg">
-                {{ activeScene.body }}
-              </p>
-              <p class="mt-5 max-w-xl border-l border-candle/45 pl-4 text-sm leading-7 text-candle/86 sm:text-base">
-                {{ activeScene.note }}
-              </p>
+              <div class="choice-grid" role="list">
+                <button
+                  v-for="choice in activeStep.choices"
+                  :key="choice.label"
+                  class="choice-button"
+                  type="button"
+                  @click="goToStep(choice.next)"
+                >
+                  {{ choice.label }}
+                </button>
+              </div>
             </div>
 
-            <aside class="order-1 flex min-h-0 items-center justify-center lg:order-2">
-              <div class="rabbit-stage">
-                <img
-                  :src="rabbitLandingUrl"
-                  alt="白色插畫兔子拿著筆記本，作為祕密檔案的陪伴角色。"
-                  class="rabbit-image"
-                  width="348"
-                  height="572"
-                  decoding="async"
-                  fetchpriority="high"
-                />
-              </div>
-            </aside>
-          </div>
-        </Transition>
+            <div v-else-if="activeStep.kind === 'message'" class="dialogue-copy">
+              <p class="rabbit-speech">{{ activeStep.message }}</p>
+              <button class="primary-action" type="button" @click="continueFromMessage">
+                {{ activeStep.action }}
+              </button>
+            </div>
 
-        <footer class="flex items-center justify-between gap-3">
-          <button class="ghost-button" type="button" :disabled="!canGoBack" @click="goBack">
-            返回
-          </button>
-          <div class="hidden text-center text-xs leading-6 text-paper/55 sm:block">
-            第 {{ activeIndex + 1 }} / {{ scenes.length }} 幕
-          </div>
-          <button class="primary-button" type="button" :disabled="!canGoNext" @click="goNext">
-            {{ activeScene.action }}
-          </button>
-        </footer>
+            <form v-else-if="activeStep.kind === 'name'" class="dialogue-copy" @submit.prevent="continueFromMessage">
+              <p v-for="line in activeStep.lines" :key="line" class="rabbit-speech">
+                {{ line }}
+              </p>
+              <label class="name-field">
+                <span>稱呼</span>
+                <input
+                  v-model="nameInput"
+                  autocomplete="nickname"
+                  maxlength="18"
+                  placeholder="兔子"
+                  type="text"
+                />
+              </label>
+              <button class="primary-action" type="submit">{{ activeStep.action }}</button>
+            </form>
+
+            <div v-else class="dialogue-copy">
+              <h1 class="file-title">{{ appTitle }}</h1>
+              <div class="file-body">
+                <p v-for="paragraph in activeStep.body" :key="paragraph">
+                  {{ paragraph }}
+                </p>
+              </div>
+              <button class="primary-action" type="button" @click="enterHome">
+                {{ activeStep.action }}
+              </button>
+            </div>
+          </article>
+        </Transition>
+      </div>
+    </section>
+
+    <section v-else class="home-route">
+      <div class="home-ambient" aria-hidden="true" />
+      <div class="home-stage">
+        <img
+          :src="homeRabbitUrl"
+          alt="白色兔子抱著秘密檔案資料夾。"
+          class="home-rabbit"
+          width="1024"
+          height="1536"
+          decoding="async"
+        />
+        <div class="home-copy">
+          <p class="home-kicker">主頁</p>
+          <h1>{{ appTitle }}</h1>
+          <p>這裡會放測驗、檔案與分享流程。現在先停在最小主頁。</p>
+          <button class="quiet-action" type="button" @click="resetStory">再看一次開場</button>
+        </div>
       </div>
     </section>
   </main>

@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         sans: [
+          '"jf-openhuninn"',
           '"Noto Sans TC"',
           '"PingFang TC"',
           '"Microsoft JhengHei"',

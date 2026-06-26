@@ -19,6 +19,11 @@ npm run build
 
 本機 Codex 環境若執行 Vite build 時遇到 sandbox access 問題，依 `AGENTS.md` 的 Windows/Vite 說明改用 Codex `require_escalated` 權限執行實際 build。
 
+## 第三方資產
+
+- 本專案自託管 `jf open-huninn / jf open 粉圓` 2.1 作為主要中文字體，來源為 justfont 的 open-source font project：https://github.com/justfont/open-huninn-font
+- 字體以 SIL Open Font License 1.1 授權；授權文字保存在 `third-party-notices/jf-openhuninn-LICENSE.txt`，摘要記錄在 `NOTICE.md`。
+
 ## 產品邊界
 
 - 本專案是教育、自我理解與界線核對工具，不是社交、配對或實踐建議產品。
