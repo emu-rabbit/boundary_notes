@@ -50,7 +50,7 @@ const storySteps: StoryStep[] = [
   {
     id: 'self-question',
     kind: 'choice',
-    lines: ['嗨，這是你的祕密檔案。', '打開以前……你了解現在的自己嗎？'],
+    lines: ['嗨！不知道甚麼風把你吹來的！', '但……你了解自己嗎？'],
     choices: [
       { label: '了解', next: 'self-yes' },
       { label: '不了解', next: 'self-no' },
@@ -62,8 +62,8 @@ const storySteps: StoryStep[] = [
   {
     id: 'self-yes',
     kind: 'message',
-    message: '那很好。我們可以把那些已經清楚的、還想保留的，都慢慢放進檔案裡。',
-    action: '繼續',
+    message: '太好了，那我想你接下來一定得心應手！',
+    action: '自豪',
     next: 'other-question',
     pose: 'greeting',
     tone: 'welcome',
@@ -71,8 +71,8 @@ const storySteps: StoryStep[] = [
   {
     id: 'self-no',
     kind: 'message',
-    message: '沒關係，我會陪你一格一格看。界限不需要一下子全部說清楚。',
-    action: '繼續',
+    message: '那我想，我可以陪你更摸得清楚自己！',
+    action: '真的嗎？',
     next: 'other-question',
     pose: 'greeting',
     tone: 'welcome',
@@ -80,8 +80,8 @@ const storySteps: StoryStep[] = [
   {
     id: 'self-unsure',
     kind: 'message',
-    message: '不確定也很好。能把不確定留下來，本身就是很重要的答案。',
-    action: '繼續',
+    message: '那真是好消息，探索未知有時最迷人了！',
+    action: '我也這樣覺得',
     next: 'other-question',
     pose: 'thinking',
     tone: 'mirror',
@@ -89,7 +89,7 @@ const storySteps: StoryStep[] = [
   {
     id: 'other-question',
     kind: 'choice',
-    lines: ['那麼……你想讓那個人更了解你嗎？'],
+    lines: ['不過……那個人了解你嗎？'],
     choices: [
       { label: '了解', next: 'other-yes' },
       { label: '不了解', next: 'other-no' },
@@ -101,8 +101,8 @@ const storySteps: StoryStep[] = [
   {
     id: 'other-yes',
     kind: 'message',
-    message: '那這份檔案可以變成一盞小燈，幫你們把已經知道的事照得更清楚。',
-    action: '繼續',
+    message: '那這是個玩遊戲的機會，來看看他可以得幾分！',
+    action: '聽起來真酷！',
     next: 'name',
     pose: 'thinking',
     tone: 'mirror',
@@ -110,8 +110,8 @@ const storySteps: StoryStep[] = [
   {
     id: 'other-no',
     kind: 'message',
-    message: '沒事。可以先從一份檔案開始，讓對話有一個溫柔的起點。',
-    action: '繼續',
+    message: '沒事的，現在有個跨出第一步的機會',
+    action: '那我該怎麼做呢？',
     next: 'name',
     pose: 'thinking',
     tone: 'mirror',
@@ -120,7 +120,7 @@ const storySteps: StoryStep[] = [
     id: 'other-who',
     kind: 'message',
     message:
-      '那個人，也許是伴侶，也許是你想好好溝通的人。重點不是誰猜得準，而是你願意讓哪些界限被看見。',
+      '那個人？也許是你的下個約會對象……也許是你的伴侶，也或許是任何你想要讓對方了解你的人。',
     action: '了解了',
     next: 'other-question',
     pose: 'thinking',
@@ -139,8 +139,8 @@ const storySteps: StoryStep[] = [
     id: 'file',
     kind: 'file',
     body: [
-      '在這裡，我們會好好記下你對各個 BDSM 互動項目的感覺、界限與保留。這裡沒有標準答案，只有此刻的你。',
-      '你可以保存，也可以把它作為溝通的起點。它不是同意書，也不是承諾；只是幫你把想說的事，先安靜地放在桌上。',
+      '在這裡，我們將會好好地記錄下了你對於各個BDSM項目的喜好和接受程度。這裡沒有正確答案，只有你仍然是你，慾望仍然是慾望。',
+      '你可以保存，也可以分享給心中的那個人，更可以用來和誰溝通。也許過一段時間後，我還能再次看到你的到來，到時再跟我聊聊你的變化吧！',
     ],
     action: 'OK',
     pose: 'folder',
