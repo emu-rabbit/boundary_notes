@@ -152,6 +152,7 @@ const storyIndex = new Map(storySteps.map((step, index) => [step.id, index]));
 const mode = ref<AppMode>('story');
 const stepId = ref<StepId>('self-question');
 const nameInput = ref('');
+const appBasePath = import.meta.env.BASE_URL;
 
 const activeStep = computed(() => storySteps[storyIndex.get(stepId.value) ?? 0]);
 const displayName = computed(() => nameInput.value.trim() || '兔子');
@@ -169,15 +170,29 @@ function continueFromMessage(): void {
   }
 }
 
+function withAppBasePath(path: '' | 'home'): string {
+  return `${appBasePath}${path}`;
+}
+
+function getRoutePath(): '/' | '/home' {
+  const pathname = window.location.pathname;
+
+  if (pathname === withAppBasePath('home')) {
+    return '/home';
+  }
+
+  return '/';
+}
+
 function enterHome(): void {
   mode.value = 'home';
-  window.history.pushState({ mode: 'home' }, '', '/home');
+  window.history.pushState({ mode: 'home' }, '', withAppBasePath('home'));
 }
 
 function resetStory(): void {
   mode.value = 'story';
   stepId.value = 'self-question';
-  window.history.pushState({ mode: 'story' }, '', '/');
+  window.history.pushState({ mode: 'story' }, '', withAppBasePath(''));
 }
 
 function warmStoryAssets(): void {
@@ -189,7 +204,7 @@ function warmStoryAssets(): void {
 }
 
 function syncModeFromHistory(): void {
-  if (window.location.pathname === '/home') {
+  if (getRoutePath() === '/home') {
     mode.value = 'home';
     return;
   }
@@ -201,8 +216,8 @@ function syncModeFromHistory(): void {
 onMounted(() => {
   warmStoryAssets();
 
-  if (window.location.pathname !== '/') {
-    window.history.replaceState({ mode: 'story' }, '', '/');
+  if (getRoutePath() !== '/home') {
+    window.history.replaceState({ mode: 'story' }, '', withAppBasePath(''));
   }
 
   window.addEventListener('popstate', syncModeFromHistory);
