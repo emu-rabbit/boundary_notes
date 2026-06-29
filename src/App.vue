@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue';
-import rabbitFolderUrl from './assets/story/rabbit-folder.png';
-import rabbitGreetingUrl from './assets/story/rabbit-greeting.png';
-import rabbitNamingUrl from './assets/story/rabbit-naming.png';
-import rabbitThinkingUrl from './assets/story/rabbit-thinking.png';
+import rabbitFolderUrl from './assets/story/rabbit-folder.webp';
+import rabbitGreetingUrl from './assets/story/rabbit-greeting.webp';
+import rabbitNamingUrl from './assets/story/rabbit-naming.webp';
+import rabbitThinkingUrl from './assets/story/rabbit-thinking.webp';
 
 type AppMode = 'story' | 'home';
 type AppRoute = AppMode;
