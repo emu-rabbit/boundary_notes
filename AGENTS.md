@@ -56,6 +56,8 @@
 目前已確認的技術方向：
 
 - 本專案是純網頁專案，使用 Vite、Vue、TypeScript 與 Tailwind 建構。
+- 目前部署到 GitHub Pages，但未來可能改部署到其他免費靜態 host 並使用獨立 domain；路由、base path 與資源路徑不得綁死在 GitHub Pages 專案路徑。
+- 目前只有前導劇情與主頁，但未來主頁將承載四個以上獨立頁面入口；route registry、view 結構與主頁入口設計應支援逐步擴充。
 - 後端使用 Firebase；主要僅使用 Firestore 儲存使用者確定要分享的測驗結果。
 - 不需要登入系統，整體設計應在匿名情境下運行。
 - UI 要自己刻，不使用現成 Vue UI/UX library，避免模板感。

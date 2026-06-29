@@ -16,9 +16,19 @@
 
 - **純網頁專案**：本專案是純 web app，不預設 native app、Electron、後端 server 或 CMS。
 - **前端技術棧**：使用 Vite、Vue、TypeScript 與 Tailwind 建構。
+- **部署可攜性**：目前部署到 GitHub Pages，但架構不得綁死在 GitHub Pages 或 `/bdsm_boundary_test/` 專案路徑。未來可能改部署到其他免費靜態網頁 host，並使用獨立 domain；base path、routing fallback 與靜態資源路徑都應可透過設定調整。
+- **路由可擴充**：目前只有前導劇情與主頁，但主頁未來會承載四個以上獨立頁面入口。前端 routing、view 結構與入口 registry 應支援逐步新增頁面，不應把 mode、route、故事步驟與主頁內容混在單一元件中。
 - **自刻 UI**：UI 應以本專案自己的 component、layout、style token 與互動語言實作，不使用現成 Vue UI/UX library，避免模板感與產品語氣偏移。
 - **輕量優先**：網頁應保持足夠輕量；新增 dependency、圖片格式、動畫、字體或大型資源前，必須評估 bundle size、載入時機與使用者感知流暢度。
 - **資源預熱**：圖片與較大型資源應有明確預熱策略，讓核心流程中的下一步素材能提前準備，但不得一次預載所有資源造成初始載入變慢。
+
+## 部署與路由
+
+- **現況**：GitHub Actions 會建置並部署到 GitHub Pages，GitHub Pages 需要 `404.html` fallback 支援直接重新整理或未知路徑回到 SPA。
+- **未來 host**：若改到其他靜態 host 或獨立 domain，應優先透過 `VITE_BASE_PATH`、host fallback 設定或小型 deploy script 調整，不為單一 host 在核心 UI 元件內硬編 URL。
+- **hash route 基準**：在沒有明確 host fallback 保證前，維持 hash route 作為可攜、低設定的 routing 基準；若未來 host 支援穩定 SPA fallback，再評估是否轉為 history route。
+- **集中 route registry**：新增頁面入口時應優先更新集中 route registry，讓主頁入口、route 解析、placeholder 或正式 view 共用同一份定義。
+- **前導劇情不是主頁本體**：前導劇情可以作為初次進入流程，但不應承擔主頁、測驗、檔案、分享與歷史頁的所有狀態。
 
 ## Firebase 與資料邊界
 
