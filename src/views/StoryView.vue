@@ -50,7 +50,12 @@ onMounted(() => {
     </header>
 
     <div class="story-layout">
-      <RabbitScene :animation-key="activeStep.id" :image-url="activeRabbitUrl" :pose="activeStep.pose" />
+      <RabbitScene
+        :animation-key="activeStep.id"
+        :image-url="activeRabbitUrl"
+        :lamp-lit="activeStep.id === 'file'"
+        :pose="activeStep.pose"
+      />
 
       <StoryDialogue
         :app-title="appTitle"
