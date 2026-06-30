@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import type { SecretFileTitleParts } from '../../app/useSecretFileTitle';
+import SecretFileTitle from '../../components/SecretFileTitle.vue';
 import type { StepId, StoryStep } from './storySteps';
 
 const props = defineProps<{
-  appTitle: string;
   profileName: string;
   step: StoryStep;
+  titleParts: SecretFileTitleParts;
 }>();
 
 const emit = defineEmits<{
@@ -58,7 +60,6 @@ const nameInput = computed({
           <input
             v-model="nameInput"
             autocomplete="nickname"
-            maxlength="18"
             placeholder="兔子"
             type="text"
           />
@@ -67,7 +68,7 @@ const nameInput = computed({
       </form>
 
       <div v-else class="dialogue-copy">
-        <h1 class="file-title">{{ appTitle }}</h1>
+        <SecretFileTitle :parts="titleParts" variant="file" />
         <div class="file-body">
           <p v-for="paragraph in step.body" :key="paragraph">
             {{ paragraph }}

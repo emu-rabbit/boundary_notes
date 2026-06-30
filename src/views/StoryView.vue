@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
+import type { SecretFileTitleParts } from '../app/useSecretFileTitle';
 import BrandMark from '../components/BrandMark.vue';
 import RabbitScene from '../components/RabbitScene.vue';
 import { rabbitPoseUrls, warmStoryAssets } from '../features/story/rabbitAssets';
@@ -9,6 +10,7 @@ import { type StepId, storyStepIndex, storySteps } from '../features/story/story
 defineProps<{
   appTitle: string;
   profileName: string;
+  titleParts: SecretFileTitleParts;
 }>();
 
 const emit = defineEmits<{
@@ -58,9 +60,9 @@ onMounted(() => {
       />
 
       <StoryDialogue
-        :app-title="appTitle"
         :profile-name="profileName"
         :step="activeStep"
+        :title-parts="titleParts"
         @complete="emit('complete')"
         @continue="continueFromMessage"
         @go-to-step="goToStep"

@@ -11,7 +11,7 @@ import StoryView from './views/StoryView.vue';
 
 const storedProfileName = loadStoredProfileName();
 const profileName = ref(storedProfileName);
-const { appTitle } = useSecretFileTitle(profileName);
+const { appTitle, titleParts } = useSecretFileTitle(profileName);
 const { currentRouteId, pushRoute } = useHashRouter(
   import.meta.env.BASE_URL,
   storedProfileName ? 'home' : 'story',
@@ -34,14 +34,15 @@ function completeStory(): void {
       v-if="currentRouteId === 'story'"
       v-model:profile-name="profileName"
       :app-title="appTitle"
+      :title-parts="titleParts"
       @complete="completeStory"
       @restart="navigate('story')"
     />
 
     <HomeView
       v-else-if="currentRouteId === 'home'"
-      :app-title="appTitle"
       :entrances="homeEntrances"
+      :title-parts="titleParts"
       @navigate="navigate"
     />
 

@@ -760,7 +760,7 @@ input:focus-visible {
 }
 
 .rabbit-speech,
-.file-title {
+.secret-file-title {
   margin: 0;
   color: var(--ink);
   letter-spacing: 0;
@@ -773,10 +773,58 @@ input:focus-visible {
   line-height: 1.68;
 }
 
-.file-title {
+.secret-file-title {
+  display: grid;
+  justify-items: start;
+  color: #f8ded3;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.secret-file-title--home {
+  gap: 0.04em;
+}
+
+.secret-file-title--file {
+  gap: 0.08em;
+}
+
+.secret-file-title__owner-line,
+.secret-file-title__object {
+  display: block;
+  max-width: 100%;
+}
+
+.secret-file-title__owner-line {
+  min-width: 0;
+  font-size: calc(1em * var(--owner-scale, 1));
+  line-height: 1.02;
+  white-space: nowrap;
+}
+
+.secret-file-title__owner {
+  overflow-wrap: normal;
+  word-break: keep-all;
+}
+
+.secret-file-title__connector {
+  display: inline-block;
+  margin-left: 0.04em;
+  font-size: 0.56em;
+  line-height: 1;
+  transform: translateY(0.08em);
+  vertical-align: baseline;
+}
+
+.secret-file-title__object {
+  line-height: 0.95;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+
+.secret-file-title--file {
   color: #f8ded3;
   font-size: clamp(2rem, 4.1vw, 4rem);
-  font-weight: 400;
   line-height: 1.08;
 }
 
@@ -953,7 +1001,7 @@ input:focus-visible {
 }
 
 .home-kicker,
-.home-copy h1,
+.home-copy .secret-file-title,
 .home-copy p,
 .planned-copy h1,
 .planned-copy p {
@@ -965,12 +1013,16 @@ input:focus-visible {
   font-weight: 400;
 }
 
-.home-copy h1,
+.home-copy .secret-file-title,
 .planned-copy h1 {
   color: #f6e8df;
   font-size: clamp(2.4rem, 6.6vw, 5rem);
   font-weight: 400;
   line-height: 1;
+}
+
+.home-copy .secret-file-title {
+  width: min(100%, 35rem);
 }
 
 .home-copy p,
@@ -1473,7 +1525,7 @@ input:focus-visible {
     line-height: 1.55;
   }
 
-  .file-title {
+  .secret-file-title--file {
     font-size: clamp(1.8rem, 9vw, 2.8rem);
   }
 
@@ -1542,9 +1594,11 @@ input:focus-visible {
     gap: 0.7rem;
   }
 
-  .home-copy h1 {
+  .home-copy .secret-file-title {
+    justify-items: center;
     font-size: clamp(2.25rem, 8vw, 3.8rem);
     line-height: 1.04;
+    text-align: center;
   }
 
   .home-copy p {

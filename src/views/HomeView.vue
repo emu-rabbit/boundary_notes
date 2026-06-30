@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import type { AppRouteDefinition, AppRouteId } from '../app/routes';
+import type { SecretFileTitleParts } from '../app/useSecretFileTitle';
+import SecretFileTitle from '../components/SecretFileTitle.vue';
 import { homeRabbitUrl } from '../features/story/rabbitAssets';
 
 const props = defineProps<{
-  appTitle: string;
   entrances: AppRouteDefinition[];
+  titleParts: SecretFileTitleParts;
 }>();
 
 const emit = defineEmits<{
@@ -38,7 +40,7 @@ const settingsEntrance = computed(() => routeById.value.get('settings'));
       />
       <div class="home-copy">
         <p class="home-kicker">歡迎回來</p>
-        <h1>{{ appTitle }}</h1>
+        <SecretFileTitle :parts="titleParts" variant="home" />
         <p>
           今天也可以慢慢來。先把目前的感覺放進檔案裡，或回頭看看以前留下的界線。
         </p>
