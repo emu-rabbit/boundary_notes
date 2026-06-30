@@ -24,7 +24,7 @@ const nameInput = computed({
 <template>
   <Transition name="dialogue" mode="out-in">
     <article :key="step.id" class="dialogue-panel">
-      <div class="speaker-name">不知哪來的兔子</div>
+      <div v-if="step.showSpeaker !== false" class="speaker-name">不知哪來的兔子</div>
       <div v-if="step.kind === 'choice'" class="dialogue-copy">
         <p v-for="line in step.lines" :key="line" class="rabbit-speech">
           {{ line }}

@@ -23,6 +23,7 @@ export interface Choice {
 export interface StoryStep {
   id: StepId;
   kind: StepKind;
+  showSpeaker?: boolean;
   lines?: string[];
   message?: string;
   body?: string[];
@@ -125,6 +126,7 @@ export const storySteps: StoryStep[] = [
   {
     id: 'file',
     kind: 'file',
+    showSpeaker: false,
     body: [
       '在這裡，我們將會好好地記錄下了你對於各個BDSM項目的喜好和接受程度。這裡沒有正確答案，只有你仍然是你，慾望仍然是慾望。',
       '你可以保存，也可以分享給心中的那個人，更可以用來和誰溝通。也許過一段時間後，我還能再次看到你的到來，到時再跟我聊聊你的變化吧！',
