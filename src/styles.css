@@ -155,24 +155,21 @@ input:focus-visible {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  border: 1px solid rgba(236, 198, 187, 0.1);
+  border: 1px solid rgba(236, 198, 187, 0.2);
   border-radius: 999px;
-  background: rgba(18, 10, 15, 0.28);
-  color: rgba(246, 232, 223, 0.72);
+  background: rgba(18, 10, 15, 0.64);
+  color: rgba(246, 232, 223, 0.92);
   box-shadow: none;
   backdrop-filter: none;
-  opacity: 0.72;
   transition:
     border-color 180ms ease,
-    color 180ms ease,
-    opacity 180ms ease;
+    color 180ms ease;
 }
 
 .brand-mark:hover,
 .brand-mark:focus-visible {
-  border-color: rgba(236, 198, 187, 0.18);
-  color: rgba(246, 232, 223, 0.86);
-  opacity: 0.9;
+  border-color: rgba(236, 198, 187, 0.26);
+  color: rgba(246, 232, 223, 0.98);
 }
 
 .brand-mark {
