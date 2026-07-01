@@ -1487,7 +1487,12 @@ input:focus-visible {
 
   .home-route::before {
     position: fixed;
-    inset: -1rem;
+    top: -1rem;
+    right: -1rem;
+    bottom: auto;
+    left: -1rem;
+    height: calc(100vh + 2rem);
+    height: calc(100lvh + 2rem);
     background:
       linear-gradient(180deg, rgba(9, 5, 8, 0), rgba(9, 5, 8, 0.18)),
       url("./assets/backgrounds/secret-archive-mobile.webp") center 42% / cover no-repeat,
@@ -1498,7 +1503,12 @@ input:focus-visible {
 
   .settings-route::before {
     position: fixed;
-    inset: -1rem;
+    top: -1rem;
+    right: -1rem;
+    bottom: auto;
+    left: -1rem;
+    height: calc(100vh + 2rem);
+    height: calc(100lvh + 2rem);
     background:
       linear-gradient(180deg, rgba(9, 5, 8, 0), rgba(9, 5, 8, 0.2)),
       url("./assets/backgrounds/secret-archive-mobile.webp") center 42% / cover no-repeat,
