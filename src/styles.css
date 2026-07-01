@@ -1568,28 +1568,35 @@ input:focus-visible {
   }
 
   .app-shell {
-    height: 100dvh;
+    min-height: 100svh;
+    height: auto;
     overflow-x: hidden;
-    overflow-y: hidden;
+    overflow-y: visible;
   }
 
   body {
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .story-route {
     display: grid;
-    grid-template-rows: auto minmax(0, 1fr);
-    height: 100dvh;
+    grid-template-rows: auto 1fr;
+    min-height: 100svh;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
   .home-route,
   .planned-route,
   .about-route,
   .settings-route {
-    height: 100dvh;
-    min-height: 0;
-    overflow: auto;
+    min-height: 100svh;
+    height: auto;
+    align-content: start;
+    overflow-x: hidden;
+    overflow-y: visible;
   }
 
   .home-route {
@@ -1619,7 +1626,8 @@ input:focus-visible {
     gap: clamp(0.8rem, 2.6dvh, 1.2rem);
     width: min(100% - 1.25rem, 44rem);
     min-height: 0;
-    height: 100%;
+    height: auto;
+    min-height: calc(100svh - 4.75rem);
     padding: clamp(0.9rem, 2.6dvh, 1.65rem) 0 max(1rem, env(safe-area-inset-bottom, 0px));
   }
 
