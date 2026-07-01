@@ -89,9 +89,29 @@ input:focus-visible {
 }
 
 .story-route::before,
-.home-route::before,
 .planned-route::before,
 .about-route::before {
+  position: absolute;
+  inset: -1.25rem;
+  z-index: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 50% 32%, rgba(143, 61, 82, 0.22), transparent 30%),
+    radial-gradient(circle at 78% 22%, rgba(185, 144, 85, 0.08), transparent 28%),
+    linear-gradient(122deg, #10080d 0 42%, #2f1824 72%, #140b11 100%);
+  filter: saturate(1.04);
+}
+
+.story-route[data-tone="mirror"]::before,
+.story-route[data-tone="naming"]::before,
+.story-route[data-tone="archive"]::before {
+  background:
+    radial-gradient(circle at 50% 32%, rgba(143, 61, 82, 0.22), transparent 30%),
+    radial-gradient(circle at 78% 22%, rgba(185, 144, 85, 0.08), transparent 28%),
+    linear-gradient(122deg, #10080d 0 42%, #2f1824 72%, #140b11 100%);
+}
+
+.home-route::before {
   position: absolute;
   inset: -1.25rem;
   z-index: 0;
@@ -104,17 +124,7 @@ input:focus-visible {
   transform: scale(1.008);
 }
 
-.story-route[data-tone="mirror"]::before,
-.story-route[data-tone="naming"]::before,
-.story-route[data-tone="archive"]::before {
-  background:
-    linear-gradient(180deg, rgba(9, 5, 8, 0), rgba(9, 5, 8, 0.14)),
-    url("./assets/backgrounds/secret-archive-desktop.webp") center / cover no-repeat,
-    linear-gradient(122deg, #11080e 0 42%, #331925 72%, #160c12 100%);
-}
-
 .story-route::after,
-.home-route::after,
 .planned-route::after,
 .about-route::after {
   position: absolute;
@@ -128,6 +138,20 @@ input:focus-visible {
     radial-gradient(circle at 18% 76%, rgba(143, 61, 82, 0.08), transparent 34%),
     linear-gradient(90deg, rgba(7, 4, 6, 0.18), rgba(7, 4, 6, 0.04) 46%, rgba(7, 4, 6, 0.2)),
     rgba(8, 4, 7, 0.12);
+}
+
+.home-route::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  content: "";
+  background:
+    radial-gradient(circle at 52% 35%, rgba(7, 4, 6, 0.24), transparent 23%),
+    radial-gradient(circle at 74% 30%, rgba(185, 144, 85, 0.1), transparent 28%),
+    radial-gradient(circle at 18% 76%, rgba(143, 61, 82, 0.08), transparent 34%),
+    linear-gradient(90deg, rgba(7, 4, 6, 0.14), rgba(7, 4, 6, 0.03) 46%, rgba(7, 4, 6, 0.18)),
+    rgba(8, 4, 7, 0.08);
 }
 
 .story-route[data-tone="mirror"]::after {
@@ -987,6 +1011,10 @@ input:focus-visible {
   gap: clamp(1rem, 2.6dvh, 1.8rem);
 }
 
+.home-route::before {
+  animation: home-background-rise 780ms ease-out both;
+}
+
 .planned-route {
   align-content: center;
   gap: clamp(1rem, 3dvh, 1.65rem);
@@ -1016,6 +1044,7 @@ input:focus-visible {
   gap: clamp(1.4rem, 5vw, 4.6rem);
   width: min(920px, 100%);
   padding-top: 1.65rem;
+  animation: home-layer-rise 560ms ease-out 80ms both;
 }
 
 .home-rabbit {
@@ -1072,6 +1101,7 @@ input:focus-visible {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(0.75rem, 2vw, 1rem);
   width: min(1020px, 100%);
+  animation: home-layer-rise 620ms ease-out 180ms both;
 }
 
 .entrance-card {
@@ -1171,6 +1201,35 @@ input:focus-visible {
   flex-wrap: wrap;
   justify-content: center;
   gap: 0.25rem 1rem;
+  animation: home-layer-rise 560ms ease-out 280ms both;
+}
+
+@keyframes home-background-rise {
+  from {
+    opacity: 0.36;
+    filter: blur(3.5px) brightness(0.82) saturate(0.86);
+    transform: scale(1.035);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(1.2px) brightness(1.24) saturate(1.08);
+    transform: scale(1.008);
+  }
+}
+
+@keyframes home-layer-rise {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(1.15rem) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
 }
 
 .soft-link-action {
@@ -1268,12 +1327,21 @@ input:focus-visible {
 
 @media (max-width: 900px) {
   .story-route::before,
-  .home-route::before,
   .planned-route::before,
   .about-route::before,
   .story-route[data-tone="mirror"]::before,
   .story-route[data-tone="naming"]::before,
   .story-route[data-tone="archive"]::before {
+    position: fixed;
+    inset: -1rem;
+    background:
+      radial-gradient(circle at 50% 30%, rgba(143, 61, 82, 0.22), transparent 32%),
+      radial-gradient(circle at 72% 18%, rgba(185, 144, 85, 0.08), transparent 28%),
+      linear-gradient(122deg, #10080d 0 42%, #2f1824 72%, #140b11 100%);
+    filter: saturate(1.04);
+  }
+
+  .home-route::before {
     position: fixed;
     inset: -1rem;
     background:
@@ -1285,7 +1353,6 @@ input:focus-visible {
   }
 
   .story-route::after,
-  .home-route::after,
   .planned-route::after,
   .about-route::after {
     position: fixed;
@@ -1295,6 +1362,16 @@ input:focus-visible {
       radial-gradient(circle at 25% 82%, rgba(143, 61, 82, 0.08), transparent 34%),
       linear-gradient(90deg, rgba(7, 4, 6, 0.22), rgba(7, 4, 6, 0.06) 50%, rgba(7, 4, 6, 0.2)),
       rgba(8, 4, 7, 0.14);
+  }
+
+  .home-route::after {
+    position: fixed;
+    background:
+      radial-gradient(circle at 50% 34%, rgba(7, 4, 6, 0.3), transparent 27%),
+      radial-gradient(circle at 62% 20%, rgba(185, 144, 85, 0.1), transparent 26%),
+      radial-gradient(circle at 25% 82%, rgba(143, 61, 82, 0.08), transparent 34%),
+      linear-gradient(90deg, rgba(7, 4, 6, 0.17), rgba(7, 4, 6, 0.05) 50%, rgba(7, 4, 6, 0.18)),
+      rgba(8, 4, 7, 0.1);
   }
 
   .story-route[data-tone="mirror"]::after {
