@@ -12,7 +12,7 @@ export const rabbitPoseUrls: Record<RabbitPose, string> = {
   folder: rabbitFolderUrl,
 };
 
-export const homeRabbitUrl = rabbitFolderUrl;
+export const homeRabbitUrl = rabbitGreetingUrl;
 
 export function warmStoryAssets(): void {
   Object.values(rabbitPoseUrls).forEach((src) => {

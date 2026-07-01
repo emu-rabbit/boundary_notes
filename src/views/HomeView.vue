@@ -32,7 +32,7 @@ const settingsEntrance = computed(() => routeById.value.get('settings'));
     <div class="home-stage">
       <img
         :src="homeRabbitUrl"
-        alt="白色兔子抱著秘密檔案資料夾。"
+        alt="白色兔子揮手，懷裡抱著秘密檔案筆記本。"
         class="home-rabbit"
         width="1024"
         height="1536"

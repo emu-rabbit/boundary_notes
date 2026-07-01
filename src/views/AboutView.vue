@@ -17,7 +17,7 @@ const emit = defineEmits<{
     <div class="about-stage">
       <img
         :src="homeRabbitUrl"
-        alt="白色兔子抱著秘密檔案資料夾。"
+        alt="白色兔子揮手，懷裡抱著秘密檔案筆記本。"
         class="planned-rabbit"
         width="1024"
         height="1536"
