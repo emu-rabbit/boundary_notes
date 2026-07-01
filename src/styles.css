@@ -128,10 +128,10 @@ input:focus-visible {
 
 .settings-route::before {
   background:
-    linear-gradient(180deg, rgba(9, 5, 8, 0.16), rgba(9, 5, 8, 0.4)),
+    linear-gradient(180deg, rgba(9, 5, 8, 0.14), rgba(9, 5, 8, 0.38)),
     url("./assets/backgrounds/secret-archive-desktop.webp") center / cover no-repeat,
     linear-gradient(122deg, #11080e 0 42%, #331925 72%, #160c12 100%);
-  filter: blur(7px) brightness(0.68) saturate(0.82);
+  filter: blur(7px) brightness(0.72) saturate(0.84);
   transform: scale(1.07);
 }
 
@@ -168,11 +168,11 @@ input:focus-visible {
 
 .settings-route::after {
   background:
-    radial-gradient(circle at 35% 33%, rgba(7, 4, 6, 0.62), transparent 25%),
-    radial-gradient(circle at 76% 28%, rgba(185, 144, 85, 0.04), transparent 28%),
-    radial-gradient(circle at 18% 76%, rgba(143, 61, 82, 0.1), transparent 34%),
-    linear-gradient(90deg, rgba(7, 4, 6, 0.46), rgba(7, 4, 6, 0.2) 46%, rgba(7, 4, 6, 0.52)),
-    rgba(8, 4, 7, 0.44);
+    radial-gradient(circle at 52% 35%, rgba(7, 4, 6, 0.58), transparent 25%),
+    radial-gradient(circle at 74% 30%, rgba(185, 144, 85, 0.04), transparent 28%),
+    radial-gradient(circle at 18% 76%, rgba(143, 61, 82, 0.08), transparent 34%),
+    linear-gradient(90deg, rgba(7, 4, 6, 0.42), rgba(7, 4, 6, 0.18) 46%, rgba(7, 4, 6, 0.48)),
+    rgba(8, 4, 7, 0.42);
 }
 
 .story-route[data-tone="mirror"]::after {
@@ -1062,6 +1062,10 @@ input:focus-visible {
   animation: home-background-rise 780ms ease-out both;
 }
 
+.settings-route::before {
+  animation: home-background-rise 780ms ease-out both;
+}
+
 .planned-route {
   align-content: center;
   gap: clamp(1rem, 3dvh, 1.65rem);
@@ -1275,6 +1279,20 @@ input:focus-visible {
     opacity: 1;
     filter: blur(0);
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes home-mobile-background-rise {
+  from {
+    opacity: 0.36;
+    filter: blur(3.2px) brightness(0.82) saturate(0.86);
+    transform: scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(2.4px) brightness(0.9) saturate(0.96);
+    transform: scale(1.025);
   }
 }
 
@@ -1543,14 +1561,15 @@ input:focus-visible {
     right: -1rem;
     bottom: auto;
     left: -1rem;
-    height: calc(100vh + 2rem);
-    height: calc(100lvh + 2rem);
+    height: min(68svh, 38rem);
+    min-height: 29rem;
     background:
-      linear-gradient(180deg, rgba(9, 5, 8, 0.16), rgba(9, 5, 8, 0.42)),
-      url("./assets/backgrounds/secret-archive-mobile.webp") center 42% / cover no-repeat,
+      linear-gradient(180deg, rgba(9, 5, 8, 0.06), rgba(9, 5, 8, 0.24) 48%, rgba(9, 5, 8, 0.72) 100%),
+      url("./assets/backgrounds/secret-archive-mobile.webp") center bottom / cover no-repeat,
       linear-gradient(122deg, #11080e 0 42%, #331925 72%, #160c12 100%);
-    filter: blur(7.5px) brightness(0.72) saturate(0.84);
-    transform: scale(1.08);
+    filter: blur(2.4px) brightness(0.9) saturate(0.96);
+    transform: scale(1.025);
+    animation: home-mobile-background-rise 780ms ease-out both;
   }
 
   .settings-route::before {
@@ -1559,14 +1578,15 @@ input:focus-visible {
     right: -1rem;
     bottom: auto;
     left: -1rem;
-    height: calc(100vh + 2rem);
-    height: calc(100lvh + 2rem);
+    height: min(68svh, 38rem);
+    min-height: 29rem;
     background:
-      linear-gradient(180deg, rgba(9, 5, 8, 0.18), rgba(9, 5, 8, 0.44)),
-      url("./assets/backgrounds/secret-archive-mobile.webp") center 42% / cover no-repeat,
+      linear-gradient(180deg, rgba(9, 5, 8, 0.06), rgba(9, 5, 8, 0.24) 48%, rgba(9, 5, 8, 0.72) 100%),
+      url("./assets/backgrounds/secret-archive-mobile.webp") center bottom / cover no-repeat,
       linear-gradient(122deg, #11080e 0 42%, #331925 72%, #160c12 100%);
-    filter: blur(7.5px) brightness(0.68) saturate(0.82);
-    transform: scale(1.08);
+    filter: blur(2.4px) brightness(0.9) saturate(0.96);
+    transform: scale(1.025);
+    animation: home-mobile-background-rise 780ms ease-out both;
   }
 
   .story-route::after,
@@ -1585,21 +1605,19 @@ input:focus-visible {
   .home-route::after {
     position: fixed;
     background:
-      radial-gradient(circle at 50% 34%, rgba(7, 4, 6, 0.62), transparent 27%),
-      radial-gradient(circle at 62% 20%, rgba(185, 144, 85, 0.04), transparent 26%),
-      radial-gradient(circle at 25% 82%, rgba(143, 61, 82, 0.08), transparent 34%),
-      linear-gradient(90deg, rgba(7, 4, 6, 0.46), rgba(7, 4, 6, 0.22) 50%, rgba(7, 4, 6, 0.48)),
-      rgba(8, 4, 7, 0.44);
+      radial-gradient(circle at 50% 31%, rgba(7, 4, 6, 0.42), transparent 24%),
+      radial-gradient(circle at 62% 15%, rgba(185, 144, 85, 0.07), transparent 24%),
+      linear-gradient(180deg, rgba(7, 4, 6, 0.12) 0 34%, rgba(7, 4, 6, 0.5) 58%, rgba(7, 4, 6, 0.88) 82%, rgba(7, 4, 6, 0.96) 100%),
+      linear-gradient(90deg, rgba(7, 4, 6, 0.36), rgba(7, 4, 6, 0.12) 50%, rgba(7, 4, 6, 0.38));
   }
 
   .settings-route::after {
     position: fixed;
     background:
-      radial-gradient(circle at 50% 34%, rgba(7, 4, 6, 0.66), transparent 27%),
-      radial-gradient(circle at 62% 20%, rgba(185, 144, 85, 0.04), transparent 26%),
-      radial-gradient(circle at 25% 82%, rgba(143, 61, 82, 0.1), transparent 34%),
-      linear-gradient(90deg, rgba(7, 4, 6, 0.5), rgba(7, 4, 6, 0.24) 50%, rgba(7, 4, 6, 0.52)),
-      rgba(8, 4, 7, 0.46);
+      radial-gradient(circle at 50% 31%, rgba(7, 4, 6, 0.42), transparent 24%),
+      radial-gradient(circle at 62% 15%, rgba(185, 144, 85, 0.07), transparent 24%),
+      linear-gradient(180deg, rgba(7, 4, 6, 0.12) 0 34%, rgba(7, 4, 6, 0.5) 58%, rgba(7, 4, 6, 0.88) 82%, rgba(7, 4, 6, 0.96) 100%),
+      linear-gradient(90deg, rgba(7, 4, 6, 0.36), rgba(7, 4, 6, 0.12) 50%, rgba(7, 4, 6, 0.38));
   }
 
   .story-route[data-tone="mirror"]::after {
@@ -1666,6 +1684,15 @@ input:focus-visible {
     gap: clamp(0.85rem, 2.4dvh, 1.25rem);
     padding-top: max(1.1rem, env(safe-area-inset-top, 0px));
     padding-bottom: max(1.1rem, env(safe-area-inset-bottom, 0px));
+    background:
+      linear-gradient(180deg, rgba(16, 8, 13, 0) 0 44%, #10080d 68%, #0c070b 100%),
+      linear-gradient(122deg, #11080e 0 42%, #2b1420 72%, #11080e 100%);
+  }
+
+  .settings-route {
+    background:
+      linear-gradient(180deg, rgba(16, 8, 13, 0) 0 44%, #10080d 68%, #0c070b 100%),
+      linear-gradient(122deg, #11080e 0 42%, #2b1420 72%, #11080e 100%);
   }
 
   .story-header {
