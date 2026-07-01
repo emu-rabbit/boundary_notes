@@ -1760,15 +1760,18 @@ input:focus-visible {
   }
 
   .home-rabbit {
+    order: 3;
     width: min(44vw, 12.5rem);
   }
 
   .home-copy {
+    display: contents;
     justify-items: center;
     gap: 0.7rem;
   }
 
   .home-copy .secret-file-title {
+    order: 2;
     justify-items: center;
     font-size: clamp(2.25rem, 8vw, 3.8rem);
     line-height: 1.04;
@@ -1776,8 +1779,13 @@ input:focus-visible {
   }
 
   .home-copy p {
+    order: 4;
     font-size: 0.98rem;
     line-height: 1.75;
+  }
+
+  .home-copy .home-kicker {
+    order: 1;
   }
 
   .home-entrances {
