@@ -36,7 +36,13 @@ function chooseLocale(locale: AppLocale): void {
 <template>
   <Transition name="dialogue" mode="out-in">
     <article :key="step.id" class="dialogue-panel">
-      <div v-if="step.showSpeaker !== false" class="speaker-name">{{ messages.story.speakerName }}</div>
+      <div
+        v-if="step.showSpeaker !== false"
+        class="speaker-name"
+        :class="{ 'is-visually-held': step.id === 'language' }"
+      >
+        {{ messages.story.speakerName }}
+      </div>
       <div v-if="step.kind === 'language'" class="dialogue-copy">
         <p v-for="line in step.lines" :key="line" class="rabbit-speech">
           {{ line }}

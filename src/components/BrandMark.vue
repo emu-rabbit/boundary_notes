@@ -2,6 +2,7 @@
 import type { LocaleMessages } from '../app/i18n';
 
 defineProps<{
+  hidden?: boolean;
   messages: LocaleMessages;
   title: string;
 }>();
@@ -12,7 +13,13 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <button class="brand-mark" type="button" :aria-label="messages.brand.restartStoryAria(title)" @click="emit('restart')">
+  <button
+    class="brand-mark"
+    :class="{ 'is-visually-held': hidden }"
+    type="button"
+    :aria-label="messages.brand.restartStoryAria(title)"
+    @click="emit('restart')"
+  >
     <span class="brand-folder-shell" aria-hidden="true">
       <svg class="brand-folder" viewBox="0 0 24 24" focusable="false">
         <path

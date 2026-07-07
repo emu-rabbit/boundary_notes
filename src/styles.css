@@ -266,6 +266,10 @@ input:focus-visible {
   fill: currentColor;
 }
 
+.is-visually-held {
+  visibility: hidden;
+}
+
 .story-layout {
   position: relative;
   z-index: 3;

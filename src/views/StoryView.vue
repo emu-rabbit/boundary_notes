@@ -55,7 +55,7 @@ onMounted(() => {
     <div class="ambient-grid" aria-hidden="true" />
 
     <header class="story-header">
-      <BrandMark :messages="messages" :title="appTitle" @restart="resetStory" />
+      <BrandMark :hidden="activeStep.id === 'language'" :messages="messages" :title="appTitle" @restart="resetStory" />
     </header>
 
     <div class="story-layout">
