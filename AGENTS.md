@@ -30,6 +30,12 @@
 
 1. `.agents/skills/visual/main_rabbit_image_generation.md`
 
+本專案專屬、可 spawn 的 subagent 定義放在 `.agents/subagents/`。守密兔繪圖與審圖工作使用：
+
+1. `.agents/subagents/secret-rabbit-artist.toml`
+
+該 subagent 僅屬於本 repository，不應安裝或維護為全域 Codex skill。
+
 當使用者要求 `add and commit all`、`commit all`、`全部提交`，或以其他方式要求提交目前所有變更時，讀取：
 
 1. `.agents/workflows/add-commit-all.md`
