@@ -1,0 +1,75 @@
+/* Foundation: app tokens, font face, reset, and shared focus affordances. */
+
+
+@font-face {
+  font-family: "jf-openhuninn";
+  src: url("../assets/fonts/jf-openhuninn-2.1.ttf") format("truetype");
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  font-family: "jf-openhuninn", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui,
+    sans-serif;
+  --ink: #f6e8df;
+  --ink-soft: rgba(246, 232, 223, 0.74);
+  --ink-muted: rgba(246, 232, 223, 0.54);
+  --velvet: #2f1a25;
+  --velvet-deep: #140b11;
+  --velvet-night: #0c070b;
+  --wine: #8f3d52;
+  --wine-deep: #3e1b29;
+  --rose: #d99a9a;
+  --blush: #9a6670;
+  --paper: #24141d;
+  --paper-warm: #321e29;
+  --dialogue-paper: rgba(55, 25, 43, 0.9);
+  --dialogue-paper-soft: rgba(31, 14, 25, 0.88);
+  --dialogue-border: rgba(241, 178, 184, 0.2);
+  --dialogue-accent: #d78391;
+  --button-berry: #7b3f51;
+  --button-berry-hover: #9a5364;
+  --button-soft: rgba(63, 32, 45, 0.9);
+  --button-soft-hover: rgba(82, 42, 57, 0.94);
+  --gold: #b99055;
+  --sage: #687560;
+  --mist: #474336;
+  background: var(--velvet-deep);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+  background: var(--velvet-deep);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(197, 138, 124, 0.72);
+  outline-offset: 4px;
+}
