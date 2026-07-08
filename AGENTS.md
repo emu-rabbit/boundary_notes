@@ -100,6 +100,18 @@
 
 該 skill 文件是本專案的正式領域規範與產品風險邊界，不是臨時備忘，也不是實踐教學。後續 Agent 應直接依該 skill 內容執行，不需要再從決策歷史推導其正式性。若需要新增具體法律、醫療或高風險項目判斷，Agent 應另外查證可靠來源並保守撰寫。
 
+## Core Questionnaire System
+
+建立或修改題庫、問題庫 importer、分類層題目、細項題目、使用者回答 JSON、本地秘密檔案、Firestore 分享版本、結果頁資料語意、題庫翻譯或從 Google Sheet 更新題庫時，必須讀取：
+
+1. `.agents/specs/question_bank_and_secret_file_system.md`
+
+當使用者更新雲端硬碟中的 `BDSM boundary test items` 試算表並要求同步題庫時，必須依照：
+
+1. `.agents/workflows/update-question-bank-from-google-sheet.md`
+
+題庫繁體中文原文以 Google Sheet 為 source of truth；除了標點符號、明確錯字或使用者明確要求外，不得擅自改寫。雲端分享資料只能新建與讀取；本地檔案可建立、讀取、更新與刪除。
+
 ## Visual Character Skill
 
 主角兔子的核心人物設定檔已歸檔於：

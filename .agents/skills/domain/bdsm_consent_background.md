@@ -39,6 +39,8 @@ BDSM 通常被理解為涵蓋 Bondage/Discipline、Dominance/Submission、Sadism
 
 題庫應以「互動項目」為核心，而非人格屬性或身份標籤。
 
+本專案正式題庫來源、分類層/細項層結構、Google Sheet 匯入規則、回答狀態與秘密檔案資料格式，定義於 `.agents/specs/question_bank_and_secret_file_system.md`。處理題庫或翻譯時，必須同時讀取該文件。
+
 建立題目時應盡量把下列維度拆清楚：
 
 - 互動方向：施予、接受、觀看、被觀看、共同參與等。
@@ -68,6 +70,8 @@ BDSM 通常被理解為涵蓋 Bondage/Discipline、Dominance/Submission、Sadism
 - 暗示只要有同意就一定合法或安全。
 - 提供規避法律、規避平台規範、躲避他人發現的建議。
 - 把高風險項目寫得刺激、浪漫化或像挑戰清單。
+
+若 Google Sheet 的 `警示` 欄已有內容，UI 應以 `高風險項目：{警示原文}` 顯示，不得擅自改寫成操作教學。若 Agent 認為警示不足，需要先查證可靠來源並保守補強，不得只憑常識新增醫療或法律結論。
 
 ## 分享與檢閱他人檔案
 

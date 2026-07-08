@@ -48,6 +48,11 @@
 - **匿名運作**：不需要登入系統。不得導入 Firebase Auth、Google login、email login、membership gate 或使用者帳號概念，除非使用者之後明確改變方向。
 - **分享前明示**：任何 Firestore 寫入都應發生在使用者明確理解並確認要產生分享資料之後。
 - **版本不可覆寫**：若使用者更新或編輯已分享檔案，應以新建資料表示新版本，不直接覆寫舊資料；這點需與 `.agents/mission/project_mission.md` 的知情同意實作原則一致。
+- **核心測驗資料規格**：題庫、分類層問題、細項問題、回答狀態、本地秘密檔案 JSON、Firestore create/read-only 分享版本與 Google Sheet 匯入流程，正式規格放在 `.agents/specs/question_bank_and_secret_file_system.md`。修改資料模型或題庫 importer 前必須先讀取該文件。
+- **本地檔案可完整 CRUD**：使用者作答檔案在 localStorage 中可建立、讀取、更新與刪除；每題作答後必須即時保存，讓使用者關閉網頁後可從舊檔案繼續。
+- **雲端分享 create/read only**：Firestore 中的分享版本只能新建與讀取，不可編輯、不可刪除、不可撤回且永不過期；本地修改後重新分享必須建立新版本與新分享 ID。例外只限網站管理員因法律、服務規範、濫用或營運安全理由手動移除或批次處理資料。
+- **題庫版本相容**：題庫未來會新增或修訂，回答資料必須保留 `bankVersion`、穩定 question ID、`unanswered` 與 `filteredOut` 狀態，不得用題目順序或中文文案作為唯一資料鍵。
+- **嚴格節流需後端能力**：同一匿名來源上傳限制基準仍是 60 分鐘 5 次、1 天 10 次。架構設計時優先嘗試不碰 Cloud Functions 的方案；若 Firestore security rules 無法可靠支撐嚴格計數與防刷，Agent 必須先回報安全取捨並詢問使用者是否導入 Cloud Functions、App Check 或其他 Firebase 防護機制，不得把前端節流描述為完整後端防護。
 
 ## 匿名識別與濫用防護
 
@@ -77,5 +82,5 @@
 ## 後續 Agent 行動
 
 1. 進行技術或資料相關工作前，先檢查本文件是否與現有程式碼、Firebase 設定、README 或其他 architecture 文件一致。
-2. 若新增正式資料 schema、Firestore rules、GA event taxonomy 或 asset preload policy，優先更新本文件或未來正式 architecture/privacy 文件。
+2. 若新增正式資料 schema、Firestore rules、GA event taxonomy、題庫 importer 或 asset preload policy，優先更新本文件、`.agents/specs/question_bank_and_secret_file_system.md` 或未來正式 architecture/privacy 文件。
 3. 若未來使用者明確改變技術方向，需優先同步更新本文件、`AGENTS.md` 與 `.agents/skills/professional/development_standards.md`；不得自行新增或修訂 `.agents/decisions/decision_history.md`，除非已依 `.agents/skills/core/decision_traceability.md` 通過守衛並取得使用者明確同意。

@@ -6,6 +6,8 @@
 
 使用者在前導劇情填入的稱呼會儲存在瀏覽器 `localStorage` 的 `bdsm-boundary-test-profile-name`。根路徑載入時，若已有本機稱呼，會直接進入主頁並套用「{稱呼}的祕密檔案」；若沒有本機稱呼，才播放前導劇情。使用者也可以從「關於這隻兔子」重播前導劇情並重新命名。
 
+核心測驗系統、題庫來源、秘密檔案 JSON、本地保存、雲端分享與 Google Sheet 更新流程的正式規格，位於 `.agents/specs/question_bank_and_secret_file_system.md` 與 `.agents/workflows/update-question-bank-from-google-sheet.md`。
+
 ## 開發
 
 ```powershell
