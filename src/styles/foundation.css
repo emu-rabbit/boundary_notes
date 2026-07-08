@@ -1,5 +1,7 @@
 /* Foundation: app tokens, font face, reset, and shared focus affordances. */
 
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Sans+SC&display=swap");
+
 
 @font-face {
   font-family: "jf-openhuninn";
@@ -9,8 +11,14 @@
 
 :root {
   color-scheme: dark;
-  font-family: "jf-openhuninn", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui,
-    sans-serif;
+  --font-family-default: "jf-openhuninn", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei",
+    system-ui, sans-serif;
+  --font-family-zh-hans: "Noto Sans SC", "Source Han Sans SC", "Source Han Sans CN",
+    "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", system-ui, sans-serif;
+  --font-family-ja: "Noto Sans JP", "Source Han Sans JP", "Hiragino Maru Gothic ProN",
+    "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+  --app-font-family: var(--font-family-default);
+  font-family: var(--app-font-family);
   --ink: #f6e8df;
   --ink-soft: rgba(246, 232, 223, 0.74);
   --ink-muted: rgba(246, 232, 223, 0.54);
@@ -38,6 +46,14 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html:lang(zh-Hans) {
+  --app-font-family: var(--font-family-zh-hans);
+}
+
+html:lang(ja) {
+  --app-font-family: var(--font-family-ja);
 }
 
 * {

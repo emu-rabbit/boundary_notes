@@ -73,6 +73,7 @@
 
 - **自刻但不凌亂**：自刻 UI 不代表每個頁面都各寫各的；應建立可重用的基礎 component、style token、spacing、typography、focus state 與 responsive pattern。
 - **CSS token 與 pattern 優先**：跨頁共用的色彩、字體、焦點、按鈕、route shell、背景層與 responsive pattern 應優先沉澱到 `src/styles/` 的對應 owner 檔案，不把同一視覺規則複製到多個 view。若需要調整單一視覺元素，先確認該元素的 owner 檔案與 mobile override，不在多處同步改十幾行。
+- **字型資源可退化**：`src/styles/foundation.css` 維護全站字型 token 與語系 font stack。`jf-openhuninn` 是本地預設字型，主要服務繁體中文與英文；簡體中文與日文依 `html lang` 切換到 Noto Sans SC / JP 與 Source Han Sans SC / JP 優先的開源 CJK stack。若遠端字型載入失敗，必須保留系統 CJK fallback，不可讓核心流程因字型資源失敗而不可讀。
 - **避免模板感**：不得直接套用大型 Vue UI kit、dashboard template 或 landing page template。若使用 headless utility 或小型無樣式 helper，必須確認它不主導視覺語言。
 - **預熱策略要可見於程式**：圖片、插畫、字體、路由 chunk 或大型資料應透過明確的 preload、prefetch、lazy loading、cache warmup 或 staged loading 策略處理。
 - **核心流程優先**：預熱優先服務測驗流程、結果檢閱與分享頁的順暢感；非核心裝飾資源不得搶佔初始載入。

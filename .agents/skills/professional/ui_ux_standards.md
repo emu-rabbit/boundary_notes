@@ -27,6 +27,7 @@
 ### 視覺設計
 
 - **建立一致系統**：色彩、字體、間距、邊框、陰影、圖案與動效都應有一致規則。
+- **語系字型分流**：預設字型以 `jf-openhuninn` 粉圓體服務繁體中文與英文；簡體中文與日文不得假設粉圓體完整覆蓋，應透過 `html:lang(...)` 切換到風格接近、開源且 CJK 覆蓋較完整的字型 stack。目前簡體中文使用 Noto Sans SC / Source Han Sans SC 系列優先，日文使用 Noto Sans JP / Source Han Sans JP 系列優先，並保留各平台系統字型 fallback。
 - **CSS 分層一致性**：自訂 CSS 以 `src/styles/` 為維護入口；新增或調整樣式時，依責任放入 foundation、route-shell、story-stage、story-dialogue、home-page、secondary-pages 或 responsive，而不是回到單一巨型 stylesheet。`responsive.css` 是最後 cascade 層，mobile/desktop override 應集中在此檔或與此檔同等順序的位置。
 - **暗色調一致性**：本專案視覺應維持 BDSM 的神秘感與教育工具的溫和包容氛圍；UI 背景、前景面板、按鈕、輸入框與裝飾要素應一律往暗色調設計，避免深色背景搭配大面積亮色前景造成氛圍斷裂。
 - **自刻 UI**：本專案 UI 應自己刻，不使用現成 Vue UI/UX library 或模板化 component kit；若使用無樣式 helper，仍必須保留本專案自己的視覺語言。
