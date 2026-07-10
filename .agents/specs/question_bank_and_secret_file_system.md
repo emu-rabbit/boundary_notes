@@ -121,13 +121,13 @@
 
 分類層題目詢問：
 
-- 經驗程度：`none` 沒經驗、`little` 少量經驗、`some` 一些經驗、`extensive` 大量經驗、`unsure` 不確定、`seeDetails` 請看細項。
+- 經驗程度：`none` 沒經驗、`little` 少量經驗、`some` 一些經驗、`extensive` 大量經驗、`veryExtensive` 非常熟悉、`unsure` 不確定、`seeDetails` 請看細項。
 - 喜好程度：`hardNo` 絕對禁止、`reluctant` 勉強配合、`neutral` 無感覺、`like` 喜歡、`love` 超級喜歡、`unsure` 不確定、`seeDetails` 請看細項。
 - 備註：自由填答文字，選填。
 
 細項題目詢問：
 
-- 經驗程度：`none` 沒經驗、`little` 少量經驗、`some` 一些經驗、`extensive` 大量經驗、`unsure` 不確定。
+- 經驗程度：`none` 沒經驗、`little` 少量經驗、`some` 一些經驗、`extensive` 大量經驗、`veryExtensive` 非常熟悉、`unsure` 不確定。
 - 喜好程度：`hardNo` 絕對禁止、`reluctant` 勉強配合、`neutral` 無感覺、`like` 喜歡、`love` 超級喜歡、`unsure` 不確定。
 - 備註：自由填答文字，選填。
 
