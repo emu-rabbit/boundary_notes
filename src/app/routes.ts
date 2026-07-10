@@ -45,8 +45,8 @@ export const appRoutes = [
   {
     id: 'create',
     path: '/create',
-    state: 'planned',
-    component: () => import('../views/PlannedRouteView.vue'),
+    state: 'ready',
+    component: () => import('../views/CreateFileView.vue'),
   },
   {
     id: 'files',

@@ -5,6 +5,7 @@
   .planned-route::before,
   .about-route::before,
   .settings-route::before,
+  .questionnaire-route::before,
   .story-route[data-tone="mirror"]::before,
   .story-route[data-tone="naming"]::before,
   .story-route[data-tone="archive"]::before {
@@ -54,7 +55,8 @@
   .story-route::after,
   .planned-route::after,
   .about-route::after,
-  .settings-route::after {
+  .settings-route::after,
+  .questionnaire-route::after {
     position: fixed;
     background:
       radial-gradient(circle at 50% 34%, rgba(7, 4, 6, 0.36), transparent 27%),
@@ -130,7 +132,8 @@
   .home-route,
   .planned-route,
   .about-route,
-  .settings-route {
+  .settings-route,
+  .questionnaire-route {
     min-height: 100svh;
     height: auto;
     align-content: start;
@@ -638,6 +641,11 @@
     width: min(calc(100vw - 2rem), 34rem);
   }
 
+  .questionnaire-intro-panel .dialogue-copy {
+    overflow: hidden;
+    padding-right: 0;
+  }
+
   .settings-name-field input {
     min-height: 3.2rem;
     font-size: 1.05rem;
@@ -747,7 +755,8 @@
   .home-route,
   .planned-route,
   .about-route,
-  .settings-route {
+  .settings-route,
+  .questionnaire-route {
     align-content: start;
   }
 

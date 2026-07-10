@@ -11,6 +11,7 @@ import './styles/story-stage.css';
 import './styles/story-dialogue.css';
 import './styles/home-page.css';
 import './styles/secondary-pages.css';
+import './styles/questionnaire.css';
 import './styles/responsive.css';
 
 const initialProfileName = loadStoredProfileName();
