@@ -958,15 +958,6 @@
   position: relative;
 }
 
-.category-question-route .category-visual img {
-  transition: filter 180ms ease, transform 180ms ease;
-}
-
-.category-question-route .category-visual.is-counting-down img {
-  filter: brightness(0.82);
-  transform: scale(0.985);
-}
-
 .category-role-badge {
   position: absolute;
   bottom: 0.64rem;
@@ -985,35 +976,33 @@
   transform: translateX(-50%);
 }
 
-.category-countdown-ring {
-  position: absolute;
-  inset: 12.5%;
-  width: 75%;
-  height: 75%;
+.next-action-countdown-ring {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: none;
   rotate: -90deg;
-  overflow: visible;
   pointer-events: none;
 }
 
-.category-countdown-ring-track,
-.category-countdown-ring-progress {
+.next-action-countdown-ring-track,
+.next-action-countdown-ring-progress {
   fill: none;
-  stroke-width: 4;
+  stroke-width: 10;
 }
 
-.category-countdown-ring-track {
+.next-action-countdown-ring-track {
   stroke: rgba(255, 240, 232, 0.24);
 }
 
-.category-countdown-ring-progress {
-  stroke: var(--rose);
+.next-action-countdown-ring-progress {
+  stroke: #fff0e8;
   stroke-dasharray: 339.3;
   stroke-dashoffset: 339.3;
   stroke-linecap: round;
-  animation: category-countdown 3s linear forwards;
+  animation: next-action-countdown 3s linear forwards;
 }
 
-@keyframes category-countdown {
+@keyframes next-action-countdown {
   to {
     stroke-dashoffset: 0;
   }
@@ -1106,6 +1095,10 @@
 }
 
 .questionnaire-next-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.44rem;
   min-width: min(100%, 11rem);
   min-height: 3.2rem;
   padding: 0.64rem 1rem;
@@ -1353,7 +1346,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .category-countdown-ring-progress {
+  .next-action-countdown-ring-progress {
     animation: none;
     stroke-dashoffset: 0;
   }

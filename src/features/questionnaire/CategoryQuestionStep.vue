@@ -219,23 +219,13 @@ onBeforeUnmount(() => {
 
       <form class="category-question-card" @submit.prevent="advanceImmediately">
         <div class="category-question-intro">
-          <figure class="category-visual" :class="{ 'is-counting-down': autoAdvancePending }">
+          <figure class="category-visual">
             <img
               :src="categoryVisualUrl"
               :alt="messages.categoryVisualAlt(question.category.name)"
               height="512"
               width="512"
             />
-            <svg
-              v-if="autoAdvancePending"
-              :key="countdownKey"
-              class="category-countdown-ring"
-              viewBox="0 0 120 120"
-              aria-hidden="true"
-            >
-              <circle class="category-countdown-ring-track" cx="60" cy="60" r="54" />
-              <circle class="category-countdown-ring-progress" cx="60" cy="60" r="54" />
-            </svg>
             <span class="category-role-badge">{{ messages.roleLabels[question.role] }}</span>
           </figure>
 
@@ -338,7 +328,16 @@ onBeforeUnmount(() => {
 
         <div class="questionnaire-navigation">
           <button class="questionnaire-next-action" :disabled="!canAdvance" type="submit">
-            {{ messages.nextQuestion }} <span aria-hidden="true">→</span>
+            <template v-if="autoAdvancePending">
+              <svg :key="countdownKey" class="next-action-countdown-ring" viewBox="0 0 120 120" aria-hidden="true">
+                <circle class="next-action-countdown-ring-track" cx="60" cy="60" r="54" />
+                <circle class="next-action-countdown-ring-progress" cx="60" cy="60" r="54" />
+              </svg>
+              {{ messages.autoAdvanceAction }}
+            </template>
+            <template v-else>
+              {{ messages.nextQuestion }} <span aria-hidden="true">→</span>
+            </template>
           </button>
         </div>
 

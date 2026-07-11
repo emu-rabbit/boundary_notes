@@ -9,6 +9,7 @@ import type {
 export interface QuestionnaireMessages {
   answerRequired: string;
   autoAdvance: string;
+  autoAdvanceAction: string;
   backQuestion: string;
   categoryVisualAlt: (categoryName: string) => string;
   completedProgress: (completed: number, total: number) => string;
@@ -62,6 +63,7 @@ export interface QuestionnaireMessages {
 const zhHant: QuestionnaireMessages = {
   answerRequired: '請先選擇經驗程度與喜好程度。',
   autoAdvance: '答案已存好，3 秒後會自動前往下一題。',
+  autoAdvanceAction: '自動進入中',
   backQuestion: '上一題',
   categoryVisualAlt: (categoryName) => `${categoryName}的分類示意圖`,
   completedProgress: (completed, total) => `已完成 ${completed} / ${total}`,
@@ -149,6 +151,7 @@ const zhHans: QuestionnaireMessages = {
   ...zhHant,
   answerRequired: '请先选择经验程度与喜好程度。',
   autoAdvance: '答案已保存，3 秒后会自动前往下一题。',
+  autoAdvanceAction: '自动进入中',
   backQuestion: '上一题',
   categoryVisualAlt: (categoryName) => `${categoryName}的分类示意图`,
   completedProgress: (completed, total) => `已完成 ${completed} / ${total}`,
@@ -218,6 +221,7 @@ const ja: QuestionnaireMessages = {
   ...zhHant,
   answerRequired: '経験と興味の両方を選んでください。',
   autoAdvance: '回答を保存しました。3 秒後に次の質問へ進みます。',
+  autoAdvanceAction: '自動で次へ',
   backQuestion: '前の質問',
   categoryVisualAlt: (categoryName) => `${categoryName}のカテゴリーイメージ`,
   completedProgress: (completed, total) => `${completed} / ${total} 回答済み`,
@@ -292,6 +296,7 @@ const en: QuestionnaireMessages = {
   ...zhHant,
   answerRequired: 'Choose both an experience level and a preference level.',
   autoAdvance: 'Your answer is saved. The next question opens in 3 seconds.',
+  autoAdvanceAction: 'Opening automatically',
   backQuestion: 'Previous question',
   categoryVisualAlt: (categoryName) => `${categoryName} category illustration`,
   completedProgress: (completed, total) => `${completed} of ${total} completed`,
