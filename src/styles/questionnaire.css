@@ -1239,26 +1239,36 @@
 .question-slide-next-leave-active,
 .question-slide-back-enter-active,
 .question-slide-back-leave-active {
-  transition: opacity 220ms ease, transform 280ms cubic-bezier(0.22, 0.75, 0.26, 1);
+  transition: opacity 280ms ease;
+  will-change: opacity;
+}
+
+.question-slide-next-enter-active .questionnaire-page-shell,
+.question-slide-next-leave-active .questionnaire-page-shell,
+.question-slide-back-enter-active .questionnaire-page-shell,
+.question-slide-back-leave-active .questionnaire-page-shell {
+  transition: transform 280ms cubic-bezier(0.22, 0.75, 0.26, 1);
+  will-change: transform;
 }
 
 .question-slide-next-enter-from,
 .question-slide-back-leave-to {
   opacity: 0;
+}
+
+.question-slide-next-enter-from .questionnaire-page-shell,
+.question-slide-back-leave-to .questionnaire-page-shell {
   transform: translateX(2.6rem);
 }
 
 .question-slide-next-leave-to,
 .question-slide-back-enter-from {
   opacity: 0;
-  transform: translateX(-2.6rem);
 }
 
-.question-slide-next-enter-active,
-.question-slide-next-leave-active,
-.question-slide-back-enter-active,
-.question-slide-back-leave-active {
-  will-change: opacity, transform;
+.question-slide-next-leave-to .questionnaire-page-shell,
+.question-slide-back-enter-from .questionnaire-page-shell {
+  transform: translateX(-2.6rem);
 }
 
 @media (max-width: 760px) {
@@ -1351,7 +1361,11 @@
   .question-slide-next-enter-active,
   .question-slide-next-leave-active,
   .question-slide-back-enter-active,
-  .question-slide-back-leave-active {
+  .question-slide-back-leave-active,
+  .question-slide-next-enter-active .questionnaire-page-shell,
+  .question-slide-next-leave-active .questionnaire-page-shell,
+  .question-slide-back-enter-active .questionnaire-page-shell,
+  .question-slide-back-leave-active .questionnaire-page-shell {
     transition: none;
   }
 }
