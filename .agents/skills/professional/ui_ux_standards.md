@@ -30,7 +30,7 @@
 
 - **建立一致系統**：色彩、字體、間距、邊框、陰影、圖案與動效都應有一致規則。
 - **語系字型分流**：預設字型以 Google Fonts 的 `Huninn / jf open 粉圓` WOFF2 unicode-range 子集服務繁體中文、英文與使用者自行輸入的稱呼或文字；不得只依目前固定文案自製 glyph subset，以免未收錄的使用者輸入改用不一致字型。簡體中文與日文不得假設粉圓體完整覆蓋，應透過 `html:lang(...)` 切換到風格接近、開源且 CJK 覆蓋較完整的字型 stack。目前簡體中文使用 Noto Sans SC / Source Han Sans SC 系列優先，日文使用 Noto Sans JP / Source Han Sans JP 系列優先，並保留各平台系統字型 fallback。外部字型必須使用 `display=swap`，讓核心內容不因等待字型而不可讀。
-- **CSS 分層一致性**：自訂 CSS 以 `src/styles/` 為維護入口；新增或調整樣式時，依責任放入 foundation、route-shell、story-stage、story-dialogue、home-page、secondary-pages 或 responsive，而不是回到單一巨型 stylesheet。`responsive.css` 是最後 cascade 層，mobile/desktop override 應集中在此檔或與此檔同等順序的位置。
+- **CSS 分層一致性**：自訂 CSS 以 `src/styles/` 為維護入口；新增或調整樣式時，依責任放入 foundation、route-shell、story-stage、story-dialogue、home-page、secondary-pages、questionnaire 或 responsive，而不是回到單一巨型 stylesheet。建立檔案、分類作答與結果編輯器由 `questionnaire.css` 管理；`responsive.css` 是最後 cascade 層，跨頁 mobile/desktop override 應集中在此檔或與此檔同等順序的位置。
 - **暗色調一致性**：本專案視覺應維持 BDSM 的神秘感與教育工具的溫和包容氛圍；UI 背景、前景面板、按鈕、輸入框與裝飾要素應一律往暗色調設計，避免深色背景搭配大面積亮色前景造成氛圍斷裂。
 - **自刻 UI**：本專案 UI 應自己刻，不使用現成 Vue UI/UX library 或模板化 component kit；若使用無樣式 helper，仍必須保留本專案自己的視覺語言。
 - **可讀性不可犧牲**：文字對比、行高、段落寬度、按鈕大小與 focus 狀態必須可讀可用。

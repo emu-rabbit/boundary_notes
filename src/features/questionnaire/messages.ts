@@ -48,15 +48,26 @@ export interface QuestionnaireMessages {
   preferenceLegend: string;
   progress: (current: number, total: number) => string;
   results: {
-    categoryAnswer: string;
-    completed: string;
+    answerSummary: (experience: string, preference: string) => string;
+    categorySectionTitle: string;
     detailProgress: (answered: number, total: number) => string;
-    experience: string;
+    editCategoryAria: (categoryName: string) => string;
+    editHint: string;
+    editing: string;
+    fileActionsLabel: string;
     firstPhaseComplete: string;
-    noCategoryAnswer: string;
-    preference: string;
+    otherSummary: string;
+    overallProgress: string;
+    preview: string;
+    roleSwitchLabel: string;
+    sectionKicker: (roleLabel: string) => string;
+    seeDetailsSummary: string;
+    spotlightCount: (selected: number, limit: number) => string;
+    spotlightHelp: string;
+    spotlightTitle: string;
     title: string;
-    warning: (profileName: string) => string;
+    unansweredSummary: string;
+    upload: string;
   };
   roleLabels: Record<QuestionRole, string>;
   storageWarning: string;
@@ -134,16 +145,26 @@ const zhHant: QuestionnaireMessages = {
   preferenceLegend: '你目前的喜好程度',
   progress: (current, total) => `分類 ${current} / ${total}`,
   results: {
-    categoryAnswer: '分類回答',
-    completed: '第一階段完成',
-    detailProgress: (answered, total) => `細項完成度 ${answered} / ${total}`,
-    experience: '經驗',
-    firstPhaseComplete: '分類感受已經全部存好了。細項填答這一階段先不開放。',
-    noCategoryAnswer: '此分類不需要填寫分類回答。',
-    preference: '喜好',
-    title: '分類測驗結果',
-    warning: (profileName) =>
-      `這份測驗結果僅供參考，並無法完整的描述${profileName}的喜好或特質，也請勿用來替代任何必要的溝通。`,
+    answerSummary: (experience, preference) => `經驗${experience}，${preference}`,
+    categorySectionTitle: '分類整理',
+    detailProgress: (answered, total) => `細項 ${answered} / ${total}`,
+    editCategoryAria: (categoryName) => `編輯${categoryName}`,
+    editHint: '點選任何分類，就能繼續編輯裡面的細項',
+    editing: '正在編輯',
+    fileActionsLabel: '檔案操作',
+    firstPhaseComplete: '分類感受已經收好了。接下來，可以從你最在意的分類慢慢補上細項。',
+    otherSummary: '從細項開始整理',
+    overallProgress: '整份細項進度',
+    preview: '檢視預覽',
+    roleSwitchLabel: '切換互動方向',
+    sectionKicker: (roleLabel) => `目前顯示・${roleLabel}`,
+    seeDetailsSummary: '參考細項',
+    spotlightCount: (selected, limit) => `已選 ${selected} / ${limit}`,
+    spotlightHelp: '挑出最想先讓人看見的分類或項目。',
+    spotlightTitle: '我的焦點喜好',
+    title: '整理你的祕密檔案',
+    unansweredSummary: '分類感受尚未填寫',
+    upload: '上傳至雲端',
   },
   roleLabels: {
     active: '主導側',
@@ -230,14 +251,26 @@ const zhHans: QuestionnaireMessages = {
   },
   results: {
     ...zhHant.results,
-    detailProgress: (answered, total) => `细项完成度 ${answered} / ${total}`,
-    experience: '经验',
-    firstPhaseComplete: '分类感受已经全部保存。细项填写这一阶段暂不开放。',
-    noCategoryAnswer: '此分类不需要填写分类回答。',
-    preference: '喜好',
-    title: '分类测验结果',
-    warning: (profileName) =>
-      `这份测验结果仅供参考，无法完整描述${profileName}的喜好或特质，也请勿用来替代任何必要的沟通。`,
+    answerSummary: (experience, preference) => `经验${experience}，${preference}`,
+    categorySectionTitle: '分类整理',
+    detailProgress: (answered, total) => `细项 ${answered} / ${total}`,
+    editCategoryAria: (categoryName) => `编辑${categoryName}`,
+    editHint: '点选任何分类，就能继续编辑里面的细项',
+    editing: '正在编辑',
+    fileActionsLabel: '文件操作',
+    firstPhaseComplete: '分类感受已经收好了。接下来，可以从你最在意的分类慢慢补上细项。',
+    otherSummary: '从细项开始整理',
+    overallProgress: '整份细项进度',
+    preview: '查看预览',
+    roleSwitchLabel: '切换互动方向',
+    sectionKicker: (roleLabel) => `当前显示・${roleLabel}`,
+    seeDetailsSummary: '参考细项',
+    spotlightCount: (selected, limit) => `已选 ${selected} / ${limit}`,
+    spotlightHelp: '挑出最想先让人看见的分类或项目。',
+    spotlightTitle: '我的焦点喜好',
+    title: '整理你的秘密档案',
+    unansweredSummary: '分类感受尚未填写',
+    upload: '上传至云端',
   },
   storageWarning: '目前无法使用浏览器持久存储；这次填写暂时保留在当前页面，离开后可能无法恢复。',
   viewDetails: '查看细项列表',
@@ -317,14 +350,26 @@ const ja: QuestionnaireMessages = {
   progress: (current, total) => `カテゴリー ${current} / ${total}`,
   results: {
     ...zhHant.results,
-    detailProgress: (answered, total) => `詳細項目 ${answered} / ${total}`, 
-    experience: '経験',
-    firstPhaseComplete: 'カテゴリーへの回答を保存しました。詳細項目の回答は今回は開きません。',
-    noCategoryAnswer: 'このカテゴリーには全体回答がありません。',
-    preference: '興味',
-    title: 'カテゴリー回答結果',
-    warning: (profileName) =>
-      `この結果だけでは${profileName}さんの好みや特性を完全には表せません。必要な対話の代わりにはしないでください。`,
+    answerSummary: (experience, preference) => `経験は${experience}、好みは${preference}`,
+    categorySectionTitle: 'カテゴリー整理',
+    detailProgress: (answered, total) => `詳細 ${answered} / ${total}`,
+    editCategoryAria: (categoryName) => `${categoryName}を編集`,
+    editHint: 'カテゴリーを選ぶと、その中の詳細を編集できます',
+    editing: '編集中',
+    fileActionsLabel: 'ファイル操作',
+    firstPhaseComplete: 'カテゴリーへの回答を保存しました。気になるカテゴリーから、詳細を少しずつ整理できます。',
+    otherSummary: '詳細から整理する',
+    overallProgress: '詳細全体の進捗',
+    preview: 'プレビュー',
+    roleSwitchLabel: '役割を切り替える',
+    sectionKicker: (roleLabel) => `表示中・${roleLabel}`,
+    seeDetailsSummary: '詳細を参照',
+    spotlightCount: (selected, limit) => `${selected} / ${limit} 選択済み`,
+    spotlightHelp: '最初に見てほしいカテゴリーや項目を選びます。',
+    spotlightTitle: '私の注目ポイント',
+    title: '秘密ファイルを整理する',
+    unansweredSummary: 'カテゴリー回答は未入力',
+    upload: 'クラウドへアップロード',
   },
   roleLabels: {
     active: 'リード側',
@@ -408,14 +453,26 @@ const en: QuestionnaireMessages = {
   progress: (current, total) => `Category ${current} of ${total}`,
   results: {
     ...zhHant.results,
-    detailProgress: (answered, total) => `Details completed: ${answered} / ${total}`,
-    experience: 'Experience',
-    firstPhaseComplete: 'Your category answers are saved. Detailed questions are not opened in this stage.',
-    noCategoryAnswer: 'This category does not have a category-level answer.',
-    preference: 'Preference',
-    title: 'Category results',
-    warning: (profileName) =>
-      `These results are only a reference and cannot fully describe ${profileName}'s preferences or traits. Do not use them in place of necessary communication.`,
+    answerSummary: (experience, preference) => `${experience} experience, ${preference}`,
+    categorySectionTitle: 'Categories',
+    detailProgress: (answered, total) => `Details ${answered} / ${total}`,
+    editCategoryAria: (categoryName) => `Edit ${categoryName}`,
+    editHint: 'Choose any category to continue editing its details',
+    editing: 'Editing',
+    fileActionsLabel: 'File actions',
+    firstPhaseComplete: 'Your category answers are saved. Continue with the details in whichever category matters most to you.',
+    otherSummary: 'Start with the details',
+    overallProgress: 'Overall detail progress',
+    preview: 'View preview',
+    roleSwitchLabel: 'Switch interaction role',
+    sectionKicker: (roleLabel) => `Showing · ${roleLabel}`,
+    seeDetailsSummary: 'See details',
+    spotlightCount: (selected, limit) => `${selected} of ${limit} selected`,
+    spotlightHelp: 'Choose the categories or items you most want people to notice first.',
+    spotlightTitle: 'My highlights',
+    title: 'Organize your secret file',
+    unansweredSummary: 'Category answer not filled in',
+    upload: 'Upload to cloud',
   },
   roleLabels: {
     active: 'Leading',
