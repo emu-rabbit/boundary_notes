@@ -4,6 +4,7 @@ import AnswerRatingIcon from './AnswerRatingIcon.vue';
 import {
   getCategoryVisualUrl,
   type CategoryQuestion,
+  type DetailQuestion,
 } from '../question-bank';
 import {
   experienceAnswers,
@@ -22,7 +23,7 @@ const props = defineProps<{
   current: number;
   initialAnswer: AnsweredSecretFileAnswer | null;
   messages: QuestionnaireMessages;
-  question: CategoryQuestion;
+  question: CategoryQuestion | DetailQuestion;
   storageWarning: boolean;
   total: number;
 }>();
@@ -80,7 +81,7 @@ const experienceLevelOptions = computed(() =>
 );
 const experienceSpecialOptions = computed(() =>
   experienceAnswers
-    .filter((value) => value === 'unsure' || value === 'seeDetails')
+    .filter((value) => value === 'unsure' || (isCategoryQuestion.value && value === 'seeDetails'))
     .map((value) => ({ label: props.messages.experienceLabels[value], value })),
 );
 const preferenceLevelOptions = computed(() =>
@@ -90,10 +91,22 @@ const preferenceLevelOptions = computed(() =>
 );
 const preferenceSpecialOptions = computed(() =>
   preferenceAnswers
-    .filter((value) => value === 'unsure' || value === 'seeDetails')
+    .filter((value) => value === 'unsure' || (isCategoryQuestion.value && value === 'seeDetails'))
     .map((value) => ({ label: props.messages.preferenceLabels[value], value })),
 );
+const isCategoryQuestion = computed(() => props.question.level === 'category');
 const categoryVisualUrl = computed(() => getCategoryVisualUrl(props.question.category.categoryId));
+const questionTitle = computed(() =>
+  props.question.level === 'category' ? props.question.category.name : props.question.detail.label,
+);
+const questionDescription = computed(() =>
+  props.question.level === 'category'
+    ? props.question.category.roles[props.question.role].description
+    : props.question.detail.roles[props.question.role].description,
+);
+const questionWarning = computed(() =>
+  props.question.level === 'detail' ? props.question.detail.warning : null,
+);
 const canAdvance = computed(() => Boolean(experience.value && preference.value));
 
 function clearAutoAdvance(): void {
@@ -212,6 +225,7 @@ onBeforeUnmount(() => {
         </div>
 
         <button
+          v-if="isCategoryQuestion"
           class="questionnaire-header-action"
           :aria-label="messages.viewDetails"
           :title="messages.viewDetails"
@@ -238,8 +252,9 @@ onBeforeUnmount(() => {
           </figure>
 
           <div class="category-question-copy">
-            <h1>{{ question.category.name }}</h1>
-            <p>{{ question.category.roles[question.role].description }}</p>
+            <h1>{{ questionTitle }}</h1>
+            <p>{{ questionDescription }}</p>
+            <p v-if="questionWarning" class="questionnaire-warning">{{ messages.detailWarningPrefix }}{{ questionWarning }}</p>
           </div>
         </div>
 
@@ -342,9 +357,10 @@ onBeforeUnmount(() => {
             type="button"
             @click="emit('back')"
           >
-            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <path d="m18.5 8-8 8 8 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" />
-            </svg>
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="m18.5 8-8 8 8 8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6" />
+          </svg>
+          <span>{{ messages.backQuestion }}</span>
           </button>
           <button class="questionnaire-next-action" :disabled="!canAdvance" type="submit">
             <template v-if="autoAdvancePending">
@@ -365,7 +381,7 @@ onBeforeUnmount(() => {
       </form>
     </div>
 
-    <dialog ref="detailListDialog" class="category-detail-dialog" @close="clearAutoAdvance">
+    <dialog v-if="isCategoryQuestion" ref="detailListDialog" class="category-detail-dialog" @close="clearAutoAdvance">
       <div class="category-detail-dialog__heading">
         <div>
           <p>{{ question.category.name }}</p>

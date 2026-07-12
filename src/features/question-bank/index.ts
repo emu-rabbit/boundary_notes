@@ -1,6 +1,10 @@
 export {
   allCategoryQuestionDefinitions,
+  allDetailQuestionDefinitions,
+  allQuestionDefinitions,
   categoryQuestionsByScope,
+  getDetailQuestionId,
+  getDetailQuestionsForCategory,
   getCategoryQuestionId,
   getCategoryQuestionsForScope,
   getQuestionBankCounts,
@@ -11,6 +15,7 @@ export { getCategoryVisualUrl, warmCategoryVisual } from './categoryVisuals';
 export { getLocalizedCategoryQuestionsForScope, localizeQuestionBank } from './locales';
 export type {
   CategoryQuestion,
+  DetailQuestion,
   QuestionBank,
   QuestionBankCategory,
   QuestionBankCategoryRoleCopy,

@@ -51,6 +51,10 @@ export interface QuestionnaireMessages {
     answerSummary: (experience: string, preference: string) => string;
     categorySectionTitle: string;
     detailProgress: (answered: number, total: number) => string;
+    detailStartAll: string;
+    detailStartCancel: string;
+    detailStartTitle: string;
+    detailStartUnanswered: string;
     editCategoryAria: (categoryName: string) => string;
     editHint: string;
     editing: string;
@@ -161,6 +165,10 @@ const zhHant: QuestionnaireMessages = {
     answerSummary: (experience, preference) => `經驗${experience}，${preference}`,
     categorySectionTitle: '分類整理',
     detailProgress: (answered, total) => `細項 ${answered} / ${total}`,
+    detailStartAll: '顯示本分類所有題目',
+    detailStartCancel: '取消',
+    detailStartTitle: '要從那些題目開始作答呢？',
+    detailStartUnanswered: '僅顯示未作答的題目',
     editCategoryAria: (categoryName) => `編輯${categoryName}`,
     editHint: '點選任何分類，就能繼續編輯裡面的細項',
     editing: '正在編輯',
@@ -268,6 +276,10 @@ const zhHans: QuestionnaireMessages = {
     answerSummary: (experience, preference) => `经验${experience}，${preference}`,
     categorySectionTitle: '分类整理',
     detailProgress: (answered, total) => `细项 ${answered} / ${total}`,
+    detailStartAll: '显示本分类所有问题',
+    detailStartCancel: '取消',
+    detailStartTitle: '要从哪些问题开始作答呢？',
+    detailStartUnanswered: '仅显示未作答的问题',
     editCategoryAria: (categoryName) => `编辑${categoryName}`,
     editHint: '点选任何分类，就能继续编辑里面的细项',
     editing: '正在编辑',
@@ -368,6 +380,10 @@ const ja: QuestionnaireMessages = {
     answerSummary: (experience, preference) => `経験は${experience}、好みは${preference}`,
     categorySectionTitle: 'カテゴリー整理',
     detailProgress: (answered, total) => `詳細 ${answered} / ${total}`,
+    detailStartAll: 'このカテゴリーのすべての質問を表示',
+    detailStartCancel: 'キャンセル',
+    detailStartTitle: 'どの質問から回答しますか？',
+    detailStartUnanswered: '未回答の質問のみ表示',
     editCategoryAria: (categoryName) => `${categoryName}を編集`,
     editHint: 'カテゴリーを選ぶと、その中の詳細を編集できます',
     editing: '編集中',
@@ -472,6 +488,10 @@ const en: QuestionnaireMessages = {
     answerSummary: (experience, preference) => `${experience} experience, ${preference}`,
     categorySectionTitle: 'Categories',
     detailProgress: (answered, total) => `Details ${answered} / ${total}`,
+    detailStartAll: 'Show all questions in this category',
+    detailStartCancel: 'Cancel',
+    detailStartTitle: 'Which questions would you like to answer?',
+    detailStartUnanswered: 'Show unanswered questions only',
     editCategoryAria: (categoryName) => `Edit ${categoryName}`,
     editHint: 'Choose any category to continue editing its details',
     editing: 'Editing',

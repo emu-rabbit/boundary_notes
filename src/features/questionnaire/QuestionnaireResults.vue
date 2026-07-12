@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import {
   getCategoryQuestionId,
   getCategoryVisualUrl,
@@ -25,7 +25,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  editCategory: [categoryId: string, role: QuestionRole];
+  editCategory: [categoryId: string, role: QuestionRole, mode: 'all' | 'unanswered'];
   home: [];
   preview: [];
   upload: [];
@@ -34,6 +34,8 @@ const emit = defineEmits<{
 const selectedRole = ref<QuestionRole>(
   props.secretFile.scope === 'passiveOnly' ? 'passive' : 'active',
 );
+const detailStartDialog = ref<HTMLDialogElement | null>(null);
+const pendingCategory = ref<QuestionBankCategory | null>(null);
 const availableRoles = computed<readonly QuestionRole[]>(() => {
   if (props.secretFile.scope === 'all') {
     return ['active', 'passive'];
@@ -89,6 +91,33 @@ function getCategorySummary(category: QuestionBankCategory): string {
     props.messages.experienceLabels[answer.experience],
     props.messages.preferenceLabels[answer.preference],
   );
+}
+
+function openCategory(category: QuestionBankCategory): void {
+  const progress = getCategoryProgress(category);
+
+  if (!getCategoryAnswer(category.categoryId) || progress.answered === progress.total) {
+    emit('editCategory', category.categoryId, selectedRole.value, 'all');
+    return;
+  }
+
+  pendingCategory.value = category;
+  void nextTick(() => detailStartDialog.value?.showModal());
+}
+
+function startDetailQuestions(mode: 'all' | 'unanswered'): void {
+  const category = pendingCategory.value;
+  detailStartDialog.value?.close();
+  pendingCategory.value = null;
+
+  if (category) {
+    emit('editCategory', category.categoryId, selectedRole.value, mode);
+  }
+}
+
+function closeDetailStartDialog(): void {
+  pendingCategory.value = null;
+  detailStartDialog.value?.close();
 }
 
 function getRatingKind(
@@ -268,7 +297,7 @@ const overallProgress = computed(() => {
             :class="{ 'is-other': !category.includeInCategoryRound }"
             type="button"
             :aria-label="messages.results.editCategoryAria(category.name)"
-            @click="emit('editCategory', category.categoryId, selectedRole)"
+            @click="openCategory(category)"
           >
             <img
               :src="getCategoryVisualUrl(category.categoryId)"
@@ -341,5 +370,20 @@ const overallProgress = computed(() => {
         </button>
       </div>
     </div>
+
+    <dialog ref="detailStartDialog" class="detail-start-dialog" @close="pendingCategory = null">
+      <h2>{{ messages.results.detailStartTitle }}</h2>
+      <div class="detail-start-dialog__actions">
+        <button type="button" @click="startDetailQuestions('unanswered')">
+          {{ messages.results.detailStartUnanswered }}
+        </button>
+        <button type="button" @click="startDetailQuestions('all')">
+          {{ messages.results.detailStartAll }}
+        </button>
+        <button class="detail-start-dialog__cancel" type="button" @click="closeDetailStartDialog">
+          {{ messages.results.detailStartCancel }}
+        </button>
+      </div>
+    </dialog>
   </section>
 </template>

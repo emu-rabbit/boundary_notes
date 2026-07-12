@@ -3,6 +3,7 @@ import type { QuestionRole, SecretFileScope } from '../secret-file';
 import type {
   CategoryQuestion,
   CategoryQuestionsByScope,
+  DetailQuestion,
   QuestionBank,
   QuestionBankCategory,
   QuestionBankDetailItem,
@@ -3940,6 +3941,14 @@ export function getCategoryQuestionId(categoryId: string, role: QuestionRole): s
   return `category.${categoryId}.${role}`;
 }
 
+export function getDetailQuestionId(
+  categoryId: string,
+  detailId: string,
+  role: QuestionRole,
+): string {
+  return `detail.${categoryId}.${detailId}.${role}`;
+}
+
 const categoryRoundCategories = questionBank.categories.filter(
   (entry) => entry.includeInCategoryRound,
 );
@@ -3956,6 +3965,21 @@ export const allCategoryQuestionDefinitions = categoryRoundQuestions.map(
   ({ id, level, role }) => ({ id, level, role }),
 );
 
+export const allDetailQuestionDefinitions = (['active', 'passive'] as const).flatMap((role) =>
+  questionBank.categories.flatMap((category) =>
+    category.detailItems.map(({ detailId }) => ({
+      id: getDetailQuestionId(category.categoryId, detailId, role),
+      level: 'detail' as const,
+      role,
+    })),
+  ),
+);
+
+export const allQuestionDefinitions = [
+  ...allCategoryQuestionDefinitions,
+  ...allDetailQuestionDefinitions,
+];
+
 export const categoryQuestionsByScope: CategoryQuestionsByScope = {
   activeOnly: categoryRoundQuestions.filter((question) => question.role === 'active'),
   passiveOnly: categoryRoundQuestions.filter((question) => question.role === 'passive'),
@@ -3964,6 +3988,19 @@ export const categoryQuestionsByScope: CategoryQuestionsByScope = {
 
 export function getCategoryQuestionsForScope(scope: SecretFileScope): readonly CategoryQuestion[] {
   return categoryQuestionsByScope[scope];
+}
+
+export function getDetailQuestionsForCategory(
+  category: QuestionBankCategory,
+  role: QuestionRole,
+): readonly DetailQuestion[] {
+  return category.detailItems.map((detail) => ({
+    category,
+    detail,
+    id: getDetailQuestionId(category.categoryId, detail.detailId, role),
+    level: 'detail',
+    role,
+  }));
 }
 
 export function getQuestionBankCounts(scope: SecretFileScope): QuestionBankCounts {

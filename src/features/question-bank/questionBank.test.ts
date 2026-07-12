@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   allCategoryQuestionDefinitions,
+  allDetailQuestionDefinitions,
+  allQuestionDefinitions,
+  getDetailQuestionsForCategory,
   getCategoryQuestionsForScope,
   getQuestionBankCounts,
   questionBank,
@@ -33,6 +36,19 @@ describe('first-phase question bank', () => {
     expect(getCategoryQuestionsForScope('all').slice(0, 20).every((question) => question.role === 'active')).toBe(true);
     expect(getCategoryQuestionsForScope('all').slice(20).every((question) => question.role === 'passive')).toBe(true);
     expect(allCategoryQuestionDefinitions.some((question) => question.id.includes('other'))).toBe(false);
+  });
+
+  it('provides each category as one reusable question plus its directional details', () => {
+    const category = questionBank.categories[0];
+
+    expect(category).toBeDefined();
+    expect(getDetailQuestionsForCategory(category!, 'active')).toHaveLength(category!.itemCount);
+    expect(getDetailQuestionsForCategory(category!, 'active')[0]).toMatchObject({
+      id: `detail.${category!.categoryId}.${category!.detailItems[0]!.detailId}.active`,
+      level: 'detail',
+    });
+    expect(allDetailQuestionDefinitions).toHaveLength(588);
+    expect(allQuestionDefinitions).toHaveLength(628);
   });
 
   it('uses unique stable ASCII detail IDs instead of source-language labels', () => {

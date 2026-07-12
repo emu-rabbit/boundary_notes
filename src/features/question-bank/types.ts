@@ -44,6 +44,12 @@ export interface CategoryQuestion extends QuestionDefinition {
   level: 'category';
 }
 
+export interface DetailQuestion extends QuestionDefinition {
+  category: QuestionBankCategory;
+  detail: QuestionBankDetailItem;
+  level: 'detail';
+}
+
 export interface QuestionBankCounts {
   categoryCount: number;
   detailQuestionCount: number;
