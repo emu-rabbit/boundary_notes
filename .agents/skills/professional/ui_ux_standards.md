@@ -30,7 +30,7 @@
 
 - **建立一致系統**：色彩、字體、間距、邊框、陰影、圖案與動效都應有一致規則。
 - **語系字型分流**：預設字型以 Google Fonts 的 `Huninn / jf open 粉圓` WOFF2 unicode-range 子集服務繁體中文、英文與使用者自行輸入的稱呼或文字；不得只依目前固定文案自製 glyph subset，以免未收錄的使用者輸入改用不一致字型。簡體中文與日文不得假設粉圓體完整覆蓋，應透過 `html:lang(...)` 切換到風格接近、開源且 CJK 覆蓋較完整的字型 stack。目前簡體中文使用 Noto Sans SC / Source Han Sans SC 系列優先，日文使用 Noto Sans JP / Source Han Sans JP 系列優先，並保留各平台系統字型 fallback。外部字型必須使用 `display=swap`，讓核心內容不因等待字型而不可讀。
-- **CSS 分層一致性**：自訂 CSS 以 `src/styles/` 為維護入口；新增或調整樣式時，依責任放入 foundation、route-shell、story-stage、story-dialogue、home-page、secondary-pages、questionnaire 或 responsive，而不是回到單一巨型 stylesheet。建立檔案、分類作答與結果編輯器由 `questionnaire.css` 管理；`responsive.css` 是最後 cascade 層，跨頁 mobile/desktop override 應集中在此檔或與此檔同等順序的位置。
+- **CSS 分層一致性**：自訂 CSS 以 `src/styles/` 為維護入口；新增或調整樣式時，依責任放入 foundation、route-shell、story-stage、story-dialogue、home-page、secondary-pages、questionnaire、secret-file-preview 或 responsive，而不是回到單一巨型 stylesheet。建立檔案、分類作答與結果編輯器由 `questionnaire.css` 管理；唯讀結果總覽、焦點排名、分類詳情與閱覽 dialog 由 `secret-file-preview.css` 管理；`responsive.css` 是最後 cascade 層，跨頁 mobile/desktop override 應集中在此檔或與此檔同等順序的位置。
 - **暗色調一致性**：本專案視覺應維持 BDSM 的神秘感與教育工具的溫和包容氛圍；UI 背景、前景面板、按鈕、輸入框與裝飾要素應一律往暗色調設計，避免深色背景搭配大面積亮色前景造成氛圍斷裂。
 - **自刻 UI**：本專案 UI 應自己刻，不使用現成 Vue UI/UX library 或模板化 component kit；若使用無樣式 helper，仍必須保留本專案自己的視覺語言。
 - **可讀性不可犧牲**：文字對比、行高、段落寬度、按鈕大小與 focus 狀態必須可讀可用。
@@ -50,6 +50,9 @@
 - **個人化大標題防線**：「{暱稱}的祕密檔案」這類含使用者輸入的大標題，應以共用元件拆成暱稱、語系連接詞與固定產品名片段；名稱長度應以視覺寬度量測並用於決定縮字密度，不使用單純字數一刀切，也不可靜默裁切使用者名稱。畫面呈現優先使用雙行 title，讓暱稱留在大標中、連接詞字級較小、固定產品名不可拆字；在關鍵螢幕寬度可能換行時，依內容長度縮小字體，而不是放任瀏覽器產生不舒適斷句。
 - **觸控友善**：行動版互動目標要足夠大，間距要避免誤觸。
 - **掃讀效率**：桌面版應保留清楚資訊層級與掃讀路徑，不要把所有資訊壓成手機式單欄。
+- **方形分類圖完整性**：結果頁使用的 1:1 分類圖必須保留主要物件完整可辨識；總覽、焦點喜好與分類詳情在桌機和手機都應以 `contain` 或等價構圖呈現，不得因卡片被備註撐高就把圖片同步拉高後大幅裁切。
+- **唯讀詳情專注模式**：進入唯讀分類詳情後，隱藏總覽用的檔案身份、警語、語系與操作側欄，只保留返回、分類摘要與細項答案。桌機用左摘要、右返回與列表維持核對效率；手機依返回、摘要、列表的自然順序排列。不要用「細項結果／分類細項」等重複標題製造雜音。
+- **唯讀語系工具層級**：語系切換只存在於唯讀總覽內容欄上方的低視覺重量工具列，不放進已承載身份、警語、方向與檔案操作的摘要側欄，也不與焦點喜好或分類標題競爭。控制項平時使用弱邊界與次要文字色，hover／focus 時才提高辨識度，但必須保留明確文字標籤讓有需要的閱讀者找得到。
 
 ### 互動與動效
 

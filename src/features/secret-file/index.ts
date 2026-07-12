@@ -8,6 +8,7 @@ export {
 } from './domain/secretFile';
 export { getSecretFileProgress, type SecretFileProgress } from './domain/progress';
 export type {
+  AnsweredSecretFileAnswer,
   ExperienceAnswer,
   PreferenceAnswer,
   QuestionDefinition,

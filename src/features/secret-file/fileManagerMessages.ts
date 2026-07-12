@@ -16,6 +16,7 @@ export interface FileManagerMessages {
   overwriteConfirmation: (name: string, existingUpdatedAt: string, importedUpdatedAt: string) => string;
   progress: (answered: number, total: number) => string;
   title: string;
+  view: string;
 }
 
 const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
@@ -31,11 +32,12 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     importJson: '\u9a57\u8b49\u4e26\u532f\u5165',
     importLabel: '\u532f\u5165 JSON \u5b57\u4e32',
     importPlaceholder: '{ "schemaVersion": 1, ... }',
-    importSuccess: (name) => `\u5df2\u532f\u5165\u300c${name}\u300d\uff0c\u6b63\u5728\u958b\u555f\u7de8\u8f2f\u9801\u3002`,
+    importSuccess: (name) => `\u5df2\u532f\u5165\u300c${name}\u300d\uff0c\u6b63\u5728\u958b\u555f\u6aa2\u8996\u9801\u3002`,
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
       `\u300c${name}\u300d\u7684 fileId \u5df2\u5b58\u5728\uff0c\u7e7c\u7e8c\u532f\u5165\u6703\u76f4\u63a5\u8986\u84cb\u672c\u6a5f\u6a94\u6848\u3002\n\n\u672c\u6a5f\u820a\u6a94\u6700\u5f8c\u7de8\u8f2f\uff1a${existingUpdatedAt}\n\u532f\u5165\u65b0\u6a94\u6700\u5f8c\u7de8\u8f2f\uff1a${importedUpdatedAt}\n\n\u8981\u7e7c\u7e8c\u8986\u84cb\u55ce\uff1f`,
     progress: (answered, total) => `\u5df2\u586b\u7b54 ${answered} / ${total}`,
     title: '\u67e5\u770b\u820a\u6a94\u6848',
+    view: '\u6aa2\u8996\u7d50\u679c',
   },
   'zh-Hans': {
     backHome: '\u8fd4\u56de\u4e3b\u9875',
@@ -49,11 +51,12 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     importJson: '\u9a8c\u8bc1\u5e76\u5bfc\u5165',
     importLabel: '\u5bfc\u5165 JSON \u5b57\u7b26\u4e32',
     importPlaceholder: '{ "schemaVersion": 1, ... }',
-    importSuccess: (name) => `\u5df2\u5bfc\u5165\u201c${name}\u201d\uff0c\u6b63\u5728\u6253\u5f00\u7f16\u8f91\u9875\u3002`,
+    importSuccess: (name) => `\u5df2\u5bfc\u5165\u201c${name}\u201d\uff0c\u6b63\u5728\u6253\u5f00\u67e5\u770b\u9875\u3002`,
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
       `\u201c${name}\u201d\u7684 fileId \u5df2\u5b58\u5728\uff0c\u7ee7\u7eed\u5bfc\u5165\u4f1a\u76f4\u63a5\u8986\u76d6\u672c\u5730\u6587\u4ef6\u3002\n\n\u672c\u5730\u65e7\u6587\u4ef6\u6700\u540e\u7f16\u8f91\uff1a${existingUpdatedAt}\n\u5bfc\u5165\u65b0\u6587\u4ef6\u6700\u540e\u7f16\u8f91\uff1a${importedUpdatedAt}\n\n\u8981\u7ee7\u7eed\u8986\u76d6\u5417\uff1f`,
     progress: (answered, total) => `\u5df2\u586b\u5199 ${answered} / ${total}`,
     title: '\u67e5\u770b\u65e7\u6587\u4ef6',
+    view: '\u67e5\u770b\u7ed3\u679c',
   },
   ja: {
     backHome: '\u30db\u30fc\u30e0\u3078\u623b\u308b',
@@ -67,11 +70,12 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     importJson: '\u691c\u8a3c\u3057\u3066\u30a4\u30f3\u30dd\u30fc\u30c8',
     importLabel: 'JSON \u6587\u5b57\u5217\u3092\u30a4\u30f3\u30dd\u30fc\u30c8',
     importPlaceholder: '{ "schemaVersion": 1, ... }',
-    importSuccess: (name) => `\u300c${name}\u300d\u3092\u30a4\u30f3\u30dd\u30fc\u30c8\u3057\u307e\u3057\u305f\u3002\u7de8\u96c6\u30da\u30fc\u30b8\u3092\u958b\u3044\u3066\u3044\u307e\u3059\u3002`,
+    importSuccess: (name) => `\u300c${name}\u300d\u3092\u30a4\u30f3\u30dd\u30fc\u30c8\u3057\u307e\u3057\u305f\u3002\u95b2\u89a7\u30da\u30fc\u30b8\u3092\u958b\u3044\u3066\u3044\u307e\u3059\u3002`,
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
       `\u300c${name}\u300d\u3068\u540c\u3058 fileId \u304c\u5b58\u5728\u3057\u307e\u3059\u3002\u7d9a\u884c\u3059\u308b\u3068\u7aef\u672b\u306e\u30d5\u30a1\u30a4\u30eb\u3092\u76f4\u63a5\u4e0a\u66f8\u304d\u3057\u307e\u3059\u3002\n\n\u7aef\u672b\u306e\u65e7\u30d5\u30a1\u30a4\u30eb\u306e\u6700\u7d42\u7de8\u96c6\uff1a${existingUpdatedAt}\n\u30a4\u30f3\u30dd\u30fc\u30c8\u3059\u308b\u65b0\u30d5\u30a1\u30a4\u30eb\u306e\u6700\u7d42\u7de8\u96c6\uff1a${importedUpdatedAt}\n\n\u4e0a\u66f8\u304d\u3057\u307e\u3059\u304b\uff1f`,
     progress: (answered, total) => `${answered} / ${total} \u56de\u7b54\u6e08\u307f`,
     title: '\u4ee5\u524d\u306e\u30d5\u30a1\u30a4\u30eb',
+    view: '\u7d50\u679c\u3092\u898b\u308b',
   },
   en: {
     backHome: 'Home',
@@ -85,11 +89,12 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     importJson: 'Validate and import',
     importLabel: 'Import JSON string',
     importPlaceholder: '{ "schemaVersion": 1, ... }',
-    importSuccess: (name) => `Imported "${name}". Opening the editor.`,
+    importSuccess: (name) => `Imported "${name}". Opening the preview.`,
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
       `A file with the same fileId as "${name}" already exists. Continuing will overwrite the local file.\n\nExisting file last edited: ${existingUpdatedAt}\nImported file last edited: ${importedUpdatedAt}\n\nContinue and overwrite it?`,
     progress: (answered, total) => `${answered} / ${total} answered`,
     title: 'Old Files',
+    view: 'View results',
   },
 };
 

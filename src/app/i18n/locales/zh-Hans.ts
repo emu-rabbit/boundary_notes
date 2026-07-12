@@ -36,6 +36,10 @@ export const zhHansMessages: LocaleMessages = {
       label: '创建新档案',
       summary: '开始新的测试，整理各项目的经验、兴趣和备注。',
     },
+    preview: {
+      label: '查看档案',
+      summary: '以只读方式理解一份秘密档案的结果。',
+    },
     files: {
       label: '查看旧档案',
       summary: '查看、编辑本地档案，或用链接载入云端档案。',

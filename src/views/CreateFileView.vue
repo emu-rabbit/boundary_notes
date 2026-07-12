@@ -163,6 +163,14 @@ const canGoBack = computed(() =>
   detailSession.value ? currentDetailQuestionIndex.value > 0 : currentQuestionIndex.value > 0,
 );
 const storageWarning = computed(() => store.storageStatus.mode === 'memory');
+const previewHref = computed(() =>
+  secretFile.value
+    ? router.resolve({
+        name: 'preview',
+        query: { file: secretFile.value.fileId, source: 'local' },
+      }).href
+    : '#',
+);
 
 function createLocalFileId(): string {
   const randomPart =
@@ -389,6 +397,7 @@ onMounted(() => {
     :back-home="appMessages.common.backHome"
     :question-bank="localizedQuestionBank"
     :messages="messages"
+    :preview-href="previewHref"
     :secret-file="secretFile"
     :storage-warning="storageWarning"
     @edit-category="startDetailSession"

@@ -30,6 +30,10 @@ function editFile(fileId: string): void {
   void router.push({ name: 'create', query: { file: fileId, view: 'results' } });
 }
 
+function viewFile(fileId: string): void {
+  void router.push({ name: 'preview', query: { file: fileId, source: 'local' } });
+}
+
 function deleteFile(fileId: string, profileName: string): void {
   if (window.confirm(messages.value.deleteConfirmation(profileName))) {
     store.deleteFile(fileId);
@@ -60,7 +64,7 @@ function submitImport(): void {
     const secretFile = store.importFile(candidate);
     importFeedback.value = messages.value.importSuccess(secretFile.profileName);
     importFeedbackKind.value = 'success';
-    void router.push({ name: 'create', query: { file: secretFile.fileId, view: 'results' } });
+    void router.push({ name: 'preview', query: { file: secretFile.fileId, source: 'local' } });
   } catch (error) {
     importFeedback.value = error instanceof Error ? error.message : String(error);
     importFeedbackKind.value = 'error';
@@ -113,6 +117,9 @@ onMounted(() => {
             <small>{{ messages.progress(file.answered, file.total) }}</small>
           </div>
           <div class="file-list-item__actions">
+            <button class="quiet-action" type="button" @click="viewFile(file.fileId)">
+              {{ messages.view }}
+            </button>
             <button class="quiet-action" type="button" @click="editFile(file.fileId)">
               {{ messages.edit }}
             </button>

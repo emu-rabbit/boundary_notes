@@ -36,6 +36,10 @@ export const jaMessages: LocaleMessages = {
       label: '新しいファイル',
       summary: '新しいテストを始め、経験、興味、メモを整理します。',
     },
+    preview: {
+      label: 'ファイルを見る',
+      summary: '秘密ファイルの結果を読み取り専用で確認します。',
+    },
     files: {
       label: '古いファイル',
       summary: '保存したファイルを見たり、リンクから読み込んだりします。',

@@ -36,6 +36,10 @@ export const zhHantMessages: LocaleMessages = {
       label: '創建新檔案',
       summary: '開始新的測驗，整理對各個項目的經驗、興趣與備註。',
     },
+    preview: {
+      label: '檢視檔案',
+      summary: '以唯讀方式理解一份祕密檔案的結果。',
+    },
     files: {
       label: '查看舊檔案',
       summary: '檢閱、編輯本地保存的檔案，或用連結載入雲端檔案。',

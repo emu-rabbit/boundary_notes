@@ -75,6 +75,10 @@ export function loadStoredProfileName(): string {
   }
 }
 
+export function getProfileEntryRoute(profileName: string): 'home' | 'story' {
+  return normalizeProfileName(profileName) ? 'home' : 'story';
+}
+
 export function saveStoredProfileName(name: string, fallback = defaultProfileName): string {
   const normalizedName = normalizeProfileName(name, fallback);
 

@@ -6,6 +6,7 @@ export const appRouteIds = [
   'story',
   'home',
   'create',
+  'preview',
   'files',
   'timeMachine',
   'about',
@@ -47,6 +48,12 @@ export const appRoutes = [
     path: '/create',
     state: 'ready',
     component: () => import('../views/CreateFileView.vue'),
+  },
+  {
+    id: 'preview',
+    path: '/preview',
+    state: 'ready',
+    component: () => import('../views/SecretFilePreviewView.vue'),
   },
   {
     id: 'files',

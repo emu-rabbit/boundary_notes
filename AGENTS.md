@@ -63,7 +63,7 @@
 
 - 本專案是純網頁專案，使用 Vite、Vue、TypeScript、Tailwind 與 Vue Router 建構。
 - 目前部署到 GitHub Pages，但未來可能改部署到其他免費靜態 host 並使用獨立 domain；路由、base path 與資源路徑不得綁死在 GitHub Pages 專案路徑。
-- 目前只有前導劇情與主頁，但未來主頁將承載四個以上獨立頁面入口；route registry、view 結構與主頁入口設計應支援逐步擴充。
+- 目前已有前導劇情、主頁、建立檔案、檔案列表、編輯結果、獨立唯讀檢視、設定與關於等 route；route registry、view 結構與主頁入口設計仍須支援後續逐步擴充。
 - 後端使用 Firebase；主要僅使用 Firestore 儲存使用者確定要分享的測驗結果。
 - 不需要登入系統，整體設計應在匿名情境下運行。
 - UI 要自己刻，不使用現成 Vue UI/UX library，避免模板感。
@@ -90,7 +90,7 @@
 - `professional/`：不預設特定 stack 或 product domain 的一般開發與 UI/UX 標準。
 - `workflows/add-commit-all.md`：依內容分類變更，再分組 stage 與 commit。
 
-除已確認的 `.agents/skills/professional/technical_architecture.md` 技術方向外，更細的 feature specs、資料 schema、部署方式、正式品牌識別與 production Firebase 設定尚未確認；除非使用者明確提供，Agent 不得自行發明。
+題庫、秘密檔案資料 schema、本地保存、作答與結果頁行為以 `.agents/specs/question_bank_and_secret_file_system.md` 為正式規格；production Firebase 設定、正式分享行為與完整品牌識別仍未確認，除非使用者明確提供，Agent 不得自行發明。
 
 ## Domain Skill
 

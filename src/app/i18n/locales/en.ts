@@ -36,6 +36,10 @@ export const enMessages: LocaleMessages = {
       label: 'New File',
       summary: 'Start a new test and sort experience, interest, and notes.',
     },
+    preview: {
+      label: 'View File',
+      summary: 'Read and understand a secret file without editing it.',
+    },
     files: {
       label: 'Old Files',
       summary: 'Review local files, edit them, or open a cloud file by link.',

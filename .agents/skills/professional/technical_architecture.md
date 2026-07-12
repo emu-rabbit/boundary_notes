@@ -17,7 +17,7 @@
 - **純網頁專案**：本專案是純 web app，不預設 native app、Electron、後端 server 或 CMS。
 - **前端技術棧**：使用 Vite、Vue、TypeScript、Tailwind 與 Vue Router 建構。
 - **部署可攜性**：目前部署到 GitHub Pages，但架構不得綁死在 GitHub Pages 或 `/bdsm_boundary_test/` 專案路徑。未來可能改部署到其他免費靜態網頁 host，並使用獨立 domain；base path、routing fallback 與靜態資源路徑都應可透過設定調整。
-- **路由可擴充**：目前只有前導劇情與主頁，但主頁未來會承載四個以上獨立頁面入口。前端 routing、view 結構與入口 registry 應支援逐步新增頁面，不應把 mode、route、故事步驟與主頁內容混在單一元件中。
+- **路由可擴充**：目前已有前導劇情、主頁、建立檔案、檔案列表、編輯結果、獨立唯讀檢視、設定與關於等 route。前端 routing、view 結構與入口 registry 應持續支援逐步新增頁面，不應把 mode、route、故事步驟與主頁內容混在單一元件中。
 - **自刻 UI**：UI 應以本專案自己的 component、layout、style token 與互動語言實作，不使用現成 Vue UI/UX library，避免模板感與產品語氣偏移。
 - **輕量優先**：網頁應保持足夠輕量；新增 dependency、圖片格式、動畫、字體或大型資源前，必須評估 bundle size、載入時機與使用者感知流暢度。
 - **資源預熱**：圖片與較大型資源應有明確預熱策略，讓核心流程中的下一步素材能提前準備，但不得一次預載所有資源造成初始載入變慢。
@@ -32,15 +32,16 @@
 - **前導劇情不是主頁本體**：前導劇情可以作為初次進入流程，但不應承擔主頁、測驗、檔案、分享與歷史頁的所有狀態。
 - **route shell 高度策略**：`body` 應是唯一的頁面級垂直捲動容器；`app-shell` 與各 route section 使用 `min-height` 撐滿 viewport，但不得用 `height: 100vh/100dvh` 或 route-level `overflow: hidden/auto` 把內容裁掉或製造第二層拉條。內容高度足夠時不得出現多餘頁面拉條；內容在極端短高 viewport 超出時，應由文件自然長高並可捲到底。
 - **背景層與內容層分離**：route 的背景、黑幕、ambient overlay、裝飾性偽元素應固定在 viewport 層或以不參與文件高度的方式呈現，並設定 `pointer-events: none`。背景層不得因負 inset、blur、scale、mask 或 absolute positioning 撐高文件，也不得在滾動到底部時露出與內容高度不同步的背景/黑幕斷層。
-- **CSS ownership**：`src/styles.css` 只保留 Tailwind 入口；專案自訂 CSS 由 `src/main.ts` 在 Tailwind 後依序匯入 `src/styles/foundation.css`、`route-shell.css`、`story-stage.css`、`story-dialogue.css`、`home-page.css`、`secondary-pages.css`、`questionnaire.css`、`responsive.css`。此順序是 cascade contract：foundation 放 token/reset，route-shell 放 app shell、route 背景、viewport/overflow 策略，story-* 放前導劇情場景與對話，home/secondary pages 放一般頁面 base styles，questionnaire 放建立檔案、重複作答與結果編輯器，responsive 必須最後匯入以承接跨頁 mobile/desktop overrides。
+- **CSS ownership**：`src/styles.css` 只保留 Tailwind 入口；專案自訂 CSS 由 `src/main.ts` 在 Tailwind 後依序匯入 `src/styles/foundation.css`、`route-shell.css`、`story-stage.css`、`story-dialogue.css`、`home-page.css`、`secondary-pages.css`、`questionnaire.css`、`secret-file-preview.css`、`responsive.css`。此順序是 cascade contract：foundation 放 token/reset，route-shell 放 app shell、route 背景、viewport/overflow 策略，story-* 放前導劇情場景與對話，home/secondary pages 放一般頁面 base styles，questionnaire 放建立檔案、重複作答與結果編輯器，secret-file-preview 以結果編輯器為視覺母體管理獨立唯讀總覽、焦點排名、分類詳情與閱覽 dialog，responsive 必須最後匯入以承接跨頁 mobile/desktop overrides。
 - **CSS 擴充規則**：新增頁面時，先判斷是否屬於既有 page family；小型頁面可放入 `secondary-pages.css`，大型或獨立功能頁應新增命名清楚的 CSS 檔並在 `responsive.css` 之前匯入。除非需要新的語意結構或可及性元素，修正高度、捲動、背景斷層、mobile/desktop layout 時應先檢查 `route-shell.css` 與 `responsive.css` 的共用策略，而不是在單一 view template 內加局部 workaround。不得用提高 specificity、重複 selector 或動畫 override 來掩蓋 ownership 不清；應把規則移到正確 owner 檔案。
 
 ## 前端多語系
 
 - **自製輕量 i18n**：`src/app/i18n.ts` 只保留相容 barrel；runtime、types 與四語 dictionary 分別位於 `src/app/i18n/index.ts`、`types.ts` 與 `locales/*`，不導入大型 i18n dependency。新增一般使用者可見文案時，放入 typed locale dictionary，再由元件透過 `messages` 或衍生資料使用。
-- **題庫語系資料分離**：未來題庫翻譯不得併入 app-shell locale dictionary。題庫繁中來源與各語系資料應維持獨立 feature/data boundary，並依實際 bundle 與載入需求設計 locale chunk；本次重構尚未建立題庫資料或 loader。
+- **題庫語系資料分離**：題庫翻譯不得併入 app-shell locale dictionary。正式題庫與 `localizeQuestionBank` 位於 question-bank feature boundary，由建立檔案、編輯結果與唯讀檢視頁依目前語系取得本地化題庫；後續若資料量需要拆成 locale chunk，也必須維持相同邊界。
 - **支援語系**：目前支援繁體中文、簡體中文、日文與英文；語系代碼為 `zh-Hant`、`zh-Hans`、`ja`、`en`。
 - **語系持久化**：使用者選擇語系後寫入 localStorage key `bdsm-boundary-test-locale`；若 localStorage 不可用，當前 session 仍應正常切換。
+- **唯讀檢視頁語系入口**：唯讀總覽必須直接提供繁中、簡中、日文與英文切換，並呼叫 app-shell 的 `setLocale`，不得另外建立只在該頁生效或不寫入 localStorage 的語系狀態。分類詳情不重複提供語系入口；使用者返回總覽後切換即可。
 - **路由與標題語系化**：route registry 只保存穩定 id、hash path 與狀態；label、summary 與「秘密檔案」標題片段由 locale dictionary 產生，不應在元件內硬編多語系文案。
 
 ## Firebase 與資料邊界
@@ -89,9 +90,9 @@
 - **state 邊界**：`src/features/secret-file/domain/` 維持 framework-independent 的 scope、回答狀態、回答更新、進度與題庫新增問題時的補齊規則；`application/useSecretFileStore.ts` 才以 Pinia 管理跨頁 active session、檔案列表與 storage status。`src/main.ts` 已安裝 Pinia，並在啟動時初始化 store；不得把核心規則移入 Vue view 或 store。
 - **runtime schema 與 migration boundary**：Zod 為 `src/features/secret-file/validation/secretFileSchema.ts` 的唯一 runtime validation dependency。localStorage 讀回、JSON 匯入與未來的 Firestore 讀寫都必須先經 `parseSecretFile`；未知 `schemaVersion` 必須明確拒絕，未來版本應先新增 migration 再放行。
 - **本地保存與 fallback**：`storage/browserSecretFileRepository.ts` 集中管理 `bdsm-boundary-test-secret-files:index` 與 `...:file:{fileId}`。讀寫資料都先驗證；browser storage 不可用或寫入失敗時保留當前 session 的記憶體副本，並透過 store 的 `storageStatus` 暴露狀態。不得自動刪除舊檔案。
-- **localStorage 上限**：正式建立新檔案 UI 前，仍必須先確認明確的檔案數或容量上限；達到上限時不允許再建立檔案。這次不自行猜定數字，也沒有把建立流程接到 UI。
+- **localStorage 上限**：本機最多保存 20 份秘密檔案，由 `browserSecretFileRepository.ts` 的 `maxLocalSecretFiles` 集中管理；達到上限時阻擋新建，但仍允許更新既有檔案。
 - **測試基線**：Vitest 已設定為 `npm run test`，並已加入 GitHub Pages workflow。優先覆蓋回答狀態、scope、進度、題庫補齊、validation 與 storage failure；新 migration、persistence 或 domain rules 必須一起新增對應測試。
-- **實作順序**：下一步才接入正式題庫、建立新檔案與分類層作答 UI；第一階段仍只處理題庫、domain、本地保存、結果閱覽與匯入匯出。Firestore sharing 維持第二階段，現階段只保留可替換的 cloud boundary，不建立實際 Firebase 分享流程。
+- **目前功能邊界**：正式題庫、前導建立流程、分類與細項作答、本地 CRUD、JSON 匯入、編輯結果頁與獨立唯讀檢視頁均已接入。Firestore sharing 仍維持後續階段；唯讀 view 保留可替換的 cloud source boundary，但目前只載入本地檔案。
 
 1. 進行技術或資料相關工作前，先檢查本文件是否與現有程式碼、Firebase 設定、README 或其他 architecture 文件一致。
 2. 若新增正式資料 schema、Firestore rules、GA event taxonomy、題庫 importer 或 asset preload policy，優先更新本文件、`.agents/specs/question_bank_and_secret_file_system.md` 或未來正式 architecture/privacy 文件。

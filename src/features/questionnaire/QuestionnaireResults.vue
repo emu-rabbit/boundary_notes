@@ -14,11 +14,12 @@ import type {
   SecretFile,
 } from '../secret-file/domain/types';
 import AnswerRatingIcon from './AnswerRatingIcon.vue';
-import type { QuestionnaireMessages } from './messages';
+import { getResultsAnswerSummary, type QuestionnaireMessages } from './messages';
 
 const props = defineProps<{
   backHome: string;
   messages: QuestionnaireMessages;
+  previewHref: string;
   questionBank: QuestionBank;
   secretFile: SecretFile;
   storageWarning: boolean;
@@ -27,7 +28,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   editCategory: [categoryId: string, role: QuestionRole, mode: 'all' | 'unanswered'];
   home: [];
-  preview: [];
   upload: [];
   updateSpotlight: [questionIds: string[]];
 }>();
@@ -204,14 +204,11 @@ function getCategorySummary(category: QuestionBankCategory): string {
     return props.messages.results.unansweredSummary;
   }
 
-  if (answer.experience === 'seeDetails' || answer.preference === 'seeDetails') {
-    return props.messages.results.seeDetailsSummary;
-  }
+  return getResultsAnswerSummary(props.messages, answer);
+}
 
-  return props.messages.results.answerSummary(
-    props.messages.experienceLabels[answer.experience],
-    props.messages.preferenceLabels[answer.preference],
-  );
+function getCategoryNote(categoryId: string): string {
+  return getCategoryAnswer(categoryId)?.note.trim() ?? '';
 }
 
 function openCategory(category: QuestionBankCategory): void {
@@ -293,22 +290,19 @@ const overallProgress = computed(() => {
   <section class="questionnaire-route questionnaire-results-route">
     <div class="questionnaire-page-shell questionnaire-results-shell">
       <header class="results-mobile-bar">
-        <button class="results-icon-action" type="button" @click="emit('home')">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="m14.5 5-7 7 7 7" />
-          </svg>
-          <span>{{ backHome }}</span>
+        <button class="results-mobile-home-link" type="button" @click="emit('home')">
+          {{ backHome }}
         </button>
-        <button class="results-mobile-preview" type="button" @click="emit('preview')">
+        <a class="results-mobile-preview" :href="previewHref" target="_blank" rel="noopener noreferrer">
           {{ messages.results.preview }}
           <span aria-hidden="true">↗</span>
-        </button>
+        </a>
       </header>
 
       <aside class="results-sidebar">
         <div class="results-sidebar__intro">
           <p class="questionnaire-kicker">{{ messages.results.editing }}</p>
-          <h1>{{ messages.results.title }}</h1>
+          <h1>{{ messages.results.title(secretFile.profileName) }}</h1>
           <p>{{ messages.results.firstPhaseComplete }}</p>
           <p class="results-last-edited">{{ messages.results.lastEdited(secretFile.updatedAt) }}</p>
         </div>
@@ -377,18 +371,15 @@ const overallProgress = computed(() => {
             </svg>
             {{ messages.results.upload }}
           </button>
-          <button class="results-secondary-action" type="button" @click="emit('preview')">
+          <a class="results-secondary-action" :href="previewHref" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M3 12s3.2-5.5 9-5.5S21 12 21 12s-3.2 5.5-9 5.5S3 12 3 12Z" />
               <circle cx="12" cy="12" r="2.2" />
             </svg>
             {{ messages.results.preview }}
             <span aria-hidden="true">↗</span>
-          </button>
+          </a>
           <button class="results-home-action" type="button" @click="emit('home')">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m4 11 8-7 8 7v9h-6v-6h-4v6H4v-9Z" />
-            </svg>
             {{ backHome }}
           </button>
         </nav>
@@ -476,6 +467,9 @@ const overallProgress = computed(() => {
                   </template>
                 </span>
                 <span class="result-category-summary">{{ getCategorySummary(category) }}</span>
+              </span>
+              <span v-if="getCategoryNote(category.categoryId)" class="result-category-note">
+                {{ getCategoryNote(category.categoryId) }}
               </span>
               <span class="result-category-progress">
                 <span>

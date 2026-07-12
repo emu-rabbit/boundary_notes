@@ -1,5 +1,6 @@
 import type { AppLocale } from '../../app/i18n';
 import type {
+  AnsweredSecretFileAnswer,
   ExperienceAnswer,
   PreferenceAnswer,
   QuestionRole,
@@ -66,6 +67,8 @@ export interface QuestionnaireMessages {
     preview: string;
     roleSwitchLabel: string;
     sectionKicker: (roleLabel: string) => string;
+    experienceSeeDetailsSummary: (preference: string) => string;
+    preferenceSeeDetailsSummary: (experience: string) => string;
     seeDetailsSummary: string;
     spotlightCount: (selected: number, limit: number) => string;
     spotlightCurrent: string;
@@ -76,7 +79,7 @@ export interface QuestionnaireMessages {
     spotlightSelect: string;
     spotlightSlotAria: (slot: number, item: string | null) => string;
     spotlightTitle: string;
-    title: string;
+    title: (profileName: string) => string;
     unansweredSummary: string;
     upload: string;
   };
@@ -186,7 +189,9 @@ const zhHant: QuestionnaireMessages = {
     preview: '檢視預覽',
     roleSwitchLabel: '切換互動方向',
     sectionKicker: (roleLabel) => `目前顯示・${roleLabel}`,
-    seeDetailsSummary: '參考細項',
+    experienceSeeDetailsSummary: (preference) => `經驗參考詳細，${preference}`,
+    preferenceSeeDetailsSummary: (experience) => `經驗${experience}，喜好參考詳細`,
+    seeDetailsSummary: '參考詳細',
     spotlightCount: (selected, limit) => `已選 ${selected} / ${limit}`,
     spotlightCurrent: '目前選擇',
     spotlightDelete: '刪除這個焦點喜好',
@@ -196,7 +201,7 @@ const zhHant: QuestionnaireMessages = {
     spotlightSelect: '選擇這個項目',
     spotlightSlotAria: (slot, item) => item ? `編輯第 ${slot} 個焦點喜好：${item}` : `新增第 ${slot} 個焦點喜好`,
     spotlightTitle: '你的焦點喜好',
-    title: '整理你的祕密檔案',
+    title: (profileName) => `${profileName}的祕密檔案`,
     unansweredSummary: '分類感受尚未填寫',
     upload: '上傳至雲端',
   },
@@ -303,7 +308,9 @@ const zhHans: QuestionnaireMessages = {
     preview: '查看预览',
     roleSwitchLabel: '切换互动方向',
     sectionKicker: (roleLabel) => `当前显示・${roleLabel}`,
-    seeDetailsSummary: '参考细项',
+    experienceSeeDetailsSummary: (preference) => `经验参考详细，${preference}`,
+    preferenceSeeDetailsSummary: (experience) => `经验${experience}，喜好参考详细`,
+    seeDetailsSummary: '参考详细',
     spotlightCount: (selected, limit) => `已选 ${selected} / ${limit}`,
     spotlightCurrent: '当前选择',
     spotlightDelete: '删除这个焦点喜好',
@@ -313,7 +320,7 @@ const zhHans: QuestionnaireMessages = {
     spotlightSelect: '选择这个项目',
     spotlightSlotAria: (slot, item) => item ? `编辑第 ${slot} 个焦点喜好：${item}` : `新增第 ${slot} 个焦点喜好`,
     spotlightTitle: '你的焦点喜好',
-    title: '整理你的秘密档案',
+    title: (profileName) => `${profileName}的秘密档案`,
     unansweredSummary: '分类感受尚未填写',
     upload: '上传至云端',
   },
@@ -413,6 +420,8 @@ const ja: QuestionnaireMessages = {
     preview: 'プレビュー',
     roleSwitchLabel: '役割を切り替える',
     sectionKicker: (roleLabel) => `表示中・${roleLabel}`,
+    experienceSeeDetailsSummary: (preference) => `経験は詳細を参照、好みは${preference}`,
+    preferenceSeeDetailsSummary: (experience) => `経験は${experience}、好みは詳細を参照`,
     seeDetailsSummary: '詳細を参照',
     spotlightCount: (selected, limit) => `${selected} / ${limit} 選択済み`,
     spotlightCurrent: '現在の選択',
@@ -423,7 +432,7 @@ const ja: QuestionnaireMessages = {
     spotlightSelect: 'この項目を選ぶ',
     spotlightSlotAria: (slot, item) => item ? `${slot} 番目の注目ポイントを編集：${item}` : `${slot} 番目の注目ポイントを追加`,
     spotlightTitle: 'あなたの注目ポイント',
-    title: '秘密ファイルを整理する',
+    title: (profileName) => `${profileName}の秘密ファイル`,
     unansweredSummary: 'カテゴリー回答は未入力',
     upload: 'クラウドへアップロード',
   },
@@ -527,6 +536,8 @@ const en: QuestionnaireMessages = {
     preview: 'View preview',
     roleSwitchLabel: 'Switch interaction role',
     sectionKicker: (roleLabel) => `Showing · ${roleLabel}`,
+    experienceSeeDetailsSummary: (preference) => `See details for experience, ${preference}`,
+    preferenceSeeDetailsSummary: (experience) => `${experience} experience, see details for preference`,
     seeDetailsSummary: 'See details',
     spotlightCount: (selected, limit) => `${selected} of ${limit} selected`,
     spotlightCurrent: 'Current selection',
@@ -537,7 +548,7 @@ const en: QuestionnaireMessages = {
     spotlightSelect: 'Choose this item',
     spotlightSlotAria: (slot, item) => item ? `Edit highlight ${slot}: ${item}` : `Add highlight ${slot}`,
     spotlightTitle: 'Your highlights',
-    title: 'Organize your secret file',
+    title: (profileName) => `${profileName}'s secret file`,
     unansweredSummary: 'Category answer not filled in',
     upload: 'Upload to cloud',
   },
@@ -558,4 +569,30 @@ const messagesByLocale: Record<AppLocale, QuestionnaireMessages> = {
 
 export function getQuestionnaireMessages(locale: AppLocale): QuestionnaireMessages {
   return messagesByLocale[locale];
+}
+
+export function getResultsAnswerSummary(
+  messages: QuestionnaireMessages,
+  answer: AnsweredSecretFileAnswer,
+): string {
+  if (answer.experience === 'seeDetails' && answer.preference === 'seeDetails') {
+    return messages.results.seeDetailsSummary;
+  }
+
+  if (answer.experience === 'seeDetails') {
+    return messages.results.experienceSeeDetailsSummary(
+      messages.preferenceLabels[answer.preference],
+    );
+  }
+
+  if (answer.preference === 'seeDetails') {
+    return messages.results.preferenceSeeDetailsSummary(
+      messages.experienceLabels[answer.experience],
+    );
+  }
+
+  return messages.results.answerSummary(
+    messages.experienceLabels[answer.experience],
+    messages.preferenceLabels[answer.preference],
+  );
 }
