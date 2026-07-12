@@ -296,6 +296,15 @@ function finishDetailSession(): void {
   }
 }
 
+function goToFileStatus(): void {
+  detailSession.value = null;
+  detailCursor.value = null;
+
+  if (secretFile.value) {
+    void router.replace({ name: 'create', query: { file: secretFile.value.fileId, view: 'results' } });
+  }
+}
+
 function goHome(): void {
   store.close();
   navigate('home');
@@ -369,7 +378,7 @@ onMounted(() => {
         :total="currentTotal"
         @advance="advanceQuestion"
         @back="goToPreviousQuestion"
-        @home="goHome"
+        @file-status="goToFileStatus"
         @save="saveQuestionAnswer"
       />
     </Transition>

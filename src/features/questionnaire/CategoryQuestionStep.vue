@@ -31,7 +31,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   advance: [];
   back: [];
-  home: [];
+  fileStatus: [];
   save: [answer: AnswerQuestionInput];
 }>();
 
@@ -208,16 +208,16 @@ onBeforeUnmount(() => {
       <header class="questionnaire-page-header">
         <button
           class="questionnaire-header-action"
-          :aria-label="messages.home"
-          :title="messages.home"
+          :aria-label="messages.fileStatus"
+          :title="messages.fileStatus"
           type="button"
-          @click="emit('home')"
+          @click="emit('fileStatus')"
         >
           <svg class="questionnaire-header-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <path d="M5.5 15.2 16 6l10.5 9.2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" />
-            <path d="M8.5 13.4V26h15V13.4M13 26v-7.5h6V26" stroke="currentColor" stroke-linejoin="round" stroke-width="2.4" />
+            <path d="M8 5.5h11l5 5V26.5H8z" stroke="currentColor" stroke-linejoin="round" stroke-width="2.2" />
+            <path d="M19 5.5v5h5M12 16h8M12 20.5h8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" />
           </svg>
-          <span class="sr-only">{{ messages.home }}</span>
+          <span class="sr-only">{{ messages.fileStatus }}</span>
         </button>
 
         <div class="question-step-value" :aria-label="messages.progress(current, total)">

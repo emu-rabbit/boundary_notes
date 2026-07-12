@@ -22,7 +22,7 @@ export interface QuestionnaireMessages {
   experienceLegend: string;
   fileLimitReached: (limit: number) => string;
   fileCreateFailed: string;
-  home: string;
+  fileStatus: string;
   intro: {
     autosaveAction: string;
     autosaveLines: string[];
@@ -121,7 +121,7 @@ const zhHant: QuestionnaireMessages = {
   experienceLegend: '你的經驗程度',
   fileLimitReached: (limit) => `這台裝置已保存 ${limit} 份祕密檔案。請先從舊檔案刪除一份，再建立新的檔案。`,
   fileCreateFailed: '暫時無法建立檔案，請稍後再試一次。',
-  home: '回到主頁',
+  fileStatus: '回到檔案狀態',
   intro: {
     autosaveAction: '太.....太好了',
     autosaveLines: [
@@ -233,7 +233,7 @@ const zhHans: QuestionnaireMessages = {
   experienceLegend: '你的经验程度',
   fileLimitReached: (limit) => `这台装置已保存 ${limit} 份秘密档案。请先从旧档案删除一份，再创建新的档案。`,
   fileCreateFailed: '暂时无法创建档案，请稍后再试一次。',
-  home: '回到主页',
+  fileStatus: '返回档案状态',
   intro: {
     ...zhHant.intro,
     autosaveAction: '太……太好了',
@@ -346,7 +346,7 @@ const ja: QuestionnaireMessages = {
   experienceLegend: '経験の程度',
   fileLimitReached: (limit) => `この端末にはすでに${limit}件の秘密ファイルがあります。古いファイルを1件削除してから、新しいファイルを作成してください。`,
   fileCreateFailed: 'ファイルを作成できませんでした。しばらくしてから、もう一度お試しください。',
-  home: 'ホームへ戻る',
+  fileStatus: 'ファイルの状態に戻る',
   intro: {
     ...zhHant.intro,
     autosaveAction: 'そ、それなら安心した……',
@@ -460,7 +460,7 @@ const en: QuestionnaireMessages = {
   experienceLegend: 'Your experience',
   fileLimitReached: (limit) => `This device already has ${limit} secret files. Delete one old file before creating a new one.`,
   fileCreateFailed: 'The file could not be created. Please try again in a moment.',
-  home: 'Return home',
+  fileStatus: 'Return to file status',
   intro: {
     ...zhHant.intro,
     autosaveAction: 'That is… a relief',
