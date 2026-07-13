@@ -21,6 +21,7 @@ export const rabbitPoseUrls: Record<RabbitPose, string> = {
 
 export const homeRabbitUrl = rabbitGreetingUrl;
 export const settingsRabbitUrl = rabbitSettingsUrl;
+export const filesRabbitUrl = rabbitFolderUrl;
 
 export function warmStoryAssets(): void {
   Object.values(rabbitPoseUrls).forEach((src) => {

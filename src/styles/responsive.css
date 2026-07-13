@@ -35,7 +35,8 @@
     animation: home-mobile-background-rise 780ms ease-out both;
   }
 
-  .settings-route::before {
+  .settings-route::before,
+  .files-route::before {
     position: fixed;
     top: -1rem;
     right: -1rem;
@@ -75,7 +76,8 @@
       linear-gradient(90deg, rgba(7, 4, 6, 0.24), rgba(7, 4, 6, 0.08) 50%, rgba(7, 4, 6, 0.26));
   }
 
-  .settings-route::after {
+  .settings-route::after,
+  .files-route::after {
     position: fixed;
     background:
       radial-gradient(circle at 50% 31%, rgba(7, 4, 6, 0.32), transparent 24%),
@@ -151,7 +153,8 @@
       linear-gradient(122deg, #11080e 0 42%, #2b1420 72%, #11080e 100%);
   }
 
-  .settings-route {
+  .settings-route,
+  .files-route {
     background:
       linear-gradient(180deg, rgba(16, 8, 13, 0) 0 44%, #10080d 68%, #0c070b 100%),
       linear-gradient(122deg, #11080e 0 42%, #2b1420 72%, #11080e 100%);
@@ -644,24 +647,6 @@
   .settings-copy > .quiet-action {
     order: 6;
     width: min(calc(100vw - 2rem), 34rem);
-  }
-
-  .files-stage {
-    width: min(calc(100% - 2rem), 42rem);
-    padding-top: max(1.5rem, env(safe-area-inset-top, 0px));
-  }
-
-  .file-list-item {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .file-list-item__actions {
-    justify-content: stretch;
-  }
-
-  .file-list-item__actions button {
-    flex: 1 1 8rem;
   }
 
   .questionnaire-intro-panel .dialogue-copy {

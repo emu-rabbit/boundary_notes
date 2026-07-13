@@ -61,7 +61,8 @@
   transform: scale(1.07);
 }
 
-.settings-route::before {
+.settings-route::before,
+.files-route::before {
   background:
     linear-gradient(180deg, rgba(9, 5, 8, 0.08), rgba(9, 5, 8, 0.28)),
     url("../assets/backgrounds/secret-archive-desktop.webp") center / cover no-repeat,
@@ -104,7 +105,8 @@
     rgba(8, 4, 7, 0.28);
 }
 
-.settings-route::after {
+.settings-route::after,
+.files-route::after {
   background:
     radial-gradient(circle at 52% 35%, rgba(7, 4, 6, 0.44), transparent 25%),
     radial-gradient(circle at 74% 30%, rgba(185, 144, 85, 0.04), transparent 28%),
