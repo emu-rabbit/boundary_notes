@@ -163,6 +163,7 @@ export class BrowserSecretFileRepository {
 
     try {
       const rawIndex = this.storage.getItem(indexKey);
+      const migratedFiles: SecretFile[] = [];
 
       if (!rawIndex) {
         return;
@@ -175,8 +176,26 @@ export class BrowserSecretFileRepository {
           throw new Error(`The local secret file ${fileId} is missing.`);
         }
 
-        const secretFile = parseSecretFile(JSON.parse(rawSecretFile));
+        const storedSecretFile: unknown = JSON.parse(rawSecretFile);
+        const secretFile = parseSecretFile(storedSecretFile);
         this.files.set(secretFile.fileId, secretFile);
+
+        if (
+          typeof storedSecretFile === 'object' &&
+          storedSecretFile !== null &&
+          'schemaVersion' in storedSecretFile &&
+          storedSecretFile.schemaVersion === 1
+        ) {
+          migratedFiles.push(secretFile);
+        }
+      }
+
+      try {
+        for (const secretFile of migratedFiles) {
+          this.storage.setItem(getFileKey(secretFile.fileId), JSON.stringify(secretFile));
+        }
+      } catch {
+        this.useMemoryFallback('writeFailed');
       }
     } catch {
       this.files.clear();

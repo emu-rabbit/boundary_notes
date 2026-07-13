@@ -29,7 +29,7 @@ const emit = defineEmits<{
   editCategory: [categoryId: string, role: QuestionRole, mode: 'all' | 'unanswered'];
   home: [];
   upload: [];
-  updateSpotlight: [questionIds: string[]];
+  updateSpotlight: [role: QuestionRole, questionIds: string[]];
 }>();
 
 const selectedRole = ref<QuestionRole>(
@@ -54,7 +54,7 @@ const spotlightCandidates = computed<readonly SpotlightCandidate[]>(() => {
   const candidates: SpotlightCandidate[] = [];
 
   for (const category of props.questionBank.categories) {
-    for (const role of availableRoles.value) {
+    for (const role of [selectedRole.value]) {
       const categoryQuestionId = getCategoryQuestionId(category.categoryId, role);
       const categoryAnswer = props.secretFile.answers[categoryQuestionId];
 
@@ -92,11 +92,15 @@ const spotlightCandidates = computed<readonly SpotlightCandidate[]>(() => {
   return candidates;
 });
 
+const selectedSpotlightQuestionIds = computed(
+  () => props.secretFile.spotlight[selectedRole.value].selectedQuestionIds,
+);
+
 const candidatePreferenceGroups = computed(() => {
-  const selected = new Set(props.secretFile.spotlight.selectedQuestionIds);
+  const selected = new Set(selectedSpotlightQuestionIds.value);
   const currentId = activeSpotlightIndex.value === null
     ? null
-    : props.secretFile.spotlight.selectedQuestionIds[activeSpotlightIndex.value] ?? null;
+    : selectedSpotlightQuestionIds.value[activeSpotlightIndex.value] ?? null;
   const groups = (['love', 'like'] as const).map((preference) => ({
     categories: new Map<string, { categoryId: string; categoryName: string; items: SpotlightCandidate[] }>(),
     preference,
@@ -127,10 +131,10 @@ function getSpotlightCandidate(questionId: string): SpotlightCandidate | null {
 }
 
 const spotlightSlots = computed(() => {
-  const slotCount = Math.min(props.secretFile.spotlight.selectedQuestionIds.length + 1, 5);
+  const slotCount = Math.min(selectedSpotlightQuestionIds.value.length + 1, 5);
 
   return Array.from({ length: slotCount }, (_, index) => ({
-    candidate: getSpotlightCandidate(props.secretFile.spotlight.selectedQuestionIds[index] ?? ''),
+    candidate: getSpotlightCandidate(selectedSpotlightQuestionIds.value[index] ?? ''),
     index,
     slot: index + 1,
   }));
@@ -139,28 +143,28 @@ const spotlightSlots = computed(() => {
 const activeSpotlightCandidate = computed<SpotlightCandidate | null>(() => {
   if (activeSpotlightIndex.value === null) return null;
 
-  return getSpotlightCandidate(props.secretFile.spotlight.selectedQuestionIds[activeSpotlightIndex.value] ?? '');
+  return getSpotlightCandidate(selectedSpotlightQuestionIds.value[activeSpotlightIndex.value] ?? '');
 });
 
 function openSpotlight(index: number): void {
-  if (index > props.secretFile.spotlight.selectedQuestionIds.length) return;
+  if (index > selectedSpotlightQuestionIds.value.length) return;
   activeSpotlightIndex.value = index;
   void nextTick(() => spotlightDialog.value?.showModal());
 }
 
 function selectSpotlight(questionId: string): void {
   if (activeSpotlightIndex.value === null) return;
-  const next = [...props.secretFile.spotlight.selectedQuestionIds];
+  const next = [...selectedSpotlightQuestionIds.value];
   next[activeSpotlightIndex.value] = questionId;
-  emit('updateSpotlight', next);
+  emit('updateSpotlight', selectedRole.value, next);
   spotlightDialog.value?.close();
 }
 
 function deleteSpotlight(): void {
   if (activeSpotlightIndex.value === null) return;
-  const next = [...props.secretFile.spotlight.selectedQuestionIds];
+  const next = [...selectedSpotlightQuestionIds.value];
   next.splice(activeSpotlightIndex.value, 1);
-  emit('updateSpotlight', next);
+  emit('updateSpotlight', selectedRole.value, next);
   spotlightDialog.value?.close();
 }
 
@@ -374,7 +378,7 @@ const overallProgress = computed(() => {
           <div class="results-spotlight__heading">
             <div>
               <h2>{{ messages.results.spotlightTitle }}</h2>
-              <p>{{ messages.results.spotlightCount(secretFile.spotlight.selectedQuestionIds.length, 5) }}</p>
+              <p>{{ messages.results.spotlightCount(selectedSpotlightQuestionIds.length, 5) }}</p>
             </div>
             <span class="results-spotlight__mark" aria-hidden="true">✦</span>
           </div>
@@ -384,7 +388,7 @@ const overallProgress = computed(() => {
               :key="item.slot"
               type="button"
               :class="{ 'is-filled': item.candidate }"
-              :disabled="item.index > secretFile.spotlight.selectedQuestionIds.length"
+              :disabled="item.index > selectedSpotlightQuestionIds.length"
               :aria-label="messages.results.spotlightSlotAria(item.slot, item.candidate?.title ?? null)"
               @click="openSpotlight(item.index)"
             >
@@ -555,7 +559,7 @@ const overallProgress = computed(() => {
               v-for="candidate in group.items"
               :key="candidate.questionId"
               type="button"
-              :class="{ 'is-selected': secretFile.spotlight.selectedQuestionIds[activeSpotlightIndex ?? -1] === candidate.questionId }"
+              :class="{ 'is-selected': selectedSpotlightQuestionIds[activeSpotlightIndex ?? -1] === candidate.questionId }"
               :aria-label="`${messages.results.spotlightSelect}：${candidate.title}`"
               @click="selectSpotlight(candidate.questionId)"
             >

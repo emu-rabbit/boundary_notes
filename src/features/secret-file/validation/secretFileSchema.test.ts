@@ -29,6 +29,37 @@ describe('secret-file runtime validation', () => {
     expect(parseSecretFile(createValidSecretFile())).toEqual(createValidSecretFile());
   });
 
+  it('migrates the legacy shared spotlight pool into separate directional pools', () => {
+    const current = createValidSecretFile();
+    const legacy = {
+      ...current,
+      schemaVersion: 1,
+      spotlight: {
+        selectedQuestionIds: [
+          'category.impact.active',
+          'detail.impact.hand.passive',
+          'detail.impact.hand.active',
+        ],
+      },
+    };
+
+    expect(parseSecretFile(legacy).spotlight).toEqual({
+      active: {
+        selectedQuestionIds: ['category.impact.active', 'detail.impact.hand.active'],
+      },
+      passive: {
+        selectedQuestionIds: ['detail.impact.hand.passive'],
+      },
+    });
+  });
+
+  it('rejects spotlight entries stored in the wrong directional pool', () => {
+    const secretFile = createValidSecretFile();
+    secretFile.spotlight.active.selectedQuestionIds = ['detail.impact.hand.passive'];
+
+    expect(() => parseSecretFile(secretFile)).toThrow(SecretFileValidationError);
+  });
+
   it('rejects notes that could display links or unsafe control characters', () => {
     const secretFile = createValidSecretFile();
     secretFile.answers['detail.impact.hand.active'] = {
@@ -60,9 +91,9 @@ describe('secret-file runtime validation', () => {
   });
 
   it('rejects unrecognized schema versions before persistence or import', () => {
-    const futureSecretFile = { ...createValidSecretFile(), schemaVersion: 2 };
+    const futureSecretFile = { ...createValidSecretFile(), schemaVersion: 3 };
 
-    expect(() => parseSecretFile(futureSecretFile)).toThrow('schemaVersion (2)');
+    expect(() => parseSecretFile(futureSecretFile)).toThrow('schemaVersion (3)');
   });
 
   it('parses a JSON string through the same runtime validation boundary', () => {

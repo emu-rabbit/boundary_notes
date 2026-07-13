@@ -34,35 +34,72 @@ export const secretFileAnswerSchema = z.discriminatedUnion('state', [
   answeredAnswerSchema,
 ]);
 
-export const secretFileSchema = z
+const spotlightSelectionSchema = (role: 'active' | 'passive') => z
   .object({
-    answers: z.record(z.string().min(1), secretFileAnswerSchema),
-    createdAt: timestampSchema,
-    fileId: z.string().regex(/^local_[A-Za-z0-9_-]{8,}$/, '檔案 ID 格式不正確。'),
-    profileName: z.string().trim().min(1, '檔案必須保留填寫者名稱。'),
-    questionBank: z
-      .object({
-        bankVersion: z.string().min(1),
-        schemaVersion: z.number().int().positive(),
-      })
-      .strict(),
-    schemaVersion: z.literal(1),
-    scope: z.enum(secretFileScopes),
-    spotlight: z
-      .object({
-        selectedQuestionIds: z.array(z.string().min(1)).max(5),
-      })
-      .strict()
-      .superRefine((spotlight, context) => {
-        if (new Set(spotlight.selectedQuestionIds).size !== spotlight.selectedQuestionIds.length) {
-          context.addIssue({
-            code: 'custom',
-            message: 'spotlight 項目不得重複。',
-            path: ['selectedQuestionIds'],
-          });
-        }
-      }),
-    updatedAt: timestampSchema,
+    selectedQuestionIds: z.array(
+      z.string().min(1).refine(
+        (questionId) => questionId.endsWith(`.${role}`),
+        `spotlight ${role} 只能保存同方向的項目。`,
+      ),
+    ).max(5),
+  })
+  .strict()
+  .superRefine((spotlight, context) => {
+    if (new Set(spotlight.selectedQuestionIds).size !== spotlight.selectedQuestionIds.length) {
+      context.addIssue({
+        code: 'custom',
+        message: 'spotlight 項目不得重複。',
+        path: ['selectedQuestionIds'],
+      });
+    }
+  });
+
+const secretFileBaseSchema = z.object({
+  answers: z.record(z.string().min(1), secretFileAnswerSchema),
+  createdAt: timestampSchema,
+  fileId: z.string().regex(/^local_[A-Za-z0-9_-]{8,}$/, '檔案 ID 格式不正確。'),
+  profileName: z.string().trim().min(1, '檔案必須保留填寫者名稱。'),
+  questionBank: z
+    .object({
+      bankVersion: z.string().min(1),
+      schemaVersion: z.number().int().positive(),
+    })
+    .strict(),
+  scope: z.enum(secretFileScopes),
+  updatedAt: timestampSchema,
+});
+
+const legacySecretFileSchema = secretFileBaseSchema.extend({
+  schemaVersion: z.literal(1),
+  spotlight: z
+    .object({
+      selectedQuestionIds: z.array(
+        z.string().min(1).refine(
+          (questionId) => questionId.endsWith('.active') || questionId.endsWith('.passive'),
+          '舊版 spotlight 項目缺少可辨識的互動方向。',
+        ),
+      ).max(5),
+    })
+    .strict()
+    .superRefine((spotlight, context) => {
+      if (new Set(spotlight.selectedQuestionIds).size !== spotlight.selectedQuestionIds.length) {
+        context.addIssue({
+          code: 'custom',
+          message: 'spotlight 項目不得重複。',
+          path: ['selectedQuestionIds'],
+        });
+      }
+    }),
+}).strict();
+
+export const secretFileSchema = secretFileBaseSchema.extend({
+  schemaVersion: z.literal(2),
+  spotlight: z
+    .object({
+      active: spotlightSelectionSchema('active'),
+      passive: spotlightSelectionSchema('passive'),
+    })
+    .strict(),
   })
   .strict();
 
@@ -98,7 +135,34 @@ function getSchemaVersion(value: unknown): unknown {
 export function parseSecretFile(input: unknown): SecretFile {
   const schemaVersion = getSchemaVersion(input);
 
-  if (schemaVersion !== 1) {
+  if (schemaVersion === 1) {
+    const legacyFile = legacySecretFileSchema.safeParse(input);
+
+    if (!legacyFile.success) {
+      throw new SecretFileValidationError(legacyFile.error.issues.map((issue) => issue.message));
+    }
+
+    const migrated: SecretFile = {
+      ...legacyFile.data,
+      schemaVersion: 2,
+      spotlight: {
+        active: {
+          selectedQuestionIds: legacyFile.data.spotlight.selectedQuestionIds.filter(
+            (questionId) => questionId.endsWith('.active'),
+          ),
+        },
+        passive: {
+          selectedQuestionIds: legacyFile.data.spotlight.selectedQuestionIds.filter(
+            (questionId) => questionId.endsWith('.passive'),
+          ),
+        },
+      },
+    };
+
+    return secretFileSchema.parse(migrated);
+  }
+
+  if (schemaVersion !== 2) {
     throw new UnsupportedSecretFileSchemaError(schemaVersion);
   }
 

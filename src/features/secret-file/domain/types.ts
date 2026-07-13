@@ -64,10 +64,10 @@ export interface SecretFile {
     bankVersion: string;
     schemaVersion: number;
   };
-  schemaVersion: 1;
+  schemaVersion: 2;
   scope: SecretFileScope;
-  spotlight: {
+  spotlight: Record<QuestionRole, {
     selectedQuestionIds: string[];
-  };
+  }>;
   updatedAt: string;
 }

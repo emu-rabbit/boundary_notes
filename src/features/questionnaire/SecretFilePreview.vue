@@ -125,7 +125,7 @@ function findDisplayItem(questionId: string): DisplayItem | null {
 }
 
 const spotlightItems = computed(() =>
-  props.secretFile.spotlight.selectedQuestionIds
+  props.secretFile.spotlight[selectedRole.value].selectedQuestionIds
     .map(findDisplayItem)
     .filter((item): item is DisplayItem => item !== null && item.answer !== null),
 );

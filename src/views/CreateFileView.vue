@@ -229,12 +229,15 @@ function saveQuestionAnswer(answer: AnswerQuestionInput): void {
   );
 }
 
-function updateSpotlight(questionIds: string[]): void {
+function updateSpotlight(role: QuestionRole, questionIds: string[]): void {
   if (!secretFile.value) return;
 
   store.persist({
     ...secretFile.value,
-    spotlight: { selectedQuestionIds: questionIds },
+    spotlight: {
+      ...secretFile.value.spotlight,
+      [role]: { selectedQuestionIds: questionIds },
+    },
     updatedAt: new Date().toISOString(),
   });
 }

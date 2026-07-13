@@ -6,7 +6,7 @@ import type {
   SecretFileScope,
 } from './types';
 
-export const secretFileSchemaVersion = 1 as const;
+export const secretFileSchemaVersion = 2 as const;
 
 export interface CreateSecretFileInput {
   bankSchemaVersion: number;
@@ -80,7 +80,8 @@ export function createSecretFile(input: CreateSecretFileInput): SecretFile {
     schemaVersion: secretFileSchemaVersion,
     scope: input.scope,
     spotlight: {
-      selectedQuestionIds: [],
+      active: { selectedQuestionIds: [] },
+      passive: { selectedQuestionIds: [] },
     },
     updatedAt: timestamp,
   };

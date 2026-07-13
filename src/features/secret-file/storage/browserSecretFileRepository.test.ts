@@ -55,6 +55,39 @@ describe('BrowserSecretFileRepository', () => {
     expect(repository.getStatus()).toEqual({ mode: 'persistent' });
   });
 
+  it('rewrites legacy spotlight storage after splitting it by direction', () => {
+    const storage = createMemoryStorage();
+    const current = createTestSecretFile();
+    const legacy = {
+      ...current,
+      schemaVersion: 1,
+      spotlight: {
+        selectedQuestionIds: [
+          'detail.impact.hand.active',
+          'detail.impact.hand.passive',
+        ],
+      },
+    };
+    storage.setItem('bdsm-boundary-test-secret-files:index', JSON.stringify([current.fileId]));
+    storage.setItem(
+      `bdsm-boundary-test-secret-files:file:${current.fileId}`,
+      JSON.stringify(legacy),
+    );
+
+    const repository = new BrowserSecretFileRepository(storage);
+    const migrated = repository.read(current.fileId);
+    const rewritten = JSON.parse(
+      storage.getItem(`bdsm-boundary-test-secret-files:file:${current.fileId}`) ?? '{}',
+    );
+
+    expect(migrated?.schemaVersion).toBe(2);
+    expect(migrated?.spotlight).toEqual({
+      active: { selectedQuestionIds: ['detail.impact.hand.active'] },
+      passive: { selectedQuestionIds: ['detail.impact.hand.passive'] },
+    });
+    expect(rewritten).toEqual(migrated);
+  });
+
   it('keeps the active session in memory when browser storage writes fail', () => {
     const failingStorage: KeyValueStorage = {
       getItem: () => null,
