@@ -14,7 +14,7 @@ const props = defineProps<{
 const router = useRouter();
 const profileName = ref(props.initialProfileName);
 const { locale, localeOptions, messages, setLocale } = useI18n();
-const { appTitle, titleParts } = useSecretFileTitle(profileName, messages);
+const { appTitle, documentTitle, titleParts } = useSecretFileTitle(profileName, messages);
 const localizedRoutes = computed(() => localizeRoutes(messages.value));
 const localizedRouteById = computed(
   () => new Map(localizedRoutes.value.map((route) => [route.id, route])),
@@ -24,7 +24,7 @@ const localizedHomeEntrances = computed(() =>
 );
 
 watch(
-  appTitle,
+  documentTitle,
   (title) => {
     if (typeof document !== 'undefined') {
       document.title = title;
@@ -52,6 +52,7 @@ function updateProfileName(name: string): void {
 provideAppShell({
   appTitle,
   completeStory,
+  documentTitle,
   locale,
   localeOptions,
   localizedHomeEntrances,

@@ -3,6 +3,7 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useAppShell } from '../app/useAppShell';
 import { getProfileEntryRoute, loadStoredProfileName } from '../app/useProfileNameStorage';
+import { formatDocumentTitle } from '../app/useSecretFileTitle';
 import { localizeQuestionBank, questionBank } from '../features/question-bank';
 import { getQuestionnaireMessages } from '../features/questionnaire/messages';
 import { getPreviewMessages } from '../features/questionnaire/previewMessages';
@@ -15,7 +16,7 @@ type PreviewSource = 'local' | 'cloud';
 const route = useRoute();
 const router = useRouter();
 const store = useSecretFileStore();
-const { appTitle, locale, localeOptions, setLocale } = useAppShell();
+const { documentTitle, locale, localeOptions, setLocale } = useAppShell();
 const secretFile = ref<SecretFile | null>(null);
 const loadState = ref<'ready' | 'missing' | 'unsupported'>('missing');
 const messages = computed(() => getPreviewMessages(locale.value));
@@ -54,7 +55,7 @@ function createMyFile(): void {
 watch(() => route.fullPath, loadPreview);
 watch([secretFile, messages], ([file, previewMessages]) => {
   if (file) {
-    document.title = previewMessages.title(file.profileName);
+    document.title = formatDocumentTitle(previewMessages.title(file.profileName));
   }
 });
 
@@ -65,7 +66,7 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  document.title = appTitle.value;
+  document.title = documentTitle.value;
 });
 </script>
 

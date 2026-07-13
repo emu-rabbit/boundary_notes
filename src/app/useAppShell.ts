@@ -12,6 +12,7 @@ import type { SecretFileTitleParts } from './useSecretFileTitle';
 export interface AppShellContext {
   appTitle: ComputedRef<string>;
   completeStory: () => void;
+  documentTitle: ComputedRef<string>;
   locale: Ref<AppLocale>;
   localeOptions: readonly LocaleOption[];
   localizedHomeEntrances: ComputedRef<LocalizedAppRouteDefinition[]>;

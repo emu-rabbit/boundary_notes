@@ -2,6 +2,8 @@ import { computed, type Ref } from 'vue';
 import type { LocaleMessages } from './i18n';
 import { measureProfileNameVisualWidth } from './useProfileNameStorage';
 
+export const appBrandName = 'Boundary Notes';
+
 export type SecretFileTitleDensity = 'default' | 'compact' | 'dense';
 
 export type SecretFileTitleParts = {
@@ -45,6 +47,10 @@ function getOwnerScale(visualWidth: number): number {
   return 0.52;
 }
 
+export function formatDocumentTitle(productTitle: string): string {
+  return `${productTitle} | ${appBrandName}`;
+}
+
 export function useSecretFileTitle(
   profileName: Ref<string>,
   messages: { readonly value: LocaleMessages },
@@ -54,6 +60,7 @@ export function useSecretFileTitle(
     () =>
       `${displayName.value}${messages.value.title.connector}${messages.value.title.objectLabel}`,
   );
+  const documentTitle = computed(() => formatDocumentTitle(appTitle.value));
   const titleParts = computed<SecretFileTitleParts>(() => {
     const visualWidth = measureProfileNameVisualWidth(displayName.value);
 
@@ -70,6 +77,7 @@ export function useSecretFileTitle(
   return {
     appTitle,
     displayName,
+    documentTitle,
     titleParts,
   };
 }

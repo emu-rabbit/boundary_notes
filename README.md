@@ -2,6 +2,8 @@
 
 `bdsm_boundary_test` 是「XX的祕密檔案」的前端專案。產品定位是協助使用者整理 BDSM（愉虐）互動項目的興趣、經驗與界線，並以知情同意為核心支援溝通。
 
+穩定品牌名稱為 **Boundary Notes**，正式網域為 `https://boundarynotes.com`。網域已購買；DNS 與 host 綁定仍依部署進度設定。
+
 目前第一版落地內容是一個 Vite、Vue、TypeScript、Tailwind、Vue Router 的初始 app、前導劇情、可逐步擴充多個功能入口的主頁，以及「關於這隻兔子」頁面。核心系統已建立 Pinia session 邊界、Zod runtime schema、localStorage repository 與 Vitest 測試基線；題庫資料、作答頁與雲端分享尚未實作。
 
 使用者在前導劇情填入的稱呼會儲存在瀏覽器 `localStorage` 的 `bdsm-boundary-test-profile-name`。根路徑載入時，若已有本機稱呼，會直接進入主頁並套用「{稱呼}的祕密檔案」；若沒有本機稱呼，才播放前導劇情。使用者也可以從「關於這隻兔子」重播前導劇情並重新命名。
