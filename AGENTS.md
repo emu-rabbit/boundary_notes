@@ -40,6 +40,16 @@
 
 1. `.agents/workflows/add-commit-all.md`
 
+## Production Deployment Review Hard Rule
+
+GitHub `production` Environment 的 required reviewer 是只能由使用者本人完成的人工作業與授權邊界，所有目前與未來 Agent 都必須遵守：
+
+- 當 production deployment 顯示 `Waiting`、`Pending approval`、`Review deployments` 或其他等同的等待審查狀態時，Agent 必須立即停止 deployment progression，只能回報 run URL、目前狀態與可供使用者判斷的 build／test／diff 證據。
+- push、deploy、監看 Actions、修正 CI、使用 GitHub CLI 或使用者已登入 GitHub session 的一般授權，永遠不包含 production review 的 approve、reject 或 bypass 權限。
+- Agent 絕對不得透過 GitHub UI、GitHub App、`gh`、REST／GraphQL API、瀏覽器自動化、使用者 token、使用者 session 或其他方式，代替使用者核准、拒絕或繞過 production deployment review。
+- Agent 絕對不得移除 required reviewer、放寬 environment protection、啟用 admin bypass、改用不受保護的 environment，或以修改 workflow 的方式迴避人工審查。
+- 只有使用者明確表示「已由本人完成該次特定 run 的 review」後，Agent 才能繼續監看與處理該 run。若使用者尚未完成，Agent 必須把控制權留給使用者，不得把「協助完成部署」推定為「代替完成 review」。
+
 ## Project Direction
 
 本 repository 的長期使命已建立於：
@@ -90,7 +100,7 @@
 - `professional/`：不預設特定 stack 或 product domain 的一般開發與 UI/UX 標準。
 - `workflows/add-commit-all.md`：依內容分類變更，再分組 stage 與 commit。
 
-題庫、秘密檔案資料 schema、本地保存、作答與結果頁行為以 `.agents/specs/question_bank_and_secret_file_system.md` 為正式規格；production Firebase 設定、正式分享行為與完整品牌識別仍未確認，除非使用者明確提供，Agent 不得自行發明。
+題庫、秘密檔案資料 schema、本地保存、作答與結果頁行為以 `.agents/specs/question_bank_and_secret_file_system.md` 為正式規格；Firebase Hosting 的 production／staging projects、網域與部署邊界以 `.agents/skills/professional/technical_architecture.md` 及既有決策為準。Firestore 正式分享行為與尚未定義的完整品牌資產仍不得自行發明。
 
 ## Domain Skill
 

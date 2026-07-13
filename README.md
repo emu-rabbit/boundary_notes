@@ -57,7 +57,7 @@ Workflows 位於 `.github/workflows/firebase-hosting-production.yml` 與 `.githu
 
 `production` environment 填入 production project 的 deployer，並限制只有 `main` 能部署；`staging` environment 填入 staging project 的 live deployer，限制只有 `staging` 能部署；`preview` environment 填入 staging project 的 PR preview deployer，只提供同 repository PR 使用。`staging` 與 `preview` 可以填入相同 staging project ID，但應使用不同 service account/provider，讓 preview 所需權限不會自動擴張到 staging live deployer。Workload Identity provider 本身仍須限制 repository 與 event/ref，不能只依賴 workflow 的 `if`。兩個 Firebase projects 不共用 Firestore、Security Rules、IAM、quota 或帳單邊界。
 
-production 第一次部署先以 `https://boundary-notes-prod.web.app` 驗證 live channel。確認完成後，將 `boundarynotes.com` 綁定到 production Hosting，並讓 `www.boundarynotes.com` redirect 到 apex domain；完成 DNS 與憑證簽發後，再把 GitHub deployment URL 改成正式網域。
+production live channel 已在 `https://boundary-notes-prod.web.app` 完成第一次實際部署驗證。下一步將 `boundarynotes.com` 綁定到 production Hosting，並讓 `www.boundarynotes.com` redirect 到 apex domain；完成 DNS 與憑證簽發後，再把 GitHub deployment URL 改成正式網域。
 
 前端使用 Vue Router history route，例如 `/home`。`firebase.json` 會把不存在的實體檔案 rewrite 到 `/index.html`，讓直接開啟與重新整理 route 正常運作；Vue Router catch-all 會顯示四語 404 畫面。這個純靜態做法屬於 soft 404（HTTP 200），未來只有在明確需要真實 HTTP 404 時才引入 prerender 或 server-side handler。
 
