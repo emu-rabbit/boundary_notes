@@ -399,7 +399,7 @@ const overallProgress = computed(() => {
               />
               <span class="results-spotlight__slot-number">{{ item.slot }}</span>
               <span v-if="item.candidate" class="results-spotlight__slot-copy">
-                <small>{{ item.candidate.categoryName }}・{{ messages.roleLabels[item.candidate.role] }}</small>
+                <small>{{ item.candidate.categoryName }}</small>
                 <strong>{{ item.candidate.title }}</strong>
               </span>
             </button>
@@ -540,7 +540,7 @@ const overallProgress = computed(() => {
         <div class="spotlight-dialog__item-copy">
           <small>{{ messages.results.spotlightCurrent }}</small>
           <strong>{{ activeSpotlightCandidate.title }}</strong>
-          <small>{{ activeSpotlightCandidate.categoryName }}・{{ messages.roleLabels[activeSpotlightCandidate.role] }}</small>
+          <small>{{ activeSpotlightCandidate.categoryName }}</small>
         </div>
         <button class="spotlight-dialog__delete" type="button" @click="deleteSpotlight">
           {{ messages.results.spotlightDelete }}
@@ -567,7 +567,6 @@ const overallProgress = computed(() => {
                 <strong>{{ candidate.title }}</strong>
                 <small>{{ candidate.description }}</small>
               </span>
-              <small>{{ messages.roleLabels[candidate.role] }}</small>
             </button>
           </div>
         </section>

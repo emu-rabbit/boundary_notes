@@ -132,16 +132,15 @@ const spotlightItems = computed(() =>
 
 const hardNoItems = computed(() => {
   const items: DisplayItem[] = [];
+  const role = selectedRole.value;
 
   for (const category of props.questionBank.categories) {
-    for (const role of availableRoles.value) {
-      const categoryItem = createCategoryItem(category, role);
-      if (categoryItem?.answer?.preference === 'hardNo') items.push(categoryItem);
+    const categoryItem = createCategoryItem(category, role);
+    if (categoryItem?.answer?.preference === 'hardNo') items.push(categoryItem);
 
-      for (const detail of category.detailItems) {
-        const detailItem = createDetailItem(category, detail, role);
-        if (detailItem.answer?.preference === 'hardNo') items.push(detailItem);
-      }
+    for (const detail of category.detailItems) {
+      const detailItem = createDetailItem(category, detail, role);
+      if (detailItem.answer?.preference === 'hardNo') items.push(detailItem);
     }
   }
 
@@ -276,7 +275,7 @@ function changeLocale(event: Event): void {
                 <span>{{ index + 1 }}</span>
               </div>
               <div class="preview-rank-card__copy">
-                <small>{{ item.categoryName }}・{{ questionnaireMessages.roleLabels[item.role] }}</small>
+                <small>{{ item.categoryName }}</small>
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.description }}</p>
                 <PreviewAnswerSummary
@@ -474,7 +473,7 @@ function changeLocale(event: Event): void {
         <li v-for="item in hardNoItems" :key="item.questionId">
           <img :src="getCategoryVisualUrl(item.categoryId)" alt="" width="72" height="72" />
           <div>
-            <small>{{ item.categoryName }}・{{ questionnaireMessages.roleLabels[item.role] }}</small>
+            <small>{{ item.categoryName }}</small>
             <strong>{{ item.title }}</strong>
             <p>{{ item.description }}</p>
             <p v-if="item.answer?.note.trim()" class="preview-hard-no-list__note">{{ item.answer.note }}</p>
