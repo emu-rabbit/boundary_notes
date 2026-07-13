@@ -23,6 +23,12 @@ export const jaMessages: LocaleMessages = {
     kicker: 'おかえり',
     navAria: '秘密ファイルの主な入口',
   },
+  notFound: {
+    action: 'ホームへ戻る',
+    body: 'ここにはファイルがありません。URL が変わったか、余分な経路が含まれているようです。',
+    kicker: '404｜ページが見つかりません',
+    title: '守秘うさぎも探してみました',
+  },
   routes: {
     story: {
       label: '導入',

@@ -23,6 +23,12 @@ export const zhHantMessages: LocaleMessages = {
     kicker: '歡迎回來',
     navAria: '秘密檔案主要入口',
   },
+  notFound: {
+    action: '回到主頁',
+    body: '這個位置沒有留下檔案。網址可能已經改變，或是不小心多帶了一段路徑。',
+    kicker: '404｜找不到頁面',
+    title: '守密兔在這裡找了一圈',
+  },
   routes: {
     story: {
       label: '前導劇情',

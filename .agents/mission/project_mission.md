@@ -12,7 +12,7 @@
 
 若未來需要建立品牌、URL、metadata、分享標題或匯出檔名，應保留這個動態命名特性，不要把 `XX` 固定成特定人名、角色名或專案代號。任何未命名狀態、空狀態、預覽狀態或匿名範例，都應優先使用「兔子的祕密檔案」作為預設顯示。
 
-穩定品牌名稱為 **Boundary Notes**，正式網域為 `https://boundarynotes.com`，採用無連字號的 `boundarynotes`。網域已購買；DNS 與 host 綁定仍依部署進度設定。Boundary Notes 是品牌與網域層，不取代各語系的產品標題；產品標題仍依使用者名稱與語系動態顯示，例如英文預設為「Bunny's Secret File」、命名後為「{暱稱}'s Secret File」。瀏覽器標題、SEO 標題與社群 metadata 可使用「產品標題 | Boundary Notes」格式。
+穩定品牌名稱為 **Boundary Notes**，正式網域為 `https://boundarynotes.com`，採用無連字號的 `boundarynotes`。網域已購買；production Hosting 驗證後綁定 apex domain，並讓 `www.boundarynotes.com` redirect 到 apex domain。Boundary Notes 是品牌與網域層，不取代各語系的產品標題；產品標題仍依使用者名稱與語系動態顯示，例如英文預設為「Bunny's Secret File」、命名後為「{暱稱}'s Secret File」。瀏覽器標題、SEO 標題與社群 metadata 可使用「產品標題 | Boundary Notes」格式。
 
 ## 核心定位
 

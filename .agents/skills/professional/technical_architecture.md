@@ -16,7 +16,7 @@
 
 - **純網頁專案**：本專案是純 web app，不預設 native app、Electron、後端 server 或 CMS。
 - **前端技術棧**：使用 Vite、Vue、TypeScript、Tailwind 與 Vue Router 建構。
-- **部署可攜性**：目前部署到 GitHub Pages，但架構不得綁死在 GitHub Pages 或 `/bdsm_boundary_test/` 專案路徑。未來可能改部署到其他免費靜態網頁 host，並使用獨立 domain；base path、routing fallback 與靜態資源路徑都應可透過設定調整。
+- **部署可攜性**：正式站部署到 Firebase project `boundary-notes-prod` 的 Hosting live channel 並使用 `https://boundarynotes.com`，`www.boundarynotes.com` redirect 到 apex domain；staging 使用另一個 Firebase project `boundary-notes-staging` 的 Hosting live channel 與 Firebase 自產 URL。架構不得綁死在特定 host 或專案子路徑；base path、routing fallback 與靜態資源路徑都應可透過設定調整。
 - **路由可擴充**：目前已有前導劇情、主頁、建立檔案、檔案列表、編輯結果、獨立唯讀檢視、設定與關於等 route。前端 routing、view 結構與入口 registry 應持續支援逐步新增頁面，不應把 mode、route、故事步驟與主頁內容混在單一元件中。
 - **自刻 UI**：UI 應以本專案自己的 component、layout、style token 與互動語言實作，不使用現成 Vue UI/UX library，避免模板感與產品語氣偏移。
 - **輕量優先**：網頁應保持足夠輕量；新增 dependency、圖片格式、動畫、字體或大型資源前，必須評估 bundle size、載入時機與使用者感知流暢度。
@@ -24,9 +24,12 @@
 
 ## 部署與路由
 
-- **現況**：GitHub Actions 會建置並部署到 GitHub Pages，GitHub Pages 需要 `404.html` fallback 支援直接重新整理或未知路徑回到 SPA。
-- **未來 host**：若改到其他靜態 host 或獨立 domain，應優先透過 `VITE_BASE_PATH`、host fallback 設定或小型 deploy script 調整，不為單一 host 在核心 UI 元件內硬編 URL。
-- **Vue Router hash route 基準**：`src/app/router.ts` 使用 `createWebHashHistory(import.meta.env.BASE_URL)`，在沒有明確 host fallback 保證前維持 hash history，保留 GitHub Pages、其他靜態 host 與 base path 可攜性；若未來 host 支援穩定 SPA fallback，再評估是否轉為 history route。
+- **正式與 staging 完整隔離**：production 使用 `boundary-notes-prod`，staging 使用 `boundary-notes-staging`，分開 Firestore、Security Rules、IAM、quota 與帳單爆炸半徑。`main` push（包含 PR merge 後的 push）只部署 production live channel；`staging` push 部署 staging live channel；同 repository 的 PR 只部署到 staging project 的七天 preview channel，fork PR 只執行 test/build。不得因 Firebase Hosting 支援同 project preview channels 而把 staging backend 併回 production project。
+- **分階段啟用部署**：production 第一次 live deployment 驗證期間，repository variables `ENABLE_FIREBASE_STAGING` 與 `ENABLE_FIREBASE_PREVIEW` 維持未設定或非 `true`，對應 jobs 必須安全略過且不得要求尚未建立的 environments。只有在 staging project、獨立 deployers、WIF 與 GitHub environments 全部完成後，才可分別設為 `true`。
+- **短效部署身分**：GitHub Actions 透過 Workload Identity Federation 取得短效 Google Cloud credentials，不保存 service-account JSON key。GitHub 的 `production` environment 使用 production project deployer，`staging` environment 使用 staging live deployer，`preview` environment 使用 staging project 的 PR preview deployer；三者分開 provider/event 條件與最小權限，避免 PR 身分取得 production 或 staging live 部署路徑。第三方 Actions 固定完整 commit SHA。
+- **Firebase Hosting SPA fallback**：`firebase.json` 將不存在的實體檔案 rewrite 到 `/index.html`，讓 history route 可直接開啟與重新整理；未知 app route 由 Vue Router catch-all 顯示 404 view。這是靜態 SPA 的 soft 404（HTTP 200）；若未來 SEO 或外部整合要求真實 HTTP 404，再評估 prerender 或 server-side handler，不為此先導入 Functions。
+- **Vue Router history route 基準**：`src/app/router.ts` 使用 `createWebHistory(import.meta.env.BASE_URL)`；正式、staging 與本機預設 base 都是 `/`，並由 `VITE_BASE_PATH` 保留未來 host 調整能力。route 不再使用 `#/home` 之類 hash URL。
+- **Hosting 防護與快取**：`firebase.json` 對 Vite hashed assets 設定 immutable cache、對 `index.html` 禁止快取，並集中設定 CSP、frame、MIME sniffing、referrer 與敏感裝置權限標頭。未來接入 Firestore、Analytics 或其他外部連線時，必須同步以最小範圍更新 CSP `connect-src`，不得直接放寬成任意來源。
 - **集中 route registry**：`src/app/routes.ts` 是 route id、path、狀態與 lazy route component 的單一 registry。新增頁面入口時應先更新這份 registry，讓主頁入口、route 解析、placeholder 或正式 view 共用同一份定義；不得重新在 `App.vue` 建立 route `v-if` switch。
 - **route view lazy loading**：正式 route view 由 Vue Router 透過 dynamic import 載入。`App.vue` 只保留 app-shell 層級的稱呼、多語系、標題與 navigation context，再由 `<RouterView>` 渲染頁面；不得把所有 view 改回 eager import。
 - **前導劇情不是主頁本體**：前導劇情可以作為初次進入流程，但不應承擔主頁、測驗、檔案、分享與歷史頁的所有狀態。
@@ -91,7 +94,7 @@
 - **runtime schema 與 migration boundary**：Zod 為 `src/features/secret-file/validation/secretFileSchema.ts` 的唯一 runtime validation dependency。localStorage 讀回、JSON 匯入與未來的 Firestore 讀寫都必須先經 `parseSecretFile`；未知 `schemaVersion` 必須明確拒絕，未來版本應先新增 migration 再放行。
 - **本地保存與 fallback**：`storage/browserSecretFileRepository.ts` 集中管理 `bdsm-boundary-test-secret-files:index` 與 `...:file:{fileId}`。讀寫資料都先驗證；browser storage 不可用或寫入失敗時保留當前 session 的記憶體副本，並透過 store 的 `storageStatus` 暴露狀態。不得自動刪除舊檔案。
 - **localStorage 上限**：本機最多保存 20 份秘密檔案，由 `browserSecretFileRepository.ts` 的 `maxLocalSecretFiles` 集中管理；達到上限時阻擋新建，但仍允許更新既有檔案。
-- **測試基線**：Vitest 已設定為 `npm run test`，並已加入 GitHub Pages workflow。優先覆蓋回答狀態、scope、進度、題庫補齊、validation 與 storage failure；新 migration、persistence 或 domain rules 必須一起新增對應測試。
+- **測試基線**：Vitest 已設定為 `npm run test`，Firebase production、PR preview 與 staging workflows 都會先測試再建置。優先覆蓋回答狀態、scope、進度、題庫補齊、validation 與 storage failure；新 migration、persistence 或 domain rules 必須一起新增對應測試。
 - **目前功能邊界**：正式題庫、前導建立流程、分類與細項作答、本地 CRUD、JSON 匯入、編輯結果頁與獨立唯讀檢視頁均已接入。Firestore sharing 仍維持後續階段；唯讀 view 保留可替換的 cloud source boundary，但目前只載入本地檔案。
 
 1. 進行技術或資料相關工作前，先檢查本文件是否與現有程式碼、Firebase 設定、README 或其他 architecture 文件一致。

@@ -1,0 +1,247 @@
+name: Firebase Hosting production and PR previews
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Test and build
+    if: github.event_name == 'push' || vars.ENABLE_FIREBASE_PREVIEW == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test
+        run: npm run test
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload Hosting artifact
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: firebase-hosting-${{ github.run_id }}
+          path: dist
+          if-no-files-found: error
+          retention-days: 3
+
+  deploy-production:
+    name: Deploy production live channel
+    if: github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: production
+      url: https://boundary-notes-prod.web.app
+    concurrency:
+      group: firebase-hosting-production
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout trusted Hosting configuration
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Download tested Hosting artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: firebase-hosting-${{ github.run_id }}
+          path: dist
+
+      - name: Install pinned Firebase CLI
+        run: npm install --global firebase-tools@15.23.0 --ignore-scripts --no-audit --no-fund
+
+      - name: Validate production deployment variables
+        env:
+          FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+          GCP_SERVICE_ACCOUNT: ${{ vars.GCP_SERVICE_ACCOUNT }}
+          GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+        run: |
+          test -n "$FIREBASE_PROJECT_ID"
+          test -n "$GCP_SERVICE_ACCOUNT"
+          test -n "$GCP_WORKLOAD_IDENTITY_PROVIDER"
+
+      - name: Authenticate to Google Cloud with short-lived credentials
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          project_id: ${{ vars.FIREBASE_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - name: Deploy production Hosting
+        env:
+          FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+        run: firebase deploy --only hosting --project "$FIREBASE_PROJECT_ID" --non-interactive
+
+  deploy-preview:
+    name: Deploy isolated PR preview
+    if: >-
+      vars.ENABLE_FIREBASE_PREVIEW == 'true' &&
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: preview
+    concurrency:
+      group: firebase-hosting-preview-${{ github.event.pull_request.number }}
+      cancel-in-progress: true
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout trusted Hosting configuration
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Download tested Hosting artifact
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: firebase-hosting-${{ github.run_id }}
+          path: dist
+
+      - name: Install pinned Firebase CLI
+        run: npm install --global firebase-tools@15.23.0 --ignore-scripts --no-audit --no-fund
+
+      - name: Validate staging deployment variables
+        env:
+          FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+          GCP_SERVICE_ACCOUNT: ${{ vars.GCP_SERVICE_ACCOUNT }}
+          GCP_WORKLOAD_IDENTITY_PROVIDER: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+        run: |
+          test -n "$FIREBASE_PROJECT_ID"
+          test -n "$GCP_SERVICE_ACCOUNT"
+          test -n "$GCP_WORKLOAD_IDENTITY_PROVIDER"
+
+      - name: Authenticate to Google Cloud with short-lived credentials
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          project_id: ${{ vars.FIREBASE_PROJECT_ID }}
+          workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
+
+      - name: Deploy seven-day preview channel
+        env:
+          FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
+          PREVIEW_CHANNEL: pr-${{ github.event.pull_request.number }}
+        run: >-
+          firebase hosting:channel:deploy "$PREVIEW_CHANNEL"
+          --expires 7d
+          --project "$FIREBASE_PROJECT_ID"
+          --non-interactive
+          --json > preview-result.json
+
+      - name: Add or update preview link on the pull request
+        uses: actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd # v8
+        env:
+          PREVIEW_RESULT_PATH: preview-result.json
+        with:
+          script: |
+            const fs = require('fs');
+            const result = JSON.parse(fs.readFileSync(process.env.PREVIEW_RESULT_PATH, 'utf8'));
+            const urls = new Set();
+
+            function collectUrls(value) {
+              if (typeof value === 'string' && value.startsWith('https://')) {
+                urls.add(value);
+                return;
+              }
+
+              if (Array.isArray(value)) {
+                value.forEach(collectUrls);
+                return;
+              }
+
+              if (value && typeof value === 'object') {
+                Object.values(value).forEach(collectUrls);
+              }
+            }
+
+            collectUrls(result);
+            const previewUrl = [...urls].find((url) => url.includes('.web.app'));
+
+            if (!previewUrl) {
+              core.setFailed('Firebase CLI output did not contain a preview URL.');
+              return;
+            }
+
+            const marker = '<!-- boundary-notes-firebase-preview -->';
+            const body = [
+              marker,
+              `Firebase Hosting 預覽：${previewUrl}`,
+              '',
+              '這個連結會在最後一次部署後保留 7 天，且只連到 staging Firebase project。',
+            ].join('\n');
+            const comments = await github.paginate(github.rest.issues.listComments, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100,
+            });
+            const existing = comments.find(
+              (comment) => comment.user?.type === 'Bot' && comment.body?.includes(marker),
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }

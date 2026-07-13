@@ -96,7 +96,7 @@ export function localizeRoutes(messages: LocaleMessages): LocalizedAppRouteDefin
   }));
 }
 
-export function createRouteRecords(fallbackRoute: AppRouteId): RouteRecordRaw[] {
+export function createRouteRecords(): RouteRecordRaw[] {
   return [
     ...appRoutes.map((route) => ({
       path: route.path,
@@ -108,7 +108,8 @@ export function createRouteRecords(fallbackRoute: AppRouteId): RouteRecordRaw[] 
     })),
     {
       path: '/:pathMatch(.*)*',
-      redirect: { name: fallbackRoute },
+      name: 'notFound',
+      component: () => import('../views/NotFoundView.vue'),
     },
   ];
 }

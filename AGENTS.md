@@ -62,7 +62,7 @@
 目前已確認的技術方向：
 
 - 本專案是純網頁專案，使用 Vite、Vue、TypeScript、Tailwind 與 Vue Router 建構。
-- 目前部署到 GitHub Pages，但未來可能改部署到其他免費靜態 host 並使用獨立 domain；路由、base path 與資源路徑不得綁死在 GitHub Pages 專案路徑。
+- production 與 staging 從第一階段就使用兩個完整分離的 Firebase projects：production project ID 為 `boundary-notes-prod`，staging project ID 為 `boundary-notes-staging`。正式站部署到 production project 的 Hosting live channel 並使用 `https://boundarynotes.com`；`www.boundarynotes.com` 應 redirect 到 apex domain。`staging` 分支部署到 staging project 的 Hosting live channel 並使用 Firebase 自產 URL；PR preview channels 也只能建立在 staging project。兩個環境不得共用 Firestore、Security Rules、IAM、quota 或帳單邊界。路由、base path 與資源路徑不得綁死在特定 host 的專案子路徑。
 - 目前已有前導劇情、主頁、建立檔案、檔案列表、編輯結果、獨立唯讀檢視、設定與關於等 route；route registry、view 結構與主頁入口設計仍須支援後續逐步擴充。
 - 後端使用 Firebase；主要僅使用 Firestore 儲存使用者確定要分享的測驗結果。
 - 不需要登入系統，整體設計應在匿名情境下運行。

@@ -4,7 +4,7 @@
 
 穩定品牌名稱為 **Boundary Notes**，正式網域為 `https://boundarynotes.com`。網域已購買；DNS 與 host 綁定仍依部署進度設定。
 
-目前第一版落地內容是一個 Vite、Vue、TypeScript、Tailwind、Vue Router 的初始 app、前導劇情、可逐步擴充多個功能入口的主頁，以及「關於這隻兔子」頁面。核心系統已建立 Pinia session 邊界、Zod runtime schema、localStorage repository 與 Vitest 測試基線；題庫資料、作答頁與雲端分享尚未實作。
+目前前端以 Vite、Vue、TypeScript、Tailwind 與 Vue Router 建構，包含前導劇情、主頁、正式題庫與作答流程、本地檔案管理、結果編輯與唯讀檢視。核心系統已建立 Pinia session 邊界、Zod runtime schema、localStorage repository 與 Vitest 測試基線；Firestore 雲端分享仍是後續階段。
 
 使用者在前導劇情填入的稱呼會儲存在瀏覽器 `localStorage` 的 `bdsm-boundary-test-profile-name`。根路徑載入時，若已有本機稱呼，會直接進入主頁並套用「{稱呼}的祕密檔案」；若沒有本機稱呼，才播放前導劇情。使用者也可以從「關於這隻兔子」重播前導劇情並重新命名。
 
@@ -29,21 +29,48 @@ npm run build
 npm run test
 ```
 
-目前測試覆蓋秘密檔案的 scope／回答狀態、題庫更新時的回答補齊、runtime schema 的備註安全限制，以及 localStorage 失敗時的 session-memory fallback。GitHub Pages workflow 會先執行這組測試，再進行建置。
+目前測試覆蓋秘密檔案的 scope／回答狀態、題庫更新時的回答補齊、runtime schema 的備註安全限制，以及 localStorage 失敗時的 session-memory fallback。Firebase Hosting workflows 會先執行這組測試，再進行建置與部署。
 
-`vite.config.ts` 預設使用 GitHub Pages 專案路徑 `/bdsm_boundary_test/`。本機開發指令 `npm run dev` 會以 `--base=/` 覆蓋，讓開發伺服器維持根路徑；若其他 host、預覽環境或獨立 domain 需要覆蓋路徑，可設定 `VITE_BASE_PATH`。
+`vite.config.ts` 預設使用根路徑 `/`，符合 Firebase Hosting、自訂網域與本機開發環境。若未來其他 host 需要不同 base path，可設定 `VITE_BASE_PATH`。
 
 本機 Codex 環境若執行 Vite build 時遇到 sandbox access 問題，依 `AGENTS.md` 的 Windows/Vite 說明改用 Codex `require_escalated` 權限執行實際 build。
 
 ## 部署
 
-本專案目前已設定 GitHub Actions 在推送到 `main` 分支時自動建置並部署到 GitHub Pages。部署 workflow 位於 `.github/workflows/deploy-pages.yml`。
+本專案從第一階段就使用兩個完整分離的 Firebase projects，隔離 production 與 staging：
 
-GitHub Pages build 使用 `npm run build:pages`，讓 Vite 依 `vite.config.ts` 使用 `/bdsm_boundary_test/` 作為靜態資源路徑，並複製 `dist/index.html` 為 `dist/404.html` 作為 Pages fallback。
+- production：`boundary-notes-prod`
+- staging：`boundary-notes-staging`
 
-前端頁面切換使用 `src/app/routes.ts` 的集中 route registry，以及 `src/app/router.ts` 建立的 Vue Router hash history，例如 `/bdsm_boundary_test/#/home`。Route view 會依頁面 lazy-load；不要在 Pages 環境改用實體 `/home` 子路徑，因為 GitHub Pages 會把它視為不存在的檔案。
+- push `main`：test/build 成功後部署 production live channel；PR merge 會產生同一個 `main` push，不另外重複部署。
+- 開啟或更新同 repository 的 PR：test/build 成功後部署到 staging Firebase project 的七天 preview channel，並更新 PR 裡的預覽連結。
+- 外部 fork PR：只執行 test/build，不取得 Firebase 或 Google Cloud 部署身分。
+- push `staging`：test/build 成功後部署 staging Firebase project 的 live channel，使用穩定的 Firebase 自產 URL。
 
-未來若改部署到其他免費靜態 host 或獨立 domain，應優先調整 `VITE_BASE_PATH`、host fallback 或部署 script，不要把 URL 規則硬寫進 view component。
+目前採分階段啟用：先只驗證 production。Repository variables `ENABLE_FIREBASE_PREVIEW` 與 `ENABLE_FIREBASE_STAGING` 未設定或不等於 `true` 時，PR preview 與 staging jobs 會安全略過，不會嘗試存取尚未建立的 GitHub environments。完成各自的 project、deployer、WIF 與 environment 後，才分別將對應 repository variable 設為 `true`。
+
+Workflows 位於 `.github/workflows/firebase-hosting-production.yml` 與 `.github/workflows/firebase-hosting-staging.yml`。兩者都透過 GitHub OIDC 與 Google Cloud Workload Identity Federation 取得短效 credentials，不使用長效 service-account JSON key。請在 GitHub 建立 `production`、`staging`、`preview` environments，並各自設定以下 environment variables：
+
+- `FIREBASE_PROJECT_ID`
+- `GCP_WORKLOAD_IDENTITY_PROVIDER`
+- `GCP_SERVICE_ACCOUNT`
+
+`production` environment 填入 production project 的 deployer，並限制只有 `main` 能部署；`staging` environment 填入 staging project 的 live deployer，限制只有 `staging` 能部署；`preview` environment 填入 staging project 的 PR preview deployer，只提供同 repository PR 使用。`staging` 與 `preview` 可以填入相同 staging project ID，但應使用不同 service account/provider，讓 preview 所需權限不會自動擴張到 staging live deployer。Workload Identity provider 本身仍須限制 repository 與 event/ref，不能只依賴 workflow 的 `if`。兩個 Firebase projects 不共用 Firestore、Security Rules、IAM、quota 或帳單邊界。
+
+production 第一次部署先以 `https://boundary-notes-prod.web.app` 驗證 live channel。確認完成後，將 `boundarynotes.com` 綁定到 production Hosting，並讓 `www.boundarynotes.com` redirect 到 apex domain；完成 DNS 與憑證簽發後，再把 GitHub deployment URL 改成正式網域。
+
+前端使用 Vue Router history route，例如 `/home`。`firebase.json` 會把不存在的實體檔案 rewrite 到 `/index.html`，讓直接開啟與重新整理 route 正常運作；Vue Router catch-all 會顯示四語 404 畫面。這個純靜態做法屬於 soft 404（HTTP 200），未來只有在明確需要真實 HTTP 404 時才引入 prerender 或 server-side handler。
+
+Hosting 設定包含 immutable hashed-asset cache、禁止快取 app shell，以及 CSP、anti-framing、MIME sniffing、referrer 與裝置權限標頭。未來串接 Firestore 或 Analytics 時，必須同步精準更新 CSP，避免網路功能被擋，也不得為省事放寬成任意來源。
+
+本機需要用 Firebase Hosting 規則預覽 production build 時，可執行：
+
+```powershell
+npm run build
+npx --yes firebase-tools@15.23.0 emulators:start --only hosting
+```
+
+目前 Hosting 階段建議兩個 projects 都先維持 Spark plan，以免費額度形成成本硬邊界；若之後因 Firestore、Functions 或用量需要切到 Blaze，必須分別建立 project-scoped budget alerts、用量監控與對應的後端防濫用機制。Budget alert 只會通知，不會自動封頂。
 
 ## 第三方資產
 

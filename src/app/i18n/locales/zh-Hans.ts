@@ -23,6 +23,12 @@ export const zhHansMessages: LocaleMessages = {
     kicker: '欢迎回来',
     navAria: '秘密档案主要入口',
   },
+  notFound: {
+    action: '回到主页',
+    body: '这个位置没有留下档案。网址可能已经改变，或是不小心多带了一段路径。',
+    kicker: '404｜找不到页面',
+    title: '守密兔在这里找了一圈',
+  },
   routes: {
     story: {
       label: '前导剧情',

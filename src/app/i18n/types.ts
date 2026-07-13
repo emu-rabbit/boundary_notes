@@ -70,6 +70,12 @@ export type LocaleMessages = {
     kicker: string;
     navAria: string;
   };
+  notFound: {
+    action: string;
+    body: string;
+    kicker: string;
+    title: string;
+  };
   routes: Record<AppRouteId, RouteMessage>;
   settings: {
     body: string;

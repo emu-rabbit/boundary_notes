@@ -23,6 +23,12 @@ export const enMessages: LocaleMessages = {
     kicker: 'Welcome back',
     navAria: 'Main entrances for the secret file',
   },
+  notFound: {
+    action: 'Back to Home',
+    body: 'There is no file at this location. The address may have changed or picked up an extra path.',
+    kicker: '404 | Page Not Found',
+    title: 'The Secret-Keeping Bunny Looked Everywhere',
+  },
   routes: {
     story: {
       label: 'Intro',

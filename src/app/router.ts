@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router';
 import {
   createRouteRecords,
   defaultRouteId,
@@ -6,10 +6,9 @@ import {
 } from './routes';
 
 export function createAppRouter(basePath: string, landingRouteId: AppRouteId) {
-  const hadExplicitHash = typeof window !== 'undefined' && window.location.hash.length > 0;
   const router = createRouter({
-    history: createWebHashHistory(basePath),
-    routes: createRouteRecords(landingRouteId),
+    history: createWebHistory(basePath),
+    routes: createRouteRecords(),
     scrollBehavior: () => ({ left: 0, top: 0 }),
   });
   let isInitialNavigation = true;
@@ -17,7 +16,6 @@ export function createAppRouter(basePath: string, landingRouteId: AppRouteId) {
   router.beforeEach((to) => {
     const shouldUseLandingRoute =
       isInitialNavigation &&
-      !hadExplicitHash &&
       to.name === defaultRouteId &&
       landingRouteId !== defaultRouteId;
 
