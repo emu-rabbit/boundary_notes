@@ -1,6 +1,7 @@
 import type { AppLocale } from '../../../app/i18n';
 import type { QuestionRole, SecretFileScope } from '../../secret-file';
 import type { CategoryQuestion, QuestionBank, QuestionBankCategory } from '../types';
+import { getDetailTitle } from '../detailTitles';
 import { localizedCategoryCopy } from './categories';
 import { getLocalizedDetails } from './details';
 import type { TranslatedQuestionBankLocale } from './types';
@@ -42,11 +43,21 @@ export function localizeQuestionBank(source: QuestionBank, locale: AppLocale): Q
             roles: {
               active: {
                 description: translatedItem.roles.active.description,
-                title: translatedItem.roles.active.title ?? translatedItem.roles.active.description,
+                title: translatedItem.roles.active.title ?? getDetailTitle(
+                  locale,
+                  item.detailId,
+                  'active',
+                  translatedItem.label,
+                ),
               },
               passive: {
                 description: translatedItem.roles.passive.description,
-                title: translatedItem.roles.passive.title ?? translatedItem.roles.passive.description,
+                title: translatedItem.roles.passive.title ?? getDetailTitle(
+                  locale,
+                  item.detailId,
+                  'passive',
+                  translatedItem.label,
+                ),
               },
             },
             sourceLabel: translatedItem.label,

@@ -61,7 +61,7 @@ describe('first-phase question bank', () => {
     expect(detailIds.every((detailId) => /^detail-[a-z_]+-[a-z0-9]+$/.test(detailId))).toBe(true);
   });
 
-  it('keeps the shared spreadsheet label as metadata while exposing directional titles', () => {
+  it('uses compact, direction-correct titles without losing the shared source label', () => {
     const painStimulation = questionBank.categories.find(
       (category) => category.categoryId === 'pain_stimulation',
     );
@@ -72,10 +72,17 @@ describe('first-phase question bank', () => {
     expect(lightBiting).toMatchObject({
       sourceLabel: '輕度咬人/被咬',
       roles: {
-        active: { title: '輕度咬對方造成疼痛刺激' },
-        passive: { title: '被對方輕度咬造成疼痛刺激' },
+        active: { title: '輕度咬人' },
+        passive: { title: '輕度被咬' },
       },
     });
+
+    const flogging = questionBank.categories
+      .find((category) => category.categoryId === 'whipping')
+      ?.detailItems.find((item) => item.detailId === 'detail-whipping-9q3jnv');
+
+    expect(flogging?.roles.active.title).toBe('用散鞭');
+    expect(flogging?.roles.passive.title).toBe('用散鞭');
   });
 });
 
@@ -101,5 +108,39 @@ describe('question-bank translations', () => {
         expect(item.roles.passive.description.trim()).not.toBe('');
       });
     });
+  });
+
+  it.each([
+    ['zh-Hans', '轻度咬人', '轻度被咬', '接受接送', '接送对方'],
+    ['ja', '軽い噛みつき', '軽く噛まれる', '送迎を受ける', '相手を送迎する'],
+    ['en', 'Light biting', 'Being lightly bitten', 'Receiving a ride', 'Giving a ride'],
+  ] as const)('keeps directional short titles natural in %s', (locale, activeBiting, passiveBiting, activeRide, passiveRide) => {
+    const localized = localizeQuestionBank(questionBank, locale);
+    const biting = localized.categories
+      .find((category) => category.categoryId === 'pain_stimulation')
+      ?.detailItems.find((item) => item.detailId === 'detail-pain_stimulation-1jrzewy');
+    const ride = localized.categories
+      .find((category) => category.categoryId === 'service')
+      ?.detailItems.find((item) => item.detailId === 'detail-service-1nx0nqc');
+
+    expect(biting?.roles.active.title).toBe(activeBiting);
+    expect(biting?.roles.passive.title).toBe(passiveBiting);
+    expect(ride?.roles.active.title).toBe(activeRide);
+    expect(ride?.roles.passive.title).toBe(passiveRide);
+  });
+
+  it.each([
+    ['zh-Hant', '老師／學生情境'],
+    ['zh-Hans', '老师／学生情境'],
+    ['ja', '教師／生徒シナリオ'],
+    ['en', 'Teacher–student scenario'],
+  ] as const)('keeps the teacher-student role-play title neutral in %s', (locale, title) => {
+    const localized = localizeQuestionBank(questionBank, locale);
+    const teacherStudent = localized.categories
+      .find((category) => category.categoryId === 'role_play')
+      ?.detailItems.find((item) => item.detailId === 'detail-role_play-vepd7q');
+
+    expect(teacherStudent?.roles.active.title).toBe(title);
+    expect(teacherStudent?.roles.passive.title).toBe(title);
   });
 });

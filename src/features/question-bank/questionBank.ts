@@ -1,5 +1,6 @@
 import { isRoleIncludedInScope } from '../secret-file';
 import type { QuestionRole, SecretFileScope } from '../secret-file';
+import { getDetailTitle } from './detailTitles';
 import type {
   CategoryQuestion,
   CategoryQuestionsByScope,
@@ -28,11 +29,21 @@ function createDetailItems(
         roles: {
           active: {
             description: detail.roles.active.description,
-            title: detail.roles.active.title ?? detail.roles.active.description,
+            title: detail.roles.active.title ?? getDetailTitle(
+              'zh-Hant',
+              detail.detailId,
+              'active',
+              detail.label,
+            ),
           },
           passive: {
             description: detail.roles.passive.description,
-            title: detail.roles.passive.title ?? detail.roles.passive.description,
+            title: detail.roles.passive.title ?? getDetailTitle(
+              'zh-Hant',
+              detail.detailId,
+              'passive',
+              detail.label,
+            ),
           },
         },
         sourceLabel: detail.label,
