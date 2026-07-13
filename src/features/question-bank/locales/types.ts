@@ -8,9 +8,14 @@ export interface LocalizedCategoryCopy {
   roles: Record<QuestionRole, { description: string }>;
 }
 
+interface LocalizedDetailRoleCopy {
+  description: string;
+  title?: string;
+}
+
 export interface LocalizedDetailCopy {
   label: string;
-  roles: Record<QuestionRole, { description: string }>;
+  roles: Record<QuestionRole, LocalizedDetailRoleCopy>;
   warning: string | null;
 }
 

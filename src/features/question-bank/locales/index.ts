@@ -38,8 +38,19 @@ export function localizeQuestionBank(source: QuestionBank, locale: AppLocale): Q
           }
 
           return {
-            ...translatedItem,
             detailId: item.detailId,
+            roles: {
+              active: {
+                description: translatedItem.roles.active.description,
+                title: translatedItem.roles.active.title ?? translatedItem.roles.active.description,
+              },
+              passive: {
+                description: translatedItem.roles.passive.description,
+                title: translatedItem.roles.passive.title ?? translatedItem.roles.passive.description,
+              },
+            },
+            sourceLabel: translatedItem.label,
+            warning: translatedItem.warning,
           };
         }),
       };

@@ -99,13 +99,16 @@ const preferenceSpecialOptions = computed(() =>
 const isCategoryQuestion = computed(() => props.question.level === 'category');
 const categoryVisualUrl = computed(() => getCategoryVisualUrl(props.question.category.categoryId));
 const questionTitle = computed(() =>
-  props.question.level === 'category' ? props.question.category.name : props.question.detail.label,
+  props.question.level === 'category'
+    ? props.question.category.name
+    : props.question.detail.roles[props.question.role].title,
 );
 const questionDescription = computed(() =>
   props.question.level === 'category'
     ? props.question.category.roles[props.question.role].description
     : props.question.detail.roles[props.question.role].description,
 );
+const hasDistinctQuestionDescription = computed(() => questionDescription.value !== questionTitle.value);
 const questionWarning = computed(() =>
   props.question.level === 'detail' ? props.question.detail.warning : null,
 );
@@ -260,7 +263,7 @@ onBeforeUnmount(() => {
 
           <div class="category-question-copy">
             <h1>{{ questionTitle }}</h1>
-            <p>{{ questionDescription }}</p>
+            <p v-if="hasDistinctQuestionDescription">{{ questionDescription }}</p>
             <p v-if="questionWarning" class="questionnaire-warning">{{ messages.detailWarningPrefix }}{{ questionWarning }}</p>
           </div>
         </div>

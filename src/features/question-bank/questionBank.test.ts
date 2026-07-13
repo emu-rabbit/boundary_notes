@@ -60,6 +60,23 @@ describe('first-phase question bank', () => {
     expect(new Set(detailIds).size).toBe(294);
     expect(detailIds.every((detailId) => /^detail-[a-z_]+-[a-z0-9]+$/.test(detailId))).toBe(true);
   });
+
+  it('keeps the shared spreadsheet label as metadata while exposing directional titles', () => {
+    const painStimulation = questionBank.categories.find(
+      (category) => category.categoryId === 'pain_stimulation',
+    );
+    const lightBiting = painStimulation?.detailItems.find(
+      (item) => item.detailId === 'detail-pain_stimulation-1jrzewy',
+    );
+
+    expect(lightBiting).toMatchObject({
+      sourceLabel: '輕度咬人/被咬',
+      roles: {
+        active: { title: '輕度咬對方造成疼痛刺激' },
+        passive: { title: '被對方輕度咬造成疼痛刺激' },
+      },
+    });
+  });
 });
 
 describe('question-bank translations', () => {
@@ -77,7 +94,9 @@ describe('question-bank translations', () => {
       expect(category.roles.passive.description.trim()).not.toBe('');
 
       category.detailItems.forEach((item) => {
-        expect(item.label.trim()).not.toBe('');
+        expect(item.sourceLabel.trim()).not.toBe('');
+        expect(item.roles.active.title.trim()).not.toBe('');
+        expect(item.roles.passive.title.trim()).not.toBe('');
         expect(item.roles.active.description.trim()).not.toBe('');
         expect(item.roles.passive.description.trim()).not.toBe('');
       });

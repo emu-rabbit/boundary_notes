@@ -10,6 +10,38 @@ import type {
   QuestionBankCounts,
 } from './types';
 
+interface QuestionBankDetailItemSource {
+  detailId: string;
+  label: string;
+  roles: Record<QuestionRole, { description: string; title?: string }>;
+  warning: string | null;
+}
+
+function createDetailItems(
+  source: Record<string, readonly QuestionBankDetailItemSource[]>,
+): Record<string, readonly QuestionBankDetailItem[]> {
+  return Object.fromEntries(
+    Object.entries(source).map(([categoryId, details]) => [
+      categoryId,
+      details.map((detail) => ({
+        detailId: detail.detailId,
+        roles: {
+          active: {
+            description: detail.roles.active.description,
+            title: detail.roles.active.title ?? detail.roles.active.description,
+          },
+          passive: {
+            description: detail.roles.passive.description,
+            title: detail.roles.passive.title ?? detail.roles.passive.description,
+          },
+        },
+        sourceLabel: detail.label,
+        warning: detail.warning,
+      })),
+    ]),
+  );
+}
+
 function category(
   categoryId: string,
   name: string,
@@ -36,7 +68,7 @@ function category(
   };
 }
 
-const categoryDetailItems: Record<string, readonly QuestionBankDetailItem[]> = {
+const categoryDetailItemSource: Record<string, readonly QuestionBankDetailItemSource[]> = {
   impact_spanking: [
     {
       detailId: 'detail-impact_spanking-1qzzr10',
@@ -3902,6 +3934,8 @@ const categoryDetailItems: Record<string, readonly QuestionBankDetailItem[]> = {
     }
   ]
 };
+
+const categoryDetailItems = createDetailItems(categoryDetailItemSource);
 
 export const questionBank: QuestionBank = {
   bankVersion: '2026-07-11',

@@ -44,10 +44,10 @@ interface SpotlightCandidate {
   categoryId: string;
   categoryName: string;
   description: string;
-  label: string;
   questionId: string;
   role: QuestionRole;
   preference: 'like' | 'love';
+  title: string;
 }
 
 const spotlightCandidates = computed<readonly SpotlightCandidate[]>(() => {
@@ -63,10 +63,10 @@ const spotlightCandidates = computed<readonly SpotlightCandidate[]>(() => {
           categoryId: category.categoryId,
           categoryName: category.name,
           description: category.roles[role].description,
-          label: category.name,
           questionId: categoryQuestionId,
           role,
           preference: categoryAnswer.preference,
+          title: category.name,
         });
       }
 
@@ -79,10 +79,10 @@ const spotlightCandidates = computed<readonly SpotlightCandidate[]>(() => {
             categoryId: category.categoryId,
             categoryName: category.name,
             description: detail.roles[role].description,
-            label: detail.label,
             questionId,
             role,
             preference: answer.preference,
+            title: detail.roles[role].title,
           });
         }
       }
@@ -385,7 +385,7 @@ const overallProgress = computed(() => {
               type="button"
               :class="{ 'is-filled': item.candidate }"
               :disabled="item.index > secretFile.spotlight.selectedQuestionIds.length"
-              :aria-label="messages.results.spotlightSlotAria(item.slot, item.candidate?.label ?? null)"
+              :aria-label="messages.results.spotlightSlotAria(item.slot, item.candidate?.title ?? null)"
               @click="openSpotlight(item.index)"
             >
               <img
@@ -396,7 +396,7 @@ const overallProgress = computed(() => {
               <span class="results-spotlight__slot-number">{{ item.slot }}</span>
               <span v-if="item.candidate" class="results-spotlight__slot-copy">
                 <small>{{ item.candidate.categoryName }}・{{ messages.roleLabels[item.candidate.role] }}</small>
-                <strong>{{ item.candidate.label }}</strong>
+                <strong>{{ item.candidate.title }}</strong>
               </span>
             </button>
           </div>
@@ -535,7 +535,7 @@ const overallProgress = computed(() => {
       <div v-if="activeSpotlightCandidate" class="spotlight-dialog__current">
         <div class="spotlight-dialog__item-copy">
           <small>{{ messages.results.spotlightCurrent }}</small>
-          <strong>{{ activeSpotlightCandidate.label }}</strong>
+          <strong>{{ activeSpotlightCandidate.title }}</strong>
           <small>{{ activeSpotlightCandidate.categoryName }}・{{ messages.roleLabels[activeSpotlightCandidate.role] }}</small>
         </div>
         <button class="spotlight-dialog__delete" type="button" @click="deleteSpotlight">
@@ -556,11 +556,11 @@ const overallProgress = computed(() => {
               :key="candidate.questionId"
               type="button"
               :class="{ 'is-selected': secretFile.spotlight.selectedQuestionIds[activeSpotlightIndex ?? -1] === candidate.questionId }"
-              :aria-label="`${messages.results.spotlightSelect}：${candidate.label}`"
+              :aria-label="`${messages.results.spotlightSelect}：${candidate.title}`"
               @click="selectSpotlight(candidate.questionId)"
             >
               <span class="spotlight-dialog__item-copy">
-                <strong>{{ candidate.label }}</strong>
+                <strong>{{ candidate.title }}</strong>
                 <small>{{ candidate.description }}</small>
               </span>
               <small>{{ messages.roleLabels[candidate.role] }}</small>

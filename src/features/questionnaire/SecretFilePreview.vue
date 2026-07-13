@@ -23,10 +23,10 @@ interface DisplayItem {
   categoryId: string;
   categoryName: string;
   description: string;
-  label: string;
   level: 'category' | 'detail';
   questionId: string;
   role: QuestionRole;
+  title: string;
   warning: string | null;
 }
 
@@ -82,10 +82,10 @@ function createCategoryItem(category: QuestionBankCategory, role: QuestionRole):
     categoryId: category.categoryId,
     categoryName: category.name,
     description: category.roles[role].description,
-    label: category.name,
     level: 'category',
     questionId: getCategoryQuestionId(category.categoryId, role),
     role,
+    title: category.name,
     warning: null,
   };
 }
@@ -100,10 +100,10 @@ function createDetailItem(
     categoryId: category.categoryId,
     categoryName: category.name,
     description: detail.roles[role].description,
-    label: detail.label,
     level: 'detail',
     questionId: getDetailQuestionId(category.categoryId, detail.detailId, role),
     role,
+    title: detail.roles[role].title,
     warning: detail.warning,
   };
 }
@@ -277,7 +277,7 @@ function changeLocale(event: Event): void {
               </div>
               <div class="preview-rank-card__copy">
                 <small>{{ item.categoryName }}・{{ questionnaireMessages.roleLabels[item.role] }}</small>
-                <h3>{{ item.label }}</h3>
+                <h3>{{ item.title }}</h3>
                 <p>{{ item.description }}</p>
                 <PreviewAnswerSummary
                   :answer="item.answer!"
@@ -416,7 +416,7 @@ function changeLocale(event: Event): void {
                 <div class="preview-detail-list__heading">
                   <span>{{ String(index + 1).padStart(2, '0') }}</span>
                   <div>
-                    <h3>{{ item.label }}</h3>
+                    <h3>{{ item.title }}</h3>
                     <p>{{ item.description }}</p>
                   </div>
                 </div>
@@ -475,7 +475,7 @@ function changeLocale(event: Event): void {
           <img :src="getCategoryVisualUrl(item.categoryId)" alt="" width="72" height="72" />
           <div>
             <small>{{ item.categoryName }}・{{ questionnaireMessages.roleLabels[item.role] }}</small>
-            <strong>{{ item.label }}</strong>
+            <strong>{{ item.title }}</strong>
             <p>{{ item.description }}</p>
             <p v-if="item.answer?.note.trim()" class="preview-hard-no-list__note">{{ item.answer.note }}</p>
           </div>
