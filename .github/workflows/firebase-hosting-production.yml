@@ -1,4 +1,4 @@
-name: Firebase Hosting production and PR previews
+name: Firebase production and PR previews
 
 on:
   push:
@@ -34,13 +34,39 @@ jobs:
           node-version: 24
           package-manager-cache: false
 
-      - name: Install dependencies
+      - name: Install frontend dependencies
         run: npm ci
 
-      - name: Test
-        run: npm run test
+      - name: Install Functions dependencies
+        run: npm --prefix functions ci --ignore-scripts
 
-      - name: Build
+      - name: Test frontend and Functions
+        run: npm run test:all
+
+      - name: Build Functions
+        run: npm run build:functions
+
+      - name: Validate public web-app configuration
+        env:
+          VITE_FIREBASE_API_KEY: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_API_KEY || vars.STAGING_FIREBASE_API_KEY }}
+          VITE_FIREBASE_APP_ID: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_APP_ID || vars.STAGING_FIREBASE_APP_ID }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_AUTH_DOMAIN || vars.STAGING_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_PROJECT_ID || vars.STAGING_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_RECAPTCHA_ENTERPRISE_SITE_KEY: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_RECAPTCHA_ENTERPRISE_SITE_KEY || vars.STAGING_FIREBASE_RECAPTCHA_ENTERPRISE_SITE_KEY }}
+        run: |
+          test -n "$VITE_FIREBASE_API_KEY"
+          test -n "$VITE_FIREBASE_APP_ID"
+          test -n "$VITE_FIREBASE_AUTH_DOMAIN"
+          test -n "$VITE_FIREBASE_PROJECT_ID"
+          test -n "$VITE_FIREBASE_RECAPTCHA_ENTERPRISE_SITE_KEY"
+
+      - name: Build configured web app
+        env:
+          VITE_FIREBASE_API_KEY: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_API_KEY || vars.STAGING_FIREBASE_API_KEY }}
+          VITE_FIREBASE_APP_ID: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_APP_ID || vars.STAGING_FIREBASE_APP_ID }}
+          VITE_FIREBASE_AUTH_DOMAIN: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_AUTH_DOMAIN || vars.STAGING_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_PROJECT_ID || vars.STAGING_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_RECAPTCHA_ENTERPRISE_SITE_KEY: ${{ github.event_name == 'push' && vars.PRODUCTION_FIREBASE_RECAPTCHA_ENTERPRISE_SITE_KEY || vars.STAGING_FIREBASE_RECAPTCHA_ENTERPRISE_SITE_KEY }}
         run: npm run build
 
       - name: Upload Hosting artifact
@@ -56,7 +82,7 @@ jobs:
     if: github.event_name == 'push'
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 25
     environment:
       name: production
       url: https://boundary-notes-prod.web.app
@@ -78,6 +104,9 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
+
+      - name: Install Functions dependencies
+        run: npm --prefix functions ci --ignore-scripts
 
       - name: Download tested Hosting artifact
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
@@ -105,10 +134,14 @@ jobs:
           workload_identity_provider: ${{ vars.GCP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ vars.GCP_SERVICE_ACCOUNT }}
 
-      - name: Deploy production Hosting
+      - name: Deploy production Hosting, Functions, Firestore rules, and indexes
         env:
           FIREBASE_PROJECT_ID: ${{ vars.FIREBASE_PROJECT_ID }}
-        run: firebase deploy --only hosting --project "$FIREBASE_PROJECT_ID" --non-interactive
+        run: >-
+          firebase deploy
+          --only hosting,functions,firestore:rules,firestore:indexes
+          --project "$FIREBASE_PROJECT_ID"
+          --non-interactive
 
   deploy-preview:
     name: Deploy isolated PR preview
