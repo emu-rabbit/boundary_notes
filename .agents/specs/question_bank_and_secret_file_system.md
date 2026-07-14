@@ -253,7 +253,7 @@
 
 使用者若在本地修改已分享檔案並再次上傳，必須建立新的雲端文件與新的分享 ID，不得覆寫原文件。
 
-舊檔案頁的雲端 viewer 在 localStorage key `bdsm-boundary-test-cloud-shares:v2` 保存已驗證分享的顯示 metadata，至少包含 `shareId`、server `createdAt`、`profileName` 與 `scope`，但不保存完整、可編輯的雲端快照。列表只能讀取這份本機 metadata，不得為了渲染列表逐筆呼叫雲端；只有使用者進入 `preview?source=cloud&file={shareId}` 時才讀取 Firestore 唯讀版本。舊的 `bdsm-boundary-test-cloud-share-ids:v1` ID-only 索引可在本機遷移為 metadata 尚缺的相容項目，仍不得在列表背景補查雲端。雲端匯入接受分享 URL 或 share ID；必須先確認遠端檔案可讀，再把讀回的顯示 metadata 連結到這台裝置。從列表移除雲端項目只解除本機連結，不得刪除 Firestore 文件。成功上傳後也必須保存顯示 metadata，並主動以新分頁開啟雲端 preview。若雲端已建立但 localStorage 寫入失敗，UI 必須如實告知使用者快照已建立但未連結，並保留可開啟的分享網址。
+舊檔案頁的雲端 viewer 在 localStorage key `bdsm-boundary-test-cloud-shares:v2` 保存已驗證分享的顯示 metadata，至少包含 `shareId`、server `createdAt`、`profileName` 與 `scope`，但不保存完整、可編輯的雲端快照。列表只能讀取這份本機 metadata，不得為了渲染列表逐筆呼叫雲端；只有使用者進入 `preview?source=cloud&file={shareId}` 時才讀取 Firestore 唯讀版本。舊的 `bdsm-boundary-test-cloud-share-ids:v1` ID-only 索引可在本機遷移為 metadata 尚缺的相容項目，仍不得在列表背景補查雲端。雲端匯入接受分享 URL 或 share ID；必須先確認遠端檔案可讀，再把讀回的顯示 metadata 連結到這台裝置。從列表移除雲端項目只解除本機連結，不得刪除 Firestore 文件。成功上傳後也必須保存顯示 metadata，並主動以新分頁開啟雲端 preview；新分頁只能在雲端快照成功建立後開啟，不得在上傳前預先開啟空白頁。若雲端已建立但 localStorage 寫入失敗，UI 必須如實告知使用者快照已建立但未連結，並保留可開啟的分享網址。
 
 已分享版本是長期不可編輯、不可由一般使用者刪除、不可撤回且永不過期的分享快照。唯一例外是網站管理員因法律要求手動移除或批次處理資料；這不是一般使用者功能。
 

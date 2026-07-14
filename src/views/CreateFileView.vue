@@ -381,12 +381,6 @@ async function confirmCloudUpload(): Promise<void> {
 
   if (!fileToUpload || cloudUploadState.value === 'uploading') return;
 
-  const previewWindow = window.open('about:blank', '_blank');
-
-  if (previewWindow) {
-    previewWindow.opener = null;
-  }
-
   cloudUploadState.value = 'uploading';
   cloudUploadError.value = '';
   cloudUploadLocalSaveFailed.value = false;
@@ -415,16 +409,13 @@ async function confirmCloudUpload(): Promise<void> {
 
     cloudUploadState.value = 'success';
 
-    if (previewWindow && !previewWindow.closed) {
-      previewWindow.location.replace(absoluteHref);
+    const previewWindow = window.open(absoluteHref, '_blank');
+    if (previewWindow) {
+      previewWindow.opener = null;
     } else {
       cloudUploadPopupBlocked.value = true;
     }
   } catch (error) {
-    if (previewWindow && !previewWindow.closed) {
-      previewWindow.close();
-    }
-
     cloudUploadError.value = getCloudUploadErrorMessage(error);
     cloudUploadState.value = 'error';
   }
