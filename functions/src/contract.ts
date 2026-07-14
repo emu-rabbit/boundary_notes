@@ -1,7 +1,6 @@
 import { isIP } from 'node:net';
 import { z } from 'zod';
 
-export const shareIdPattern = /^sf_[A-Za-z0-9_-]{24}$/;
 export const maxCloudPayloadBytes = 512 * 1024;
 export const maxCloudAnswers = 700;
 export const uploadHourlyLimit = 5;
@@ -147,7 +146,6 @@ export const cloudSecretFileSchema = z
   });
 
 export const createShareRequestSchema = z.object({ secretFile: cloudSecretFileSchema }).strict();
-export const getShareRequestSchema = z.object({ shareId: z.string().regex(shareIdPattern) }).strict();
 
 export type CloudSecretFile = z.infer<typeof cloudSecretFileSchema>;
 

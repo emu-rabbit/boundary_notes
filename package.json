@@ -8,8 +8,9 @@
     "build": "vue-tsc -b && vite build",
     "build:functions": "npm --prefix functions run build",
     "test": "vitest run",
-    "test:all": "npm run test && npm --prefix functions run test",
+    "test:all": "npm run test && npm run test:rules && npm --prefix functions run test",
     "test:functions": "npm --prefix functions run test",
+    "test:rules": "npx --yes firebase-tools@15.23.0 emulators:exec --only firestore --project demo-boundary-notes \"vitest run --config vitest.rules.config.ts\"",
     "test:watch": "vitest",
     "preview": "vite preview"
   },
@@ -21,6 +22,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@firebase/rules-unit-testing": "^5.0.0",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vue/tsconfig": "^0.7.0",
     "autoprefixer": "^10.4.21",

@@ -59,18 +59,18 @@
 - **本地檔案可完整 CRUD**：使用者作答檔案在 localStorage 中可建立、讀取、更新與刪除；每題作答後必須即時保存，讓使用者關閉網頁後可從舊檔案繼續。
 - **雲端分享 create/read only**：Firestore 中的分享版本只能新建與讀取，不可編輯、不可由一般使用者刪除或撤回且永不過期；本地修改後重新分享必須建立新版本與新分享 ID。唯一例外是網站管理員因法律要求手動移除或批次處理資料。
 - **題庫版本相容**：題庫未來會新增或修訂，回答資料必須保留 `bankVersion`、穩定 question ID、`unanswered` 與 `filteredOut` 狀態，不得用題目順序或中文文案作為唯一資料鍵。
-- **雲端存取只經 callable Functions**：browser 不直接存取 Firestore，`firestore.rules` 對所有 mobile/web client read/write 一律拒絕。`createSharedSecretFile` 與 `getSharedSecretFile` 固定部署在 `asia-east1`，兩者強制 App Check；create 另啟用 limited-use token 與 replay protection。這層防護不等於登入，也不能被描述成百分之百阻擋所有濫用。
+- **雲端建立經 callable、讀取走 Firestore Lite SDK**：`createSharedSecretFile` 固定部署在 `asia-east1` 並強制 App Check、limited-use token 與 replay protection；browser 只可透過 Firestore Lite SDK 依完整 `shareId` 單筆 `get` 公開 `sharedSecretFiles/{shareId}`，不為 read-only 分享載入 realtime listener 或 offline persistence。`firestore.rules` 必須拒絕 collection `list`、所有 client writes 與所有私有 metadata／rate-limit collections。Cloud Firestore 本身必須開啟 App Check enforcement；production 已由使用者於 2026-07-14 確認啟用，staging 在未來建立可執行環境時也必須個別啟用。這層防護不等於登入，也不能被描述成百分之百阻擋所有濫用。
 - **上傳 server validation**：create function 必須在 server 重新執行 strict schema、scope／spotlight consistency、備註安全、最多 700 答案與 512 KiB payload 檢查。share ID 使用 `sf_` 加 144-bit cryptographic random value；不得提供列舉或查詢全部分享資料的 API。
 - **後端原子節流**：同一匿名來源上傳限制為 60 分鐘 5 次、24 小時 10 次；整個 Firebase project 另限制 60 分鐘 300 次、24 小時 2000 次成功建立。來源與全站計數都在同一個 Firestore transaction 內檢查並增加，避免併發超量；全站超量時前端顯示「網站目前請求過多，請稍後再試」。來源 IP 使用 Google Cloud Load Balancer 附加在 `X-Forwarded-For` 尾端的 `<client-ip>,<load-balancer-ip>`，只取倒數第二個位址，不信任可由呼叫端預填的前綴。IPv6 來源先正規化為 `/64`，避免同網段 privacy address 輕易輪替；原始 IP／user agent 不持久化，只保存依用途分離的 HMAC hash，HMAC key 只存在 Secret Manager，rate-limit document 以 TTL 清理。
-- **runtime 身分最小權限**：create/read Functions 分別使用各 Firebase project 內的 `boundary-notes-share-writer@<project-id>.iam.gserviceaccount.com` 與 `boundary-notes-share-reader@<project-id>.iam.gserviceaccount.com`。Functions source 以 Firebase 內建 `projectID` parameter 在 deploy time 組出完整 email，不使用只含尾端 `@` 的簡寫，避免 Firebase CLI 在綁定 Secret Manager IAM 時把簡寫當成無效 service account。writer 只取得 Firestore get/create/update、上傳 HMAC secret access 與 App Check token verifier；reader 只取得 Firestore get。不得讓 Functions 沿用具 Editor 權限的 default Compute service account。
-- **成本與攻擊面上限**：create/read 必須保留 `maxInstances`、timeout、request/payload cap 與必要的 disabled Firestore indexes；App Check、reCAPTCHA Enterprise、budget alert、quota 與執行 metrics 必須一併監看。Budget alert 不是硬上限。
+- **runtime 身分最小權限**：create Function 使用各 Firebase project 內的 `boundary-notes-share-writer@<project-id>.iam.gserviceaccount.com`。Functions source 以 Firebase 內建 `projectID` parameter 在 deploy time 組出完整 email，不使用只含尾端 `@` 的簡寫，避免 Firebase CLI 在綁定 Secret Manager IAM 時把簡寫當成無效 service account。writer 只取得 Firestore get/create/update、上傳 HMAC secret access 與 App Check token verifier；不得讓 Function 沿用具 Editor 權限的 default Compute service account。read 不再使用 Function runtime 或 reader service account，由 Firestore App Check enforcement 與 Security Rules 約束。
+- **成本與攻擊面上限**：create 必須保留 `maxInstances`、timeout、request/payload cap 與必要的 disabled Firestore indexes；direct read 不建立 Function invocation，但仍須監看 Firestore read、App Check、reCAPTCHA Enterprise、budget alert、quota 與執行 metrics。Budget alert 不是硬上限。
 
 ## 匿名識別與濫用防護
 
 - **匿名但可防護**：雖然不設登入，後端仍以 App Check 與 HMAC 衍生來源識別偵測疑似惡意使用或異常上傳；不得把它呈現為使用者帳號或真實身份。
 - **最小必要資料**：公開分享快照與私有防濫用 metadata 分集合保存。原始 IP／user agent 不寫入 Firestore，只保存不可直接還原且依用途分離的 HMAC hash、App ID、payload size 與 server timestamp；不得把私有 metadata 回傳給一般閱覽者。
 - **上傳節流**：同一使用者或同一匿名識別來源的 Firestore 上傳限制基準為 60 分鐘內最多 5 次、1 天內最多 10 次；整個 project 同時限制 60 分鐘內最多 300 次、1 天內最多 2000 次成功建立。
-- **前後端都要防護**：前端提示只是 UX；真正的 schema validation、App Check、replay protection 與上傳節流都在 callable function／Firestore transaction 執行，不可信任 localStorage、client clock、client summary 或 browser-side validation。
+- **前後端都要防護**：前端提示只是 UX；create 的 schema validation、App Check、replay protection 與上傳節流都在 callable function／Firestore transaction 執行，不可信任 localStorage、client clock 或 client summary。direct read 的存取邊界由 Cloud Firestore App Check enforcement 與 Security Rules 執行，client 收到公開快照後仍必須以正式秘密檔案 schema 驗證，拒絕損壞或不相容資料。
 - **防護不等於登入**：濫用偵測與上傳限制不得被包裝成登入、帳號、會員或身份驗證流程。
 
 ## GA 與研究資料
@@ -99,8 +99,8 @@
 - **runtime schema 與 migration boundary**：Zod 為 `src/features/secret-file/validation/secretFileSchema.ts` 的唯一 runtime validation dependency。localStorage 讀回、JSON 匯入與未來的 Firestore 讀寫都必須先經 `parseSecretFile`；未知 `schemaVersion` 必須明確拒絕，未來版本應先新增 migration 再放行。
 - **本地保存與 fallback**：`storage/browserSecretFileRepository.ts` 集中管理 `bdsm-boundary-test-secret-files:index` 與 `...:file:{fileId}`。讀寫資料都先驗證；browser storage 不可用或寫入失敗時保留當前 session 的記憶體副本，並透過 store 的 `storageStatus` 暴露狀態。不得自動刪除舊檔案。
 - **localStorage 上限**：本機最多保存 20 份秘密檔案，由 `browserSecretFileRepository.ts` 的 `maxLocalSecretFiles` 集中管理；達到上限時阻擋新建，但仍允許更新既有檔案。
-- **測試基線**：Vitest 已設定為 `npm run test`，Firebase production、PR preview 與 staging workflows 都會先測試再建置。優先覆蓋回答狀態、scope、進度、題庫補齊、validation 與 storage failure；新 migration、persistence 或 domain rules 必須一起新增對應測試。
-- **目前功能邊界**：正式題庫、前導建立流程、分類與細項作答、本地 CRUD、JSON 匯入、編輯結果頁、獨立唯讀檢視頁與 Firestore create/read-only sharing 均已接入。舊檔案頁的雲端列表只讀 localStorage 顯示 metadata，不在列表階段請求雲端；只有使用者進入雲端唯讀檢視或主動匯入分享 URL／ID 時才呼叫 read function。
+- **測試基線**：Vitest 已設定為 `npm run test`，Firestore Security Rules 與 direct reader 使用 `npm run test:rules` 搭配固定版本 Firebase CLI／Firestore Emulator 驗證，`npm run test:all` 會依序執行 frontend、Rules 與 Functions tests；Firebase production、PR preview 與 staging workflows 都會先測試再建置。優先覆蓋回答狀態、scope、進度、題庫補齊、validation、storage failure 與 Firestore get/list/write 邊界；新 migration、persistence 或 domain rules 必須一起新增對應測試。
+- **目前功能邊界**：正式題庫、前導建立流程、分類與細項作答、本地 CRUD、JSON 匯入、編輯結果頁、獨立唯讀檢視頁與 Firestore create/read-only sharing 均已接入。舊檔案頁的雲端列表只讀 localStorage 顯示 metadata，不在列表階段請求雲端；只有使用者進入雲端唯讀檢視或主動匯入分享 URL／ID 時才依 share ID direct read Firestore 公開快照。
 
 1. 進行技術或資料相關工作前，先檢查本文件是否與現有程式碼、Firebase 設定、README 或其他 architecture 文件一致。
 2. 若新增正式資料 schema、Firestore rules、GA event taxonomy、題庫 importer 或 asset preload policy，優先更新本文件、`.agents/specs/question_bank_and_secret_file_system.md` 或未來正式 architecture/privacy 文件。

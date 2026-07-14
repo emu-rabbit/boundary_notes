@@ -275,11 +275,11 @@ Firestore 建議集合：
 - `answers`
 - `spotlight`
 - `clientSummary`
-- `sourceFingerprintHash` 或等價匿名防護欄位
+- 私有 metadata 文件中的 `sourceFingerprintHash` 或等價匿名防護欄位
 
-公開雲端文件可在秘密檔案 JSON 外層保存 `shareId`、server `createdAt` 與 `clientSummary`。`sourceFingerprintHash`、`sourceHash`、`userAgentHash`、App ID 與 payload size 等私有防濫用資料必須放在獨立 metadata 集合，不得由 read function 回傳。這些 server metadata 不是使用者私下轉傳 JSON 的必要內容。`profileName` 必須存在於秘密檔案 JSON 本體；閱覽雲端檔案時，結果頁與必要警語使用雲端檔案紀錄的 `profileName`。
+公開雲端文件可在秘密檔案 JSON 外層保存 `shareId`、server `createdAt` 與 `clientSummary`。`sourceFingerprintHash`、`sourceHash`、`userAgentHash`、App ID 與 payload size 等私有防濫用資料必須放在獨立 metadata 集合，不得出現在 direct read 可取得的公開文件。這些 server metadata 不是使用者私下轉傳 JSON 的必要內容。`profileName` 必須存在於秘密檔案 JSON 本體；閱覽雲端檔案時，結果頁與必要警語使用雲端檔案紀錄的 `profileName`。
 
-匿名運作不代表完全無防護。Browser 不直接讀寫 Firestore；所有 client read/write rules 一律拒絕，建立與依 ID 讀取都只能經過強制 App Check 的 callable Functions。同一匿名來源限制為 60 分鐘內最多 5 次、24 小時內最多 10 次；整個 project 另限制 60 分鐘內最多 300 次、24 小時內最多 2000 次成功建立。兩組計數由 Firestore transaction 與 server timestamp 原子檢查並增加；不得把前端節流描述為後端防刷。來源 IP 只取 Google Cloud Load Balancer 附加在 `X-Forwarded-For` 尾端的倒數第二個位址，不信任呼叫端可預填的前綴，再以 HMAC source hash 執行來源限流。create 另使用 limited-use App Check token 與 replay protection，且保留 512 KiB payload、最多 700 answers、`maxInstances` 與 timeout 上限。原始 IP／user agent 不持久化；HMAC key 只存 Secret Manager。
+匿名運作不代表完全無防護。建立分享只能經過強制 App Check 的 `createSharedSecretFile` callable；依 ID 讀取則由 browser Firestore Lite SDK 直接單筆 `get sharedSecretFiles/{shareId}`。Cloud Firestore 必須開啟 App Check enforcement，Security Rules 只能允許符合 `sf_` 加 144-bit random 格式的 document `get`，並拒絕 collection `list`、所有 client writes，以及 `sharedSecretFileMetadata`、`uploadRateLimits`、`uploadGlobalRateLimits` 等私有集合的全部 client access。分享 ID 是 bearer capability：任何取得有效連結且通過 App Check 的人都可讀取，這不是閱讀者身份驗證。同一匿名來源上傳限制為 60 分鐘內最多 5 次、24 小時內最多 10 次；整個 project 另限制 60 分鐘內最多 300 次、24 小時內最多 2000 次成功建立。兩組計數由 Firestore transaction 與 server timestamp 原子檢查並增加；不得把前端節流描述為後端防刷。來源 IP 只取 Google Cloud Load Balancer 附加在 `X-Forwarded-For` 尾端的倒數第二個位址，不信任呼叫端可預填的前綴，再以 HMAC source hash 執行來源限流。create 另使用 limited-use App Check token 與 replay protection，且保留 512 KiB payload、最多 700 answers、`maxInstances` 與 timeout 上限。原始 IP／user agent 不持久化；HMAC key 只存 Secret Manager。
 
 ## 新檔案流程
 

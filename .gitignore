@@ -3,4 +3,6 @@ dist/
 tmp/
 *.local
 gha-creds-*.json
+firebase-debug.log
+firestore-debug.log
 .DS_Store

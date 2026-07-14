@@ -9,7 +9,6 @@ import {
   getGoogleLoadBalancerClientIp,
   getPayloadBytes,
   getRetryAfterSeconds,
-  getShareRequestSchema,
   maxCloudPayloadBytes,
   normalizeClientIp,
   uploadDailyWindowMs,
@@ -25,7 +24,6 @@ const sharedSecretFileMetadataCollection = 'sharedSecretFileMetadata';
 const uploadRateLimitsCollection = 'uploadRateLimits';
 const uploadGlobalRateLimitsCollection = 'uploadGlobalRateLimits';
 const shareWriterServiceAccount = expr`boundary-notes-share-writer@${projectID}.iam.gserviceaccount.com`;
-const shareReaderServiceAccount = expr`boundary-notes-share-reader@${projectID}.iam.gserviceaccount.com`;
 const maxCallableDataBytes = maxCloudPayloadBytes + 4 * 1024;
 const allowedOrigins = [
   /^https:\/\/(?:www\.)?boundarynotes\.com$/,
@@ -182,45 +180,6 @@ export const createSharedSecretFile = onCall(
     return {
       createdAt: now.toDate().toISOString(),
       shareId,
-    };
-  },
-);
-
-export const getSharedSecretFile = onCall(
-  {
-    cors: allowedOrigins,
-    enforceAppCheck: true,
-    maxInstances: 10,
-    memory: '256MiB',
-    region,
-    serviceAccount: shareReaderServiceAccount,
-    timeoutSeconds: 15,
-  },
-  async (request) => {
-    const parsed = getShareRequestSchema.safeParse(request.data);
-
-    if (!parsed.success) {
-      throw new HttpsError('not-found', '找不到這份雲端檔案。');
-    }
-
-    const snapshot = await db.collection(sharedSecretFilesCollection).doc(parsed.data.shareId).get();
-
-    if (!snapshot.exists) {
-      throw new HttpsError('not-found', '找不到這份雲端檔案。');
-    }
-
-    const createdAt = snapshot.get('createdAt');
-    const secretFile = snapshot.get('secretFile');
-    const validatedSecretFile = createShareRequestSchema.shape.secretFile.safeParse(secretFile);
-
-    if (!(createdAt instanceof Timestamp) || !validatedSecretFile.success) {
-      throw new HttpsError('data-loss', '雲端檔案內容目前無法讀取。');
-    }
-
-    return {
-      createdAt: createdAt.toDate().toISOString(),
-      secretFile: validatedSecretFile.data,
-      shareId: parsed.data.shareId,
     };
   },
 );

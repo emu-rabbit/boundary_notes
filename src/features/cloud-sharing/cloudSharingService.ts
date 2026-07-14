@@ -35,12 +35,11 @@ export interface CloudSecretFileSnapshot extends CreatedCloudShare {
   secretFile: SecretFile;
 }
 
-interface CallableContext {
-  createShare: HttpsCallable<{ secretFile: SecretFile }, unknown>;
-  getShare: HttpsCallable<{ shareId: string }, unknown>;
-}
-
-let callableContextPromise: Promise<CallableContext> | null = null;
+let firebaseAppPromise: Promise<FirebaseApp> | null = null;
+let createShareCallablePromise: Promise<HttpsCallable<{ secretFile: SecretFile }, unknown>> | null = null;
+let firestoreReadContextPromise: Promise<{
+  getShareDocument: (shareId: string) => Promise<unknown | null>;
+}> | null = null;
 
 function getFirebaseConfig() {
   return {
@@ -62,20 +61,19 @@ function validateFirebaseConfig(): ReturnType<typeof getFirebaseConfig> {
   return config;
 }
 
-async function getCallableContext(): Promise<CallableContext> {
-  if (callableContextPromise) return callableContextPromise;
+async function getFirebaseApp(): Promise<FirebaseApp> {
+  if (firebaseAppPromise) return firebaseAppPromise;
 
-  callableContextPromise = (async () => {
+  firebaseAppPromise = (async () => {
     const config = validateFirebaseConfig();
     const siteKey = import.meta.env.VITE_FIREBASE_RECAPTCHA_ENTERPRISE_SITE_KEY?.trim();
 
     if (!siteKey) {
       throw new CloudSharingError('configuration', 'Firebase App Check is not configured.');
     }
-    const [{ getApp, getApps, initializeApp }, appCheckModule, functionsModule] = await Promise.all([
+    const [{ getApp, getApps, initializeApp }, appCheckModule] = await Promise.all([
       import('firebase/app'),
       import('firebase/app-check'),
-      import('firebase/functions'),
     ]);
     const existingApp = getApps().find((app) => app.name === firebaseAppName);
     const app: FirebaseApp = existingApp ?? initializeApp(config, firebaseAppName);
@@ -91,27 +89,64 @@ async function getCallableContext(): Promise<CallableContext> {
       provider: new appCheckModule.ReCaptchaEnterpriseProvider(siteKey),
     });
 
+    return app;
+  })().catch((error) => {
+    firebaseAppPromise = null;
+    throw normalizeCloudSharingError(error);
+  });
+
+  return firebaseAppPromise;
+}
+
+async function getCreateShareCallable(): Promise<HttpsCallable<{ secretFile: SecretFile }, unknown>> {
+  if (createShareCallablePromise) return createShareCallablePromise;
+
+  createShareCallablePromise = (async () => {
+    const [app, functionsModule] = await Promise.all([
+      getFirebaseApp(),
+      import('firebase/functions'),
+    ]);
     const functions: Functions = functionsModule.getFunctions(app, cloudFunctionsRegion);
 
     if (import.meta.env.DEV && import.meta.env.VITE_FIREBASE_USE_EMULATORS === 'true') {
       functionsModule.connectFunctionsEmulator(functions, '127.0.0.1', 5001);
     }
 
-    return {
-      createShare: functionsModule.httpsCallable(functions, 'createSharedSecretFile', {
-        limitedUseAppCheckTokens: true,
-        timeout: 30_000,
-      }),
-      getShare: functionsModule.httpsCallable(functions, 'getSharedSecretFile', {
-        timeout: 20_000,
-      }),
-    };
+    return functionsModule.httpsCallable(functions, 'createSharedSecretFile', {
+      limitedUseAppCheckTokens: true,
+      timeout: 30_000,
+    });
   })().catch((error) => {
-    callableContextPromise = null;
+    createShareCallablePromise = null;
     throw normalizeCloudSharingError(error);
   });
 
-  return callableContextPromise;
+  return createShareCallablePromise;
+}
+
+async function getFirestoreReadContext(): Promise<{
+  getShareDocument: (shareId: string) => Promise<unknown | null>;
+}> {
+  if (firestoreReadContextPromise) return firestoreReadContextPromise;
+
+  firestoreReadContextPromise = (async () => {
+    const [app, firestoreShareReaderModule] = await Promise.all([
+      getFirebaseApp(),
+      import('./firestoreShareReader'),
+    ]);
+
+    return {
+      getShareDocument: firestoreShareReaderModule.createFirestoreShareReader(
+        app,
+        import.meta.env.DEV && import.meta.env.VITE_FIREBASE_USE_EMULATORS === 'true',
+      ),
+    };
+  })().catch((error) => {
+    firestoreReadContextPromise = null;
+    throw normalizeCloudSharingError(error);
+  });
+
+  return firestoreReadContextPromise;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -163,8 +198,8 @@ function normalizeCloudSharingError(error: unknown): CloudSharingError {
 
 export async function createCloudSecretFile(secretFile: SecretFile): Promise<CreatedCloudShare> {
   try {
-    const context = await getCallableContext();
-    const result = await context.createShare({ secretFile: parseSecretFile(secretFile) });
+    const createShare = await getCreateShareCallable();
+    const result = await createShare({ secretFile: parseSecretFile(secretFile) });
     return parseCreatedShare(result.data);
   } catch (error) {
     throw normalizeCloudSharingError(error);
@@ -177,17 +212,22 @@ export async function loadCloudSecretFile(shareId: string): Promise<CloudSecretF
   }
 
   try {
-    const context = await getCallableContext();
-    const result = await context.getShare({ shareId });
-    const createdShare = parseCreatedShare(result.data);
+    const context = await getFirestoreReadContext();
+    const shareDocument = await context.getShareDocument(shareId);
 
-    if (!isRecord(result.data) || !('secretFile' in result.data)) {
+    if (shareDocument === null) {
+      throw new CloudSharingError('notFound', 'Cloud secret file not found.');
+    }
+
+    const createdShare = parseCreatedShare(shareDocument);
+
+    if (!isRecord(shareDocument) || !('secretFile' in shareDocument)) {
       throw new CloudSharingError('invalid', 'The cloud response is invalid.');
     }
 
     return {
       ...createdShare,
-      secretFile: parseSecretFile(result.data.secretFile),
+      secretFile: parseSecretFile(shareDocument.secretFile),
     };
   } catch (error) {
     throw normalizeCloudSharingError(error);
