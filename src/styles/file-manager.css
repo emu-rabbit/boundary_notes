@@ -680,7 +680,6 @@
 
   .file-list-item__actions--cloud {
     grid-template-columns: 1fr;
-    padding-right: 3.2rem;
   }
 
   .file-card-action {
@@ -692,6 +691,12 @@
     line-height: 1.15;
     padding: 0.35rem 0.2rem;
     white-space: normal;
+  }
+
+  .file-list-item__actions--cloud .file-card-action--view {
+    width: 100%;
+    flex-direction: row;
+    gap: 0.5rem;
   }
 
   .file-card-action--delete {
