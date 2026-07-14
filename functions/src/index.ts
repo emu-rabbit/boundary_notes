@@ -1,7 +1,7 @@
 import { createHmac, randomBytes } from 'node:crypto';
 import { initializeApp } from 'firebase-admin/app';
 import { getFirestore, Timestamp } from 'firebase-admin/firestore';
-import { defineSecret } from 'firebase-functions/params';
+import { defineSecret, expr, projectID } from 'firebase-functions/params';
 import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https';
 import {
   createShareRequestSchema,
@@ -24,8 +24,8 @@ const sharedSecretFilesCollection = 'sharedSecretFiles';
 const sharedSecretFileMetadataCollection = 'sharedSecretFileMetadata';
 const uploadRateLimitsCollection = 'uploadRateLimits';
 const uploadGlobalRateLimitsCollection = 'uploadGlobalRateLimits';
-const shareWriterServiceAccount = 'boundary-notes-share-writer@';
-const shareReaderServiceAccount = 'boundary-notes-share-reader@';
+const shareWriterServiceAccount = expr`boundary-notes-share-writer@${projectID}.iam.gserviceaccount.com`;
+const shareReaderServiceAccount = expr`boundary-notes-share-reader@${projectID}.iam.gserviceaccount.com`;
 const maxCallableDataBytes = maxCloudPayloadBytes + 4 * 1024;
 const allowedOrigins = [
   /^https:\/\/(?:www\.)?boundarynotes\.com$/,
