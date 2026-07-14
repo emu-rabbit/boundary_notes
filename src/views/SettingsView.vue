@@ -2,6 +2,12 @@
 import { computed, onBeforeUnmount, ref, watch } from 'vue';
 import { useAppShell } from '../app/useAppShell';
 import { profileNameMaxLength } from '../app/useProfileNameStorage';
+import {
+  analyticsConsentState,
+  grantAnalyticsConsent,
+  isAnalyticsConsentUiEnabled,
+  revokeAnalyticsConsent,
+} from '../features/analytics/analytics';
 import { settingsRabbitUrl } from '../features/story/rabbitAssets';
 
 const {
@@ -21,6 +27,15 @@ const profileSaveFeedbackKey = ref(0);
 let profileSaveFeedbackTimeout: ReturnType<typeof window.setTimeout> | null = null;
 
 const isProfileNameSaved = computed(() => profileNameDraft.value === profileName.value);
+const analyticsEnabled = computed(() => analyticsConsentState.value === 'granted');
+
+function toggleAnalyticsConsent(): void {
+  if (analyticsEnabled.value) {
+    revokeAnalyticsConsent();
+  } else {
+    grantAnalyticsConsent();
+  }
+}
 
 function saveProfileName(): void {
   if (isProfileNameSaved.value) {
@@ -122,6 +137,27 @@ onBeforeUnmount(() => {
               <span>{{ option.label }}</span>
             </button>
           </div>
+        </section>
+
+        <section
+          v-if="isAnalyticsConsentUiEnabled"
+          class="settings-panel"
+          :aria-label="messages.analyticsConsent.settingsTitle"
+        >
+          <div class="settings-panel__heading">
+            <span>{{ messages.analyticsConsent.settingsTitle }}</span>
+            <small class="settings-analytics-state">
+              {{ analyticsEnabled
+                ? messages.analyticsConsent.settingsEnabled
+                : messages.analyticsConsent.settingsDisabled }}
+            </small>
+          </div>
+          <p class="settings-analytics-copy">{{ messages.analyticsConsent.settingsBody }}</p>
+          <button class="settings-analytics-action" type="button" @click="toggleAnalyticsConsent">
+            {{ analyticsEnabled
+              ? messages.analyticsConsent.settingsActionDisable
+              : messages.analyticsConsent.settingsActionEnable }}
+          </button>
         </section>
 
         <button class="quiet-action" type="button" @click="navigate('home')">

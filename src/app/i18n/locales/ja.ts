@@ -1,6 +1,19 @@
 import type { LocaleMessages } from '../types';
 
 export const jaMessages: LocaleMessages = {
+  analyticsConsent: {
+    accept: '匿名分析を許可',
+    body: '同意すると、Google Analytics を使用して Boundary Notes の改善に役立てます。個人コンテンツは送信されず、トラッキングは設定からいつでも無効にできます。',
+    decline: '今回は許可しない',
+    googleDetails: 'Google によるデータの取り扱い',
+    settingsActionDisable: '匿名分析を停止',
+    settingsActionEnable: '匿名分析を許可',
+    settingsBody: '匿名分析はページや機能の利用状況だけを記録し、呼び名、回答、メモ、ファイル ID、共有リンクは含みません。選択はいつでも変更できます。',
+    settingsDisabled: '匿名分析は許可されていません',
+    settingsEnabled: '匿名分析を許可しています',
+    settingsTitle: '匿名の利用状況分析',
+    title: '守秘うさぎに匿名の利用状況を記録させてもいいですか？',
+  },
   about: {
     body: 'このうさぎは、いまの気持ち、境界線、伝えたいことを一冊のファイルに整えるお手伝いをします。これは対話の始まりで、誰かの代わりに決めるものではありません。',
     replayStory: '導入をもう一度',

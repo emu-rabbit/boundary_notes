@@ -3,6 +3,12 @@ import { computed, nextTick, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAppShell } from '../app/useAppShell';
 import {
+  trackCloudShareUnlinked,
+  trackSecretFileDeleted,
+  trackSecretFileImported,
+  trackSecretFileJsonCopied,
+} from '../features/analytics/analytics';
+import {
   CloudShareLinkStorageError,
   CloudSharingError,
   linkCloudShare,
@@ -71,8 +77,8 @@ function selectViewer(source: FileViewerSource): void {
   importFeedbackKind.value = null;
 }
 
-function editFile(fileId: string): void {
-  void router.push({ name: 'create', query: { file: fileId, view: 'results' } });
+function editFile(file: SecretFileSummary): void {
+  void router.push({ name: 'create', query: { file: file.fileId, view: 'results' } });
 }
 
 function openImportDialog(): void {
@@ -87,6 +93,7 @@ function deleteFile(file: SecretFileSummary): void {
   }
 
   store.deleteFile(file.fileId);
+  trackSecretFileDeleted(file.scope);
 }
 
 async function writeClipboard(text: string): Promise<void> {
@@ -124,6 +131,7 @@ async function copyFileJson(file: SecretFileSummary): Promise<void> {
     await writeClipboard(json);
     copyFeedbackFileId.value = file.fileId;
     copyFeedbackKind.value = 'success';
+    trackSecretFileJsonCopied(file.scope);
   } catch {
     copyFeedbackFileId.value = file.fileId;
     copyFeedbackKind.value = 'error';
@@ -151,7 +159,9 @@ function submitLocalImport(): void {
       return;
     }
 
+    const overwroteExisting = Boolean(existingFile);
     const secretFile = store.importFile(candidate);
+    trackSecretFileImported('local_json', secretFile.scope, overwroteExisting);
     importFeedback.value = messages.value.importSuccess(secretFile.profileName);
     importFeedbackKind.value = 'success';
     importJson.value = '';
@@ -200,6 +210,7 @@ async function submitCloudImport(): Promise<void> {
       scope: snapshot.secretFile.scope,
       shareId,
     });
+    trackSecretFileImported('cloud_share', snapshot.secretFile.scope, false);
     cloudListFeedback.value = '';
     importFeedback.value = messages.value.cloudImportSuccess(snapshot.secretFile.profileName);
     importFeedbackKind.value = 'success';
@@ -217,11 +228,16 @@ async function submitCloudImport(): Promise<void> {
   }
 }
 
-function unlinkCloudFile(shareId: string, name: string): void {
+function unlinkCloudFile(
+  shareId: string,
+  name: string,
+  scope: LinkedCloudShare['scope'],
+): void {
   if (!window.confirm(messages.value.cloudUnlinkConfirmation(name))) return;
 
   try {
     cloudShares.value = unlinkCloudShare(shareId);
+    trackCloudShareUnlinked(scope ?? null);
     cloudListFeedback.value = '';
   } catch {
     cloudListFeedback.value = messages.value.cloudLinkStorageFailed;
@@ -338,7 +354,7 @@ onMounted(() => {
                 </svg>
                 {{ messages.view }}
               </a>
-              <button class="file-card-action" type="button" @click="editFile(file.fileId)">
+              <button class="file-card-action" type="button" @click="editFile(file)">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m5 19 3.4-.7L18.7 8a1.8 1.8 0 0 0 0-2.5l-.2-.2a1.8 1.8 0 0 0-2.5 0L5.7 15.6 5 19Z" />
                   <path d="m14.7 6.6 2.7 2.7" />
@@ -441,6 +457,7 @@ onMounted(() => {
                 @click="unlinkCloudFile(
                   file.shareId,
                   file.profileName ?? file.shareId,
+                  file.scope,
                 )"
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">

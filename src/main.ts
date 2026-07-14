@@ -3,6 +3,7 @@ import { createPinia } from 'pinia';
 import App from './App.vue';
 import { createAppRouter } from './app/router';
 import { loadStoredProfileName } from './app/useProfileNameStorage';
+import { installAnalyticsRouterTracking } from './features/analytics/analytics';
 import { useSecretFileStore } from './features/secret-file/application/useSecretFileStore';
 import './styles.css';
 import './styles/foundation.css';
@@ -14,6 +15,7 @@ import './styles/secondary-pages.css';
 import './styles/file-manager.css';
 import './styles/questionnaire.css';
 import './styles/secret-file-preview.css';
+import './styles/analytics-consent.css';
 import './styles/responsive.css';
 
 const initialProfileName = loadStoredProfileName();
@@ -28,6 +30,7 @@ app.use(pinia);
 app.use(router);
 useSecretFileStore(pinia).refresh();
 void router.isReady().then(() => {
+  installAnalyticsRouterTracking(router);
   app.mount('#app');
 });
 

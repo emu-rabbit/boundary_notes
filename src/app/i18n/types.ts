@@ -48,6 +48,19 @@ export type StoryStepMessages = {
 };
 
 export type LocaleMessages = {
+  analyticsConsent: {
+    accept: string;
+    body: string;
+    decline: string;
+    googleDetails: string;
+    settingsActionDisable: string;
+    settingsActionEnable: string;
+    settingsBody: string;
+    settingsDisabled: string;
+    settingsEnabled: string;
+    settingsTitle: string;
+    title: string;
+  };
   about: {
     body: string;
     replayStory: string;

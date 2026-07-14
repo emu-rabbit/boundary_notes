@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useAppShell } from '../app/useAppShell';
 import { getProfileEntryRoute, loadStoredProfileName } from '../app/useProfileNameStorage';
 import { formatDocumentTitle } from '../app/useSecretFileTitle';
+import { trackSecretFileViewed } from '../features/analytics/analytics';
 import { CloudSharingError, loadCloudSecretFile } from '../features/cloud-sharing';
 import { localizeQuestionBank, questionBank } from '../features/question-bank';
 import { getQuestionnaireMessages } from '../features/questionnaire/messages';
@@ -53,6 +54,7 @@ async function loadPreview(): Promise<void> {
     const opened = store.open(request.fileId);
     secretFile.value = opened;
     loadState.value = opened ? 'ready' : 'localMissing';
+    if (opened) trackSecretFileViewed('local', opened.scope);
     return;
   }
 
@@ -64,6 +66,7 @@ async function loadPreview(): Promise<void> {
     if (requestId !== loadRequestId) return;
     secretFile.value = snapshot.secretFile;
     loadState.value = 'ready';
+    trackSecretFileViewed('cloud', snapshot.secretFile.scope);
   } catch (error) {
     if (requestId !== loadRequestId) return;
     loadState.value = error instanceof CloudSharingError && error.code === 'notFound'

@@ -644,8 +644,12 @@
     order: 5;
   }
 
-  .settings-copy > .quiet-action {
+  .settings-panel + .settings-panel + .settings-panel {
     order: 6;
+  }
+
+  .settings-copy > .quiet-action {
+    order: 7;
     width: min(calc(100vw - 2rem), 34rem);
   }
 

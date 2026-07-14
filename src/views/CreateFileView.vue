@@ -3,6 +3,16 @@ import { computed, nextTick, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useAppShell } from '../app/useAppShell';
 import {
+  trackCloudShareCreated,
+  trackDetailSessionCompleted,
+  trackDetailSessionStarted,
+  trackQuestionnaireOverviewCompleted,
+  trackSecretFileAnswerSaved,
+  trackSecretFileCreated,
+  trackSecretFileEditOpened,
+  trackSpotlightUpdated,
+} from '../features/analytics/analytics';
+import {
   CloudSharingError,
   createCloudSecretFile,
   linkCloudShare,
@@ -217,6 +227,7 @@ async function startQuestionnaire(scope: SecretFileScope): Promise<void> {
       name: 'create',
       query: { file: saved.fileId },
     });
+    trackSecretFileCreated(saved.scope);
   } catch (error) {
     creationError.value =
       error instanceof LocalSecretFileLimitError
@@ -234,9 +245,21 @@ function saveQuestionAnswer(answer: AnswerQuestionInput): void {
     questionCursor.value = currentQuestionIndex.value;
   }
 
-  store.persist(
+  const overviewWasComplete = !detailSession.value && categoryQuestions.value.every(
+    (question) => secretFile.value?.answers[question.id]?.state === 'answered',
+  );
+  const saved = store.persist(
     answerSecretFileQuestion(secretFile.value, currentQuestion.value, answer),
   );
+  trackSecretFileAnswerSaved(currentQuestion.value.level, currentQuestion.value.role);
+
+  if (
+    !detailSession.value &&
+    !overviewWasComplete &&
+    categoryQuestions.value.every((question) => saved.answers[question.id]?.state === 'answered')
+  ) {
+    trackQuestionnaireOverviewCompleted(saved.scope);
+  }
 }
 
 function updateSpotlight(role: QuestionRole, questionIds: string[]): void {
@@ -250,6 +273,7 @@ function updateSpotlight(role: QuestionRole, questionIds: string[]): void {
     },
     updatedAt: new Date().toISOString(),
   });
+  trackSpotlightUpdated(role, questionIds.length);
 }
 
 function advanceQuestion(): void {
@@ -309,13 +333,24 @@ function startDetailSession(
     role,
   };
   detailCursor.value = 0;
+  trackDetailSessionStarted(role, mode, questions.length);
 
   void nextTick(() => window.scrollTo({ left: 0, top: 0 }));
 }
 
 function finishDetailSession(): void {
+  const completedSession = detailSession.value;
+  const completedQuestionCount = detailQuestions.value.length;
   detailSession.value = null;
   detailCursor.value = null;
+
+  if (completedSession) {
+    trackDetailSessionCompleted(
+      completedSession.role,
+      completedSession.mode,
+      completedQuestionCount,
+    );
+  }
 
   if (secretFile.value) {
     void router.replace({ name: 'create', query: { file: secretFile.value.fileId, view: 'results' } });
@@ -388,6 +423,7 @@ async function confirmCloudUpload(): Promise<void> {
 
   try {
     const createdShare = await createCloudSecretFile(fileToUpload);
+    trackCloudShareCreated(fileToUpload.scope);
     const href = router.resolve({
       name: 'preview',
       query: { file: createdShare.shareId, source: 'cloud' },
@@ -458,6 +494,8 @@ onMounted(() => {
     void router.replace({ name: 'create' });
     return;
   }
+
+  trackSecretFileEditOpened(opened.scope);
 
   const reconciled = reconcileSecretFileQuestions(opened, allQuestionDefinitions);
   store.persist(reconciled);

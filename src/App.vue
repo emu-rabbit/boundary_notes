@@ -1,17 +1,27 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { RouterView, useRouter } from 'vue-router';
+import { RouterView, useRoute, useRouter } from 'vue-router';
 import { useI18n } from './app/i18n';
 import { localizeRoutes, type AppRouteId } from './app/routes';
 import { provideAppShell } from './app/useAppShell';
 import { saveStoredProfileName } from './app/useProfileNameStorage';
 import { useSecretFileTitle } from './app/useSecretFileTitle';
+import AnalyticsConsentBanner from './components/AnalyticsConsentBanner.vue';
+import {
+  analyticsConsentState,
+  isAnalyticsConsentUiEnabled,
+  shouldShowAnalyticsConsent,
+  trackLocaleChanged,
+  trackProfileNameUpdated,
+  trackRouteSelection,
+} from './features/analytics/analytics';
 
 const props = defineProps<{
   initialProfileName: string;
 }>();
 
 const router = useRouter();
+const route = useRoute();
 const profileName = ref(props.initialProfileName);
 const uninterruptedAutoAdvanceCount = ref(0);
 const { locale, localeOptions, messages, setLocale } = useI18n();
@@ -24,6 +34,12 @@ const localizedRouteById = computed(
 const localizedHomeEntrances = computed(() =>
   localizedRoutes.value.filter((route) => route.id !== 'story' && route.id !== 'home'),
 );
+const showAnalyticsConsent = computed(() => shouldShowAnalyticsConsent({
+  consent: analyticsConsentState.value,
+  routeName: route.name,
+  source: route.query.source,
+  uiEnabled: isAnalyticsConsentUiEnabled,
+}));
 
 watch(
   documentTitle,
@@ -36,6 +52,7 @@ watch(
 );
 
 function navigate(routeId: AppRouteId): void {
+  trackRouteSelection(routeId);
   void router.push({ name: routeId });
 }
 
@@ -44,11 +61,18 @@ function completeStory(): void {
     profileName.value,
     messages.value.title.defaultProfileName,
   );
+  trackProfileNameUpdated();
   navigate('home');
 }
 
 function updateProfileName(name: string): void {
   profileName.value = saveStoredProfileName(name, messages.value.title.defaultProfileName);
+  trackProfileNameUpdated();
+}
+
+function updateLocale(nextLocale: typeof locale.value): void {
+  setLocale(nextLocale);
+  trackLocaleChanged(nextLocale);
 }
 
 function recordAutoAdvance(): void {
@@ -73,7 +97,7 @@ provideAppShell({
   profileName,
   recordAutoAdvance,
   resetAutoAdvance,
-  setLocale,
+  setLocale: updateLocale,
   titleParts,
   updateProfileName,
 });
@@ -83,4 +107,5 @@ provideAppShell({
   <main class="app-shell min-h-dvh text-ink-900">
     <RouterView />
   </main>
+  <AnalyticsConsentBanner v-if="showAnalyticsConsent" />
 </template>

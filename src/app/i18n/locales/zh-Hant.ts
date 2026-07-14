@@ -1,6 +1,19 @@
 import type { LocaleMessages } from '../types';
 
 export const zhHantMessages: LocaleMessages = {
+  analyticsConsent: {
+    accept: '同意匿名分析',
+    body: '同意後，我們會使用 Google Analytics 改善 Boundary Notes。我們不會傳送你的個人內容，追蹤可隨時在設定中關閉。',
+    decline: '先不要',
+    googleDetails: '了解 Google 如何處理這些資料',
+    settingsActionDisable: '停止匿名分析',
+    settingsActionEnable: '允許匿名分析',
+    settingsBody: '匿名分析只記錄頁面與功能使用情況，不包含稱呼、作答、備註、檔案 ID 或分享連結。你可以隨時改變選擇。',
+    settingsDisabled: '目前未允許匿名分析',
+    settingsEnabled: '目前已允許匿名分析',
+    settingsTitle: '匿名使用分析',
+    title: '可以讓守密兔記下匿名使用情況嗎？',
+  },
   about: {
     body: '這隻兔子會陪你把目前的感覺、界線與想說清楚的事整理成一份檔案。它只是溝通起點，不會替任何人做決定。',
     replayStory: '重播前導劇情',

@@ -1,6 +1,19 @@
 import type { LocaleMessages } from '../types';
 
 export const enMessages: LocaleMessages = {
+  analyticsConsent: {
+    accept: 'Allow Anonymous Analytics',
+    body: 'With your consent, we’ll use Google Analytics to improve Boundary Notes. We won’t send your personal content, and you can turn off tracking at any time in Settings.',
+    decline: 'Not Now',
+    googleDetails: 'How Google handles this data',
+    settingsActionDisable: 'Stop Anonymous Analytics',
+    settingsActionEnable: 'Allow Anonymous Analytics',
+    settingsBody: 'Anonymous analytics records page and feature usage only. It never includes your name, answers, notes, file IDs, or share links. You can change this choice at any time.',
+    settingsDisabled: 'Anonymous analytics is not allowed',
+    settingsEnabled: 'Anonymous analytics is allowed',
+    settingsTitle: 'Anonymous Usage Analytics',
+    title: 'May the Secret-Keeping Bunny record anonymous usage?',
+  },
   about: {
     body: 'This bunny helps you gather what you feel now, where your boundaries are, and what you want to say clearly. It is only a starting point for conversation, not a decision made for anyone.',
     replayStory: 'Replay intro',
