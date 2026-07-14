@@ -26,6 +26,7 @@ let loadRequestId = 0;
 const messages = computed(() => getPreviewMessages(locale.value));
 const questionnaireMessages = computed(() => getQuestionnaireMessages(locale.value));
 const localizedQuestionBank = computed(() => localizeQuestionBank(questionBank, locale.value));
+const previewSource = computed<PreviewSource>(() => route.query.source === 'cloud' ? 'cloud' : 'local');
 const loadMessage = computed(() => {
   if (loadState.value === 'loading') return messages.value.loading;
   if (loadState.value === 'cloudMissing') return messages.value.cloudLoadError;
@@ -35,8 +36,7 @@ const loadMessage = computed(() => {
 
 function getRequest(): { fileId: string; source: PreviewSource } | null {
   const fileId = typeof route.query.file === 'string' ? route.query.file : '';
-  const source = route.query.source === 'cloud' ? 'cloud' : 'local';
-  return fileId ? { fileId, source } : null;
+  return fileId ? { fileId, source: previewSource.value } : null;
 }
 
 async function loadPreview(): Promise<void> {
@@ -103,6 +103,7 @@ onUnmounted(() => {
     :question-bank="localizedQuestionBank"
     :questionnaire-messages="questionnaireMessages"
     :secret-file="secretFile"
+    :source="previewSource"
     @create-my-file="createMyFile"
     @locale-change="setLocale"
   />

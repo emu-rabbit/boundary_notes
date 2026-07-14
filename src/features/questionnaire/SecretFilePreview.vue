@@ -37,6 +37,7 @@ const props = defineProps<{
   questionBank: QuestionBank;
   questionnaireMessages: QuestionnaireMessages;
   secretFile: SecretFile;
+  source: 'cloud' | 'local';
 }>();
 
 const emit = defineEmits<{
@@ -181,7 +182,10 @@ function changeLocale(event: Event): void {
 </script>
 
 <template>
-  <section class="questionnaire-route questionnaire-results-route secret-file-preview-route">
+  <section
+    class="questionnaire-route questionnaire-results-route secret-file-preview-route"
+    :class="{ 'has-mobile-cta': source === 'cloud' && !activeCategory }"
+  >
     <div
       class="questionnaire-page-shell questionnaire-results-shell secret-file-preview-shell"
       :class="{ 'is-detail-view': activeCategory }"
@@ -195,6 +199,20 @@ function changeLocale(event: Event): void {
             </option>
           </select>
         </label>
+        <button
+          class="preview-share-action"
+          type="button"
+          :aria-label="messages.shareFile"
+          :title="messages.shareFile"
+          disabled
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="18" cy="5" r="2.5" />
+            <circle cx="6" cy="12" r="2.5" />
+            <circle cx="18" cy="19" r="2.5" />
+            <path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5" />
+          </svg>
+        </button>
       </div>
 
       <aside v-if="!activeCategory" class="results-sidebar preview-sidebar">
@@ -228,11 +246,12 @@ function changeLocale(event: Event): void {
         </div>
 
         <nav class="results-sidebar__actions preview-sidebar__actions" :aria-label="messages.previewActionsLabel">
-          <button class="results-primary-action" type="button" disabled>
-            <span aria-hidden="true">↗</span>
-            {{ messages.shareFile }}
-          </button>
-          <button class="results-secondary-action" type="button" @click="emit('createMyFile')">
+          <button
+            v-if="source === 'cloud'"
+            class="results-primary-action preview-create-action"
+            type="button"
+            @click="emit('createMyFile')"
+          >
             <span aria-hidden="true">＋</span>
             {{ messages.createMyFile }}
           </button>
@@ -252,6 +271,20 @@ function changeLocale(event: Event): void {
               </option>
             </select>
           </label>
+          <button
+            class="preview-share-action"
+            type="button"
+            :aria-label="messages.shareFile"
+            :title="messages.shareFile"
+            disabled
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="18" cy="5" r="2.5" />
+              <circle cx="6" cy="12" r="2.5" />
+              <circle cx="18" cy="19" r="2.5" />
+              <path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5" />
+            </svg>
+          </button>
         </div>
 
         <div
@@ -465,6 +498,13 @@ function changeLocale(event: Event): void {
           </div>
         </div>
       </main>
+
+      <div v-if="source === 'cloud' && !activeCategory" class="results-mobile-actions preview-mobile-actions">
+        <button class="results-primary-action" type="button" @click="emit('createMyFile')">
+          <span aria-hidden="true">＋</span>
+          {{ messages.createMyFile }}
+        </button>
+      </div>
     </div>
 
     <dialog v-if="hardNoItems.length" ref="hardNoDialog" class="preview-hard-no-dialog">
