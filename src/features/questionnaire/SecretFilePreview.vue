@@ -379,18 +379,25 @@ function changeLocale(event: Event): void {
               height="480"
             />
             <div class="preview-detail-summary__copy">
-              <p>{{ questionnaireMessages.roleLabels[selectedRole] }}・{{ messages.categoryAnswer }}</p>
+              <p v-if="activeCategory.includeInCategoryRound">
+                {{ questionnaireMessages.roleLabels[selectedRole] }}・{{ messages.categoryAnswer }}
+              </p>
               <h1>{{ activeCategory.name }}</h1>
               <p>{{ activeCategory.roles[selectedRole].description }}</p>
 
               <PreviewAnswerSummary
-                v-if="getCategoryAnswer(activeCategory.categoryId)"
+                v-if="activeCategory.includeInCategoryRound && getCategoryAnswer(activeCategory.categoryId)"
                 :answer="getCategoryAnswer(activeCategory.categoryId)!"
                 :summary="getAnswerSummary(getCategoryAnswer(activeCategory.categoryId)!)"
               />
-              <span v-else class="preview-unanswered">{{ messages.categoryUnanswered }}</span>
+              <span v-else-if="activeCategory.includeInCategoryRound" class="preview-unanswered">
+                {{ messages.categoryUnanswered }}
+              </span>
 
-              <div v-if="getCategoryAnswer(activeCategory.categoryId)?.note.trim()" class="preview-detail-note">
+              <div
+                v-if="activeCategory.includeInCategoryRound && getCategoryAnswer(activeCategory.categoryId)?.note.trim()"
+                class="preview-detail-note"
+              >
                 <small>{{ messages.note }}</small>
                 <p>{{ getCategoryAnswer(activeCategory.categoryId)!.note }}</p>
               </div>
