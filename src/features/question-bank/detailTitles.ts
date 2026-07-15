@@ -53,6 +53,7 @@ const overrides: Partial<Record<AppLocale, Readonly<Record<string, DetailTitle>>
     'detail-multi_party_interaction-8rm4og': paired('特定情況交予第三人', '特定情況被交予第三人'),
     'detail-enslavement-8sl7b1': paired('給予奴隸項圈', '接受奴隸項圈'),
     'detail-enslavement-w3wrxl': paired('關入奴隸籠', '被關入奴隸籠'),
+    'detail-pet_play-1jsyyjh': paired('幫寵物洗澡／梳毛', '接受洗澡／梳毛'),
     'detail-pet_play-52x52j': paired('給予寵物項圈', '接受寵物項圈'),
     'detail-pet_play-iua2gj': paired('關入寵物籠', '被關入寵物籠'),
 
@@ -179,6 +180,7 @@ const overrides: Partial<Record<AppLocale, Readonly<Record<string, DetailTitle>>
     'detail-multi_party_interaction-8rm4og': paired('特定情况交给第三人', '特定情况被交给第三人'),
     'detail-enslavement-8sl7b1': paired('给予奴隶项圈', '接受奴隶项圈'),
     'detail-enslavement-w3wrxl': paired('关入奴隶笼', '被关入奴隶笼'),
+    'detail-pet_play-1jsyyjh': paired('帮宠物洗澡／梳毛', '接受洗澡／梳毛'),
     'detail-pet_play-52x52j': paired('给予宠物项圈', '接受宠物项圈'),
     'detail-pet_play-iua2gj': paired('关入宠物笼', '被关入宠物笼'),
 
@@ -301,6 +303,7 @@ const overrides: Partial<Record<AppLocale, Readonly<Record<string, DetailTitle>>
     'detail-multi_party_interaction-8rm4og': paired('第三者に条件付きで預ける', '第三者に条件付きで預けられる'),
     'detail-enslavement-8sl7b1': paired('奴隷用首輪を渡す', '奴隷用首輪を受け取る'),
     'detail-enslavement-w3wrxl': paired('奴隷用ケージに入れる', '奴隷用ケージに入れられる'),
+    'detail-pet_play-1jsyyjh': paired('ペットを入浴／ブラッシングする', '入浴／ブラッシングを受ける'),
     'detail-pet_play-52x52j': paired('ペット用首輪を渡す', 'ペット用首輪を受け取る'),
     'detail-pet_play-iua2gj': paired('ペット用ケージに入れる', 'ペット用ケージに入れられる'),
 
@@ -423,6 +426,7 @@ const overrides: Partial<Record<AppLocale, Readonly<Record<string, DetailTitle>>
     'detail-multi_party_interaction-8rm4og': paired('Place them with a third person conditionally', 'Be placed with a third person conditionally'),
     'detail-enslavement-8sl7b1': paired('Give a slave collar', 'Receive a slave collar'),
     'detail-enslavement-w3wrxl': paired('Place them in a slave cage', 'Be placed in a slave cage'),
+    'detail-pet_play-1jsyyjh': paired('Bathe or groom the pet', 'Be bathed or groomed'),
     'detail-pet_play-52x52j': paired('Give a pet collar', 'Receive a pet collar'),
     'detail-pet_play-iua2gj': paired('Place them in a pet cage', 'Be placed in a pet cage'),
 

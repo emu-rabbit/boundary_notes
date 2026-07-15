@@ -168,4 +168,19 @@ describe('question-bank translations', () => {
     expect(teacherStudent?.roles.active.title).toBe(title);
     expect(teacherStudent?.roles.passive.title).toBe(title);
   });
+
+  it.each([
+    ['zh-Hant', '幫寵物洗澡／梳毛', '接受洗澡／梳毛'],
+    ['zh-Hans', '帮宠物洗澡／梳毛', '接受洗澡／梳毛'],
+    ['ja', 'ペットを入浴／ブラッシングする', '入浴／ブラッシングを受ける'],
+    ['en', 'Bathe or groom the pet', 'Be bathed or groomed'],
+  ] as const)('keeps pet bathing titles aligned with the displayed direction in %s', (locale, activeTitle, passiveTitle) => {
+    const localized = localizeQuestionBank(questionBank, locale);
+    const petBathing = localized.categories
+      .find((category) => category.categoryId === 'pet_play')
+      ?.detailItems.find((item) => item.detailId === 'detail-pet_play-1jsyyjh');
+
+    expect(petBathing?.roles.active.title).toBe(activeTitle);
+    expect(petBathing?.roles.passive.title).toBe(passiveTitle);
+  });
 });
