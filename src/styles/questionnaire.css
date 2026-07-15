@@ -1116,6 +1116,21 @@
   background: rgba(142, 89, 62, 0.16);
 }
 
+.results-spotlight__slots button:not(.is-filled)::after {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: rgba(239, 201, 149, 0.82);
+  content: '+';
+  font-family: Arial, sans-serif;
+  font-size: clamp(2.3rem, 5vw, 3.4rem);
+  font-weight: 300;
+  line-height: 1;
+  pointer-events: none;
+  text-shadow: 0 0 0.8rem rgba(226, 174, 112, 0.24);
+}
+
 .results-spotlight__slots button:disabled {
   cursor: default;
   opacity: 0.5;
