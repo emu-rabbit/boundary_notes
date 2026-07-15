@@ -1,5 +1,8 @@
 import type { LocaleMessages } from '../types';
 import { zhHantLegal } from '../legalDocuments';
+import { secretKeeperNames } from '../terminology';
+
+const secretKeeperName = secretKeeperNames['zh-Hant'];
 
 export const zhHantMessages: LocaleMessages = {
   analyticsConsent: {
@@ -13,19 +16,19 @@ export const zhHantMessages: LocaleMessages = {
     settingsDisabled: '目前未允許匿名分析',
     settingsEnabled: '目前已允許匿名分析',
     settingsTitle: '匿名使用分析',
-    title: '可以讓守密兔記下匿名使用情況嗎？',
+    title: `可以讓${secretKeeperName}記下匿名使用情況嗎？`,
   },
   about: {
     body: '這裡把你的喜好、慾望還有重要的界線，溫柔地整理起來。',
     contentWarning: '本網頁內容可能提及性、身體、權力交換與高風險互動項目。你可以依自己的狀態決定要不要使用，也可以隨時停下來。',
     doesItems: ['陪你整理經驗、興趣與界線', '幫助你看見自己的變化', '提供一個較容易開始的對話入口'],
     doesNotItems: ['不替任何人作出同意', '不為你配對或推薦項目', '不把你分類成固定的角色'],
-    doesNotTitle: '守密兔不會做的事',
-    doesTitle: '守密兔陪你做的事',
-    emailSupport: '寄信給守密兔',
+    doesNotTitle: `${secretKeeperName}不會做的事`,
+    doesTitle: `${secretKeeperName}陪你做的事`,
+    emailSupport: `寄信給${secretKeeperName}`,
     githubSupport: '前往 GitHub 回報問題',
     legalTitle: '本網站的條款與一路上的痕跡',
-    missionBody: '守密兔會陪你整理經驗、興趣與界線，在理解自己的路上可以不那麼孤單。只要你想要，這也是一張可以傳給某人、讓他認識你的一張邀請函。也請注意祕密檔案只是溝通起點，不能代替每一次當下的確認與同意。',
+    missionBody: `${secretKeeperName}會陪你整理經驗、興趣與界線，在理解自己的路上可以不那麼孤單。只要你想要，這也是一張可以傳給某人、讓他認識你的一張邀請函。也請注意祕密檔案只是溝通起點，不能代替每一次當下的確認與同意。`,
     missionTitle: '讓界線和喜好更清楚的展現',
     principles: [
       { title: '由你決定', body: '沒有正確答案，也不會替你貼上標籤。' },
@@ -33,8 +36,8 @@ export const zhHantMessages: LocaleMessages = {
       { title: '分享要謹慎', body: '連結可能含有敏感內容，只交給你信任的人。' },
     ],
     privacyPolicy: '隱私權政策',
-    rabbitRoleBody: '守密兔不會催促，也不替任何人作決定。牠的任務，是守在一旁，陪你把感受與界線整理成能被理解的話。',
-    rabbitRoleTitle: '守密兔的任務',
+    rabbitRoleBody: `${secretKeeperName}不會催促，也不替任何人作決定。牠的任務，是守在一旁，陪你把感受與界線整理成能被理解的話。`,
+    rabbitRoleTitle: `${secretKeeperName}的任務`,
     replayStory: '重播前導劇情',
     supportTitle: '需要幫忙嗎？這裡可以聯繫我。',
     termsOfUse: '使用條款',
@@ -42,7 +45,7 @@ export const zhHantMessages: LocaleMessages = {
     versionHistory: '版本歷史',
   },
   assets: {
-    aboutRabbitAlt: '白色守密兔坐在打開的祕密檔案旁，安靜陪伴使用者整理界線。',
+    aboutRabbitAlt: `白色${secretKeeperName}坐在打開的祕密檔案旁，安靜陪伴使用者整理界線。`,
     homeRabbitAlt: '白色兔子揮手，懷裡抱著秘密檔案筆記本。',
     settingsRabbitAlt: '白色兔子抱著設定板，齒輪圖案在設定板上。',
   },
@@ -63,7 +66,7 @@ export const zhHantMessages: LocaleMessages = {
     action: '回到主頁',
     body: '這個位置沒有留下檔案。網址可能已經改變，或是不小心多帶了一段路徑。',
     kicker: '404｜找不到頁面',
-    title: '守密兔在這裡找了一圈',
+    title: `${secretKeeperName}在這裡找了一圈`,
   },
   routes: {
     story: {
@@ -104,7 +107,7 @@ export const zhHantMessages: LocaleMessages = {
   legal: zhHantLegal,
   settings: {
     body: '這些設定只放在這台裝置裡。',
-    languageLabel: '守密兔要用的語言',
+    languageLabel: `${secretKeeperName}要用的語言`,
     profileFieldLabel: '稱呼',
     profileLabel: '想怎麼稱呼你',
     profilePlaceholder: '兔子',

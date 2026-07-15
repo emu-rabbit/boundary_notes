@@ -1,5 +1,8 @@
 import type { LocaleMessages } from '../types';
 import { enLegal } from '../legalDocuments';
+import { secretKeeperNames } from '../terminology';
+
+const secretKeeperName = secretKeeperNames.en;
 
 export const enMessages: LocaleMessages = {
   analyticsConsent: {
@@ -13,24 +16,24 @@ export const enMessages: LocaleMessages = {
     settingsDisabled: 'Anonymous analytics is not allowed',
     settingsEnabled: 'Anonymous analytics is allowed',
     settingsTitle: 'Anonymous Usage Analytics',
-    title: 'May the Secret-Keeping Bunny record anonymous usage?',
+    title: `May the ${secretKeeperName} record anonymous usage?`,
   },
   about: {
     body: 'This is a place to gently gather your likes, desires, and the boundaries that matter to you.',
     contentWarning: 'This website may include content about sexuality, bodies, power exchange, and higher-risk interactions. You can decide whether to use it based on how you feel, and you can stop at any time.',
     doesItems: ['Organize experience, interest, and boundaries', 'Notice how you change over time', 'Make a conversation easier to begin'],
     doesNotItems: ['Consent on anyone’s behalf', 'Match people or recommend activities', 'Assign you a fixed role'],
-    doesNotTitle: 'What the rabbit does not do', doesTitle: 'What the rabbit helps with', emailSupport: 'Email the rabbit', githubSupport: 'Report an issue on GitHub', legalTitle: 'This website’s terms and the traces left along the way',
-    missionBody: 'The confidentiality rabbit will stay with you as you sort through your experiences, interests, and boundaries, so the path to understanding yourself can feel a little less lonely. If you want, this can also be an invitation you send to someone to let them get to know you. Please remember that a secret file is only the beginning of a conversation and cannot replace checking in and giving consent in the moment, every time.', missionTitle: 'Let your boundaries and likes show more clearly',
+    doesNotTitle: `What the ${secretKeeperName} does not do`, doesTitle: `What the ${secretKeeperName} helps with`, emailSupport: `Email the ${secretKeeperName}`, githubSupport: 'Report an issue on GitHub', legalTitle: 'This website’s terms and the traces left along the way',
+    missionBody: `The ${secretKeeperName} will stay with you as you sort through your experiences, interests, and boundaries, so the path to understanding yourself can feel a little less lonely. If you want, this can also be an invitation you send to someone to let them get to know you. Please remember that a secret file is only the beginning of a conversation and cannot replace checking in and giving consent in the moment, every time.`, missionTitle: 'Let your boundaries and likes show more clearly',
     principles: [{ title: 'You decide', body: 'There are no right answers and no fixed labels.' }, { title: 'Consent is in the moment', body: 'A file supports conversation; it never replaces a check-in.' }, { title: 'Share with care', body: 'A link may be sensitive. Give it only to someone you trust.' }],
-    privacyPolicy: 'Privacy Policy', rabbitRoleBody: 'The confidentiality rabbit will not rush you or decide for anyone. Its job is to stay nearby and help turn feelings and boundaries into words another person can understand.', rabbitRoleTitle: 'The rabbit’s role',
+    privacyPolicy: 'Privacy Policy', rabbitRoleBody: `The ${secretKeeperName} will not rush you or decide for anyone. Its job is to stay nearby and help turn feelings and boundaries into words another person can understand.`, rabbitRoleTitle: `The ${secretKeeperName}’s role`,
     replayStory: 'Replay intro',
     supportTitle: 'Need help? You can reach me here.', termsOfUse: 'Terms of Use',
     title: 'About This Bunny',
     versionHistory: 'Version history',
   },
   assets: {
-    aboutRabbitAlt: 'A white confidentiality rabbit sits beside an open secret file, quietly helping someone organize their boundaries.',
+    aboutRabbitAlt: `The white ${secretKeeperName} sits beside an open secret file, quietly helping someone organize their boundaries.`,
     homeRabbitAlt: 'A white bunny waving while holding a secret file notebook.',
     settingsRabbitAlt: 'A white bunny holding a settings board with gear symbols on the board.',
   },
@@ -51,7 +54,7 @@ export const enMessages: LocaleMessages = {
     action: 'Back to Home',
     body: 'There is no file at this location. The address may have changed or picked up an extra path.',
     kicker: '404 | Page Not Found',
-    title: 'The Secret-Keeping Bunny Looked Everywhere',
+    title: `The ${secretKeeperName} Looked Everywhere`,
   },
   routes: {
     story: {
@@ -92,7 +95,7 @@ export const enMessages: LocaleMessages = {
   legal: enLegal,
   settings: {
     body: 'These settings stay on this device.',
-    languageLabel: 'Language for the Bunny',
+    languageLabel: `Language for the ${secretKeeperName}`,
     profileFieldLabel: 'Name',
     profileLabel: 'What should I call you?',
     profilePlaceholder: 'Bunny',

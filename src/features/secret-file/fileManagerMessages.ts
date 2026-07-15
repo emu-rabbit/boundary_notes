@@ -1,4 +1,5 @@
 import type { AppLocale } from '../../app/i18n';
+import { secretKeeperNames } from '../../app/i18n/terminology';
 import type { SecretFileScope } from './domain/types';
 
 export interface FileManagerMessages {
@@ -97,7 +98,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
       `「${name}」的 fileId 已存在，繼續匯入會直接覆蓋本地檔案。\n\n本地舊檔最後編輯：${existingUpdatedAt}\n匯入新檔最後編輯：${importedUpdatedAt}\n\n要繼續覆蓋嗎？`,
     progress: (answered, total) => `已填答 ${answered} / ${total}`,
-    rabbitAlt: '白色守密兔抱著一份上鎖的秘密檔案。',
+    rabbitAlt: `白色${secretKeeperNames['zh-Hant']}抱著一份上鎖的秘密檔案。`,
     scope: (scope) => scopeLabels['zh-Hant'][scope],
     title: '查看舊檔案',
     updatedAt: (date) => `最後編輯 ${date}`,
@@ -144,7 +145,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
       `“${name}”的 fileId 已存在，继续导入会直接覆盖本地文件。\n\n本地旧文件最后编辑：${existingUpdatedAt}\n导入新文件最后编辑：${importedUpdatedAt}\n\n要继续覆盖吗？`,
     progress: (answered, total) => `已填写 ${answered} / ${total}`,
-    rabbitAlt: '白色守密兔抱着一份上锁的秘密文件。',
+    rabbitAlt: `白色${secretKeeperNames['zh-Hans']}抱着一份上锁的秘密文件。`,
     scope: (scope) => scopeLabels['zh-Hans'][scope],
     title: '查看旧文件',
     updatedAt: (date) => `最后编辑 ${date}`,
@@ -191,7 +192,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
       `「${name}」と同じ fileId が存在します。続行するとローカルファイルを上書きします。\n\n既存ファイルの最終編集：${existingUpdatedAt}\n取り込むファイルの最終編集：${importedUpdatedAt}\n\n上書きしますか？`,
     progress: (answered, total) => `${answered} / ${total} 回答済み`,
-    rabbitAlt: '白い守秘うさぎが鍵付きの秘密ファイルを抱えている。',
+    rabbitAlt: `白い${secretKeeperNames.ja}が鍵付きの秘密ファイルを抱えている。`,
     scope: (scope) => scopeLabels.ja[scope],
     title: '以前のファイル',
     updatedAt: (date) => `最終編集 ${date}`,
@@ -238,7 +239,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
       `A file with the same fileId as “${name}” already exists. Continuing will overwrite the local file.\n\nExisting file last edited: ${existingUpdatedAt}\nImported file last edited: ${importedUpdatedAt}\n\nContinue and overwrite it?`,
     progress: (answered, total) => `${answered} / ${total} answered`,
-    rabbitAlt: 'The white keeper bunny holds a locked secret file.',
+    rabbitAlt: `The white ${secretKeeperNames.en} holds a locked secret file.`,
     scope: (scope) => scopeLabels.en[scope],
     title: 'Old Files',
     updatedAt: (date) => `Last edited ${date}`,

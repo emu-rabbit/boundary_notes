@@ -1,5 +1,8 @@
 import type { LocaleMessages } from '../types';
 import { jaLegal } from '../legalDocuments';
+import { secretKeeperNames } from '../terminology';
+
+const secretKeeperName = secretKeeperNames.ja;
 
 export const jaMessages: LocaleMessages = {
   analyticsConsent: {
@@ -13,24 +16,24 @@ export const jaMessages: LocaleMessages = {
     settingsDisabled: '匿名分析は許可されていません',
     settingsEnabled: '匿名分析を許可しています',
     settingsTitle: '匿名の利用状況分析',
-    title: '守秘うさぎに匿名の利用状況を記録させてもいいですか？',
+    title: `${secretKeeperName}に匿名の利用状況を記録させてもいいですか？`,
   },
   about: {
     body: 'ここでは、あなたの好みや欲望、そして大切な境界線を、やさしく整理していきます。',
     contentWarning: 'このウェブサイトでは、性、身体、パワー・エクスチェンジ、高リスクな行為に触れる場合があります。ご自身の状態に合わせて利用するかどうかを決め、いつでも立ち止まることができます。',
     doesItems: ['経験、関心、境界線を整理する', '自分の変化に気づく', '対話を始めやすくする'],
     doesNotItems: ['誰かに代わって同意しない', 'マッチングや項目の推薦をしない', '固定的な役割に分類しない'],
-    doesNotTitle: '守秘うさぎがしないこと', doesTitle: '守秘うさぎが手伝うこと', emailSupport: '守秘うさぎにメール', githubSupport: 'GitHubで問題を報告', legalTitle: 'このウェブサイトの規約と、これまでの足あと',
-    missionBody: '守秘うさぎは、経験、関心、境界線を整理し、自分を理解していく道のりが少しでも孤独でないよう、そばにいます。あなたが望むなら、これは誰かに渡して、あなたを知ってもらうための招待状にもなります。秘密ファイルはあくまで対話のきっかけであり、その都度の確認と同意に代わるものではないことにも、ご注意ください。', missionTitle: '境界線と好みを、もっとはっきり表現する',
+    doesNotTitle: `${secretKeeperName}がしないこと`, doesTitle: `${secretKeeperName}が手伝うこと`, emailSupport: `${secretKeeperName}にメール`, githubSupport: 'GitHubで問題を報告', legalTitle: 'このウェブサイトの規約と、これまでの足あと',
+    missionBody: `${secretKeeperName}は、経験、関心、境界線を整理し、自分を理解していく道のりが少しでも孤独でないよう、そばにいます。あなたが望むなら、これは誰かに渡して、あなたを知ってもらうための招待状にもなります。秘密ファイルはあくまで対話のきっかけであり、その都度の確認と同意に代わるものではないことにも、ご注意ください。`, missionTitle: '境界線と好みを、もっとはっきり表現する',
     principles: [{ title: '決めるのはあなた', body: '正解も、固定的なラベルもありません。' }, { title: '同意はその時に', body: 'ファイルは対話を支えますが、毎回の確認に代わりません。' }, { title: '共有は慎重に', body: '機微な内容を含むリンクは、信頼できる人だけに。' }],
-    privacyPolicy: 'プライバシーポリシー', rabbitRoleBody: '守秘うさぎは急かさず、誰かの代わりに決めません。そばで見守り、気持ちと境界線を伝わる言葉に整えることが役目です。', rabbitRoleTitle: '守秘うさぎの役目',
+    privacyPolicy: 'プライバシーポリシー', rabbitRoleBody: `${secretKeeperName}は急かさず、誰かの代わりに決めません。そばで見守り、気持ちと境界線を伝わる言葉に整えることが役目です。`, rabbitRoleTitle: `${secretKeeperName}の役目`,
     replayStory: '導入をもう一度',
     supportTitle: 'お困りですか？こちらからご連絡いただけます。', termsOfUse: '利用規約',
     title: 'このうさぎについて',
     versionHistory: '更新履歴',
   },
   assets: {
-    aboutRabbitAlt: '白い守秘うさぎが開いた秘密ファイルのそばに座り、境界線の整理を静かに見守っている。',
+    aboutRabbitAlt: `白い${secretKeeperName}が開いた秘密ファイルのそばに座り、境界線の整理を静かに見守っている。`,
     homeRabbitAlt: '白いうさぎが手を振り、秘密ファイルのノートを抱えている。',
     settingsRabbitAlt: '白いうさぎが設定ボードを抱え、歯車の図柄がボードに入っている。',
   },
@@ -51,7 +54,7 @@ export const jaMessages: LocaleMessages = {
     action: 'ホームへ戻る',
     body: 'ここにはファイルがありません。URL が変わったか、余分な経路が含まれているようです。',
     kicker: '404｜ページが見つかりません',
-    title: '守秘うさぎも探してみました',
+    title: `${secretKeeperName}も探してみました`,
   },
   routes: {
     story: {
@@ -92,7 +95,7 @@ export const jaMessages: LocaleMessages = {
   legal: jaLegal,
   settings: {
     body: 'この設定はこの端末だけに残ります。',
-    languageLabel: '守秘うさぎが使う言語',
+    languageLabel: `${secretKeeperName}が使う言語`,
     profileFieldLabel: '呼び名',
     profileLabel: 'なんて呼べばいい？',
     profilePlaceholder: 'うさぎ',

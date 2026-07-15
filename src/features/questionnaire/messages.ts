@@ -1,4 +1,5 @@
 import type { AppLocale } from '../../app/i18n';
+import { secretKeeperNames } from '../../app/i18n/terminology';
 import type {
   AnsweredSecretFileAnswer,
   ExperienceAnswer,
@@ -169,7 +170,7 @@ const zhHant: QuestionnaireMessages = {
     questionCountLines: (count) => [`恩......好的，那我們這邊總共有${count}個問題！`],
     ready: '準備好了',
     readyLines: (profileName) => [`${profileName}，準備好開始第一階段的填答了嗎？`],
-    speakerName: '守密兔',
+    speakerName: secretKeeperNames['zh-Hant'],
     scopeChoices: [
       { label: '僅顯示主導側', scope: 'activeOnly' },
       { label: '僅顯示配合側', scope: 'passiveOnly' },
@@ -309,7 +310,7 @@ const zhHans: QuestionnaireMessages = {
     ],
     readyLines: (profileName) => [`${profileName}，准备好开始第一阶段的填写了吗？`],
     ready: '准备好了',
-    speakerName: '守密兔',
+    speakerName: secretKeeperNames['zh-Hans'],
     notReady: '还没……',
     questionCountAction: '(((ﾟДﾟ;)))',
     questionCountLines: (count) => [`嗯……好的，这里总共有${count}个问题！`],
@@ -451,7 +452,7 @@ const ja: QuestionnaireMessages = {
       `${profileName}、第一段階の回答を始める準備はできましたか？`,
     ],
     ready: '準備できた',
-    speakerName: '守秘うさぎ',
+    speakerName: secretKeeperNames.ja,
     notReady: 'まだ……',
     questionCountAction: '(((ﾟДﾟ;)))',
     questionCountLines: (count) => [`ええと……全部で${count}問あります！`],
@@ -592,7 +593,7 @@ const en: QuestionnaireMessages = {
     ],
     readyLines: (profileName) => [`${profileName}, are you ready to begin the first stage?`],
     ready: 'I am ready',
-    speakerName: 'Secretkeeper Bunny',
+    speakerName: secretKeeperNames.en,
     notReady: 'Not yet…',
     questionCountAction: '(((ﾟДﾟ;)))',
     questionCountLines: (count) => [`All right… there are ${count} questions in total!`],

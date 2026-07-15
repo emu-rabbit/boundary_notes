@@ -1,4 +1,5 @@
 import type { LocaleMessages } from './types';
+import { secretKeeperNames } from './terminology';
 
 export const zhHantLegal = {
   contactLabel: '聯絡方式',
@@ -11,7 +12,7 @@ export const zhHantLegal = {
   terms: {
     controllingLanguage: '本條款提供多語譯本；如各版本有歧義，以繁體中文版本為準。',
     eyebrow: '使用規範',
-    intro: '使用這項服務前，請先了解守密兔能陪你做什麼，以及哪些事仍需要由你和對方在當下確認。',
+    intro: `使用這項服務前，請先了解${secretKeeperNames['zh-Hant']}能陪你做什麼，以及哪些事仍需要由你和對方在當下確認。`,
     lastUpdated: '2026 年 7 月 15 日',
     lastUpdatedLabel: '最後更新',
     title: '使用條款',
@@ -92,7 +93,7 @@ export const zhHantLegal = {
   privacy: {
     controllingLanguage: '本政策提供多語譯本；如各版本有歧義，以繁體中文版本為準。',
     eyebrow: '資料與隱私',
-    intro: '這份政策說明哪些資料只留在你的裝置、何時會送上雲端，以及守密兔如何盡量少收資料。',
+    intro: `這份政策說明哪些資料只留在你的裝置、何時會送上雲端，以及${secretKeeperNames['zh-Hant']}如何盡量少收資料。`,
     lastUpdated: '2026 年 7 月 15 日',
     lastUpdatedLabel: '最後更新',
     title: '隱私權政策',
@@ -192,7 +193,7 @@ export const zhHantLegal = {
 export const zhHansLegal = {
   contactLabel: '联系方式', documentsLabel: '法律文件', languageLabel: '阅读语言', operatorLabel: '服务提供者与个人资料管理者', operatorName: '絵夢羽さ沂', privacyLink: '隐私权政策', termsLink: '使用条款',
   terms: {
-    controllingLanguage: '本条款提供多语言译本；如各版本有歧义，以繁体中文版本为准。', eyebrow: '使用规范', intro: '使用这项服务前，请先了解守密兔能陪你做什么，以及哪些事仍需要由你和对方在当下确认。', lastUpdated: '2026 年 7 月 15 日', lastUpdatedLabel: '最后更新', title: '使用条款',
+    controllingLanguage: '本条款提供多语言译本；如各版本有歧义，以繁体中文版本为准。', eyebrow: '使用规范', intro: `使用这项服务前，请先了解${secretKeeperNames['zh-Hans']}能陪你做什么，以及哪些事仍需要由你和对方在当下确认。`, lastUpdated: '2026 年 7 月 15 日', lastUpdatedLabel: '最后更新', title: '使用条款',
     sections: [
       { title: '一、条款适用与服务提供者', paragraphs: ['本服务“XX的秘密档案”（未设置称呼时显示为“兔子的秘密档案”，以下称“本站”）由絵夢羽さ沂提供。你开始使用本站，即表示同意在使用范围内遵守本条款。', '当你按下“了解并建立分享链接”，即表示你已阅读并同意本条款与隐私权政策，也明确同意将该份可能含有敏感内容的档案上传为云端分享版本。'] },
       { title: '二、本站的用途与内容提醒', paragraphs: ['本站是一项协助自我理解、教育与 BDSM（愉虐）互动界限沟通的工具。内容可能提及性、身体、权力交换与高风险互动项目；请依自己的状态决定是否继续阅读。', '本站不从事社交或配对，不鼓励任何特定行为，也不把使用者分类成固定的属性或角色。本站不提供医疗、法律、心理治疗或 BDSM 操作建议，也不能取代合格专业人员的意见。'] },
@@ -207,7 +208,7 @@ export const zhHansLegal = {
     ],
   },
   privacy: {
-    controllingLanguage: '本政策提供多语言译本；如各版本有歧义，以繁体中文版本为准。', eyebrow: '数据与隐私', intro: '这份政策说明哪些数据只留在你的设备、何时会送上云端，以及守密兔如何尽量少收数据。', lastUpdated: '2026 年 7 月 15 日', lastUpdatedLabel: '最后更新', title: '隐私权政策',
+    controllingLanguage: '本政策提供多语言译本；如各版本有歧义，以繁体中文版本为准。', eyebrow: '数据与隐私', intro: `这份政策说明哪些数据只留在你的设备、何时会送上云端，以及${secretKeeperNames['zh-Hans']}如何尽量少收数据。`, lastUpdated: '2026 年 7 月 15 日', lastUpdatedLabel: '最后更新', title: '隐私权政策',
     sections: [
       { title: '一、管理者与适用范围', paragraphs: ['絵夢羽さ沂是本站的服务提供者与个人资料管理者。本政策适用于“XX的秘密档案”网站所处理的数据；你经由外部链接前往的网站，则依其各自的隐私政策处理。'] },
       { title: '二、我们处理的数据', paragraphs: ['依你使用的功能，本站可能处理下列数据：'], items: ['本机数据：语言、称呼、作答内容、备注、本机秘密档案、云端分享的显示记录、分析同意选择与本机上传防护记录。', '云端分享内容：你主动建立分享链接时上传的档案快照，可能包含 BDSM 互动项目的经验、兴趣、界限与备注。', '必要的防滥用记录：匿名应用程序识别、建立时间、数据大小，以及来源 IP、浏览器指纹与 user-agent 经密钥散列后的值。本站不在这份长期记录中保存原始 IP、原始指纹或完整 user-agent。', '短期频率限制数据：为限制大量请求而建立的计数与时间数据，通常在约 48 小时后到期。', '匿名使用分析：仅在你同意后，记录一般页面、语言与低风险功能事件；不包含称呼、作答、备注、档案或分享识别码、搜索参数。'] },
@@ -228,7 +229,7 @@ export const zhHansLegal = {
 export const jaLegal = {
   contactLabel: 'お問い合わせ', documentsLabel: '法的文書', languageLabel: '表示言語', operatorLabel: 'サービス提供者・個人データ管理者', operatorName: '絵夢羽さ沂', privacyLink: 'プライバシーポリシー', termsLink: '利用規約',
   terms: {
-    controllingLanguage: '本規約には翻訳版があります。内容に相違がある場合は繁体字中国語版を優先します。', eyebrow: '利用について', intro: 'ご利用の前に、守秘うさぎができることと、今この瞬間に当事者同士で確かめるべきことをご確認ください。', lastUpdated: '2026年7月15日', lastUpdatedLabel: '最終更新', title: '利用規約',
+    controllingLanguage: '本規約には翻訳版があります。内容に相違がある場合は繁体字中国語版を優先します。', eyebrow: '利用について', intro: `ご利用の前に、${secretKeeperNames.ja}ができることと、今この瞬間に当事者同士で確かめるべきことをご確認ください。`, lastUpdated: '2026年7月15日', lastUpdatedLabel: '最終更新', title: '利用規約',
     sections: [
       { title: '1. 適用範囲と提供者', paragraphs: ['本サービス「XXの秘密ファイル」（呼び名が未設定の場合は「うさぎの秘密ファイル」、以下「本サイト」）は絵夢羽さ沂が提供します。本サイトを利用することで、本規約を遵守することに同意したものとみなします。', '「確認して共有リンクを作成」を押すと、本規約とプライバシーポリシーを読み、同意し、機微な内容を含む可能性のあるファイルをクラウド共有版としてアップロードすることに明示的に同意したものとします。'] },
       { title: '2. 目的と内容に関する注意', paragraphs: ['本サイトは、自己理解、教育、BDSMに関する相互行為の境界線の対話を支援するツールです。性、身体、パワー・エクスチェンジ、高リスクな行為に触れる場合があります。ご自身の状態に合わせて閲覧を続けるか判断してください。', '本サイトは交流・マッチングを行わず、特定の行為を推奨せず、利用者を固定的な属性や役割に分類しません。医療、法律、心理療法、BDSMの実践方法に関する助言は提供せず、専門家の助言に代わるものではありません。'] },
@@ -243,7 +244,7 @@ export const jaLegal = {
     ],
   },
   privacy: {
-    controllingLanguage: '本ポリシーには翻訳版があります。内容に相違がある場合は繁体字中国語版を優先します。', eyebrow: 'データとプライバシー', intro: '端末にのみ残るデータ、クラウドへ送られるタイミング、そして守秘うさぎが収集を最小限にする方法を説明します。', lastUpdated: '2026年7月15日', lastUpdatedLabel: '最終更新', title: 'プライバシーポリシー',
+    controllingLanguage: '本ポリシーには翻訳版があります。内容に相違がある場合は繁体字中国語版を優先します。', eyebrow: 'データとプライバシー', intro: `端末にのみ残るデータ、クラウドへ送られるタイミング、そして${secretKeeperNames.ja}が収集を最小限にする方法を説明します。`, lastUpdated: '2026年7月15日', lastUpdatedLabel: '最終更新', title: 'プライバシーポリシー',
     sections: [
       { title: '1. 管理者と適用範囲', paragraphs: ['絵夢羽さ沂は本サイトのサービス提供者および個人データ管理者です。本ポリシーは「XXの秘密ファイル」サイトでの処理に適用され、外部リンク先には各サイトのポリシーが適用されます。'] },
       { title: '2. 処理するデータ', paragraphs: ['利用する機能に応じ、次のデータを処理する場合があります。'], items: ['端末内データ：言語、呼び名、回答、メモ、端末内の秘密ファイル、クラウド共有の表示記録、分析への同意選択、端末内のアップロード保護記録。', 'クラウド共有内容：自ら共有リンクを作成した際のスナップショット。BDSM項目に関する経験、関心、境界線、メモを含む場合があります。', '不正利用防止記録：匿名のアプリ識別子、作成時刻、データ量、送信元IP、ブラウザフィンガープリント、user-agentを秘密鍵でハッシュ化した値。長期記録には元のIP、元の指紋、完全なuser-agentを保存しません。', '短期レート制限データ：大量リクエストを制限する回数・時刻のデータで、通常約48時間で失効します。', '匿名利用分析：同意した場合のみ、一般的なページ、言語、低リスクな機能イベントを記録します。呼び名、回答、メモ、ファイル・共有ID、検索パラメータは含みません。'] },
@@ -264,7 +265,7 @@ export const jaLegal = {
 export const enLegal = {
   contactLabel: 'Contact', documentsLabel: 'Legal documents', languageLabel: 'Reading language', operatorLabel: 'Service provider and data controller', operatorName: '絵夢羽さ沂', privacyLink: 'Privacy Policy', termsLink: 'Terms of Use',
   terms: {
-    controllingLanguage: 'Translations are provided for convenience. If versions differ, the Traditional Chinese version controls.', eyebrow: 'Using the service', intro: 'Before you begin, please understand what the confidentiality rabbit can help with—and what you still need to confirm with another person in the moment.', lastUpdated: 'July 15, 2026', lastUpdatedLabel: 'Last updated', title: 'Terms of Use',
+    controllingLanguage: 'Translations are provided for convenience. If versions differ, the Traditional Chinese version controls.', eyebrow: 'Using the service', intro: `Before you begin, please understand what the ${secretKeeperNames.en} can help with—and what you still need to confirm with another person in the moment.`, lastUpdated: 'July 15, 2026', lastUpdatedLabel: 'Last updated', title: 'Terms of Use',
     sections: [
       { title: '1. Scope and service provider', paragraphs: ['This service, “XX’s Secret File” (shown as “Rabbit’s Secret File” until a display name is set, the “Site”), is provided by 絵夢羽さ沂. By using the Site, you agree to follow these Terms within the scope of your use.', 'By selecting “Understand and create sharing link,” you confirm that you have read and agree to these Terms and the Privacy Policy, and expressly consent to uploading that file—which may contain sensitive content—as a cloud sharing copy.'] },
       { title: '2. Purpose and sensitive-content notice', paragraphs: ['The Site supports self-understanding, education, and communication about boundaries in BDSM interactions. It may refer to sexuality, bodies, power exchange, and higher-risk activities. Please decide whether to continue based on your own comfort and circumstances.', 'The Site is not a social or matchmaking service, does not promote particular activities, and does not assign fixed attributes or roles. It does not provide medical, legal, mental-health treatment, or BDSM practice advice and is not a substitute for qualified professional advice.'] },
@@ -279,7 +280,7 @@ export const enLegal = {
     ],
   },
   privacy: {
-    controllingLanguage: 'Translations are provided for convenience. If versions differ, the Traditional Chinese version controls.', eyebrow: 'Data and privacy', intro: 'This Policy explains what stays on your device, when information goes to the cloud, and how the confidentiality rabbit tries to collect as little as possible.', lastUpdated: 'July 15, 2026', lastUpdatedLabel: 'Last updated', title: 'Privacy Policy',
+    controllingLanguage: 'Translations are provided for convenience. If versions differ, the Traditional Chinese version controls.', eyebrow: 'Data and privacy', intro: `This Policy explains what stays on your device, when information goes to the cloud, and how the ${secretKeeperNames.en} tries to collect as little as possible.`, lastUpdated: 'July 15, 2026', lastUpdatedLabel: 'Last updated', title: 'Privacy Policy',
     sections: [
       { title: '1. Controller and scope', paragraphs: ['絵夢羽さ沂 is the Site’s service provider and data controller. This Policy applies to data processed by “XX’s Secret File.” Sites reached through external links apply their own privacy policies.'] },
       { title: '2. Data we process', paragraphs: ['Depending on the features you use, the Site may process:'], items: ['On-device data: language, display name, answers, notes, local secret files, cloud-share display history, analytics choice, and local upload-protection records.', 'Cloud sharing content: the file snapshot you actively upload to create a sharing link, which may include experience, interest, boundaries, and notes about BDSM interaction items.', 'Necessary anti-abuse records: an anonymous app identifier, creation time, payload size, and keyed hashes derived from the source IP, browser fingerprint, and user-agent. The long-term record does not store the raw IP, raw fingerprint, or complete user-agent.', 'Short-term rate-limit data: counts and timestamps used to limit abusive request volume, normally expiring after about 48 hours.', 'Anonymous usage analytics: only after consent, general pages, language, and low-risk feature events. These exclude display names, answers, notes, file or sharing IDs, and query parameters.'] },
