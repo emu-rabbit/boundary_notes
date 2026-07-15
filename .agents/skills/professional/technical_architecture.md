@@ -17,7 +17,7 @@
 - **純網頁專案**：本專案是純 web app，不預設 native app、Electron、後端 server 或 CMS。
 - **前端技術棧**：使用 Vite、Vue、TypeScript、Tailwind 與 Vue Router 建構。
 - **部署可攜性**：正式站部署到 Firebase project `boundary-notes-prod` 的 Hosting live channel 並使用 `https://boundarynotes.com`，`www.boundarynotes.com` redirect 到 apex domain；staging 使用另一個 Firebase project `boundary-notes-staging` 的 Hosting live channel 與 Firebase 自產 URL。架構不得綁死在特定 host 或專案子路徑；base path、routing fallback 與靜態資源路徑都應可透過設定調整。
-- **路由可擴充**：目前已有前導劇情、主頁、建立檔案、檔案列表、編輯結果、獨立唯讀檢視、設定與關於等 route。前端 routing、view 結構與入口 registry 應持續支援逐步新增頁面，不應把 mode、route、故事步驟與主頁內容混在單一元件中。
+- **路由可擴充**：目前已有前導劇情、主頁、建立檔案、檔案列表、編輯結果、獨立唯讀檢視、設定、關於、使用條款與隱私權政策等 route。前端 routing、view 結構與入口 registry 應持續支援逐步新增頁面，不應把 mode、route、故事步驟與主頁內容混在單一元件中。
 - **自刻 UI**：UI 應以本專案自己的 component、layout、style token 與互動語言實作，不使用現成 Vue UI/UX library，避免模板感與產品語氣偏移。
 - **輕量優先**：網頁應保持足夠輕量；新增 dependency、圖片格式、動畫、字體或大型資源前，必須評估 bundle size、載入時機與使用者感知流暢度。
 - **資源預熱**：圖片與較大型資源應有明確預熱策略，讓核心流程中的下一步素材能提前準備，但不得一次預載所有資源造成初始載入變慢。
@@ -38,7 +38,7 @@
 - **前導劇情不是主頁本體**：前導劇情可以作為初次進入流程，但不應承擔主頁、測驗、檔案、分享與歷史頁的所有狀態。
 - **route shell 高度策略**：`body` 應是唯一的頁面級垂直捲動容器；`app-shell` 與各 route section 使用 `min-height` 撐滿 viewport，但不得用 `height: 100vh/100dvh` 或 route-level `overflow: hidden/auto` 把內容裁掉或製造第二層拉條。內容高度足夠時不得出現多餘頁面拉條；內容在極端短高 viewport 超出時，應由文件自然長高並可捲到底。
 - **背景層與內容層分離**：route 的背景、黑幕、ambient overlay、裝飾性偽元素應固定在 viewport 層或以不參與文件高度的方式呈現，並設定 `pointer-events: none`。背景層不得因負 inset、blur、scale、mask 或 absolute positioning 撐高文件，也不得在滾動到底部時露出與內容高度不同步的背景/黑幕斷層。
-- **CSS ownership**：`src/styles.css` 只保留 Tailwind 入口；專案自訂 CSS 由 `src/main.ts` 在 Tailwind 後依序匯入 `src/styles/foundation.css`、`route-shell.css`、`story-stage.css`、`story-dialogue.css`、`home-page.css`、`secondary-pages.css`、`file-manager.css`、`questionnaire.css`、`secret-file-preview.css`、`responsive.css`。此順序是 cascade contract：foundation 放 token/reset，route-shell 放 app shell、route 背景、viewport/overflow 策略，story-* 放前導劇情場景與對話，home/secondary pages 放一般頁面 base styles，file-manager 管理本地／雲端檔案切換、列表、匯入與操作 dialog，questionnaire 放建立檔案、重複作答與結果編輯器，secret-file-preview 以結果編輯器為視覺母體管理獨立唯讀總覽、焦點排名、分類詳情與閱覽 dialog，responsive 必須最後匯入以承接跨頁 mobile/desktop overrides。
+- **CSS ownership**：`src/styles.css` 只保留 Tailwind 入口；專案自訂 CSS 由 `src/main.ts` 在 Tailwind 後依序匯入 `src/styles/foundation.css`、`route-shell.css`、`story-stage.css`、`story-dialogue.css`、`home-page.css`、`secondary-pages.css`、`legal-pages.css`、`file-manager.css`、`questionnaire.css`、`secret-file-preview.css`、`analytics-consent.css`、`responsive.css`。此順序是 cascade contract：foundation 放 token/reset，route-shell 放 app shell、route 背景、viewport/overflow 策略，story-* 放前導劇情場景與對話，home/secondary pages 放一般頁面 base styles，legal-pages 管理獨立法律文件，file-manager 管理本地／雲端檔案切換、列表、匯入與操作 dialog，questionnaire 放建立檔案、重複作答與結果編輯器，secret-file-preview 以結果編輯器為視覺母體管理獨立唯讀總覽、焦點排名、分類詳情與閱覽 dialog，responsive 必須最後匯入以承接跨頁 mobile/desktop overrides。
 - **CSS 擴充規則**：新增頁面時，先判斷是否屬於既有 page family；小型頁面可放入 `secondary-pages.css`，大型或獨立功能頁應新增命名清楚的 CSS 檔並在 `responsive.css` 之前匯入。除非需要新的語意結構或可及性元素，修正高度、捲動、背景斷層、mobile/desktop layout 時應先檢查 `route-shell.css` 與 `responsive.css` 的共用策略，而不是在單一 view template 內加局部 workaround。不得用提高 specificity、重複 selector 或動畫 override 來掩蓋 ownership 不清；應把規則移到正確 owner 檔案。
 
 ## 前端多語系
