@@ -35,11 +35,11 @@ export interface QuestionnaireMessages {
     questionCountAction: string;
     questionCountLines: (count: number) => string[];
     ready: string;
-    readyLines: string[];
+    readyLines: (profileName: string) => string[];
     speakerName: string;
     scopeChoices: Array<{ label: string; scope: SecretFileScope; suffix?: string }>;
     scopeHelp: string;
-    scopeLines: string[];
+    scopeLines: (profileName: string) => string[];
   };
   noteHelp: string;
   noteLabel: string;
@@ -165,7 +165,7 @@ const zhHant: QuestionnaireMessages = {
     questionCountAction: '(((ﾟДﾟ;)))',
     questionCountLines: (count) => [`恩......好的，那我們這邊總共有${count}個問題！`],
     ready: '準備好了',
-    readyLines: ['準備好開始第一階段的填答了嗎？'],
+    readyLines: (profileName) => [`${profileName}，準備好開始第一階段的填答了嗎？`],
     speakerName: '守密兔',
     scopeChoices: [
       { label: '僅顯示主導側', scope: 'activeOnly' },
@@ -173,7 +173,9 @@ const zhHant: QuestionnaireMessages = {
       { label: '顯示所有問題', scope: 'all' },
     ],
     scopeHelp: '這些是甚麼？',
-    scopeLines: ['嗨，很高興在這看到你。在開始之前，我希望我們先確定測驗的範圍。'],
+    scopeLines: (profileName) => [
+      `嗨，${profileName}！很高興在這裡看到你。開始之前，我希望我們先確定測驗的範圍。`,
+    ],
   },
   noteHelp: '選填，最多 80 個字；請不要填入連結。',
   noteLabel: '想補充的小提醒',
@@ -292,12 +294,14 @@ const zhHans: QuestionnaireMessages = {
       '你只需要先告诉我，你对每个分类的感受。',
     ],
     explanationAction: '我了解了',
-    scopeLines: ['嗨，很高兴在这里看到你。开始前，我们先确定测验范围。'],
+    scopeLines: (profileName) => [
+      `嗨，${profileName}！很高兴在这里看到你。开始前，我们先确定测验范围。`,
+    ],
     explanationLines: [
       '所有问题都会分为主导侧与配合侧两个方向。',
       '前者代表在互动中主导、施予或执行的一方，后者代表配合、接纳或承受的一方。',
     ],
-    readyLines: ['准备好开始第一阶段的填写了吗？'],
+    readyLines: (profileName) => [`${profileName}，准备好开始第一阶段的填写了吗？`],
     ready: '准备好了',
     speakerName: '守密兔',
     notReady: '还没……',
@@ -427,12 +431,16 @@ const ja: QuestionnaireMessages = {
       'まずは、それぞれのカテゴリーについて今の気持ちを教えてください。',
     ],
     explanationAction: 'わかった',
-    scopeLines: ['こんにちは。始める前に、質問の範囲を決めましょう。'],
+    scopeLines: (profileName) => [
+      `こんにちは、${profileName}。会えてうれしいよ。始める前に、質問の範囲を決めましょう。`,
+    ],
     explanationLines: [
       'すべての質問は、リード側とフォロー側の二つの方向に分けています。',
       '前者はやり取りで主導・施与・実行を担う側、後者はそれに合わせて受け止める側を表します。',
     ],
-    readyLines: ['第一段階の回答を始める準備はできましたか？'],
+    readyLines: (profileName) => [
+      `${profileName}、第一段階の回答を始める準備はできましたか？`,
+    ],
     ready: '準備できた',
     speakerName: '守秘うさぎ',
     notReady: 'まだ……',
@@ -563,12 +571,14 @@ const en: QuestionnaireMessages = {
       'For now, you only need to tell me how you feel about each category.',
     ],
     explanationAction: 'I understand',
-    scopeLines: ['Hi, it is good to see you. Before we begin, let us choose the scope of the questionnaire.'],
+    scopeLines: (profileName) => [
+      `Hi, ${profileName}! It is good to see you. Before we begin, let us choose the scope of the questionnaire.`,
+    ],
     explanationLines: [
       'Every question is grouped into a Leading and a Following direction.',
       'Leading means taking the lead, giving, or carrying out the interaction; Following means joining in, receiving, or experiencing it.',
     ],
-    readyLines: ['Ready to begin the first stage?'],
+    readyLines: (profileName) => [`${profileName}, are you ready to begin the first stage?`],
     ready: 'I am ready',
     speakerName: 'Secretkeeper Bunny',
     notReady: 'Not yet…',

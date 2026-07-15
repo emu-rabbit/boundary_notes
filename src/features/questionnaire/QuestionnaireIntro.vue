@@ -21,6 +21,7 @@ const props = defineProps<{
   appMessages: LocaleMessages;
   errorMessage: string;
   messages: QuestionnaireMessages;
+  profileName: string;
 }>();
 
 const emit = defineEmits<{
@@ -47,7 +48,7 @@ const activePose = computed(() => poseByStep[step.value]);
 const activeLines = computed(() => {
   switch (step.value) {
     case 'scope':
-      return props.messages.intro.scopeLines;
+      return props.messages.intro.scopeLines(props.profileName);
     case 'explanation':
       return props.messages.intro.explanationLines;
     case 'questionCount':
@@ -57,7 +58,7 @@ const activeLines = computed(() => {
     case 'autosave':
       return props.messages.intro.autosaveLines;
     case 'ready':
-      return props.messages.intro.readyLines;
+      return props.messages.intro.readyLines(props.profileName);
   }
 });
 

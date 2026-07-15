@@ -90,6 +90,9 @@ const resultsReturnContext = ref<{
 } | null>(null);
 const questionTransition = ref<'question-slide-next' | 'question-slide-back'>('question-slide-next');
 const messages = computed(() => getQuestionnaireMessages(locale.value));
+const appliedProfileName = computed(
+  () => profileName.value.trim() || appMessages.value.title.defaultProfileName,
+);
 const cloudUploadRateLimitMessage = computed(() => {
   const block = cloudUploadBlock.value;
 
@@ -248,7 +251,7 @@ async function startQuestionnaire(scope: SecretFileScope): Promise<void> {
       bankSchemaVersion: questionBank.schemaVersion,
       bankVersion: questionBank.bankVersion,
       fileId: createLocalFileId(),
-      profileName: profileName.value.trim() || appMessages.value.title.defaultProfileName,
+      profileName: appliedProfileName.value,
       questions: allQuestionDefinitions,
       scope,
     });
@@ -660,6 +663,7 @@ onMounted(() => {
     :app-messages="appMessages"
     :error-message="creationError"
     :messages="messages"
+    :profile-name="appliedProfileName"
     @cancel="goHome"
     @start="startQuestionnaire"
   />
