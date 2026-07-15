@@ -10,6 +10,13 @@ export const uploadGlobalDailyLimit = 2000;
 export const uploadHourlyWindowMs = 60 * 60 * 1000;
 export const uploadDailyWindowMs = 24 * 60 * 60 * 1000;
 
+export type UploadRetryWindow = 'day' | 'hour';
+
+export interface UploadRateLimitDecision {
+  retryAfterSeconds: number;
+  window: UploadRetryWindow;
+}
+
 const questionIdPattern = /^(?:category\.[A-Za-z][A-Za-z0-9_-]{0,79}|detail\.[A-Za-z][A-Za-z0-9_-]{0,79}\.[A-Za-z][A-Za-z0-9_-]{0,79})\.(?:active|passive)$/;
 const forbiddenNotePattern =
   /(?:https?:\/\/|www\.|\[[^\]\r\n]+\]\([^\s)]+\)|(?:[a-z0-9-]+\.)+(?:com|net|org|io|co|tw|app|dev|edu|gov|info))/i;
@@ -153,35 +160,47 @@ export function getPayloadBytes(secretFile: CloudSecretFile): number {
   return Buffer.byteLength(JSON.stringify(secretFile), 'utf8');
 }
 
-function getRetryAfterSecondsForLimits(
+function getRateLimitDecisionForLimits(
   attemptTimes: readonly number[],
   now: number,
   hourlyLimit: number,
   dailyLimit: number,
-): number | null {
+): UploadRateLimitDecision | null {
   const dailyAttempts = attemptTimes
     .filter((attempt) => attempt >= now - uploadDailyWindowMs)
     .sort((left, right) => left - right);
   const hourlyAttempts = dailyAttempts.filter((attempt) => attempt >= now - uploadHourlyWindowMs);
-  const retryTimes: number[] = [];
+  const retryCandidates: Array<{ retryAt: number; window: UploadRetryWindow }> = [];
 
   if (hourlyAttempts.length >= hourlyLimit) {
-    retryTimes.push(hourlyAttempts[0] + uploadHourlyWindowMs);
+    retryCandidates.push({
+      retryAt: (hourlyAttempts[0] ?? now) + uploadHourlyWindowMs,
+      window: 'hour',
+    });
   }
 
   if (dailyAttempts.length >= dailyLimit) {
-    retryTimes.push(dailyAttempts[0] + uploadDailyWindowMs);
+    retryCandidates.push({
+      retryAt: (dailyAttempts[0] ?? now) + uploadDailyWindowMs,
+      window: 'day',
+    });
   }
 
-  if (retryTimes.length === 0) {
-    return null;
-  }
+  const limitingCandidate = retryCandidates.sort((left, right) => right.retryAt - left.retryAt)[0];
 
-  return Math.max(1, Math.ceil((Math.max(...retryTimes) - now) / 1000));
+  return limitingCandidate
+    ? {
+        retryAfterSeconds: Math.max(1, Math.ceil((limitingCandidate.retryAt - now) / 1000)),
+        window: limitingCandidate.window,
+      }
+    : null;
 }
 
-export function getRetryAfterSeconds(attemptTimes: readonly number[], now: number): number | null {
-  return getRetryAfterSecondsForLimits(
+export function getRateLimitDecision(
+  attemptTimes: readonly number[],
+  now: number,
+): UploadRateLimitDecision | null {
+  return getRateLimitDecisionForLimits(
     attemptTimes,
     now,
     uploadHourlyLimit,
@@ -189,11 +208,11 @@ export function getRetryAfterSeconds(attemptTimes: readonly number[], now: numbe
   );
 }
 
-export function getGlobalRetryAfterSeconds(
+export function getGlobalRateLimitDecision(
   attemptTimes: readonly number[],
   now: number,
-): number | null {
-  return getRetryAfterSecondsForLimits(
+): UploadRateLimitDecision | null {
+  return getRateLimitDecisionForLimits(
     attemptTimes,
     now,
     uploadGlobalHourlyLimit,

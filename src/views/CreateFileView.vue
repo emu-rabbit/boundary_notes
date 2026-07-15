@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useAppShell } from '../app/useAppShell';
 import {
@@ -14,8 +14,12 @@ import {
 } from '../features/analytics/analytics';
 import {
   CloudSharingError,
+  cloudUploadGuard,
+  createCloudUploadContentKey,
   createCloudSecretFile,
+  formatApproximateCloudUploadWait,
   linkCloudShare,
+  type CloudUploadBlock,
 } from '../features/cloud-sharing';
 import {
   allQuestionDefinitions,
@@ -39,6 +43,7 @@ import {
   reconcileSecretFileQuestions,
   type AnswerQuestionInput,
   type QuestionRole,
+  type SecretFile,
   type SecretFileScope,
 } from '../features/secret-file';
 import { useSecretFileStore } from '../features/secret-file/application/useSecretFileStore';
@@ -59,11 +64,18 @@ const {
 
 const creationError = ref('');
 const cloudUploadDialog = ref<HTMLDialogElement | null>(null);
-const cloudUploadState = ref<'confirm' | 'error' | 'success' | 'uploading'>('confirm');
+const cloudUploadState = ref<'confirm' | 'duplicate' | 'error' | 'rateLimited' | 'success' | 'uploading'>('confirm');
 const cloudUploadError = ref('');
 const cloudUploadHref = ref('');
 const cloudUploadLocalSaveFailed = ref(false);
 const cloudUploadPopupBlocked = ref(false);
+const cloudUploadBlock = ref<CloudUploadBlock | null>(null);
+const cloudUploadNow = ref(Date.now());
+const lastSuccessfulCloudUpload = ref<{
+  contentKey: string;
+  href: string;
+} | null>(null);
+let cloudUploadCountdownTimer: number | null = null;
 const questionCursor = ref<number | null>(null);
 const detailCursor = ref<number | null>(null);
 const detailSession = ref<{
@@ -78,6 +90,21 @@ const resultsReturnContext = ref<{
 } | null>(null);
 const questionTransition = ref<'question-slide-next' | 'question-slide-back'>('question-slide-next');
 const messages = computed(() => getQuestionnaireMessages(locale.value));
+const cloudUploadRateLimitMessage = computed(() => {
+  const block = cloudUploadBlock.value;
+
+  if (!block) return messages.value.results.uploadRateLimitedUnknown;
+
+  const time = formatApproximateCloudUploadWait(
+    locale.value,
+    Math.max(1, block.retryAt - cloudUploadNow.value),
+    block.window,
+  );
+
+  return block.scope === 'site'
+    ? messages.value.results.uploadSiteBusy(time)
+    : messages.value.results.uploadRateLimited(time);
+});
 const localizedQuestionBank = computed(() => localizeQuestionBank(questionBank, locale.value));
 const secretFile = computed(() => store.activeSecretFile);
 const categoryQuestions = computed(() =>
@@ -418,11 +445,26 @@ function openCloudUploadDialog(): void {
   cloudUploadHref.value = '';
   cloudUploadLocalSaveFailed.value = false;
   cloudUploadPopupBlocked.value = false;
+
+  const fileToUpload = secretFile.value;
+
+  if (fileToUpload && showExistingCloudUpload(fileToUpload)) {
+    void nextTick(() => cloudUploadDialog.value?.showModal());
+    return;
+  }
+
+  const block = cloudUploadGuard.getBlock();
+
+  if (block) {
+    showCloudUploadBlock(block);
+  }
+
   void nextTick(() => cloudUploadDialog.value?.showModal());
 }
 
 function closeCloudUploadDialog(): void {
   if (cloudUploadState.value === 'uploading') return;
+  clearCloudUploadCountdown();
   cloudUploadDialog.value?.close();
 }
 
@@ -442,14 +484,49 @@ function getCloudUploadErrorMessage(error: unknown): string {
   }
 
   if (error.code === 'rateLimited') {
-    return messages.value.results.uploadRateLimited;
+    return messages.value.results.uploadRateLimitedUnknown;
   }
 
   if (error.code === 'siteBusy') {
-    return messages.value.results.uploadSiteBusy;
+    return messages.value.results.uploadSiteBusyUnknown;
   }
 
   return messages.value.results.uploadFailed;
+}
+
+function clearCloudUploadCountdown(): void {
+  if (cloudUploadCountdownTimer === null) return;
+  window.clearInterval(cloudUploadCountdownTimer);
+  cloudUploadCountdownTimer = null;
+}
+
+function showCloudUploadBlock(block: CloudUploadBlock): void {
+  clearCloudUploadCountdown();
+  cloudUploadBlock.value = block;
+  cloudUploadNow.value = Date.now();
+  cloudUploadState.value = 'rateLimited';
+  cloudUploadCountdownTimer = window.setInterval(() => {
+    cloudUploadNow.value = Date.now();
+
+    if (cloudUploadNow.value >= block.retryAt) {
+      clearCloudUploadCountdown();
+      cloudUploadBlock.value = null;
+      cloudUploadState.value = 'confirm';
+    }
+  }, 1000);
+}
+
+function showExistingCloudUpload(fileToUpload: SecretFile): boolean {
+  const lastUpload = lastSuccessfulCloudUpload.value;
+
+  if (!lastUpload || lastUpload.contentKey !== createCloudUploadContentKey(fileToUpload)) {
+    return false;
+  }
+
+  clearCloudUploadCountdown();
+  cloudUploadHref.value = lastUpload.href;
+  cloudUploadState.value = 'duplicate';
+  return true;
 }
 
 async function confirmCloudUpload(): Promise<void> {
@@ -457,13 +534,24 @@ async function confirmCloudUpload(): Promise<void> {
 
   if (!fileToUpload || cloudUploadState.value === 'uploading') return;
 
+  if (showExistingCloudUpload(fileToUpload)) return;
+
+  const activeBlock = cloudUploadGuard.getBlock();
+
+  if (activeBlock) {
+    showCloudUploadBlock(activeBlock);
+    return;
+  }
+
   cloudUploadState.value = 'uploading';
   cloudUploadError.value = '';
   cloudUploadLocalSaveFailed.value = false;
   cloudUploadPopupBlocked.value = false;
 
   try {
+    const contentKey = createCloudUploadContentKey(fileToUpload);
     const createdShare = await createCloudSecretFile(fileToUpload);
+    cloudUploadGuard.recordSuccessfulUpload(createdShare.createdAt);
     trackCloudShareCreated(fileToUpload.scope);
     const href = router.resolve({
       name: 'preview',
@@ -472,6 +560,7 @@ async function confirmCloudUpload(): Promise<void> {
     const absoluteHref = new URL(href, window.location.href).href;
 
     cloudUploadHref.value = href;
+    lastSuccessfulCloudUpload.value = { contentKey, href };
 
     try {
       linkCloudShare({
@@ -493,10 +582,29 @@ async function confirmCloudUpload(): Promise<void> {
       cloudUploadPopupBlocked.value = true;
     }
   } catch (error) {
+    if (
+      error instanceof CloudSharingError
+      && (error.code === 'rateLimited' || error.code === 'siteBusy')
+      && error.retryAfterSeconds !== null
+    ) {
+      const retryWindow = error.retryWindow
+        ?? (error.retryAfterSeconds > 60 * 60 ? 'day' : 'hour');
+      showCloudUploadBlock(cloudUploadGuard.recordServerBlock(
+        error.code === 'siteBusy' ? 'site' : 'source',
+        error.retryAfterSeconds,
+        retryWindow,
+      ));
+      return;
+    }
+
     cloudUploadError.value = getCloudUploadErrorMessage(error);
     cloudUploadState.value = 'error';
   }
 }
+
+onBeforeUnmount(() => {
+  clearCloudUploadCountdown();
+});
 
 watch(
   currentQuestionIndex,
@@ -611,6 +719,34 @@ onMounted(() => {
         </button>
         <button type="button" @click="closeCloudUploadDialog">
           {{ messages.results.uploadCancel }}
+        </button>
+      </div>
+    </template>
+
+    <template v-else-if="cloudUploadState === 'rateLimited'">
+      <h2>{{ messages.results.uploadRateLimitTitle }}</h2>
+      <p class="cloud-upload-dialog__feedback" role="alert">
+        {{ cloudUploadRateLimitMessage }}
+      </p>
+      <div class="cloud-upload-dialog__actions">
+        <button class="cloud-upload-dialog__confirm" type="button" disabled>
+          {{ messages.results.uploadConfirm }}
+        </button>
+        <button type="button" @click="closeCloudUploadDialog">
+          {{ messages.results.uploadCancel }}
+        </button>
+      </div>
+    </template>
+
+    <template v-else-if="cloudUploadState === 'duplicate'">
+      <h2>{{ messages.results.uploadDuplicateTitle }}</h2>
+      <p>{{ messages.results.uploadDuplicateBody }}</p>
+      <div class="cloud-upload-dialog__actions">
+        <a :href="cloudUploadHref" target="_blank" rel="noopener noreferrer">
+          {{ messages.results.uploadOpenFile }}
+        </a>
+        <button type="button" @click="closeCloudUploadDialog">
+          {{ messages.results.uploadClose }}
         </button>
       </div>
     </template>

@@ -5,10 +5,10 @@ import { defineSecret, expr, projectID } from 'firebase-functions/params';
 import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https';
 import {
   createShareRequestSchema,
-  getGlobalRetryAfterSeconds,
+  getGlobalRateLimitDecision,
   getGoogleLoadBalancerClientIp,
   getPayloadBytes,
-  getRetryAfterSeconds,
+  getRateLimitDecision,
   maxCloudPayloadBytes,
   normalizeClientIp,
   uploadDailyWindowMs,
@@ -119,23 +119,31 @@ export const createSharedSecretFile = onCall(
       const globalRateLimitSnapshot = await transaction.get(globalRateLimitRef);
       const previousAttempts = parseAttemptTimes(rateLimitSnapshot.get('attempts'));
       const previousGlobalAttempts = parseAttemptTimes(globalRateLimitSnapshot.get('attempts'));
-      const globalRetryAfterSeconds = getGlobalRetryAfterSeconds(previousGlobalAttempts, nowMs);
+      const globalRateLimitDecision = getGlobalRateLimitDecision(previousGlobalAttempts, nowMs);
 
-      if (globalRetryAfterSeconds !== null) {
+      if (globalRateLimitDecision !== null) {
         throw new HttpsError(
           'resource-exhausted',
           '網站目前請求過多，請稍後再試。',
-          { reason: 'global-rate-limit', retryAfterSeconds: globalRetryAfterSeconds },
+          {
+            reason: 'global-rate-limit',
+            retryAfterSeconds: globalRateLimitDecision.retryAfterSeconds,
+            retryWindow: globalRateLimitDecision.window,
+          },
         );
       }
 
-      const retryAfterSeconds = getRetryAfterSeconds(previousAttempts, nowMs);
+      const rateLimitDecision = getRateLimitDecision(previousAttempts, nowMs);
 
-      if (retryAfterSeconds !== null) {
+      if (rateLimitDecision !== null) {
         throw new HttpsError(
           'resource-exhausted',
           '匿名上傳次數已達限制。',
-          { reason: 'source-rate-limit', retryAfterSeconds },
+          {
+            reason: 'source-rate-limit',
+            retryAfterSeconds: rateLimitDecision.retryAfterSeconds,
+            retryWindow: rateLimitDecision.window,
+          },
         );
       }
 

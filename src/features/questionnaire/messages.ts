@@ -91,8 +91,13 @@ export interface QuestionnaireMessages {
     uploadOpenFile: string;
     uploadPopupBlocked: string;
     uploadPreviewHint: string;
-    uploadRateLimited: string;
-    uploadSiteBusy: string;
+    uploadDuplicateBody: string;
+    uploadDuplicateTitle: string;
+    uploadRateLimitTitle: string;
+    uploadRateLimited: (time: string) => string;
+    uploadRateLimitedUnknown: string;
+    uploadSiteBusy: (time: string) => string;
+    uploadSiteBusyUnknown: string;
     uploadSuccessBody: string;
     uploadSuccessBodyUnlinked: string;
     uploadSuccessTitle: string;
@@ -228,8 +233,13 @@ const zhHant: QuestionnaireMessages = {
     uploadOpenFile: '檢視雲端檔案',
     uploadPopupBlocked: '瀏覽器沒有開啟新分頁，你仍可使用下方連結檢視雲端檔案。',
     uploadPreviewHint: '你也可以先透過檢視預覽的按鈕，先查看檔案發布後會有的呈現。',
-    uploadRateLimited: '這個匿名來源的上傳次數已達限制，請稍後再試。',
-    uploadSiteBusy: '網站目前請求過多，請稍後再試。',
+    uploadDuplicateBody: '這份檔案目前的內容已經上傳過了，因此沒有建立重複快照。你可以直接開啟先前的雲端檔案。',
+    uploadDuplicateTitle: '這份內容已經上傳過了',
+    uploadRateLimitTitle: '暫時無法再次上傳',
+    uploadRateLimited: (time) => `已達目前的上傳次數上限，約${time}後重置。`,
+    uploadRateLimitedUnknown: '已達目前的上傳次數上限，請稍後再試。',
+    uploadSiteBusy: (time) => `網站目前的上傳量已達上限，約${time}後重置。`,
+    uploadSiteBusyUnknown: '網站目前的上傳量已達上限，請稍後再試。',
     uploadSuccessBody: '這份不可修改的雲端快照已建立，並已連結到這台裝置的檔案庫。',
     uploadSuccessBodyUnlinked: '雲端快照已建立，但無法把連結保存到這台裝置。請先保留或開啟下方連結。',
     uploadSuccessTitle: '上傳完成',
@@ -362,8 +372,13 @@ const zhHans: QuestionnaireMessages = {
     uploadOpenFile: '查看云端文件',
     uploadPopupBlocked: '浏览器未打开新标签页，你仍可使用下方链接查看云端文件。',
     uploadPreviewHint: '你也可以先使用查看预览按钮，确认文件发布后的呈现方式。',
-    uploadRateLimited: '此匿名来源的上传次数已达限制，请稍后再试。',
-    uploadSiteBusy: '网站目前请求过多，请稍后再试。',
+    uploadDuplicateBody: '此文件的当前内容已经上传过，因此没有建立重复快照。你可以直接打开之前的云端文件。',
+    uploadDuplicateTitle: '此内容已经上传过',
+    uploadRateLimitTitle: '暂时无法再次上传',
+    uploadRateLimited: (time) => `已达到当前的上传次数上限，约${time}后重置。`,
+    uploadRateLimitedUnknown: '已达到当前的上传次数上限，请稍后重试。',
+    uploadSiteBusy: (time) => `网站当前的上传量已达到上限，约${time}后重置。`,
+    uploadSiteBusyUnknown: '网站当前的上传量已达到上限，请稍后重试。',
     uploadSuccessBody: '不可修改的云端快照已建立，并已连接到此设备的文件库。',
     uploadSuccessBodyUnlinked: '云端快照已建立，但无法将链接保存到此设备。请先保留或打开下方链接。',
     uploadSuccessTitle: '上传完成',
@@ -489,8 +504,13 @@ const ja: QuestionnaireMessages = {
     uploadOpenFile: 'クラウドファイルを見る',
     uploadPopupBlocked: '新しいタブを開けませんでした。下のリンクからクラウドファイルを表示できます。',
     uploadPreviewHint: '先に「プレビューを見る」ボタンから、公開後の表示を確認することもできます。',
-    uploadRateLimited: 'この匿名の接続元はアップロード回数の上限に達しました。しばらくしてからお試しください。',
-    uploadSiteBusy: '現在サイトへのリクエストが集中しています。しばらくしてからお試しください。',
+    uploadDuplicateBody: 'このファイルの現在の内容はすでにアップロード済みのため、重複するスナップショットは作成しませんでした。先ほどのクラウドファイルをそのまま開けます。',
+    uploadDuplicateTitle: 'この内容はアップロード済みです',
+    uploadRateLimitTitle: '現在は再アップロードできません',
+    uploadRateLimited: (time) => `現在のアップロード上限に達しました。約${time}後にリセットされます。`,
+    uploadRateLimitedUnknown: '現在のアップロード上限に達しました。しばらくしてからお試しください。',
+    uploadSiteBusy: (time) => `現在、サイト全体のアップロード上限に達しています。約${time}後にリセットされます。`,
+    uploadSiteBusyUnknown: '現在、サイト全体のアップロード上限に達しています。しばらくしてからお試しください。',
     uploadSuccessBody: '変更できないクラウドスナップショットを作成し、この端末のファイルライブラリにリンクしました。',
     uploadSuccessBodyUnlinked: 'クラウドスナップショットは作成されましたが、この端末にリンクを保存できませんでした。下のリンクを控えるか、先に開いてください。',
     uploadSuccessTitle: 'アップロード完了',
@@ -620,8 +640,13 @@ const en: QuestionnaireMessages = {
     uploadOpenFile: 'View cloud file',
     uploadPopupBlocked: 'The browser did not open a new tab. You can still use the link below to view the cloud file.',
     uploadPreviewHint: 'You can also use View Preview first to check how the file will look after it is published.',
-    uploadRateLimited: 'This anonymous source has reached the upload limit. Please try again later.',
-    uploadSiteBusy: 'The site is receiving too many requests right now. Please try again later.',
+    uploadDuplicateBody: 'This version of the file has already been uploaded, so no duplicate snapshot was created. You can open the existing cloud file instead.',
+    uploadDuplicateTitle: 'This version is already uploaded',
+    uploadRateLimitTitle: 'Another upload is not available yet',
+    uploadRateLimited: (time) => `The current upload limit will reset in about ${time}.`,
+    uploadRateLimitedUnknown: 'The current upload limit has been reached. Please try again later.',
+    uploadSiteBusy: (time) => `The site-wide upload limit will reset in about ${time}.`,
+    uploadSiteBusyUnknown: 'The site-wide upload limit has been reached. Please try again later.',
     uploadSuccessBody: 'An immutable cloud snapshot was created and linked in the file library on this device.',
     uploadSuccessBodyUnlinked: 'The cloud snapshot was created, but its link could not be saved on this device. Please keep or open the link below first.',
     uploadSuccessTitle: 'Upload complete',

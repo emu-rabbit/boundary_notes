@@ -3,6 +3,7 @@ import type { Functions, HttpsCallable } from 'firebase/functions';
 import type { SecretFile } from '../secret-file';
 import { parseSecretFile } from '../secret-file/validation/secretFileSchema';
 import { isCloudShareId } from './cloudShareId';
+import type { CloudUploadRetryWindow } from './cloudUploadGuard';
 
 const cloudFunctionsRegion = 'asia-east1';
 const firebaseAppName = 'boundary-notes-cloud-sharing';
@@ -20,6 +21,7 @@ export class CloudSharingError extends Error {
     public readonly code: CloudSharingErrorCode,
     message: string,
     public readonly retryAfterSeconds: number | null = null,
+    public readonly retryWindow: CloudUploadRetryWindow | null = null,
   ) {
     super(message);
     this.name = 'CloudSharingError';
@@ -176,13 +178,26 @@ function normalizeCloudSharingError(error: unknown): CloudSharingError {
     ? details.retryAfterSeconds
     : null;
   const reason = details && typeof details.reason === 'string' ? details.reason : '';
+  const retryWindow = details && (details.retryWindow === 'day' || details.retryWindow === 'hour')
+    ? details.retryWindow
+    : null;
 
   if (code.endsWith('/resource-exhausted')) {
     if (reason === 'global-rate-limit') {
-      return new CloudSharingError('siteBusy', 'Site upload limit reached.', retryAfterSeconds);
+      return new CloudSharingError(
+        'siteBusy',
+        'Site upload limit reached.',
+        retryAfterSeconds,
+        retryWindow,
+      );
     }
 
-    return new CloudSharingError('rateLimited', 'Upload rate limit reached.', retryAfterSeconds);
+    return new CloudSharingError(
+      'rateLimited',
+      'Upload rate limit reached.',
+      retryAfterSeconds,
+      retryWindow,
+    );
   }
 
   if (code.endsWith('/not-found')) {

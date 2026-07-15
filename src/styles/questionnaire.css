@@ -2140,6 +2140,17 @@
   border-color: rgba(241, 178, 184, 0.4);
 }
 
+.cloud-upload-dialog__actions button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.cloud-upload-dialog__actions button:disabled:hover,
+.cloud-upload-dialog__actions button:disabled:focus-visible {
+  color: #fff1e9;
+  border-color: rgba(241, 178, 184, 0.4);
+}
+
 .cloud-upload-dialog__actions button:hover,
 .cloud-upload-dialog__actions button:focus-visible,
 .cloud-upload-dialog__actions a:hover,

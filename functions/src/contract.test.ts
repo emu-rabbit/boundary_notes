@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   cloudSecretFileSchema,
-  getGlobalRetryAfterSeconds,
+  getGlobalRateLimitDecision,
   getGoogleLoadBalancerClientIp,
-  getRetryAfterSeconds,
+  getRateLimitDecision,
   normalizeClientIp,
   uploadDailyWindowMs,
   uploadHourlyWindowMs,
@@ -58,7 +58,7 @@ describe('upload rate limit', () => {
     const now = Date.now();
     const attempts = Array.from({ length: 5 }, (_, index) => now - index * 1000);
 
-    expect(getRetryAfterSeconds(attempts, now)).toBeGreaterThan(0);
+    expect(getRateLimitDecision(attempts, now)).toMatchObject({ window: 'hour' });
   });
 
   it('blocks the eleventh upload in one day even when hourly volume is low', () => {
@@ -68,19 +68,19 @@ describe('upload rate limit', () => {
       (_, index) => now - uploadHourlyWindowMs - index * 1000,
     );
 
-    expect(getRetryAfterSeconds(attempts, now)).toBeGreaterThan(0);
+    expect(getRateLimitDecision(attempts, now)).toMatchObject({ window: 'day' });
   });
 
   it('ignores attempts older than one day', () => {
     const now = Date.now();
-    expect(getRetryAfterSeconds([now - uploadDailyWindowMs - 1], now)).toBeNull();
+    expect(getRateLimitDecision([now - uploadDailyWindowMs - 1], now)).toBeNull();
   });
 
   it('blocks the 301st project-wide upload in one hour', () => {
     const now = Date.now();
     const attempts = Array.from({ length: 300 }, (_, index) => now - index * 1000);
 
-    expect(getGlobalRetryAfterSeconds(attempts, now)).toBeGreaterThan(0);
+    expect(getGlobalRateLimitDecision(attempts, now)).toMatchObject({ window: 'hour' });
   });
 
   it('blocks the 2001st project-wide upload in one day', () => {
@@ -90,7 +90,7 @@ describe('upload rate limit', () => {
       (_, index) => now - uploadHourlyWindowMs - index * 1000,
     );
 
-    expect(getGlobalRetryAfterSeconds(attempts, now)).toBeGreaterThan(0);
+    expect(getGlobalRateLimitDecision(attempts, now)).toMatchObject({ window: 'day' });
   });
 });
 
