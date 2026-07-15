@@ -6,7 +6,11 @@ import { getProfileEntryRoute, loadStoredProfileName } from '../app/useProfileNa
 import { formatDocumentTitle } from '../app/useSecretFileTitle';
 import { trackSecretFileViewed } from '../features/analytics/analytics';
 import { CloudSharingError, loadCloudSecretFile } from '../features/cloud-sharing';
-import { localizeQuestionBank, questionBank } from '../features/question-bank';
+import {
+  localizeQuestionBank,
+  questionBank,
+  warmAllCategoryVisuals,
+} from '../features/question-bank';
 import { getQuestionnaireMessages } from '../features/questionnaire/messages';
 import { getPreviewMessages } from '../features/questionnaire/previewMessages';
 import SecretFilePreview from '../features/questionnaire/SecretFilePreview.vue';
@@ -58,6 +62,7 @@ async function loadPreview(): Promise<void> {
     return;
   }
 
+  warmAllCategoryVisuals();
   loadState.value = 'loading';
 
   try {

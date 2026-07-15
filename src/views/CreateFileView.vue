@@ -42,7 +42,7 @@ import {
   type SecretFileScope,
 } from '../features/secret-file';
 import { useSecretFileStore } from '../features/secret-file/application/useSecretFileStore';
-import { warmStoryAssets } from '../features/story/rabbitAssets';
+import { warmRabbitAssets } from '../features/story/rabbitAssets';
 
 const route = useRoute();
 const router = useRouter();
@@ -479,7 +479,7 @@ watch(
 );
 
 onMounted(() => {
-  warmStoryAssets();
+  warmRabbitAssets();
   store.refresh();
   const fileId = typeof route.query.file === 'string' ? route.query.file : null;
 

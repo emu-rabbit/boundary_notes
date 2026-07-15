@@ -23,10 +23,21 @@ export const homeRabbitUrl = rabbitGreetingUrl;
 export const settingsRabbitUrl = rabbitSettingsUrl;
 export const filesRabbitUrl = rabbitFolderUrl;
 
-export function warmStoryAssets(): void {
-  Object.values(rabbitPoseUrls).forEach((src) => {
+const rabbitAssetUrls = [...new Set([
+  ...Object.values(rabbitPoseUrls),
+  settingsRabbitUrl,
+])];
+const warmedRabbitUrls = new Set<string>();
+
+export function warmRabbitAssets(): void {
+  if (typeof Image === 'undefined') return;
+
+  rabbitAssetUrls.forEach((src) => {
+    if (warmedRabbitUrls.has(src)) return;
+
     const image = new Image();
     image.decoding = 'async';
     image.src = src;
+    warmedRabbitUrls.add(src);
   });
 }

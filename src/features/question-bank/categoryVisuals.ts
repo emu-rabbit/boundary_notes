@@ -65,3 +65,7 @@ export function warmCategoryVisual(categoryId: string): void {
   image.src = getCategoryVisualUrl(categoryId);
   warmedCategoryIds.add(categoryId);
 }
+
+export function warmAllCategoryVisuals(): void {
+  Object.keys(categoryVisualUrls).forEach(warmCategoryVisual);
+}

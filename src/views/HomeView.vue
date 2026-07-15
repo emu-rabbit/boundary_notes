@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useAppShell } from '../app/useAppShell';
 import SecretFileTitle from '../components/SecretFileTitle.vue';
-import { homeRabbitUrl } from '../features/story/rabbitAssets';
+import { homeRabbitUrl, warmRabbitAssets } from '../features/story/rabbitAssets';
 
 const {
   localizedHomeEntrances: entrances,
@@ -20,6 +20,10 @@ const primaryEntrances = computed(() =>
 );
 const aboutEntrance = computed(() => routeById.value.get('about'));
 const settingsEntrance = computed(() => routeById.value.get('settings'));
+
+onMounted(() => {
+  warmRabbitAssets();
+});
 </script>
 
 <template>

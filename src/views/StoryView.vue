@@ -3,7 +3,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useAppShell } from '../app/useAppShell';
 import BrandMark from '../components/BrandMark.vue';
 import RabbitScene from '../components/RabbitScene.vue';
-import { rabbitPoseUrls, warmStoryAssets } from '../features/story/rabbitAssets';
+import { rabbitPoseUrls, warmRabbitAssets } from '../features/story/rabbitAssets';
 import StoryDialogue from '../features/story/StoryDialogue.vue';
 import { getStoryStepIndex, getStorySteps, type StepId } from '../features/story/storySteps';
 
@@ -45,7 +45,7 @@ function updateProfileNameDraft(name: string): void {
 }
 
 onMounted(() => {
-  warmStoryAssets();
+  warmRabbitAssets();
 });
 </script>
 

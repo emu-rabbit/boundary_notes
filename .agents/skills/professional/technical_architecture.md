@@ -89,7 +89,7 @@
 - **字型資源可退化且保留完整字元覆蓋**：`index.html` 在字型 stylesheet 前宣告 Google Fonts 與 fonts.gstatic.com 的 `preconnect`；Google Fonts 以 `display=swap` 提供 `Huninn / jf open 粉圓`、Noto Sans SC 與 Noto Sans JP 的 WOFF2 unicode-range 子集，避免把完整 TTF 打包進應用程式。`src/styles/foundation.css` 只維護 font token 與 locale stack。不得用固定文案清單做 glyph subset，避免使用者輸入未收錄字元時產生不一致 fallback；遠端字型載入失敗時必須保留系統 CJK fallback，不可讓核心流程因字型資源失敗而不可讀。
 - **避免模板感**：不得直接套用大型 Vue UI kit、dashboard template 或 landing page template。若使用 headless utility 或小型無樣式 helper，必須確認它不主導視覺語言。
 - **預熱策略要可見於程式**：圖片、插畫、字體、路由 chunk 或大型資料應透過明確的 preload、prefetch、lazy loading、cache warmup 或 staged loading 策略處理。
-- **核心流程優先**：預熱優先服務測驗流程、結果檢閱與分享頁的順暢感；非核心裝飾資源不得搶佔初始載入。
+- **核心流程優先**：預熱優先服務測驗流程、結果檢閱與分享頁的順暢感；使用者進入前導劇情或主頁時應開始預熱所有兔子圖片，進入雲端檔案檢視時則應在等待 Firestore 回應前開始預熱所有分類圖片。這些 route-level 預熱不得阻塞畫面，也不得擴張成在 app 初始載入時無差別下載所有非核心裝飾資源。
 - **可退化**：資源預熱、GA、Firestore 或網路請求失敗時，核心測驗與本地檢閱流程仍應有合理 fallback。
 - **viewport 驗證基準**：調整 route shell、背景、主要 layout 或 overflow 後，除了 build/typecheck，應至少用一般桌面、短高桌面、手機三類 viewport 驗證 `scrollHeight`/`clientHeight` 與視覺底部狀態；高度足夠的畫面不可有多餘拉條，短高畫面必須能捲到所有內容，背景與黑幕不可在滾動過程中斷層。
 

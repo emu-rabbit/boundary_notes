@@ -11,7 +11,11 @@ export {
   getResultCategories,
   questionBank,
 } from './questionBank';
-export { getCategoryVisualUrl, warmCategoryVisual } from './categoryVisuals';
+export {
+  getCategoryVisualUrl,
+  warmAllCategoryVisuals,
+  warmCategoryVisual,
+} from './categoryVisuals';
 export { getLocalizedCategoryQuestionsForScope, localizeQuestionBank } from './locales';
 export type {
   CategoryQuestion,
