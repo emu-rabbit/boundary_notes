@@ -45,8 +45,27 @@
 }
 
 .settings-stage {
+  grid-template-areas: "character content";
   grid-template-columns: minmax(15rem, 24rem) minmax(20rem, 40rem);
-  width: min(1040px, 100%);
+  align-items: start;
+  width: min(1040px, calc(100% - 3rem));
+  min-height: 100dvh;
+  padding: 3rem 0;
+}
+
+.settings-route {
+  align-content: start;
+  padding: 0;
+}
+
+.settings-character {
+  position: sticky;
+  top: clamp(2.2rem, 6dvh, 4.8rem);
+  grid-area: character;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100dvh - clamp(2.2rem, 6dvh, 4.8rem) - 3rem);
 }
 
 .planned-rabbit {
@@ -78,8 +97,11 @@
 }
 
 .settings-copy {
+  grid-area: content;
   display: grid;
+  align-content: center;
   gap: 1rem;
+  min-height: calc(100dvh - 6rem);
 }
 
 .settings-heading {

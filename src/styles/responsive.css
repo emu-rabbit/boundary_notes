@@ -590,16 +590,26 @@
   }
 
   .settings-stage {
-    width: min(100%, 38rem);
+    grid-template-areas: none;
+    width: min(calc(100% - 2rem), 38rem);
+    min-height: auto;
     gap: clamp(0.7rem, 2dvh, 1rem);
+    padding: max(1.25rem, env(safe-area-inset-top, 0px)) 0 max(1.5rem, env(safe-area-inset-bottom, 0px));
   }
 
   .planned-rabbit {
     width: min(48vw, 13rem);
   }
 
-  .settings-rabbit {
+  .settings-character {
+    position: relative;
+    top: auto;
+    grid-area: auto;
     order: 2;
+    height: auto;
+  }
+
+  .settings-rabbit {
     width: min(54vw, 14rem);
   }
 
@@ -610,6 +620,7 @@
   }
 
   .settings-copy {
+    grid-area: auto;
     display: contents;
   }
 

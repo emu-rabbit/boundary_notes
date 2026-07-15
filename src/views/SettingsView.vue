@@ -78,14 +78,16 @@ onBeforeUnmount(() => {
   <section class="settings-route">
     <div class="home-ambient" aria-hidden="true" />
     <div class="settings-stage">
-      <img
-        :src="settingsRabbitUrl"
-        :alt="messages.assets.settingsRabbitAlt"
-        class="settings-rabbit"
-        width="1024"
-        height="1536"
-        decoding="async"
-      />
+      <div class="settings-character">
+        <img
+          :src="settingsRabbitUrl"
+          :alt="messages.assets.settingsRabbitAlt"
+          class="settings-rabbit"
+          width="1024"
+          height="1536"
+          decoding="async"
+        />
+      </div>
       <div class="settings-copy">
         <div class="settings-heading">
           <p class="home-kicker">{{ appTitle }}</p>
