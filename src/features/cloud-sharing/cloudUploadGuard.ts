@@ -146,6 +146,17 @@ export function createCloudUploadContentKey(secretFile: SecretFile): string {
   });
 }
 
+export async function createCloudUploadContentFingerprint(
+  secretFile: SecretFile,
+): Promise<string> {
+  const bytes = new TextEncoder().encode(createCloudUploadContentKey(secretFile));
+  const digest = await globalThis.crypto.subtle.digest('SHA-256', bytes);
+  const hex = Array.from(new Uint8Array(digest), (value) => value.toString(16).padStart(2, '0'))
+    .join('');
+
+  return `sha256:${hex}`;
+}
+
 export function formatApproximateCloudUploadWait(
   locale: AppLocale,
   remainingMs: number,

@@ -16,6 +16,7 @@ export interface LinkedCloudShare {
   profileName: string | null;
   scope: SecretFileScope | null;
   shareId: string;
+  sourceContentFingerprint: string | null;
 }
 
 export class CloudShareLinkStorageError extends Error {
@@ -59,6 +60,10 @@ function parseStoredShare(value: unknown): LinkedCloudShare {
       && !/[\u0000-\u001F\u007F]/.test(value.profileName)
     ))
     || !(value.scope === null || isSecretFileScope(value.scope))
+    || !(value.sourceContentFingerprint === undefined || value.sourceContentFingerprint === null || (
+      typeof value.sourceContentFingerprint === 'string'
+      && /^sha256:[a-f0-9]{64}$/u.test(value.sourceContentFingerprint)
+    ))
   ) {
     throw new Error('The linked cloud-file metadata is invalid.');
   }
@@ -68,6 +73,9 @@ function parseStoredShare(value: unknown): LinkedCloudShare {
     profileName: value.profileName,
     scope: value.scope,
     shareId: value.shareId,
+    sourceContentFingerprint: typeof value.sourceContentFingerprint === 'string'
+      ? value.sourceContentFingerprint
+      : null,
   };
 }
 
@@ -97,7 +105,13 @@ function parseLegacyShareIds(value: string | null): LinkedCloudShare[] {
 
   return [...new Set(parsed.filter(isCloudShareId))]
     .slice(0, maxLinkedCloudShares)
-    .map((shareId) => ({ createdAt: null, profileName: null, scope: null, shareId }));
+    .map((shareId) => ({
+      createdAt: null,
+      profileName: null,
+      scope: null,
+      shareId,
+      sourceContentFingerprint: null,
+    }));
 }
 
 export class CloudShareLinkRepository {
@@ -109,9 +123,18 @@ export class CloudShareLinkRepository {
   add(share: LinkedCloudShare): LinkedCloudShare[] {
     const validatedShare = parseStoredShare(share);
     this.ensureLoaded();
+    const existingShare = this.shares.find(
+      (existing) => existing.shareId === validatedShare.shareId,
+    );
+    const mergedShare = {
+      ...validatedShare,
+      sourceContentFingerprint: validatedShare.sourceContentFingerprint
+        ?? existingShare?.sourceContentFingerprint
+        ?? null,
+    };
     const nextShares = [
-      validatedShare,
-      ...this.shares.filter((existing) => existing.shareId !== validatedShare.shareId),
+      mergedShare,
+      ...this.shares.filter((existing) => existing.shareId !== mergedShare.shareId),
     ].slice(0, maxLinkedCloudShares);
 
     this.persist(nextShares);
@@ -191,6 +214,13 @@ export function linkCloudShare(share: LinkedCloudShare): LinkedCloudShare[] {
 
 export function listLinkedCloudShares(): LinkedCloudShare[] {
   return cloudShareLinkRepository.list();
+}
+
+export function findLinkedCloudShareByContentFingerprint(
+  sourceContentFingerprint: string,
+): LinkedCloudShare | null {
+  return listLinkedCloudShares()
+    .find((share) => share.sourceContentFingerprint === sourceContentFingerprint) ?? null;
 }
 
 export function unlinkCloudShare(shareId: string): LinkedCloudShare[] {

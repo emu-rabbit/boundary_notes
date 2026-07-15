@@ -4,6 +4,7 @@ import type { SecretFile } from '../secret-file';
 import type { KeyValueStorage } from './cloudShareLinkRepository';
 import {
   CloudUploadGuard,
+  createCloudUploadContentFingerprint,
   createCloudUploadContentKey,
   formatApproximateCloudUploadWait,
 } from './cloudUploadGuard';
@@ -115,6 +116,19 @@ describe('createCloudUploadContentKey', () => {
     );
     expect(createCloudUploadContentKey(contentChange)).not.toBe(
       createCloudUploadContentKey(original),
+    );
+  });
+
+  it('creates the same persistent fingerprint for the same shareable version', async () => {
+    const original = createSecretFile();
+    const timestampOnlyChange = createSecretFile('2026-07-15T02:00:00.000Z');
+    const contentChange = { ...timestampOnlyChange, profileName: '月兔' };
+
+    await expect(createCloudUploadContentFingerprint(timestampOnlyChange)).resolves.toBe(
+      await createCloudUploadContentFingerprint(original),
+    );
+    await expect(createCloudUploadContentFingerprint(contentChange)).resolves.not.toBe(
+      await createCloudUploadContentFingerprint(original),
     );
   });
 });

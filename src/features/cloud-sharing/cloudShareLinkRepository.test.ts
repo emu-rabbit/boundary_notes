@@ -14,7 +14,13 @@ class MemoryStorage implements KeyValueStorage {
 }
 
 function createShare(shareId: string, profileName: string, createdAt: string): LinkedCloudShare {
-  return { createdAt, profileName, scope: 'all', shareId };
+  return {
+    createdAt,
+    profileName,
+    scope: 'all',
+    shareId,
+    sourceContentFingerprint: null,
+  };
 }
 
 describe('CloudShareLinkRepository', () => {
@@ -42,13 +48,47 @@ describe('CloudShareLinkRepository', () => {
     ]);
   });
 
+  it('preserves an exact-version fingerprint when the same cloud link is re-added', () => {
+    const storage = new MemoryStorage();
+    const repository = new CloudShareLinkRepository(storage);
+    const share = createShare(
+      'sf_1234567890abcdefghijklmn',
+      '兔子',
+      '2026-07-14T00:00:00.000Z',
+    );
+    const sourceContentFingerprint = `sha256:${'a'.repeat(64)}`;
+
+    repository.add({ ...share, sourceContentFingerprint });
+    repository.add({ ...share, profileName: '新兔子' });
+
+    expect(new CloudShareLinkRepository(storage).list()[0]).toEqual({
+      ...share,
+      profileName: '新兔子',
+      sourceContentFingerprint,
+    });
+  });
+
+  it('keeps reading the earlier v2 metadata shape without a fingerprint', () => {
+    const storage = new MemoryStorage();
+    const share = createShare(
+      'sf_1234567890abcdefghijklmn',
+      '兔子',
+      '2026-07-14T00:00:00.000Z',
+    );
+    const { sourceContentFingerprint: ignored, ...olderShape } = share;
+    void ignored;
+    storage.setItem('bdsm-boundary-test-cloud-shares:v2', JSON.stringify([olderShape]));
+
+    expect(new CloudShareLinkRepository(storage).list()).toEqual([share]);
+  });
+
   it('loads the legacy ID-only index without requesting cloud data', () => {
     const storage = new MemoryStorage();
     const shareId = 'sf_1234567890abcdefghijklmn';
     storage.setItem('bdsm-boundary-test-cloud-share-ids:v1', JSON.stringify([shareId]));
 
     expect(new CloudShareLinkRepository(storage).list()).toEqual([
-      { createdAt: null, profileName: null, scope: null, shareId },
+      { createdAt: null, profileName: null, scope: null, shareId, sourceContentFingerprint: null },
     ]);
   });
 

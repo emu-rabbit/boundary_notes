@@ -13,6 +13,7 @@ import type {
   QuestionRole,
   SecretFile,
 } from '../secret-file/domain/types';
+import { getShareMessages } from '../sharing/shareMessages';
 import PreviewAnswerSummary from './PreviewAnswerSummary.vue';
 import AnswerRatingIcon from './AnswerRatingIcon.vue';
 import { getResultsAnswerSummary, type QuestionnaireMessages } from './messages';
@@ -37,6 +38,8 @@ const props = defineProps<{
   questionBank: QuestionBank;
   questionnaireMessages: QuestionnaireMessages;
   secretFile: SecretFile;
+  shareLinkState: 'available' | 'checking' | 'missing';
+  shareUrl: string | null;
   source: 'cloud' | 'local';
 }>();
 
@@ -51,6 +54,15 @@ const selectedRole = ref<QuestionRole>(
 const activeCategoryId = ref<string | null>(null);
 const overviewScrollPosition = ref(0);
 const hardNoDialog = ref<HTMLDialogElement | null>(null);
+const shareDialog = ref<HTMLDialogElement | null>(null);
+const generatingRole = ref<QuestionRole | null>(null);
+const shareFeedback = ref('');
+const shareMessages = computed(() => getShareMessages(props.locale));
+let shareImageModulePromise: ReturnType<typeof loadShareImageModule> | null = null;
+
+function loadShareImageModule() {
+  return import('../sharing/shareImageGenerator');
+}
 
 const availableRoles = computed<readonly QuestionRole[]>(() => {
   if (props.secretFile.scope === 'all') return ['active', 'passive'];
@@ -172,6 +184,78 @@ function openHardNoDialog(): void {
   hardNoDialog.value?.showModal();
 }
 
+function openShareDialog(): void {
+  shareFeedback.value = '';
+  shareDialog.value?.showModal();
+  shareImageModulePromise ??= loadShareImageModule();
+  void shareImageModulePromise
+    .then((module) => module.prewarmShareImageGenerator(props.questionBank))
+    .catch(() => undefined);
+}
+
+function createShareImageFileName(role: QuestionRole): string {
+  const safeName = props.secretFile.profileName
+    .replace(/[<>:"/\\|?*\u0000-\u001F]/gu, '-')
+    .replace(/[. ]+$/u, '')
+    .slice(0, 48) || 'boundary-notes';
+  const date = props.secretFile.updatedAt.slice(0, 10);
+  return `${safeName}-${role}-${date}.png`;
+}
+
+async function downloadShareImage(role: QuestionRole): Promise<void> {
+  if (generatingRole.value) return;
+  generatingRole.value = role;
+  shareFeedback.value = '';
+
+  try {
+    shareImageModulePromise ??= loadShareImageModule();
+    const module = await shareImageModulePromise;
+    const blob = await module.generateShareImage({
+      locale: props.locale,
+      questionBank: props.questionBank,
+      questionnaireMessages: props.questionnaireMessages,
+      role,
+      secretFile: props.secretFile,
+      shareUrl: props.shareUrl,
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.download = createShareImageFileName(role);
+    link.href = url;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  } catch {
+    shareFeedback.value = shareMessages.value.downloadFailed;
+  } finally {
+    generatingRole.value = null;
+  }
+}
+
+async function copyShareLink(): Promise<void> {
+  if (!props.shareUrl) return;
+  shareFeedback.value = '';
+
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(props.shareUrl);
+    } else {
+      const input = document.createElement('textarea');
+      input.value = props.shareUrl;
+      input.style.position = 'fixed';
+      input.style.opacity = '0';
+      document.body.append(input);
+      input.select();
+      if (!document.execCommand('copy')) throw new Error('Copy was rejected.');
+      input.remove();
+    }
+    shareFeedback.value = shareMessages.value.copied;
+  } catch {
+    shareFeedback.value = shareMessages.value.copyFailed;
+  }
+}
+
 function getAnswerSummary(answer: AnsweredSecretFileAnswer): string {
   return getResultsAnswerSummary(props.questionnaireMessages, answer);
 }
@@ -204,7 +288,7 @@ function changeLocale(event: Event): void {
           type="button"
           :aria-label="messages.shareFile"
           :title="messages.shareFile"
-          disabled
+          @click="openShareDialog"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="18" cy="5" r="2.5" />
@@ -276,7 +360,7 @@ function changeLocale(event: Event): void {
             type="button"
             :aria-label="messages.shareFile"
             :title="messages.shareFile"
-            disabled
+            @click="openShareDialog"
           >
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="18" cy="5" r="2.5" />
@@ -527,6 +611,64 @@ function changeLocale(event: Event): void {
           </div>
         </li>
       </ul>
+    </dialog>
+
+    <dialog ref="shareDialog" class="preview-share-dialog">
+      <div class="preview-share-dialog__heading">
+        <div>
+          <p>{{ messages.previewKicker }}</p>
+          <h2>{{ shareMessages.title }}</h2>
+        </div>
+        <button type="button" :aria-label="shareMessages.close" @click="shareDialog?.close()">×</button>
+      </div>
+
+      <div class="preview-share-dialog__content">
+        <section class="preview-share-option">
+          <div>
+            <h3>{{ shareMessages.imageTitle }}</h3>
+            <p>{{ shareMessages.imageDescription }}</p>
+          </div>
+          <div class="preview-share-option__actions">
+            <button
+              v-for="role in availableRoles"
+              :key="role"
+              class="preview-share-primary"
+              type="button"
+              :disabled="generatingRole !== null"
+              @click="downloadShareImage(role)"
+            >
+              {{ generatingRole === role
+                ? shareMessages.generating
+                : shareMessages.downloadImage(role) }}
+            </button>
+          </div>
+        </section>
+
+        <section class="preview-share-option">
+          <div>
+            <h3>{{ shareMessages.linkTitle }}</h3>
+            <p v-if="shareLinkState === 'checking'">{{ shareMessages.preparingLink }}</p>
+            <p v-else-if="shareUrl">
+              {{ source === 'cloud'
+                ? shareMessages.linkCloudDescription
+                : shareMessages.linkLocalMatchedDescription }}
+            </p>
+            <p v-else>{{ shareMessages.linkLocalMissingDescription }}</p>
+          </div>
+          <button
+            class="preview-share-secondary"
+            type="button"
+            :disabled="!shareUrl || shareLinkState === 'checking'"
+            @click="copyShareLink"
+          >
+            {{ shareMessages.copyLink }}
+          </button>
+        </section>
+
+        <p v-if="shareFeedback" class="preview-share-dialog__feedback" role="status" aria-live="polite">
+          {{ shareFeedback }}
+        </p>
+      </div>
     </dialog>
   </section>
 </template>

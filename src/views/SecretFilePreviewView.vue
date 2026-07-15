@@ -5,7 +5,12 @@ import { useAppShell } from '../app/useAppShell';
 import { getProfileEntryRoute, loadStoredProfileName } from '../app/useProfileNameStorage';
 import { formatDocumentTitle } from '../app/useSecretFileTitle';
 import { trackSecretFileViewed } from '../features/analytics/analytics';
-import { CloudSharingError, loadCloudSecretFile } from '../features/cloud-sharing';
+import {
+  CloudSharingError,
+  createCloudUploadContentFingerprint,
+  findLinkedCloudShareByContentFingerprint,
+  loadCloudSecretFile,
+} from '../features/cloud-sharing';
 import {
   localizeQuestionBank,
   questionBank,
@@ -24,6 +29,8 @@ const router = useRouter();
 const store = useSecretFileStore();
 const { documentTitle, locale, localeOptions, setLocale } = useAppShell();
 const secretFile = ref<SecretFile | null>(null);
+const shareUrl = ref<string | null>(null);
+const shareLinkState = ref<'available' | 'checking' | 'missing'>('checking');
 const loadState = ref<
   'cloudMissing' | 'cloudUnavailable' | 'loading' | 'localMissing' | 'ready'
 >('loading');
@@ -44,10 +51,36 @@ function getRequest(): { fileId: string; source: PreviewSource } | null {
   return fileId ? { fileId, source: previewSource.value } : null;
 }
 
+function getCloudPreviewUrl(shareId: string): string {
+  const href = router.resolve({
+    name: 'preview',
+    query: { file: shareId, source: 'cloud' },
+  }).href;
+  return new URL(href, window.location.href).href;
+}
+
+async function resolveLocalCloudShare(file: SecretFile, requestId: number): Promise<void> {
+  shareLinkState.value = 'checking';
+  shareUrl.value = null;
+
+  try {
+    const fingerprint = await createCloudUploadContentFingerprint(file);
+    const linkedShare = findLinkedCloudShareByContentFingerprint(fingerprint);
+    if (requestId !== loadRequestId) return;
+    shareUrl.value = linkedShare ? getCloudPreviewUrl(linkedShare.shareId) : null;
+    shareLinkState.value = linkedShare ? 'available' : 'missing';
+  } catch {
+    if (requestId !== loadRequestId) return;
+    shareLinkState.value = 'missing';
+  }
+}
+
 async function loadPreview(): Promise<void> {
   const requestId = ++loadRequestId;
   const request = getRequest();
   secretFile.value = null;
+  shareUrl.value = null;
+  shareLinkState.value = 'checking';
 
   if (!request) {
     loadState.value = 'localMissing';
@@ -58,7 +91,10 @@ async function loadPreview(): Promise<void> {
     const opened = store.open(request.fileId);
     secretFile.value = opened;
     loadState.value = opened ? 'ready' : 'localMissing';
-    if (opened) trackSecretFileViewed('local', opened.scope);
+    if (opened) {
+      trackSecretFileViewed('local', opened.scope);
+      void resolveLocalCloudShare(opened, requestId);
+    }
     return;
   }
 
@@ -70,6 +106,8 @@ async function loadPreview(): Promise<void> {
 
     if (requestId !== loadRequestId) return;
     secretFile.value = snapshot.secretFile;
+    shareUrl.value = getCloudPreviewUrl(request.fileId);
+    shareLinkState.value = 'available';
     loadState.value = 'ready';
     trackSecretFileViewed('cloud', snapshot.secretFile.scope);
   } catch (error) {
@@ -111,6 +149,8 @@ onUnmounted(() => {
     :question-bank="localizedQuestionBank"
     :questionnaire-messages="questionnaireMessages"
     :secret-file="secretFile"
+    :share-link-state="shareLinkState"
+    :share-url="shareUrl"
     :source="previewSource"
     @create-my-file="createMyFile"
     @locale-change="setLocale"

@@ -15,8 +15,10 @@ import {
 import {
   CloudSharingError,
   cloudUploadGuard,
+  createCloudUploadContentFingerprint,
   createCloudUploadContentKey,
   createCloudSecretFile,
+  findLinkedCloudShareByContentFingerprint,
   formatApproximateCloudUploadWait,
   linkCloudShare,
   type CloudUploadBlock,
@@ -444,7 +446,7 @@ async function goHome(): Promise<void> {
   store.close();
 }
 
-function openCloudUploadDialog(): void {
+async function openCloudUploadDialog(): Promise<void> {
   cloudUploadState.value = 'confirm';
   cloudUploadError.value = '';
   cloudUploadHref.value = '';
@@ -453,7 +455,7 @@ function openCloudUploadDialog(): void {
 
   const fileToUpload = secretFile.value;
 
-  if (fileToUpload && showExistingCloudUpload(fileToUpload)) {
+  if (fileToUpload && await showExistingCloudUpload(fileToUpload)) {
     void nextTick(() => cloudUploadDialog.value?.showModal());
     return;
   }
@@ -521,15 +523,25 @@ function showCloudUploadBlock(block: CloudUploadBlock): void {
   }, 1000);
 }
 
-function showExistingCloudUpload(fileToUpload: SecretFile): boolean {
+async function showExistingCloudUpload(fileToUpload: SecretFile): Promise<boolean> {
   const lastUpload = lastSuccessfulCloudUpload.value;
+  const contentKey = createCloudUploadContentKey(fileToUpload);
 
-  if (!lastUpload || lastUpload.contentKey !== createCloudUploadContentKey(fileToUpload)) {
-    return false;
+  if (!lastUpload || lastUpload.contentKey !== contentKey) {
+    const fingerprint = await createCloudUploadContentFingerprint(fileToUpload);
+    const linkedShare = findLinkedCloudShareByContentFingerprint(fingerprint);
+
+    if (!linkedShare) return false;
+
+    const href = router.resolve({
+      name: 'preview',
+      query: { file: linkedShare.shareId, source: 'cloud' },
+    }).href;
+    lastSuccessfulCloudUpload.value = { contentKey, href };
   }
 
   clearCloudUploadCountdown();
-  cloudUploadHref.value = lastUpload.href;
+  cloudUploadHref.value = lastSuccessfulCloudUpload.value?.href ?? '';
   cloudUploadState.value = 'duplicate';
   return true;
 }
@@ -539,7 +551,7 @@ async function confirmCloudUpload(): Promise<void> {
 
   if (!fileToUpload || cloudUploadState.value === 'uploading') return;
 
-  if (showExistingCloudUpload(fileToUpload)) return;
+  if (await showExistingCloudUpload(fileToUpload)) return;
 
   const activeBlock = cloudUploadGuard.getBlock();
 
@@ -555,6 +567,7 @@ async function confirmCloudUpload(): Promise<void> {
 
   try {
     const contentKey = createCloudUploadContentKey(fileToUpload);
+    const sourceContentFingerprint = await createCloudUploadContentFingerprint(fileToUpload);
     const createdShare = await createCloudSecretFile(fileToUpload);
     cloudUploadGuard.recordSuccessfulUpload(createdShare.createdAt);
     trackCloudShareCreated(fileToUpload.scope);
@@ -573,6 +586,7 @@ async function confirmCloudUpload(): Promise<void> {
         profileName: fileToUpload.profileName,
         scope: fileToUpload.scope,
         shareId: createdShare.shareId,
+        sourceContentFingerprint,
       });
     } catch {
       cloudUploadLocalSaveFailed.value = true;

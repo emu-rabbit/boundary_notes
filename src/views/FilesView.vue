@@ -209,6 +209,7 @@ async function submitCloudImport(): Promise<void> {
       profileName: snapshot.secretFile.profileName,
       scope: snapshot.secretFile.scope,
       shareId,
+      sourceContentFingerprint: null,
     });
     trackSecretFileImported('cloud_share', snapshot.secretFile.scope, false);
     cloudListFeedback.value = '';
