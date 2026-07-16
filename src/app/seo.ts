@@ -41,7 +41,7 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
     locale: 'en_US',
     imageAlt: 'Boundary Notes, with the white bunny beside a private notebook for boundary communication.',
     privateTitle: 'Boundary Notes — A Gentle Boundary Communication Tool',
-    privateDescription: 'A private, educational tool for reflecting on BDSM boundaries, informed consent, and clearer boundary communication.',
+    privateDescription: 'A private tool for reflecting on BDSM boundaries, informed consent, and clearer boundary communication.',
     routes: {
       entry: {
         title: 'Begin Boundary Notes | BDSM Boundary Reflection Tool',
@@ -53,7 +53,7 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
       },
       terms: {
         title: 'Terms of Use | Boundary Notes',
-        description: 'Read the Boundary Notes terms, including the tool’s educational purpose, responsible use, sharing limits, and important consent reminders.',
+        description: 'Read the Boundary Notes terms, including the tool’s purpose, responsible use, sharing limits, and important consent reminders.',
       },
       privacy: {
         title: 'Privacy Policy | Boundary Notes',
@@ -65,11 +65,11 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
     locale: 'zh_TW',
     imageAlt: 'Boundary Notes 品牌分享圖：白兔坐在協助整理界線溝通的私人筆記旁。',
     privateTitle: 'Boundary Notes｜溫柔的界線溝通工具',
-    privateDescription: '協助整理 BDSM 界線、理解知情同意並準備界線溝通的私人教育工具。',
+    privateDescription: '協助整理 BDSM 界線、理解知情同意並準備界線溝通的私人工具。',
     routes: {
       entry: {
         title: '開始使用 Boundary Notes｜BDSM 界線整理工具',
-        description: '選擇語言並從既有前導開始使用 Boundary Notes，再以私密的教育工具整理 BDSM 界線，為更清楚的知情同意對話做準備。',
+        description: '選擇語言並從既有前導開始使用 Boundary Notes，再以私密工具整理 BDSM 界線，為更清楚的知情同意對話做準備。',
       },
       about: {
         title: '關於 Boundary Notes｜知情同意與界線溝通',
@@ -77,7 +77,7 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
       },
       terms: {
         title: '使用條款 | Boundary Notes',
-        description: '閱讀 Boundary Notes 的教育目的、使用責任、分享限制與知情同意提醒。',
+        description: '閱讀 Boundary Notes 的工具用途、使用責任、分享限制與知情同意提醒。',
       },
       privacy: {
         title: '隱私權政策 | Boundary Notes',
@@ -89,11 +89,11 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
     locale: 'zh_CN',
     imageAlt: 'Boundary Notes 品牌分享图：白兔坐在协助整理界限沟通的私人笔记旁。',
     privateTitle: 'Boundary Notes｜温柔的界限沟通工具',
-    privateDescription: '协助整理 BDSM 界限、理解知情同意并准备界限沟通的私人教育工具。',
+    privateDescription: '协助整理 BDSM 界限、理解知情同意并准备界限沟通的私人工具。',
     routes: {
       entry: {
         title: '开始使用 Boundary Notes｜BDSM 界限整理工具',
-        description: '选择语言并从现有前导开始使用 Boundary Notes，再以私密的教育工具整理 BDSM 界限，为更清楚的知情同意对话做准备。',
+        description: '选择语言并从现有前导开始使用 Boundary Notes，再以私密工具整理 BDSM 界限，为更清楚的知情同意对话做准备。',
       },
       about: {
         title: '关于 Boundary Notes｜知情同意与界限沟通',
@@ -101,7 +101,7 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
       },
       terms: {
         title: '使用条款 | Boundary Notes',
-        description: '阅读 Boundary Notes 的教育目的、使用责任、分享限制与知情同意提醒。',
+        description: '阅读 Boundary Notes 的工具用途、使用责任、分享限制与知情同意提醒。',
       },
       privacy: {
         title: '隐私政策 | Boundary Notes',
@@ -113,11 +113,11 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
     locale: 'ja_JP',
     imageAlt: 'Boundary Notes のシェア画像。境界線の対話を整理するノートのそばに白いうさぎが座っています。',
     privateTitle: 'Boundary Notes｜やさしい境界線コミュニケーションツール',
-    privateDescription: 'BDSM の境界線、インフォームド・コンセント、より明確な対話を考えるためのプライベートな教育ツールです。',
+    privateDescription: 'BDSM の境界線、インフォームド・コンセント、より明確な対話を考えるためのプライベートなツールです。',
     routes: {
       entry: {
         title: 'Boundary Notesを始める｜BDSMの境界線を考えるツール',
-        description: '言語を選び、既存の導入から Boundary Notes を始めます。BDSM の境界線を振り返り、インフォームド・コンセントの対話を準備するための教育ツールです。',
+        description: '言語を選び、既存の導入から Boundary Notes を始めます。BDSM の境界線を振り返り、インフォームド・コンセントの対話を準備するためのプライベートなツールです。',
       },
       about: {
         title: 'Boundary Notesについて｜同意と境界線の対話',
@@ -125,7 +125,7 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
       },
       terms: {
         title: '利用規約 | Boundary Notes',
-        description: 'Boundary Notes の教育目的、利用上の責任、共有の制限、同意に関する重要な注意事項をご確認ください。',
+        description: 'Boundary Notes の用途、利用上の責任、共有の制限、同意に関する重要な注意事項をご確認ください。',
       },
       privacy: {
         title: 'プライバシーポリシー | Boundary Notes',
@@ -195,7 +195,6 @@ export function getSeoDocument(
           url: canonicalOrigin,
         },
         ...(publicRoute === 'entry' ? {
-          applicationCategory: 'EducationalApplication',
           operatingSystem: 'Any',
           offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
         } : {}),

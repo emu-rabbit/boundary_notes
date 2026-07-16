@@ -47,4 +47,18 @@ describe('SEO documents', () => {
     expect(head.match(/data-seo-link="true"/gu)).toHaveLength(6);
     expect(head).toContain('data-seo-json-ld="true"');
   });
+
+  it('presents the product as a tool without making educational claims', () => {
+    const locales = ['en', 'zh-Hant', 'zh-Hans', 'ja'] as const;
+    const routeIds = ['entry', 'about', 'terms', 'privacy'] as const;
+
+    for (const locale of locales) {
+      for (const routeId of routeIds) {
+        const head = createSeoHeadHtml(getSeoDocument(routeId, locale, true));
+
+        expect(head).not.toMatch(/educational|education|教育/u);
+        expect(head).not.toContain('EducationalApplication');
+      }
+    }
+  });
 });

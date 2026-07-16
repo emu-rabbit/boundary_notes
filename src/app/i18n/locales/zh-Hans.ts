@@ -19,7 +19,7 @@ export const zhHansMessages: LocaleMessages = {
     title: `可以让${secretKeeperName}记下匿名使用情况吗？`,
   },
   about: {
-    body: '这里是一个温柔、私密的教育工具，陪你整理 BDSM 界限、喜好、欲望与重要前提。',
+    body: '这里是一个温柔、私密的工具，陪你整理 BDSM 界限、喜好、欲望与重要前提。',
     contentWarning: '本网页内容可能提及性、身体、权力交换与高风险互动项目。你可以依自己的状态决定要不要使用，也可以随时停下来。',
     doesItems: ['陪你整理经验、兴趣与界限', '帮助你看见自己的变化', '提供一个较容易开始的对话入口'],
     doesNotItems: ['不替任何人作出同意', '不为你配对或推荐项目', '不把你分类成固定的角色'],
