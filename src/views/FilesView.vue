@@ -6,8 +6,8 @@ import { getLocalizedRouteLocation } from '../app/routes';
 import {
   trackCloudShareUnlinked,
   trackSecretFileDeleted,
+  trackSecretFileDownloaded,
   trackSecretFileImported,
-  trackSecretFileJsonCopied,
 } from '../features/analytics/analytics';
 import {
   CloudShareLinkStorageError,
@@ -27,6 +27,10 @@ import {
   type FileViewerSource,
 } from '../features/secret-file/fileManagerState';
 import type { SecretFileSummary } from '../features/secret-file/storage/browserSecretFileRepository';
+import {
+  decryptSecretFileExport,
+  encryptSecretFileExport,
+} from '../features/secret-file/transfer/secretFileTransfer';
 
 const router = useRouter();
 const store = useSecretFileStore();
@@ -34,15 +38,17 @@ const { locale, navigate } = useAppShell();
 const messages = computed(() => getFileManagerMessages(locale.value));
 const activeViewer = ref<FileViewerSource>('local');
 const importDialog = ref<HTMLDialogElement | null>(null);
-const importJson = ref('');
+const localImportInput = ref<HTMLInputElement | null>(null);
+const localImportBusy = ref(false);
 const cloudImportUrl = ref('');
 const importFeedback = ref('');
 const importFeedbackKind = ref<'error' | 'info' | 'success' | null>(null);
 const cloudImportBusy = ref(false);
 const cloudShares = ref<LinkedCloudShare[]>([]);
 const cloudListFeedback = ref('');
-const copyFeedbackFileId = ref<string | null>(null);
-const copyFeedbackKind = ref<'error' | 'success' | null>(null);
+const fileActionFeedbackId = ref<string | null>(null);
+const fileActionFeedbackKind = ref<'error' | 'success' | null>(null);
+const fileActionFeedbackMessage = ref('');
 const cloudFileCount = computed(() => cloudShares.value.length);
 
 function formatDateTime(value: string): string {
@@ -119,32 +125,53 @@ async function writeClipboard(text: string): Promise<void> {
   }
 }
 
-async function copyFileJson(file: SecretFileSummary): Promise<void> {
+function safeDownloadFileName(value: string): string {
+  return value.replace(/[<>:"/\\|?*\u0000-\u001f]/g, '_').replace(/[. ]+$/g, '') || 'Boundary Notes.json';
+}
+
+async function downloadFile(file: SecretFileSummary): Promise<void> {
   const json = store.exportJson(file.fileId);
 
   if (!json) {
-    copyFeedbackFileId.value = file.fileId;
-    copyFeedbackKind.value = 'error';
+    fileActionFeedbackId.value = file.fileId;
+    fileActionFeedbackKind.value = 'error';
+    fileActionFeedbackMessage.value = messages.value.downloadError;
     return;
   }
 
   try {
-    await writeClipboard(json);
-    copyFeedbackFileId.value = file.fileId;
-    copyFeedbackKind.value = 'success';
-    trackSecretFileJsonCopied(file.scope);
+    const encryptedJson = await encryptSecretFileExport(json);
+    const blobUrl = URL.createObjectURL(new Blob([encryptedJson], { type: 'application/json' }));
+    const link = document.createElement('a');
+    link.href = blobUrl;
+    link.download = safeDownloadFileName(messages.value.downloadFileName(file.profileName));
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(blobUrl), 0);
+    fileActionFeedbackId.value = null;
+    fileActionFeedbackMessage.value = '';
+    trackSecretFileDownloaded(file.scope);
   } catch {
-    copyFeedbackFileId.value = file.fileId;
-    copyFeedbackKind.value = 'error';
+    fileActionFeedbackId.value = file.fileId;
+    fileActionFeedbackKind.value = 'error';
+    fileActionFeedbackMessage.value = messages.value.downloadError;
   }
 }
 
-function submitLocalImport(): void {
+async function submitLocalImport(event: Event): Promise<void> {
   importFeedback.value = '';
   importFeedbackKind.value = null;
+  const input = event.currentTarget as HTMLInputElement;
+  const selectedFile = input.files?.[0];
+
+  if (!selectedFile) return;
+
+  localImportBusy.value = true;
 
   try {
-    const candidate = store.validateImportJson(importJson.value);
+    const decryptedJson = await decryptSecretFileExport(await selectedFile.text());
+    const candidate = store.validateImportJson(decryptedJson);
     const existingFile = store.files.find((file) => file.fileId === candidate.fileId);
 
     if (
@@ -165,10 +192,26 @@ function submitLocalImport(): void {
     trackSecretFileImported('local_json', secretFile.scope, overwroteExisting);
     importFeedback.value = messages.value.importSuccess(secretFile.profileName);
     importFeedbackKind.value = 'success';
-    importJson.value = '';
-  } catch (error) {
-    importFeedback.value = error instanceof Error ? error.message : String(error);
+  } catch {
+    importFeedback.value = messages.value.importReadError;
     importFeedbackKind.value = 'error';
+  } finally {
+    input.value = '';
+    localImportBusy.value = false;
+  }
+}
+
+async function copyCloudShareLink(shareId: string): Promise<void> {
+  try {
+    const shareUrl = new URL(cloudPreviewHref(shareId), window.location.href).href;
+    await writeClipboard(shareUrl);
+    fileActionFeedbackId.value = shareId;
+    fileActionFeedbackKind.value = 'success';
+    fileActionFeedbackMessage.value = messages.value.shareLinkCopySuccess;
+  } catch {
+    fileActionFeedbackId.value = shareId;
+    fileActionFeedbackKind.value = 'error';
+    fileActionFeedbackMessage.value = messages.value.shareLinkCopyError;
   }
 }
 
@@ -313,15 +356,21 @@ onMounted(() => {
           <button
             class="files-import-action"
             type="button"
-            :aria-label="messages.importAction"
-            :title="messages.importAction"
+            :aria-label="activeViewer === 'local' ? messages.importAction : messages.cloudLinkAction"
+            :title="activeViewer === 'local' ? messages.importAction : messages.cloudLinkAction"
             @click="openImportDialog"
           >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6.5 3.5h6.3l5.7 5.7v11.3H6.5A1.5 1.5 0 0 1 5 19V5a1.5 1.5 0 0 1 1.5-1.5Z" />
-              <path d="M12.8 3.5v5.7h5.7M12.5 12.5v5M10 15h5" />
+            <svg v-if="activeViewer === 'local'" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5" />
+              <path d="M5 13v6.5h14V13" />
             </svg>
-            <span class="files-import-action__label">{{ messages.importAction }}</span>
+            <svg v-else viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 12h8M5.5 8.5l-2 2a2.1 2.1 0 0 0 0 3l3 3a2.1 2.1 0 0 0 3 0l2-2m1-5 2-2a2.1 2.1 0 0 1 3 0l3 3a2.1 2.1 0 0 1 0 3l-2 2" />
+              <path d="M18.5 3v5M16 5.5h5" />
+            </svg>
+            <span class="files-import-action__label">
+              {{ activeViewer === 'local' ? messages.importAction : messages.cloudLinkAction }}
+            </span>
           </button>
         </div>
       </div>
@@ -363,12 +412,17 @@ onMounted(() => {
                 </svg>
                 {{ messages.edit }}
               </button>
-              <button class="file-card-action" type="button" @click="copyFileJson(file)">
+              <button
+                class="file-card-action file-card-action--icon"
+                type="button"
+                :aria-label="messages.download"
+                :title="messages.download"
+                @click="downloadFile(file)"
+              >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <rect x="8" y="8" width="11" height="11" rx="2" />
-                  <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
+                  <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5" />
+                  <path d="M5 19.5h14" />
                 </svg>
-                {{ messages.copyJson }}
               </button>
               <button
                 class="file-card-action file-card-action--delete"
@@ -383,13 +437,13 @@ onMounted(() => {
               </button>
             </div>
             <p
-              v-if="copyFeedbackFileId === file.fileId"
+              v-if="fileActionFeedbackId === file.fileId"
               class="file-card-feedback"
-              :class="`file-card-feedback--${copyFeedbackKind}`"
+              :class="`file-card-feedback--${fileActionFeedbackKind}`"
               role="status"
               aria-live="polite"
             >
-              {{ copyFeedbackKind === 'success' ? messages.copySuccess : messages.copyError }}
+              {{ fileActionFeedbackMessage }}
             </p>
           </article>
         </div>
@@ -456,6 +510,18 @@ onMounted(() => {
                 {{ messages.view }}
               </a>
               <button
+                class="file-card-action file-card-action--icon"
+                type="button"
+                :aria-label="messages.shareLink"
+                :title="messages.shareLink"
+                @click="copyCloudShareLink(file.shareId)"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9.5 14.5 14.5 9.5" />
+                  <path d="M7.5 16.5h-1a4 4 0 0 1 0-8h3M16.5 7.5h1a4 4 0 0 1 0 8h-3" />
+                </svg>
+              </button>
+              <button
                 class="file-card-action file-card-action--delete"
                 type="button"
                 :aria-label="messages.cloudUnlink"
@@ -471,6 +537,15 @@ onMounted(() => {
                 </svg>
               </button>
             </div>
+            <p
+              v-if="fileActionFeedbackId === file.shareId"
+              class="file-card-feedback"
+              :class="`file-card-feedback--${fileActionFeedbackKind}`"
+              role="status"
+              aria-live="polite"
+            >
+              {{ fileActionFeedbackMessage }}
+            </p>
           </article>
         </div>
 
@@ -503,20 +578,31 @@ onMounted(() => {
         </form>
       </div>
 
-      <form v-if="activeViewer === 'local'" class="file-import-form" @submit.prevent="submitLocalImport">
+      <div v-if="activeViewer === 'local'" class="file-import-form">
         <p>{{ messages.importJsonDescription }}</p>
-        <textarea
-          id="secret-file-json"
-          v-model="importJson"
+        <input
+          id="secret-file-upload"
+          ref="localImportInput"
+          class="file-import-input"
+          type="file"
+          accept="application/json,.json"
           :aria-label="messages.importJsonLabel"
-          :placeholder="messages.importJsonPlaceholder"
-          rows="10"
-          spellcheck="false"
+          :disabled="localImportBusy"
+          @change="submitLocalImport"
         />
-        <button class="files-dialog-primary-action" type="submit" :disabled="!importJson.trim()">
+        <button
+          class="files-dialog-primary-action"
+          type="button"
+          :disabled="localImportBusy"
+          @click="localImportInput?.click()"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5" />
+            <path d="M5 13v6.5h14V13" />
+          </svg>
           {{ messages.importJson }}
         </button>
-      </form>
+      </div>
 
       <form v-else class="file-import-form" @submit.prevent="submitCloudImport">
         <label for="cloud-file-url">{{ messages.cloudImportLabel }}</label>

@@ -359,8 +359,8 @@ export function trackSecretFileImported(
   });
 }
 
-export function trackSecretFileJsonCopied(scope: SecretFileScope): void {
-  void logAnalyticsEvent('secret_file_json_copied', { scope: toAnalyticsSecretFileScope(scope) });
+export function trackSecretFileDownloaded(scope: SecretFileScope): void {
+  void logAnalyticsEvent('secret_file_downloaded', { scope: toAnalyticsSecretFileScope(scope) });
 }
 
 export function trackSecretFileDeleted(scope: SecretFileScope): void {

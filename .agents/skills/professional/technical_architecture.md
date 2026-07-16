@@ -108,7 +108,7 @@
 - **本地保存與 fallback**：`storage/browserSecretFileRepository.ts` 集中管理 `bdsm-boundary-test-secret-files:index` 與 `...:file:{fileId}`。讀寫資料都先驗證；browser storage 不可用或寫入失敗時保留當前 session 的記憶體副本，並透過 store 的 `storageStatus` 暴露狀態。不得自動刪除舊檔案。
 - **localStorage 上限**：本機最多保存 20 份秘密檔案，由 `browserSecretFileRepository.ts` 的 `maxLocalSecretFiles` 集中管理；達到上限時阻擋新建，但仍允許更新既有檔案。
 - **測試基線**：Vitest 已設定為 `npm run test`，Firestore Security Rules 與 direct reader 使用 `npm run test:rules` 搭配固定版本 Firebase CLI／Firestore Emulator 驗證，`npm run test:all` 會依序執行 frontend、Rules 與 Functions tests；Firebase production、PR preview 與 staging workflows 都會先測試再建置。優先覆蓋回答狀態、scope、進度、題庫補齊、validation、storage failure 與 Firestore get/list/write 邊界；新 migration、persistence 或 domain rules 必須一起新增對應測試。
-- **目前功能邊界**：正式題庫、前導建立流程、分類與細項作答、本地 CRUD、JSON 匯入、編輯結果頁、獨立唯讀檢視頁與 Firestore create/read-only sharing 均已接入。舊檔案頁的雲端列表只讀 localStorage 顯示 metadata，不在列表階段請求雲端；只有使用者進入雲端唯讀檢視或主動匯入分享 URL／ID 時才依 share ID direct read Firestore 公開快照。
+- **目前功能邊界**：正式題庫、前導建立流程、分類與細項作答、本地 CRUD、加密 JSON 檔案下載／上傳、編輯結果頁、獨立唯讀檢視頁與 Firestore create/read-only sharing 均已接入。下載檔使用前端內建共用 key 的 AES-GCM 版本化 JSON 封套，只增加直接閱讀成本，不構成真正的機密保護；上傳時自動解密後仍須通過正式 schema，並保留舊版未加密 JSON 檔案相容性。舊檔案頁的雲端列表只讀 localStorage 顯示 metadata，不在列表階段請求雲端；只有使用者進入雲端唯讀檢視或主動匯入分享 URL／ID 時才依 share ID direct read Firestore 公開快照。
 
 1. 進行技術或資料相關工作前，先檢查本文件是否與現有程式碼、Firebase 設定、README 或其他 architecture 文件一致。
 2. 若新增正式資料 schema、Firestore rules、GA event taxonomy、題庫 importer 或 asset preload policy，優先更新本文件、`.agents/specs/question_bank_and_secret_file_system.md` 或未來正式 architecture/privacy 文件。

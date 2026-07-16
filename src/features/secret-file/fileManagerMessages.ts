@@ -11,6 +11,7 @@ export interface FileManagerMessages {
   cloudImportPlaceholder: string;
   cloudImportSuccess: (name: string) => string;
   cloudImportSubmit: string;
+  cloudLinkAction: string;
   cloudLinkStorageFailed: string;
   cloudLoadFailed: string;
   cloudLoading: string;
@@ -22,9 +23,9 @@ export interface FileManagerMessages {
   cloudUnavailable: string;
   cloudConfigurationError: string;
   close: string;
-  copyError: string;
-  copyJson: string;
-  copySuccess: string;
+  download: string;
+  downloadError: string;
+  downloadFileName: (name: string) => string;
   delete: string;
   deleteConfirmation: (name: string) => string;
   edit: string;
@@ -34,7 +35,7 @@ export interface FileManagerMessages {
   importJson: string;
   importJsonDescription: string;
   importJsonLabel: string;
-  importJsonPlaceholder: string;
+  importReadError: string;
   importSuccess: (name: string) => string;
   importTitle: string;
   intro: string;
@@ -44,6 +45,9 @@ export interface FileManagerMessages {
   overwriteConfirmation: (name: string, existingUpdatedAt: string, importedUpdatedAt: string) => string;
   progress: (answered: number, total: number) => string;
   rabbitAlt: string;
+  shareLink: string;
+  shareLinkCopyError: string;
+  shareLinkCopySuccess: string;
   scope: (scope: SecretFileScope) => string;
   title: string;
   updatedAt: (date: string) => string;
@@ -67,6 +71,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     cloudImportPlaceholder: 'https://boundarynotes.com/preview?source=cloud&file=…',
     cloudImportSuccess: (name) => `已將「${name}」連結到這台裝置。`,
     cloudImportSubmit: '匯入雲端檔案',
+    cloudLinkAction: '連結檔案',
     cloudLinkStorageFailed: '無法把雲端檔案連結保存到這台裝置，請檢查瀏覽器儲存空間後再試。',
     cloudLoadFailed: '目前無法讀取這份雲端檔案。',
     cloudLoading: '正在讀取這份雲端檔案…',
@@ -78,19 +83,19 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     cloudUnavailable: '已連結的雲端檔案',
     cloudConfigurationError: '雲端分享尚未完成設定，請稍後再試。',
     close: '關閉',
-    copyError: '無法複製 JSON，請確認瀏覽器已允許剪貼簿存取。',
-    copyJson: '複製 JSON',
-    copySuccess: '已將完整 JSON 複製到剪貼簿。',
+    download: '下載檔案',
+    downloadError: '目前無法下載這份檔案，請稍後再試。',
+    downloadFileName: (name) => `${name}的祕密檔案.json`,
     delete: '刪除本地檔案',
     deleteConfirmation: (name) => `要刪除「${name}」嗎？這只會刪除這台裝置上的本地檔案，且無法復原。`,
     edit: '編輯檔案',
     emptyBody: '建立新檔案後，就能從這裡繼續填答或檢視。',
     emptyTitle: '這台裝置還沒有保存的檔案',
     importAction: '匯入檔案',
-    importJson: '驗證並匯入',
-    importJsonDescription: '貼上完整的秘密檔案 JSON，再保存到這台裝置。',
-    importJsonLabel: '秘密檔案 JSON',
-    importJsonPlaceholder: '{ "schemaVersion": 2, ... }',
+    importJson: '選擇檔案',
+    importJsonDescription: '選擇你先前在其他裝置下載的秘密檔案，上傳後會保存到這台裝置。',
+    importJsonLabel: '選擇要上傳的秘密檔案',
+    importReadError: '無法開啟這份檔案。請確認這是先前從 Boundary Notes 下載的檔案。',
     importSuccess: (name) => `已匯入「${name}」，檔案已保存到這台裝置。`,
     importTitle: '匯入舊檔案',
     intro: '在這裡整理保存在本地或與雲端連結的檔案。',
@@ -98,9 +103,12 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     kicker: '秘密檔案櫃',
     localTab: '本地檔案',
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
-      `「${name}」的 fileId 已存在，繼續匯入會直接覆蓋本地檔案。\n\n本地舊檔最後編輯：${existingUpdatedAt}\n匯入新檔最後編輯：${importedUpdatedAt}\n\n要繼續覆蓋嗎？`,
+      `這台裝置已經有「${name}」的同一份檔案，繼續匯入會直接覆蓋本地檔案。\n\n本地舊檔最後編輯：${existingUpdatedAt}\n匯入新檔最後編輯：${importedUpdatedAt}\n\n要繼續覆蓋嗎？`,
     progress: (answered, total) => `已填答 ${answered} / ${total}`,
     rabbitAlt: `白色${secretKeeperNames['zh-Hant']}抱著一份上鎖的秘密檔案。`,
+    shareLink: '複製分享連結',
+    shareLinkCopyError: '無法複製分享連結，請確認瀏覽器已允許剪貼簿存取。',
+    shareLinkCopySuccess: '已複製分享連結。',
     scope: (scope) => scopeLabels['zh-Hant'][scope],
     title: '查看舊檔案',
     updatedAt: (date) => `最後編輯 ${date}`,
@@ -115,6 +123,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     cloudImportPlaceholder: 'https://boundarynotes.com/preview?source=cloud&file=…',
     cloudImportSuccess: (name) => `已将“${name}”连接到此设备。`,
     cloudImportSubmit: '导入云端文件',
+    cloudLinkAction: '连接文件',
     cloudLinkStorageFailed: '无法将云端文件链接保存到此设备，请检查浏览器存储空间后重试。',
     cloudLoadFailed: '目前无法读取此云端文件。',
     cloudLoading: '正在读取此云端文件…',
@@ -126,19 +135,19 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     cloudUnavailable: '已连接的云端文件',
     cloudConfigurationError: '云端分享尚未完成设置，请稍后再试。',
     close: '关闭',
-    copyError: '无法复制 JSON，请确认浏览器已允许访问剪贴板。',
-    copyJson: '复制 JSON',
-    copySuccess: '已将完整 JSON 复制到剪贴板。',
+    download: '下载文件',
+    downloadError: '目前无法下载此文件，请稍后重试。',
+    downloadFileName: (name) => `${name}的秘密文件.json`,
     delete: '删除本地文件',
     deleteConfirmation: (name) => `要删除“${name}”吗？这只会删除此设备上的本地文件，且无法恢复。`,
     edit: '编辑文件',
     emptyBody: '创建新文件后，就能从这里继续填写或查看。',
     emptyTitle: '此设备还没有保存的文件',
     importAction: '导入文件',
-    importJson: '验证并导入',
-    importJsonDescription: '粘贴完整的秘密文件 JSON，再保存到此设备。',
-    importJsonLabel: '秘密文件 JSON',
-    importJsonPlaceholder: '{ "schemaVersion": 2, ... }',
+    importJson: '选择文件',
+    importJsonDescription: '请选择之前在其他设备下载的秘密文件，上传后会保存到此设备。',
+    importJsonLabel: '选择要上传的秘密文件',
+    importReadError: '无法打开此文件。请确认它是之前从 Boundary Notes 下载的文件。',
     importSuccess: (name) => `已导入“${name}”，文件已保存到此设备。`,
     importTitle: '导入旧文件',
     intro: '在这里整理保存在本地或与云端连接的文件。',
@@ -146,9 +155,12 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     kicker: '秘密文件柜',
     localTab: '本地文件',
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
-      `“${name}”的 fileId 已存在，继续导入会直接覆盖本地文件。\n\n本地旧文件最后编辑：${existingUpdatedAt}\n导入新文件最后编辑：${importedUpdatedAt}\n\n要继续覆盖吗？`,
+      `此设备已有“${name}”的同一份文件，继续导入会直接覆盖本地文件。\n\n本地旧文件最后编辑：${existingUpdatedAt}\n导入新文件最后编辑：${importedUpdatedAt}\n\n要继续覆盖吗？`,
     progress: (answered, total) => `已填写 ${answered} / ${total}`,
     rabbitAlt: `白色${secretKeeperNames['zh-Hans']}抱着一份上锁的秘密文件。`,
+    shareLink: '复制分享链接',
+    shareLinkCopyError: '无法复制分享链接，请确认浏览器已允许访问剪贴板。',
+    shareLinkCopySuccess: '已复制分享链接。',
     scope: (scope) => scopeLabels['zh-Hans'][scope],
     title: '查看旧文件',
     updatedAt: (date) => `最后编辑 ${date}`,
@@ -163,6 +175,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     cloudImportPlaceholder: 'https://boundarynotes.com/preview?source=cloud&file=…',
     cloudImportSuccess: (name) => `「${name}」をこの端末にリンクしました。`,
     cloudImportSubmit: 'クラウドファイルを取り込む',
+    cloudLinkAction: 'ファイルをリンク',
     cloudLinkStorageFailed: 'クラウドファイルのリンクをこの端末に保存できません。ブラウザの保存領域を確認して、もう一度お試しください。',
     cloudLoadFailed: 'このクラウドファイルは現在読み込めません。',
     cloudLoading: 'このクラウドファイルを読み込んでいます…',
@@ -174,19 +187,19 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     cloudUnavailable: 'リンク済みのクラウドファイル',
     cloudConfigurationError: 'クラウド共有の設定がまだ完了していません。しばらくしてからお試しください。',
     close: '閉じる',
-    copyError: 'JSON をコピーできませんでした。ブラウザのクリップボード権限を確認してください。',
-    copyJson: 'JSON をコピー',
-    copySuccess: '完全な JSON をクリップボードにコピーしました。',
+    download: 'ファイルをダウンロード',
+    downloadError: '現在このファイルをダウンロードできません。しばらくしてからお試しください。',
+    downloadFileName: (name) => `${name}の秘密ファイル.json`,
     delete: '端末から削除',
     deleteConfirmation: (name) => `「${name}」を削除しますか？この端末のローカルファイルだけが削除され、元に戻せません。`,
-    edit: 'ファイルを編集',
+    edit: '編集する',
     emptyBody: '新しいファイルを作ると、ここから回答や確認を続けられます。',
     emptyTitle: 'この端末に保存されたファイルはまだありません',
     importAction: 'ファイルを取り込む',
-    importJson: '検証して取り込む',
-    importJsonDescription: '秘密ファイルの完全な JSON を貼り付けて、この端末へ保存します。',
-    importJsonLabel: '秘密ファイル JSON',
-    importJsonPlaceholder: '{ "schemaVersion": 2, ... }',
+    importJson: 'ファイルを選ぶ',
+    importJsonDescription: '以前ほかの端末でダウンロードした秘密ファイルを選んでください。アップロード後、この端末に保存されます。',
+    importJsonLabel: 'アップロードする秘密ファイルを選ぶ',
+    importReadError: 'このファイルを開けません。以前 Boundary Notes からダウンロードしたファイルか確認してください。',
     importSuccess: (name) => `「${name}」を取り込み、この端末へ保存しました。`,
     importTitle: '以前のファイルを取り込む',
     intro: 'ローカルに保存したファイルや、クラウドにリンクしたファイルをここで整理できます。',
@@ -194,13 +207,16 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     kicker: '秘密ファイル棚',
     localTab: 'ローカル',
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
-      `「${name}」と同じ fileId が存在します。続行するとローカルファイルを上書きします。\n\n既存ファイルの最終編集：${existingUpdatedAt}\n取り込むファイルの最終編集：${importedUpdatedAt}\n\n上書きしますか？`,
+      `この端末には「${name}」の同じファイルがあります。続行するとローカルファイルを上書きします。\n\n既存ファイルの最終編集：${existingUpdatedAt}\n取り込むファイルの最終編集：${importedUpdatedAt}\n\n上書きしますか？`,
     progress: (answered, total) => `${answered} / ${total} 回答済み`,
     rabbitAlt: `白い${secretKeeperNames.ja}が鍵付きの秘密ファイルを抱えている。`,
+    shareLink: '共有リンクをコピー',
+    shareLinkCopyError: '共有リンクをコピーできませんでした。ブラウザのクリップボード権限を確認してください。',
+    shareLinkCopySuccess: '共有リンクをコピーしました。',
     scope: (scope) => scopeLabels.ja[scope],
     title: '以前のファイル',
     updatedAt: (date) => `最終編集 ${date}`,
-    view: 'ファイルを見る',
+    view: '見る',
   },
   en: {
     backHome: 'Home',
@@ -211,6 +227,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     cloudImportPlaceholder: 'https://boundarynotes.com/preview?source=cloud&file=…',
     cloudImportSuccess: (name) => `Linked “${name}” on this device.`,
     cloudImportSubmit: 'Import cloud file',
+    cloudLinkAction: 'Link file',
     cloudLinkStorageFailed: 'The cloud file link could not be saved on this device. Check browser storage and try again.',
     cloudLoadFailed: 'This cloud file cannot be loaded right now.',
     cloudLoading: 'Loading this cloud file…',
@@ -222,19 +239,19 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     cloudUnavailable: 'Linked cloud file',
     cloudConfigurationError: 'Cloud sharing has not been configured yet. Please try again later.',
     close: 'Close',
-    copyError: 'Could not copy the JSON. Check that clipboard access is allowed in this browser.',
-    copyJson: 'Copy JSON',
-    copySuccess: 'The complete JSON was copied to the clipboard.',
+    download: 'Download file',
+    downloadError: 'This file cannot be downloaded right now. Please try again.',
+    downloadFileName: (name) => `${name}'s Secret File.json`,
     delete: 'Delete local file',
     deleteConfirmation: (name) => `Delete “${name}”? This only removes the local file on this device and cannot be undone.`,
     edit: 'Edit file',
     emptyBody: 'Create one to continue answering or review it here.',
     emptyTitle: 'There are no files saved on this device yet',
     importAction: 'Import file',
-    importJson: 'Validate and import',
-    importJsonDescription: 'Paste a complete secret-file JSON document to save it on this device.',
-    importJsonLabel: 'Secret-file JSON',
-    importJsonPlaceholder: '{ "schemaVersion": 2, ... }',
+    importJson: 'Choose file',
+    importJsonDescription: 'Choose a secret file that you downloaded on another device. It will be saved on this device after upload.',
+    importJsonLabel: 'Choose a secret file to upload',
+    importReadError: 'This file could not be opened. Check that it was previously downloaded from Boundary Notes.',
     importSuccess: (name) => `Imported “${name}” and saved it on this device.`,
     importTitle: 'Import an old file',
     intro: 'Manage files saved locally or linked from the cloud.',
@@ -242,9 +259,12 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
     kicker: 'Secret-file cabinet',
     localTab: 'Local files',
     overwriteConfirmation: (name, existingUpdatedAt, importedUpdatedAt) =>
-      `A file with the same fileId as “${name}” already exists. Continuing will overwrite the local file.\n\nExisting file last edited: ${existingUpdatedAt}\nImported file last edited: ${importedUpdatedAt}\n\nContinue and overwrite it?`,
+      `The same “${name}” file is already on this device. Continuing will overwrite the local file.\n\nExisting file last edited: ${existingUpdatedAt}\nImported file last edited: ${importedUpdatedAt}\n\nContinue and overwrite it?`,
     progress: (answered, total) => `${answered} / ${total} answered`,
     rabbitAlt: `The white ${secretKeeperNames.en} holds a locked secret file.`,
+    shareLink: 'Copy sharing link',
+    shareLinkCopyError: 'Could not copy the sharing link. Check that clipboard access is allowed in this browser.',
+    shareLinkCopySuccess: 'Sharing link copied.',
     scope: (scope) => scopeLabels.en[scope],
     title: 'Old Files',
     updatedAt: (date) => `Last edited ${date}`,

@@ -339,6 +339,12 @@
   padding: 0;
 }
 
+.file-card-action--icon {
+  width: 2.75rem;
+  flex: none;
+  padding: 0;
+}
+
 .file-card-action--delete:hover {
   border-color: rgba(238, 155, 161, 0.48);
   background: rgba(104, 39, 52, 0.82);
@@ -490,6 +496,26 @@
   padding: 0.85rem 0.9rem;
 }
 
+.file-import-form .file-import-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.files-dialog-primary-action svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .file-import-form textarea {
   min-height: 13rem;
   resize: vertical;
@@ -639,9 +665,9 @@
 
   .files-viewer-tab {
     flex: 1;
-    gap: 0.38rem;
+    gap: 0.28rem;
     min-width: 0;
-    padding-inline: 0.55rem;
+    padding-inline: 0.42rem;
   }
 
   .files-viewer-tab svg {
@@ -651,12 +677,14 @@
 
   .files-viewer-tab > span {
     min-width: 0;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
   }
 
   .files-viewer-tab small {
-    min-width: 1.35rem;
-    height: 1.35rem;
+    min-width: 1.25rem;
+    height: 1.25rem;
+    padding-inline: 0.25rem;
   }
 
   /* Mobile: import button becomes a compact square icon */
@@ -689,23 +717,23 @@
 
   .file-list-item__actions {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr)) 3.45rem;
     gap: 0.4rem;
   }
 
   .file-list-item__actions--cloud {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) 3.45rem;
   }
 
   .file-card-action {
     min-width: 0;
     min-height: 3.45rem;
-    flex-direction: column;
-    gap: 0.2rem;
-    font-size: 0.74rem;
+    flex-direction: row;
+    gap: 0.25rem;
+    font-size: 0.78rem;
     line-height: 1.15;
-    padding: 0.35rem 0.2rem;
-    white-space: normal;
+    padding: 0.35rem 0.15rem;
+    white-space: nowrap;
   }
 
   .file-list-item__actions--cloud .file-card-action--view {
@@ -727,6 +755,12 @@
     right: 1rem;
     width: 2.8rem;
     min-height: 2.8rem;
+    padding: 0;
+  }
+
+  .file-card-action--icon {
+    width: 100%;
+    min-height: 3.45rem;
     padding: 0;
   }
 
