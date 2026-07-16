@@ -616,10 +616,7 @@ function changeLocale(event: Event): void {
 
     <dialog ref="shareDialog" class="preview-share-dialog">
       <div class="preview-share-dialog__heading">
-        <div>
-          <p>{{ messages.previewKicker }}</p>
-          <h2>{{ shareMessages.title }}</h2>
-        </div>
+        <h2>{{ shareMessages.title }}</h2>
         <button type="button" :aria-label="shareMessages.close" @click="shareDialog?.close()">×</button>
       </div>
 
