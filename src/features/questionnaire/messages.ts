@@ -41,6 +41,7 @@ export interface QuestionnaireMessages {
     scopeChoices: Array<{ label: string; scope: SecretFileScope; suffix?: string }>;
     scopeHelp: string;
     scopeLines: (profileName: string) => string[];
+    scopeWarning: string;
   };
   noteHelp: string;
   noteLabel: string;
@@ -174,12 +175,13 @@ const zhHant: QuestionnaireMessages = {
     scopeChoices: [
       { label: '僅顯示主導側', scope: 'activeOnly' },
       { label: '僅顯示配合側', scope: 'passiveOnly' },
-      { label: '顯示所有問題', scope: 'all' },
+      { label: '兩者都顯示', scope: 'all' },
     ],
     scopeHelp: '這些是甚麼？',
     scopeLines: (profileName) => [
       `嗨，${profileName}！很高興在這裡看到你。開始之前，我希望我們先確定測驗的範圍。`,
     ],
+    scopeWarning: '*本檔案的問題範圍一經確立，便不可再更改。',
   },
   noteHelp: '選填，最多 80 個字；請不要填入連結。',
   noteLabel: '想補充的小提醒',
@@ -317,9 +319,10 @@ const zhHans: QuestionnaireMessages = {
     scopeChoices: [
       { label: '仅显示主导侧', scope: 'activeOnly' },
       { label: '仅显示配合侧', scope: 'passiveOnly' },
-      { label: '显示所有问题', scope: 'all' },
+      { label: '两者都显示', scope: 'all' },
     ],
     scopeHelp: '这些是什么？',
+    scopeWarning: '*此文件的问题范围一经确定，便无法再更改。',
   },
   roleLabels: {
     active: '主导侧',
@@ -459,9 +462,10 @@ const ja: QuestionnaireMessages = {
     scopeChoices: [
       { label: 'リード側のみ', scope: 'activeOnly' },
       { label: 'フォロー側のみ', scope: 'passiveOnly' },
-      { label: 'すべて表示', scope: 'all' },
+      { label: '両方を表示', scope: 'all' },
     ],
     scopeHelp: 'どういう意味？',
+    scopeWarning: '※このファイルの質問範囲は、確定後に変更できません。',
   },
   noteHelp: '任意・80文字まで。リンクは入力できません。',
   noteLabel: '小さなメモ',
@@ -600,9 +604,10 @@ const en: QuestionnaireMessages = {
     scopeChoices: [
       { label: 'Leading only', scope: 'activeOnly' },
       { label: 'Following only', scope: 'passiveOnly' },
-      { label: 'Show all', scope: 'all' },
+      { label: 'Show both', scope: 'all' },
     ],
     scopeHelp: 'What does that mean?',
+    scopeWarning: '*Once set, this file’s question scope cannot be changed.',
   },
   noteHelp: 'Optional, up to 80 characters. Links are not allowed.',
   noteLabel: 'A small note',

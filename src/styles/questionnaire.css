@@ -11,6 +11,16 @@
   text-align: center;
 }
 
+.questionnaire-scope-warning {
+  display: block;
+  grid-column: 1 / -1;
+  margin-bottom: 0.1rem;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
 .questionnaire-scope-actions .choice-button > span:first-child {
   white-space: nowrap;
 }

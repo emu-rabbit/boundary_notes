@@ -110,6 +110,9 @@ function start(): void {
             </p>
 
             <div v-if="step === 'scope'" class="choice-grid questionnaire-scope-actions">
+              <small class="questionnaire-scope-warning">
+                {{ messages.intro.scopeWarning }}
+              </small>
               <button
                 v-for="choice in messages.intro.scopeChoices"
                 :key="choice.scope"
