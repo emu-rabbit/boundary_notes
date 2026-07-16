@@ -467,22 +467,27 @@ async function renderSvg(model: ShareImageModel, questionBank: QuestionBank): Pr
     if (index === 0) {
       const x = 84;
       const y = 322;
+      const titleLayout = fitWrappedText(item.title, 300, 2, 26, 16, model.locale);
+      const descriptionY = y + 226 + (titleLayout.lines.length - 1) * 29;
       spotlightSvg += `<rect x="${x}" y="${y}" width="340" height="278" rx="22" fill="#6b5638" fill-opacity=".46" stroke="#f0c98a" stroke-opacity=".62"/>`;
       spotlightSvg += roundedImage('spot-0', image, x + 20, y + 22, 132, 132, 20);
       spotlightSvg += `<circle cx="${x + 305}" cy="${y + 35}" r="18" fill="#efc998" fill-opacity=".12" stroke="${colors.gold}" stroke-opacity=".75"/><text x="${x + 305}" y="${y + 42}" fill="${colors.gold}" font-size="18" font-weight="700" text-anchor="middle" font-family="Arial, sans-serif">1</text>`;
-      spotlightSvg += textLines(limitedWrappedLines(item.title, 300, 28, 2, model.locale), x + 20, y + 192, 28, 34, { weight: 700 });
-      spotlightSvg += textLines(limitedWrappedLines(item.description, 300, 17, 3, model.locale), x + 20, y + 235, 17, 24, { fill: colors.muted, weight: 700 });
+      spotlightSvg += textLines(titleLayout.lines, x + 20, y + 192, titleLayout.fontSize, 29, { weight: 700 });
+      spotlightSvg += textLines(limitedWrappedLines(item.description, 300, 14, 2, model.locale), x + 20, descriptionY, 14, 17, { fill: colors.muted, weight: 700 });
       return;
     }
 
     const compactIndex = index - 1;
     const x = 448 + (compactIndex % 2) * 334;
     const y = 322 + Math.floor(compactIndex / 2) * 139;
+    const titleLayout = fitWrappedText(item.title, 170, 3, 21, 12, model.locale);
+    const titleLineHeight = titleLayout.fontSize + 2;
+    const descriptionY = y + 58 + (titleLayout.lines.length - 1) * titleLineHeight;
     spotlightSvg += `<rect x="${x}" y="${y}" width="326" height="128" rx="18" fill="#fff5ed" fill-opacity=".065" stroke="#eebe91" stroke-opacity=".22"/>`;
     spotlightSvg += roundedImage(`spot-${index}`, image, x + 14, y + 22, 82, 82, 16);
     spotlightSvg += `<circle cx="${x + 300}" cy="${y + 25}" r="14" fill="none" stroke="${colors.gold}" stroke-opacity=".58"/><text x="${x + 300}" y="${y + 31}" fill="${colors.gold}" font-size="14" font-weight="700" text-anchor="middle" font-family="Arial, sans-serif">${index + 1}</text>`;
-    spotlightSvg += textLines([truncateTextToWidth(item.title, 170, 21)], x + 112, y + 42, 21, 25, { weight: 700 });
-    spotlightSvg += textLines(limitedWrappedLines(item.description, 186, 14, 2, model.locale), x + 112, y + 73, 14, 20, { fill: colors.muted, weight: 700 });
+    spotlightSvg += textLines(titleLayout.lines, x + 112, y + 34, titleLayout.fontSize, titleLineHeight, { weight: 700 });
+    spotlightSvg += textLines(limitedWrappedLines(item.description, 186, 12, 2, model.locale), x + 112, descriptionY, 12, 15, { fill: colors.muted, weight: 700 });
   });
 
   if (model.spotlight.length === 0) {

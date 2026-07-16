@@ -199,7 +199,8 @@ function createShareImageFileName(role: QuestionRole): string {
     .replace(/[. ]+$/u, '')
     .slice(0, 48) || 'boundary-notes';
   const date = props.secretFile.updatedAt.slice(0, 10);
-  return `${safeName}-${role}-${date}.png`;
+  const localizedRole = props.questionnaireMessages.roleLabels[role];
+  return `${safeName}-${localizedRole}-${date}.png`;
 }
 
 async function downloadShareImage(role: QuestionRole): Promise<void> {
