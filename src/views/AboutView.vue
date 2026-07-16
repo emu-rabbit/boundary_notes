@@ -75,7 +75,7 @@ const versionHistoryHref = computed(() => router.resolve(getLocalizedRouteLocati
         <section class="about-utility-card about-support-card">
           <h2>{{ messages.about.supportTitle }}</h2>
           <div class="about-support-actions">
-            <a href="https://github.com/emu-rabbit/bdsm_boundary_test/issues/new" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/emu-rabbit/boundary_notes/issues/new" target="_blank" rel="noopener noreferrer">
               {{ messages.about.githubSupport }} <span aria-hidden="true">↗</span>
             </a>
             <a href="mailto:mausu2526@gmail.com">{{ messages.about.emailSupport }}</a>
