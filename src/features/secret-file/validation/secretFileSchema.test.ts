@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { z } from 'zod';
 import { createSecretFile } from '../domain/secretFile';
 import type { QuestionDefinition, SecretFile } from '../domain/types';
 import {
@@ -25,6 +26,10 @@ function createValidSecretFile(): SecretFile {
 }
 
 describe('secret-file runtime validation', () => {
+  it('keeps Zod in CSP-compatible jitless mode', () => {
+    expect(z.config().jitless).toBe(true);
+  });
+
   it('accepts the current portable secret-file schema', () => {
     expect(parseSecretFile(createValidSecretFile())).toEqual(createValidSecretFile());
   });

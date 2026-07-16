@@ -6,6 +6,8 @@ import {
   type SecretFile,
 } from '../domain/types';
 
+z.config({ jitless: true });
+
 const forbiddenNotePattern =
   /(?:https?:\/\/|www\.|\[[^\]\r\n]+\]\([^\s)]+\)|(?:[a-z0-9-]+\.)+(?:com|net|org|io|co|tw|app|dev|edu|gov|info))/i;
 
