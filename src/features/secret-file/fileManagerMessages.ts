@@ -59,7 +59,7 @@ const scopeLabels: Record<AppLocale, Record<SecretFileScope, string>> = {
 const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
   'zh-Hant': {
     backHome: '回到主頁',
-    cloudEmptyBody: '上傳檔案或匯入分享連結後，就能從這台裝置快速回到雲端快照。',
+    cloudEmptyBody: '上傳檔案或匯入分享連結後，就能從這台裝置快速回到雲端檔案。',
     cloudEmptyTitle: '這台裝置還沒有連結雲端檔案',
     cloudImportDescription: '貼上 Boundary Notes 的雲端檔案分享網址或 share ID。這裡只會保存連結，不會建立可編輯的副本。',
     cloudImportLabel: '雲端檔案網址或 share ID',
@@ -106,7 +106,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
   },
   'zh-Hans': {
     backHome: '返回主页',
-    cloudEmptyBody: '上传文件或导入分享链接后，就能从此设备快速返回云端快照。',
+    cloudEmptyBody: '上传文件或导入分享链接后，就能从此设备快速返回云端文件。',
     cloudEmptyTitle: '此设备尚未连接云端文件',
     cloudImportDescription: '粘贴 Boundary Notes 的云端文件分享网址或 share ID。这里只保存链接，不会建立可编辑副本。',
     cloudImportLabel: '云端文件网址或 share ID',
@@ -153,7 +153,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
   },
   ja: {
     backHome: 'ホームへ戻る',
-    cloudEmptyBody: 'ファイルをアップロードするか共有リンクを取り込むと、この端末からクラウドスナップショットへ戻れます。',
+    cloudEmptyBody: 'ファイルをアップロードするか共有リンクを取り込むと、この端末からクラウドファイルへ戻れます。',
     cloudEmptyTitle: 'この端末にリンクしたクラウドファイルはありません',
     cloudImportDescription: 'Boundary Notes のクラウド共有 URL または share ID を貼り付けます。編集用のコピーは作らず、リンクだけを保存します。',
     cloudImportLabel: 'クラウドファイル URL または share ID',
@@ -200,7 +200,7 @@ const messagesByLocale: Record<AppLocale, FileManagerMessages> = {
   },
   en: {
     backHome: 'Home',
-    cloudEmptyBody: 'Upload a file or import a share link to return to cloud snapshots from this device.',
+    cloudEmptyBody: 'Upload a file or import a share link to return to cloud files from this device.',
     cloudEmptyTitle: 'No cloud files are linked on this device',
     cloudImportDescription: 'Paste a Boundary Notes cloud share URL or share ID. This saves only the link and does not create an editable copy.',
     cloudImportLabel: 'Cloud file URL or share ID',
