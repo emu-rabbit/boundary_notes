@@ -78,6 +78,10 @@ function getCategoryAnswer(categoryId: string, role = selectedRole.value): Answe
   return answer?.state === 'answered' ? answer : null;
 }
 
+function hasLoveCategoryAnswer(categoryId: string): boolean {
+  return getCategoryAnswer(categoryId)?.preference === 'love';
+}
+
 function getDetailAnswer(
   categoryId: string,
   detailId: string,
@@ -445,7 +449,10 @@ function changeLocale(event: Event): void {
               v-for="category in questionBank.categories"
               :key="`${category.categoryId}.${selectedRole}`"
               class="result-category-card preview-category-card"
-              :class="{ 'is-other': !category.includeInCategoryRound }"
+              :class="{
+                'is-love': category.includeInCategoryRound && hasLoveCategoryAnswer(category.categoryId),
+                'is-other': !category.includeInCategoryRound,
+              }"
               type="button"
               :aria-label="messages.viewCategory(category.name)"
               @click="openCategory(category.categoryId)"
