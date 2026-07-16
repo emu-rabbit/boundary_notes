@@ -106,7 +106,7 @@ export function shouldShowAnalyticsConsent(input: {
   uiEnabled: boolean;
 }): boolean {
   if (!input.uiEnabled || input.consent !== 'unknown') return false;
-  if (input.routeName === 'story') return false;
+  if (input.routeName === 'entry' || input.routeName === 'story') return false;
   if (input.routeName === 'terms' || input.routeName === 'privacy') return false;
   if (input.routeName === 'preview' && input.source === 'cloud') return false;
   return true;

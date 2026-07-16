@@ -26,6 +26,12 @@ describe('analytics consent', () => {
   it('hides the prompt on blacklisted routes', () => {
     expect(shouldShowAnalyticsConsent({
       consent: 'unknown',
+      routeName: 'entry',
+      source: undefined,
+      uiEnabled: true,
+    })).toBe(false);
+    expect(shouldShowAnalyticsConsent({
+      consent: 'unknown',
       routeName: 'story',
       source: undefined,
       uiEnabled: true,
