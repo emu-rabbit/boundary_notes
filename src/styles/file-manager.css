@@ -211,7 +211,9 @@
 
 .files-viewer-panel {
   --files-panel-min-height: clamp(14.5rem, 34vw, 20.5rem);
+  --cloud-files-note-space: 3.8rem;
   grid-area: panel;
+  min-height: calc(var(--files-panel-min-height) + var(--cloud-files-note-space));
   min-width: 0;
   width: 100%;
 }
@@ -562,6 +564,10 @@
 }
 
 @media (max-width: 700px) {
+  .files-viewer-panel {
+    --cloud-files-note-space: 5.1rem;
+  }
+
   .files-stage {
     grid-template-areas:
       "heading"
