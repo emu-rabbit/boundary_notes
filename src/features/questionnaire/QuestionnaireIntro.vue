@@ -90,7 +90,12 @@ function start(): void {
     <div class="ambient-grid" aria-hidden="true" />
 
     <header class="story-header">
-      <BrandMark :messages="appMessages" static :title="appTitle" />
+      <BrandMark
+        :action-label="appMessages.common.backHome"
+        :messages="appMessages"
+        :title="appTitle"
+        @restart="emit('cancel')"
+      />
     </header>
 
     <div class="story-layout">

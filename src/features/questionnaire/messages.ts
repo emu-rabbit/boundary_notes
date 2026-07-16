@@ -155,6 +155,7 @@ const zhHant: QuestionnaireMessages = {
     autosaveLines: [
       '填答過程是即時儲存的，你可以隨時離開，也可以隨時回來繼續填答。',
       '甚至也可以把你的檔案傳送到其他裝置繼續作答！',
+      '資料只會儲存在本裝置中，如果想要分享，你之後也可以上傳至雲端，當然，一切由你決定。',
     ],
     categoryCountAction: '(驚魂未定)',
     categoryCountLines: (count) => [
@@ -296,6 +297,7 @@ const zhHans: QuestionnaireMessages = {
     autosaveLines: [
       '填写过程会即时保存，你可以随时离开，也可以随时回来继续。',
       '甚至还可以把档案传到其他装置继续填写！',
+      '数据只会储存在本装置中。如果想要分享，之后也可以上传到云端；当然，一切由你决定。',
     ],
     categoryCountAction: '（惊魂未定）',
     categoryCountLines: (count) => [
@@ -437,6 +439,7 @@ const ja: QuestionnaireMessages = {
     autosaveLines: [
       '回答はその都度保存されます。いつ離れても、戻って続きから再開できます。',
       'ファイルを別の端末へ移して、そちらで続きを回答することもできます。',
+      'データはこの端末にだけ保存されます。共有したくなったら、あとからクラウドへアップロードすることもできます。もちろん、すべてあなたが決められます。',
     ],
     categoryCountAction: '（まだ少し驚いている）',
     categoryCountLines: (count) => [
@@ -581,6 +584,7 @@ const en: QuestionnaireMessages = {
     autosaveLines: [
       'Your answers are saved as you go. You can leave at any time and return whenever you are ready.',
       'You can even move your file to another device and continue there.',
+      'Your data stays only on this device. If you want to share it, you can upload it to the cloud later. Of course, the choice is entirely yours.',
     ],
     categoryCountAction: '(Still recovering)',
     categoryCountLines: (count) => [

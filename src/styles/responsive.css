@@ -664,6 +664,12 @@
     padding-right: 0;
   }
 
+  .questionnaire-intro-actions,
+  .questionnaire-ready-actions {
+    margin-top: auto;
+    padding-top: clamp(0.9rem, 4dvh, 2.35rem);
+  }
+
   .settings-name-field input {
     min-height: 3.2rem;
     font-size: 1.05rem;

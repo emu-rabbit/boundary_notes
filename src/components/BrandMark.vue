@@ -2,6 +2,7 @@
 import type { LocaleMessages } from '../app/i18n';
 
 defineProps<{
+  actionLabel?: string;
   hidden?: boolean;
   messages: LocaleMessages;
   static?: boolean;
@@ -37,7 +38,7 @@ const emit = defineEmits<{
     class="brand-mark"
     :class="{ 'is-visually-held': hidden }"
     type="button"
-    :aria-label="messages.brand.restartStoryAria(title)"
+    :aria-label="actionLabel ?? messages.brand.restartStoryAria(title)"
     @click="emit('restart')"
   >
     <span class="brand-folder-shell" aria-hidden="true">
