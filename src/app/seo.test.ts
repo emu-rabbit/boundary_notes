@@ -48,7 +48,7 @@ describe('SEO documents', () => {
     expect(head).toContain('data-seo-json-ld="true"');
   });
 
-  it('presents the product as a tool without making educational claims', () => {
+  it('presents the product as a notebook without making educational claims', () => {
     const locales = ['en', 'zh-Hant', 'zh-Hans', 'ja'] as const;
     const routeIds = ['entry', 'about', 'terms', 'privacy'] as const;
 
@@ -60,5 +60,10 @@ describe('SEO documents', () => {
         expect(head).not.toContain('EducationalApplication');
       }
     }
+
+    expect(getSeoDocument('preview', 'en', true).title).toContain('Notebook');
+    expect(getSeoDocument('preview', 'zh-Hant', true).title).toContain('筆記本');
+    expect(getSeoDocument('preview', 'zh-Hans', true).title).toContain('笔记本');
+    expect(getSeoDocument('preview', 'ja', true).title).toContain('ノート');
   });
 });

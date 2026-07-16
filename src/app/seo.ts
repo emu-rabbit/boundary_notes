@@ -40,11 +40,11 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
   en: {
     locale: 'en_US',
     imageAlt: 'Boundary Notes, with the white bunny beside a private notebook for boundary communication.',
-    privateTitle: 'Boundary Notes — A Gentle Boundary Communication Tool',
-    privateDescription: 'A private tool for reflecting on BDSM boundaries, informed consent, and clearer boundary communication.',
+    privateTitle: 'Boundary Notes — A Gentle Boundary Communication Notebook',
+    privateDescription: 'A private notebook for reflecting on BDSM boundaries, informed consent, and clearer boundary communication.',
     routes: {
       entry: {
-        title: 'Begin Boundary Notes | BDSM Boundary Reflection Tool',
+        title: 'Begin Boundary Notes | BDSM Boundary Reflection Notebook',
         description: 'Choose your language and begin the private Boundary Notes introduction before reflecting on BDSM boundaries and preparing clearer informed-consent conversations.',
       },
       about: {
@@ -53,7 +53,7 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
       },
       terms: {
         title: 'Terms of Use | Boundary Notes',
-        description: 'Read the Boundary Notes terms, including the tool’s purpose, responsible use, sharing limits, and important consent reminders.',
+        description: 'Read the Boundary Notes terms, including the notebook’s purpose, responsible use, sharing limits, and important consent reminders.',
       },
       privacy: {
         title: 'Privacy Policy | Boundary Notes',
@@ -64,12 +64,12 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
   'zh-Hant': {
     locale: 'zh_TW',
     imageAlt: 'Boundary Notes 品牌分享圖：白兔坐在協助整理界線溝通的私人筆記旁。',
-    privateTitle: 'Boundary Notes｜溫柔的界線溝通工具',
-    privateDescription: '協助整理 BDSM 界線、理解知情同意並準備界線溝通的私人工具。',
+    privateTitle: 'Boundary Notes｜溫柔的界線溝通筆記本',
+    privateDescription: '協助整理 BDSM 界線、理解知情同意並準備界線溝通的私人筆記本。',
     routes: {
       entry: {
-        title: '開始使用 Boundary Notes｜BDSM 界線整理工具',
-        description: '選擇語言並從既有前導開始使用 Boundary Notes，再以私密工具整理 BDSM 界線，為更清楚的知情同意對話做準備。',
+        title: '開始使用 Boundary Notes｜BDSM 界線整理筆記本',
+        description: '選擇語言並從既有前導開始使用 Boundary Notes，再以私密筆記本整理 BDSM 界線，為更清楚的知情同意對話做準備。',
       },
       about: {
         title: '關於 Boundary Notes｜知情同意與界線溝通',
@@ -77,7 +77,7 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
       },
       terms: {
         title: '使用條款 | Boundary Notes',
-        description: '閱讀 Boundary Notes 的工具用途、使用責任、分享限制與知情同意提醒。',
+        description: '閱讀 Boundary Notes 的筆記本用途、使用責任、分享限制與知情同意提醒。',
       },
       privacy: {
         title: '隱私權政策 | Boundary Notes',
@@ -88,12 +88,12 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
   'zh-Hans': {
     locale: 'zh_CN',
     imageAlt: 'Boundary Notes 品牌分享图：白兔坐在协助整理界限沟通的私人笔记旁。',
-    privateTitle: 'Boundary Notes｜温柔的界限沟通工具',
-    privateDescription: '协助整理 BDSM 界限、理解知情同意并准备界限沟通的私人工具。',
+    privateTitle: 'Boundary Notes｜温柔的界限沟通笔记本',
+    privateDescription: '协助整理 BDSM 界限、理解知情同意并准备界限沟通的私人笔记本。',
     routes: {
       entry: {
-        title: '开始使用 Boundary Notes｜BDSM 界限整理工具',
-        description: '选择语言并从现有前导开始使用 Boundary Notes，再以私密工具整理 BDSM 界限，为更清楚的知情同意对话做准备。',
+        title: '开始使用 Boundary Notes｜BDSM 界限整理笔记本',
+        description: '选择语言并从现有前导开始使用 Boundary Notes，再以私密笔记本整理 BDSM 界限，为更清楚的知情同意对话做准备。',
       },
       about: {
         title: '关于 Boundary Notes｜知情同意与界限沟通',
@@ -101,7 +101,7 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
       },
       terms: {
         title: '使用条款 | Boundary Notes',
-        description: '阅读 Boundary Notes 的工具用途、使用责任、分享限制与知情同意提醒。',
+        description: '阅读 Boundary Notes 的笔记本用途、使用责任、分享限制与知情同意提醒。',
       },
       privacy: {
         title: '隐私政策 | Boundary Notes',
@@ -112,12 +112,12 @@ const seoCopy: Record<AppLocale, LocaleSeoCopy> = {
   ja: {
     locale: 'ja_JP',
     imageAlt: 'Boundary Notes のシェア画像。境界線の対話を整理するノートのそばに白いうさぎが座っています。',
-    privateTitle: 'Boundary Notes｜やさしい境界線コミュニケーションツール',
-    privateDescription: 'BDSM の境界線、インフォームド・コンセント、より明確な対話を考えるためのプライベートなツールです。',
+    privateTitle: 'Boundary Notes｜やさしい境界線コミュニケーションノート',
+    privateDescription: 'BDSM の境界線、インフォームド・コンセント、より明確な対話を考えるためのプライベートなノートです。',
     routes: {
       entry: {
-        title: 'Boundary Notesを始める｜BDSMの境界線を考えるツール',
-        description: '言語を選び、既存の導入から Boundary Notes を始めます。BDSM の境界線を振り返り、インフォームド・コンセントの対話を準備するためのプライベートなツールです。',
+        title: 'Boundary Notesを始める｜BDSMの境界線を考えるノート',
+        description: '言語を選び、既存の導入から Boundary Notes を始めます。BDSM の境界線を振り返り、インフォームド・コンセントの対話を準備するためのプライベートなノートです。',
       },
       about: {
         title: 'Boundary Notesについて｜同意と境界線の対話',

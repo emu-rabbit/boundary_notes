@@ -15,8 +15,8 @@
 ### 體驗定位
 
 - **使命優先**：本專案使命已建立於 `.agents/mission/project_mission.md`；介面、文案、互動與視覺資產必須對齊該文件。
-- **知情同意優先**：秘密檔案、分享連結、測驗流程與結果檢閱都必須提醒使用者這是溝通工具，不是同意書、契約或承諾。
-- **教育工具語氣**：BDSM 相關內容應以教育、自我理解與界限核對為導向，避免露骨、挑逗、獵奇或鼓勵使用者嘗試特定項目。
+- **知情同意優先**：秘密檔案、分享連結、測驗流程與結果檢閱都必須提醒使用者這是溝通起點，不是同意書、契約或承諾。
+- **私密筆記本語氣**：BDSM 相關內容應以自我理解與界限核對為導向，可以具有教育性質，但不得以教育者或教育服務自居；避免露骨、挑逗、獵奇或鼓勵使用者嘗試特定項目。
 - **兔子陪伴角色**：插畫兔子應呈現可愛、溫柔、陪伴與引導感，可用隱喻表達敏感情境，不得 NSFW 或過度露骨。生成、修改或評估主角兔子圖片時，必須讀取 `.agents/skills/visual/main_rabbit_image_generation.md`，並以 `.agents/assets/characters/main_rabbit_role.png` 作為核心人物設定 reference。
 - **非社交產品**：介面不得暗示配對、交友、邀約、排行、競賽或他人評分。
 - **使用者目標優先**：畫面應幫助使用者完成任務，不把裝飾或技術展示放在核心流程之前。
@@ -33,7 +33,7 @@
 - **建立一致系統**：色彩、字體、間距、邊框、陰影、圖案與動效都應有一致規則。
 - **語系字型分流**：預設字型以 Google Fonts 的 `Huninn / jf open 粉圓` WOFF2 unicode-range 子集服務繁體中文、英文與使用者自行輸入的稱呼或文字；不得只依目前固定文案自製 glyph subset，以免未收錄的使用者輸入改用不一致字型。簡體中文與日文不得假設粉圓體完整覆蓋，應透過 `html:lang(...)` 切換到風格接近、開源且 CJK 覆蓋較完整的字型 stack。目前簡體中文使用 Noto Sans SC / Source Han Sans SC 系列優先，日文使用 Noto Sans JP / Source Han Sans JP 系列優先，並保留各平台系統字型 fallback。外部字型必須使用 `display=swap`，讓核心內容不因等待字型而不可讀。
 - **CSS 分層一致性**：自訂 CSS 以 `src/styles/` 為維護入口；新增或調整樣式時，依責任放入 foundation、route-shell、story-stage、story-dialogue、home-page、secondary-pages、questionnaire、secret-file-preview 或 responsive，而不是回到單一巨型 stylesheet。建立檔案、分類作答與結果編輯器由 `questionnaire.css` 管理；唯讀結果總覽、焦點排名、分類詳情與閱覽 dialog 由 `secret-file-preview.css` 管理；`responsive.css` 是最後 cascade 層，跨頁 mobile/desktop override 應集中在此檔或與此檔同等順序的位置。
-- **暗色調一致性**：本專案視覺應維持 BDSM 的神秘感與教育工具的溫和包容氛圍；UI 背景、前景面板、按鈕、輸入框與裝飾要素應一律往暗色調設計，避免深色背景搭配大面積亮色前景造成氛圍斷裂。
+- **暗色調一致性**：本專案視覺應維持 BDSM 的神秘感與私密筆記本的溫和包容氛圍；UI 背景、前景面板、按鈕、輸入框與裝飾要素應一律往暗色調設計，避免深色背景搭配大面積亮色前景造成氛圍斷裂。
 - **自刻 UI**：本專案 UI 應自己刻，不使用現成 Vue UI/UX library 或模板化 component kit；若使用無樣式 helper，仍必須保留本專案自己的視覺語言。
 - **可讀性不可犧牲**：文字對比、行高、段落寬度、按鈕大小與 focus 狀態必須可讀可用。
 - **裝飾需有目的**：裝飾元素應服務身份、敘事、掃讀或動線；若只增加噪音，應刪除。
