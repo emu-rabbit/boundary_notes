@@ -93,6 +93,7 @@
 - **預熱策略要可見於程式**：圖片、插畫、字體、路由 chunk 或大型資料應透過明確的 preload、prefetch、lazy loading、cache warmup 或 staged loading 策略處理。
 - **核心流程優先**：預熱優先服務測驗流程、結果檢閱與分享頁的順暢感；使用者進入前導劇情或主頁時應開始預熱所有兔子圖片，進入雲端檔案檢視時則應在等待 Firestore 回應前開始預熱所有分類圖片。這些 route-level 預熱不得阻塞畫面，也不得擴張成在 app 初始載入時無差別下載所有非核心裝飾資源。
 - **可退化**：資源預熱、GA、Firestore 或網路請求失敗時，核心測驗與本地檢閱流程仍應有合理 fallback。
+- **分享圖片輸出成本**：分享圖片固定輸出為 1200 × 1600 PNG，不使用 2× rasterization；排版品質應由實際字型量測、文字區塊約束與高品質 canvas smoothing 維持，不得以放大到 2400 × 3200 增加低速網路、行動裝置記憶體與生成時間負擔。
 - **viewport 驗證基準**：調整 route shell、背景、主要 layout 或 overflow 後，除了 build/typecheck，應至少用一般桌面、短高桌面、手機三類 viewport 驗證 `scrollHeight`/`clientHeight` 與視覺底部狀態；高度足夠的畫面不可有多餘拉條，短高畫面必須能捲到所有內容，背景與黑幕不可在滾動過程中斷層。
 
 ## 後續 Agent 行動

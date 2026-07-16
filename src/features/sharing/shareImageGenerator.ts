@@ -14,6 +14,15 @@ import type {
   SecretFile,
 } from '../secret-file';
 import type { QuestionnaireMessages } from '../questionnaire/messages';
+import {
+  createCanvasTextMeasurer,
+  fitWrappedText,
+  layoutStackedText,
+  shareImageFontFamily,
+  shareImageOutputSize,
+  type TextLayout,
+  type TextMeasurer,
+} from './shareImageLayout';
 
 const colors = {
   danger: '#eca2a2',
@@ -76,11 +85,6 @@ interface ShareImageModel {
   shareUrl: string | null;
   spotlight: DisplayItem[];
   updatedAt: string;
-}
-
-interface TextLayout {
-  fontSize: number;
-  lines: string[];
 }
 
 const exportMessages: Record<AppLocale, ExportMessages> = {
@@ -253,109 +257,6 @@ function escapeXml(value: string): string {
   })[character] ?? character);
 }
 
-function glyphWidthEm(character: string): number {
-  if (/\s/u.test(character)) return 0.34;
-  if (/[\u1100-\u115f\u2329\u232a\u2e80-\u303e\u3040-\u30ff\u3100-\u312f\u3130-\u318f\u31a0-\u31bf\u31f0-\u31ff\u3400-\u4dbf\u4e00-\ua4cf\uac00-\ud7a3\uf900-\ufaff\ufe10-\ufe19\ufe30-\ufe6f\uff00-\uff60\uffe0-\uffe6]/u.test(character)) return 1;
-  if (/\p{Extended_Pictographic}/u.test(character)) return 1;
-  if (/[A-Z]/u.test(character)) return 0.68;
-  if (/[a-z0-9]/u.test(character)) return 0.56;
-  return 0.46;
-}
-
-function estimateTextWidth(value: string, fontSize: number): number {
-  return Array.from(value)
-    .reduce((width, character) => width + glyphWidthEm(character) * fontSize, 0);
-}
-
-function truncateTextToWidth(value: string, maxWidth: number, fontSize: number): string {
-  if (estimateTextWidth(value, fontSize) <= maxWidth) return value;
-  const characters = Array.from(value);
-  while (
-    characters.length
-    && estimateTextWidth(`${characters.join('')}…`, fontSize) > maxWidth
-  ) characters.pop();
-  return `${characters.join('').trimEnd()}…`;
-}
-
-function wrapTextToWidth(
-  value: string,
-  maxWidth: number,
-  fontSize: number,
-  locale: AppLocale,
-): string[] {
-  if (locale === 'en') {
-    const words = value.trim().split(/\s+/u);
-    const lines: string[] = [];
-    let line = '';
-
-    for (const word of words) {
-      const candidate = line ? `${line} ${word}` : word;
-      if (estimateTextWidth(candidate, fontSize) <= maxWidth) {
-        line = candidate;
-      } else if (line) {
-        lines.push(line);
-        line = word;
-      } else {
-        const chunkSize = Math.max(1, Math.floor(maxWidth / (fontSize * 0.56)));
-        const characters = Array.from(word);
-        while (characters.length > chunkSize) lines.push(characters.splice(0, chunkSize).join(''));
-        line = characters.join('');
-      }
-    }
-    if (line) lines.push(line);
-    return lines;
-  }
-
-  const lines: string[] = [];
-  let line = '';
-  for (const character of Array.from(value)) {
-    if (line && estimateTextWidth(`${line}${character}`, fontSize) > maxWidth) {
-      lines.push(line);
-      line = character;
-    } else {
-      line += character;
-    }
-  }
-  if (line) lines.push(line);
-  return lines;
-}
-
-function limitedWrappedLines(
-  value: string,
-  maxWidth: number,
-  fontSize: number,
-  maxLines: number,
-  locale: AppLocale,
-): string[] {
-  const lines = wrapTextToWidth(value, maxWidth, fontSize, locale);
-  if (lines.length <= maxLines) return lines;
-  const visible = lines.slice(0, maxLines);
-  visible[maxLines - 1] = truncateTextToWidth(
-    `${visible[maxLines - 1] ?? ''}…`,
-    maxWidth,
-    fontSize,
-  ).replace(/……$/u, '…');
-  return visible;
-}
-
-function fitWrappedText(
-  value: string,
-  maxWidth: number,
-  maxLines: number,
-  preferredFontSize: number,
-  minimumFontSize: number,
-  locale: AppLocale,
-): TextLayout {
-  for (let fontSize = preferredFontSize; fontSize >= minimumFontSize; fontSize -= 1) {
-    const lines = wrapTextToWidth(value, maxWidth, fontSize, locale);
-    if (lines.length <= maxLines) return { fontSize, lines };
-  }
-  return {
-    fontSize: minimumFontSize,
-    lines: limitedWrappedLines(value, maxWidth, minimumFontSize, maxLines, locale),
-  };
-}
-
 function textLines(
   lines: readonly string[],
   x: number,
@@ -375,7 +276,23 @@ function textLines(
     letterSpacing = 0,
     weight = 400,
   } = options;
-  return `<text x="${x}" y="${y}" fill="${fill}" font-size="${fontSize}" font-weight="${weight}" text-anchor="${anchor}" letter-spacing="${letterSpacing}" font-family="Microsoft JhengHei, Meiryo, Arial, sans-serif">${lines.map((line, index) => `<tspan x="${x}" dy="${index === 0 ? 0 : lineHeight}">${escapeXml(line)}</tspan>`).join('')}</text>`;
+  return `<text x="${x}" y="${y}" fill="${fill}" font-size="${fontSize}" font-weight="${weight}" text-anchor="${anchor}" letter-spacing="${letterSpacing}" font-family="${shareImageFontFamily}">${lines.map((line, index) => `<tspan x="${x}" dy="${index === 0 ? 0 : lineHeight}">${escapeXml(line)}</tspan>`).join('')}</text>`;
+}
+
+function textBlock(
+  layout: TextLayout,
+  x: number,
+  top: number,
+  options: Parameters<typeof textLines>[5] = {},
+): string {
+  return textLines(
+    layout.lines,
+    x,
+    top + layout.fontSize,
+    layout.fontSize,
+    layout.lineHeight,
+    options,
+  );
 }
 
 function roundedImage(
@@ -434,24 +351,27 @@ async function loadRasterAssets(questionBank: QuestionBank): Promise<{
   return { background, categories: Object.fromEntries(categoryEntries) };
 }
 
-function createTitleLayout(title: string, locale: AppLocale): TextLayout & {
-  dateY: number;
-  lineHeight: number;
-  y: number;
-} {
-  if (estimateTextWidth(title, 53) <= 820) {
-    return { dateY: 194, fontSize: 53, lineHeight: 58, lines: [title], y: 145 };
-  }
-  return {
-    dateY: 207,
-    fontSize: 38,
-    lineHeight: 42,
-    lines: limitedWrappedLines(title, 820, 38, 2, locale),
-    y: 126,
-  };
+function createTitleLayout(
+  title: string,
+  locale: AppLocale,
+  measurer: TextMeasurer,
+): TextLayout {
+  return fitWrappedText(title, {
+    lineHeightRatio: 1.08,
+    maxHeight: 80,
+    maxLines: 2,
+    maxWidth: 784,
+    minimumFontSize: 34,
+    preferredFontSize: 53,
+    weight: 500,
+  }, locale, measurer);
 }
 
-async function renderSvg(model: ShareImageModel, questionBank: QuestionBank): Promise<string> {
+async function renderSvg(
+  model: ShareImageModel,
+  questionBank: QuestionBank,
+  measurer: TextMeasurer,
+): Promise<string> {
   const rasterAssets = await loadRasterAssets(questionBank);
   const qrCode = model.shareUrl ? await QRCode.toDataURL(model.shareUrl, {
     color: { dark: colors.qrInk, light: colors.qrBackground },
@@ -467,31 +387,67 @@ async function renderSvg(model: ShareImageModel, questionBank: QuestionBank): Pr
     if (index === 0) {
       const x = 84;
       const y = 322;
-      const titleLayout = fitWrappedText(item.title, 300, 2, 26, 16, model.locale);
-      const descriptionY = y + 226 + (titleLayout.lines.length - 1) * 29;
+      const descriptionLayout = fitWrappedText(item.description, {
+        lineHeightRatio: 1.18,
+        maxHeight: 34,
+        maxLines: 2,
+        maxWidth: 300,
+        minimumFontSize: 12,
+        preferredFontSize: 14,
+        weight: 700,
+      }, model.locale, measurer);
+      const contentLayout = layoutStackedText(item.title, {
+        lineHeightRatio: 1.12,
+        maxLines: 2,
+        maxWidth: 300,
+        minimumFontSize: 16,
+        preferredFontSize: 26,
+        weight: 700,
+      }, descriptionLayout.height, 6, y + 164, 104, model.locale, measurer);
       spotlightSvg += `<rect x="${x}" y="${y}" width="340" height="278" rx="22" fill="#6b5638" fill-opacity=".46" stroke="#f0c98a" stroke-opacity=".62"/>`;
       spotlightSvg += roundedImage('spot-0', image, x + 20, y + 22, 132, 132, 20);
       spotlightSvg += `<circle cx="${x + 305}" cy="${y + 35}" r="18" fill="#efc998" fill-opacity=".12" stroke="${colors.gold}" stroke-opacity=".75"/><text x="${x + 305}" y="${y + 42}" fill="${colors.gold}" font-size="18" font-weight="700" text-anchor="middle" font-family="Arial, sans-serif">1</text>`;
-      spotlightSvg += textLines(titleLayout.lines, x + 20, y + 192, titleLayout.fontSize, 29, { weight: 700 });
-      spotlightSvg += textLines(limitedWrappedLines(item.description, 300, 14, 2, model.locale), x + 20, descriptionY, 14, 17, { fill: colors.muted, weight: 700 });
+      spotlightSvg += textBlock(contentLayout.title, x + 20, contentLayout.titleTop, { weight: 700 });
+      spotlightSvg += textBlock(descriptionLayout, x + 20, contentLayout.secondaryTop, { fill: colors.muted, weight: 700 });
       return;
     }
 
     const compactIndex = index - 1;
     const x = 448 + (compactIndex % 2) * 334;
     const y = 322 + Math.floor(compactIndex / 2) * 139;
-    const titleLayout = fitWrappedText(item.title, 170, 3, 21, 12, model.locale);
-    const titleLineHeight = titleLayout.fontSize + 2;
-    const descriptionY = y + 58 + (titleLayout.lines.length - 1) * titleLineHeight;
+    const descriptionLayout = fitWrappedText(item.description, {
+      lineHeightRatio: 1.25,
+      maxHeight: 30,
+      maxLines: 2,
+      maxWidth: 186,
+      minimumFontSize: 11,
+      preferredFontSize: 12,
+      weight: 700,
+    }, model.locale, measurer);
+    const contentLayout = layoutStackedText(item.title, {
+      lineHeightRatio: 1.1,
+      maxLines: 3,
+      maxWidth: 170,
+      minimumFontSize: 12,
+      preferredFontSize: 21,
+      weight: 700,
+    }, descriptionLayout.height, 5, y + 13, 102, model.locale, measurer);
     spotlightSvg += `<rect x="${x}" y="${y}" width="326" height="128" rx="18" fill="#fff5ed" fill-opacity=".065" stroke="#eebe91" stroke-opacity=".22"/>`;
     spotlightSvg += roundedImage(`spot-${index}`, image, x + 14, y + 22, 82, 82, 16);
     spotlightSvg += `<circle cx="${x + 300}" cy="${y + 25}" r="14" fill="none" stroke="${colors.gold}" stroke-opacity=".58"/><text x="${x + 300}" y="${y + 31}" fill="${colors.gold}" font-size="14" font-weight="700" text-anchor="middle" font-family="Arial, sans-serif">${index + 1}</text>`;
-    spotlightSvg += textLines(titleLayout.lines, x + 112, y + 34, titleLayout.fontSize, titleLineHeight, { weight: 700 });
-    spotlightSvg += textLines(limitedWrappedLines(item.description, 186, 12, 2, model.locale), x + 112, descriptionY, 12, 15, { fill: colors.muted, weight: 700 });
+    spotlightSvg += textBlock(contentLayout.title, x + 112, contentLayout.titleTop, { weight: 700 });
+    spotlightSvg += textBlock(descriptionLayout, x + 112, contentLayout.secondaryTop, { fill: colors.muted, weight: 700 });
   });
 
   if (model.spotlight.length === 0) {
-    spotlightSvg = `<circle cx="600" cy="428" r="34" fill="none" stroke="${colors.gold}" stroke-opacity=".35"/><circle cx="600" cy="428" r="5" fill="${colors.gold}" fill-opacity=".48"/>${textLines([model.messages.spotlightEmpty], 600, 500, 22, 26, { anchor: 'middle', fill: colors.muted, weight: 700 })}`;
+    const emptyLayout = fitWrappedText(model.messages.spotlightEmpty, {
+      maxLines: 2,
+      maxWidth: 720,
+      minimumFontSize: 16,
+      preferredFontSize: 22,
+      weight: 700,
+    }, model.locale, measurer);
+    spotlightSvg = `<circle cx="600" cy="428" r="34" fill="none" stroke="${colors.gold}" stroke-opacity=".35"/><circle cx="600" cy="428" r="5" fill="${colors.gold}" fill-opacity=".48"/>${textBlock(emptyLayout, 600, 478, { anchor: 'middle', fill: colors.muted, weight: 700 })}`;
   }
 
   let categorySvg = '';
@@ -504,16 +460,36 @@ async function renderSvg(model: ShareImageModel, questionBank: QuestionBank): Pr
       ? model.questionnaireMessages.preferenceLabels[item.answer.preference]
       : model.questionnaireMessages.results.unansweredSummary;
     const isLove = item.answer?.preference === 'love';
-    const titleLayout = fitWrappedText(item.title, 155, 2, 17, 14, model.locale);
-    const wrapped = titleLayout.lines.length > 1;
+    const preferenceLayout = fitWrappedText(preference, {
+      lineHeightRatio: 1.15,
+      maxLines: 1,
+      maxWidth: item.answer ? 121 : 155,
+      minimumFontSize: 11,
+      preferredFontSize: 14,
+      weight: isLove ? 500 : 400,
+    }, model.locale, measurer);
+    const preferenceRowHeight = item.answer ? 30 : preferenceLayout.height;
+    const contentLayout = layoutStackedText(item.title, {
+      lineHeightRatio: 1.12,
+      maxLines: 2,
+      maxWidth: 155,
+      minimumFontSize: 13,
+      preferredFontSize: 17,
+      weight: 500,
+    }, preferenceRowHeight, 5, y + 8, 78, model.locale, measurer);
     categorySvg += `<rect x="${x}" y="${y}" width="249" height="94" rx="16" fill="${isLove ? '#7a3c4d' : '#fff5ed'}" fill-opacity="${isLove ? '.28' : '.055'}" stroke="${isLove ? '#e7a4a9' : '#ecc6bb'}" stroke-opacity="${isLove ? '.52' : '.15'}"/>`;
     categorySvg += roundedImage(`cat-${index}`, image, x + 11, y + 18, 58, 58, 13);
-    categorySvg += textLines(titleLayout.lines, x + 81, y + (wrapped ? 23 : 30), titleLayout.fontSize, 17, { weight: 500 });
+    categorySvg += textBlock(contentLayout.title, x + 81, contentLayout.titleTop, { weight: 500 });
     if (item.answer) {
-      categorySvg += preferenceIcon(item.answer.preference, x + 81, y + (wrapped ? 54 : 45));
-      categorySvg += textLines([preference], x + 115, y + (wrapped ? 77 : 68), 14, 18, { fill: isLove ? '#ffd5d0' : colors.muted, weight: isLove ? 500 : 400 });
+      categorySvg += preferenceIcon(item.answer.preference, x + 81, contentLayout.secondaryTop);
+      categorySvg += textBlock(
+        preferenceLayout,
+        x + 115,
+        contentLayout.secondaryTop + (preferenceRowHeight - preferenceLayout.height) / 2,
+        { fill: isLove ? '#ffd5d0' : colors.muted, weight: isLove ? 500 : 400 },
+      );
     } else {
-      categorySvg += textLines([preference], x + 81, y + (wrapped ? 76 : 65), 14, 18, { fill: colors.muted });
+      categorySvg += textBlock(preferenceLayout, x + 81, contentLayout.secondaryTop, { fill: colors.muted });
     }
   });
 
@@ -521,29 +497,92 @@ async function renderSvg(model: ShareImageModel, questionBank: QuestionBank): Pr
   const hardNoSummary = firstHardNoDescription
     ? model.messages.hardNoSummary(firstHardNoDescription, model.hardNoDescriptions.length - 1)
     : '';
-  const hardNoLayout = fitWrappedText(hardNoSummary, 960, 3, 18, 14, model.locale);
+  const hardNoLayout = fitWrappedText(hardNoSummary, {
+    lineHeightRatio: 1.12,
+    maxHeight: 40,
+    maxLines: 2,
+    maxWidth: 960,
+    minimumFontSize: 13,
+    preferredFontSize: 18,
+    weight: 500,
+  }, model.locale, measurer);
   const hasQrCode = qrCode !== null;
   const warningPanelWidth = hasQrCode ? 816 : 1076;
   const warningTextWidth = hasQrCode ? 744 : 1000;
-  const warningLines = limitedWrappedLines(model.messages.warning(model.profileName), warningTextWidth, 17, 4, model.locale);
-  const titleLayout = createTitleLayout(model.messages.title(model.profileName), model.locale);
+  const warningLayout = fitWrappedText(model.messages.warning(model.profileName), {
+    lineHeightRatio: 1.3,
+    maxHeight: 88,
+    maxLines: 4,
+    maxWidth: warningTextWidth,
+    minimumFontSize: 14,
+    preferredFontSize: 17,
+  }, model.locale, measurer);
+  const warningFooterLayout = fitWrappedText(model.messages.warningFooter, {
+    lineHeightRatio: 1.2,
+    maxLines: 1,
+    maxWidth: warningTextWidth,
+    minimumFontSize: 12,
+    preferredFontSize: 16,
+  }, model.locale, measurer);
+  const titleLayout = createTitleLayout(model.messages.title(model.profileName), model.locale, measurer);
+  const titleTop = 90;
+  const metadataRowHeight = 37;
+  const metadataRowTop = Math.max(167, titleTop + titleLayout.height + 5);
   const dateLabel = model.messages.date(model.updatedAt);
+  const dateLayout = fitWrappedText(dateLabel, {
+    maxLines: 1,
+    maxWidth: 560,
+    minimumFontSize: 15,
+    preferredFontSize: 19,
+  }, model.locale, measurer);
   const roleLabel = model.messages.role[model.role];
-  const roleBoxWidth = Math.max(104, Math.ceil(estimateTextWidth(roleLabel, 17) + 54));
-  const roleBoxX = Math.ceil(66 + estimateTextWidth(dateLabel, 19) + 18);
-  const roleBoxY = titleLayout.dateY - 27;
+  const roleLayout = fitWrappedText(roleLabel, {
+    maxLines: 1,
+    maxWidth: 150,
+    minimumFontSize: 14,
+    preferredFontSize: 17,
+  }, model.locale, measurer);
+  const roleBoxWidth = Math.max(104, Math.ceil(roleLayout.width + 54));
+  const roleBoxX = Math.ceil(66 + dateLayout.width + 18);
+  const brandLineLayout = fitWrappedText(model.messages.brandLine, {
+    maxLines: 1,
+    maxWidth: 235,
+    minimumFontSize: 11,
+    preferredFontSize: 15,
+  }, model.locale, measurer);
+  const spotlightTitleLayout = fitWrappedText(model.messages.spotlightTitle, {
+    maxLines: 1,
+    maxWidth: 700,
+    minimumFontSize: 24,
+    preferredFontSize: 32,
+    weight: 700,
+  }, model.locale, measurer);
+  const categoryTitleLayout = fitWrappedText(model.messages.categoryTitle, {
+    maxLines: 1,
+    maxWidth: 700,
+    minimumFontSize: 20,
+    preferredFontSize: 26,
+    weight: 500,
+  }, model.locale, measurer);
+  const qrTitleLayout = qrCode ? fitWrappedText(model.messages.qrTitle, {
+    maxLines: 1,
+    maxWidth: 204,
+    minimumFontSize: 11,
+    preferredFontSize: 15,
+    weight: 500,
+  }, model.locale, measurer) : null;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${shareImageOutputSize.width}" height="${shareImageOutputSize.height}" viewBox="0 0 ${shareImageOutputSize.width} ${shareImageOutputSize.height}">
     <defs><linearGradient id="bgOverlay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#170a10" stop-opacity=".42"/><stop offset="1" stop-color="#10070c" stop-opacity=".92"/></linearGradient><radialGradient id="glowA"><stop offset="0" stop-color="#9a4a5b" stop-opacity=".32"/><stop offset="1" stop-color="#9a4a5b" stop-opacity="0"/></radialGradient><radialGradient id="glowB"><stop offset="0" stop-color="#b3744e" stop-opacity=".2"/><stop offset="1" stop-color="#b3744e" stop-opacity="0"/></radialGradient><linearGradient id="panelGradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#321d27"/><stop offset="1" stop-color="#211219"/></linearGradient><linearGradient id="spotlightGradient" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8f7040" stop-opacity=".3"/><stop offset=".48" stop-color="#6f522e" stop-opacity=".22"/><stop offset="1" stop-color="#4e3527" stop-opacity=".18"/></linearGradient></defs>
     <rect width="1200" height="1600" fill="${colors.paper}"/><image href="${rasterAssets.background}" width="1200" height="1600" preserveAspectRatio="xMidYMid slice" opacity=".28"/><rect width="1200" height="1600" fill="url(#bgOverlay)"/><ellipse cx="130" cy="120" rx="450" ry="410" fill="url(#glowA)"/><ellipse cx="1100" cy="1510" rx="430" ry="340" fill="url(#glowB)"/><rect x="22" y="22" width="1156" height="1556" rx="38" fill="none" stroke="#efc998" stroke-opacity=".25"/>
-    ${textLines(['SECRET FILE · SHARE SUMMARY'], 66, 80, 18, 22, { fill: colors.gold, letterSpacing: 3.1 })}${textLines(titleLayout.lines, 66, titleLayout.y, titleLayout.fontSize, titleLayout.lineHeight, { weight: 500 })}${textLines([dateLabel], 66, titleLayout.dateY, 19, 22, { fill: colors.muted })}
-    <rect x="${roleBoxX}" y="${roleBoxY}" width="${roleBoxWidth}" height="37" rx="18.5" fill="#a15c45" fill-opacity=".2" stroke="#eebe91" stroke-opacity=".58"/><circle cx="${roleBoxX + 20}" cy="${roleBoxY + 18.5}" r="5" fill="${colors.gold}"/>${textLines([roleLabel], roleBoxX + 34, roleBoxY + 25, 17, 20, { fill: '#ffe2b9' })}
-    ${textLines(['Boundary Notes'], 1135, 132, 23, 28, { anchor: 'end', weight: 500, letterSpacing: 1.4 })}${textLines([model.messages.brandLine], 1135, 165, 15, 20, { anchor: 'end', fill: colors.muted })}<line x1="66" y1="220" x2="1134" y2="220" stroke="${colors.line}"/>
-    <rect x="62" y="246" width="1076" height="380" rx="25" fill="#2b1c1d" stroke="${colors.gold}" stroke-opacity=".48"/><rect x="63" y="247" width="1074" height="378" rx="24" fill="url(#spotlightGradient)"/>${textLines([model.messages.spotlightTitle], 84, 294, 32, 36, { weight: 700 })}${spotlightSvg}
-    <rect x="62" y="646" width="1076" height="594" rx="25" fill="url(#panelGradient)" stroke="${colors.line}"/>${textLines([model.messages.categoryTitle], 84, 692, 26, 30, { weight: 500 })}${categorySvg}
-    <rect x="62" y="1250" width="1076" height="96" rx="20" fill="#802e3b" fill-opacity=".22" stroke="${colors.danger}" stroke-opacity=".4"/><circle cx="101" cy="1298" r="21" fill="none" stroke="${colors.danger}" stroke-opacity=".55"/><path d="M92 1307l18-18" stroke="${colors.danger}" stroke-width="2.7" stroke-linecap="round"/>${textLines([model.messages.hardNoKicker], 136, 1279, 14, 18, { fill: colors.danger, letterSpacing: 1.8 })}${textLines(hardNoLayout.lines, 136, 1308, hardNoLayout.fontSize, 19, { weight: 500 })}
-    <rect x="62" y="1356" width="${warningPanelWidth}" height="204" rx="23" fill="#1d1016" fill-opacity=".9" stroke="${colors.line}"/><circle cx="101" cy="1394" r="12" fill="none" stroke="${colors.gold}" stroke-opacity=".6"/>${textLines(['i'], 101, 1400, 14, 17, { anchor: 'middle', fill: colors.gold })}${textLines([model.messages.preface], 124, 1401, 16, 20, { fill: colors.gold, letterSpacing: 1.6 })}${textLines(warningLines, 88, 1438, 17, 25, { fill: '#e4d6cf' })}${textLines([model.messages.warningFooter], 88, 1535, 16, 20, { fill: colors.muted })}
-    ${qrCode ? `<rect x="898" y="1356" width="240" height="204" rx="23" fill="${colors.qrBackground}" stroke="${colors.gold}" stroke-opacity=".55"/><image href="${qrCode}" x="947" y="1368" width="142" height="142" preserveAspectRatio="xMidYMid meet"/>${textLines([model.messages.qrTitle], 1018, 1530, 15, 19, { anchor: 'middle', weight: 500, fill: colors.qrInk })}${textLines([model.messages.qrDomain], 1018, 1550, 12, 16, { anchor: 'middle', fill: colors.qrInk, letterSpacing: 0.5 })}` : ''}
+    ${textLines(['SECRET FILE · SHARE SUMMARY'], 66, 80, 18, 22, { fill: colors.gold, letterSpacing: 3.1 })}${textBlock(titleLayout, 66, titleTop, { weight: 500 })}${textBlock(dateLayout, 66, metadataRowTop + (metadataRowHeight - dateLayout.height) / 2, { fill: colors.muted })}
+    <rect x="${roleBoxX}" y="${metadataRowTop}" width="${roleBoxWidth}" height="${metadataRowHeight}" rx="18.5" fill="#a15c45" fill-opacity=".2" stroke="#eebe91" stroke-opacity=".58"/><circle cx="${roleBoxX + 20}" cy="${metadataRowTop + metadataRowHeight / 2}" r="5" fill="${colors.gold}"/>${textBlock(roleLayout, roleBoxX + 34, metadataRowTop + (metadataRowHeight - roleLayout.height) / 2, { fill: '#ffe2b9' })}
+    ${textLines(['Boundary Notes'], 1135, 132, 23, 28, { anchor: 'end', weight: 500, letterSpacing: 1.4 })}${textBlock(brandLineLayout, 1135, 150, { anchor: 'end', fill: colors.muted })}<line x1="66" y1="220" x2="1134" y2="220" stroke="${colors.line}"/>
+    <rect x="62" y="246" width="1076" height="380" rx="25" fill="#2b1c1d" stroke="${colors.gold}" stroke-opacity=".48"/><rect x="63" y="247" width="1074" height="378" rx="24" fill="url(#spotlightGradient)"/>${textBlock(spotlightTitleLayout, 84, 262, { weight: 700 })}${spotlightSvg}
+    <rect x="62" y="646" width="1076" height="594" rx="25" fill="url(#panelGradient)" stroke="${colors.line}"/>${textBlock(categoryTitleLayout, 84, 666, { weight: 500 })}${categorySvg}
+    <rect x="62" y="1250" width="1076" height="96" rx="20" fill="#802e3b" fill-opacity=".22" stroke="${colors.danger}" stroke-opacity=".4"/><circle cx="101" cy="1298" r="21" fill="none" stroke="${colors.danger}" stroke-opacity=".55"/><path d="M92 1307l18-18" stroke="${colors.danger}" stroke-width="2.7" stroke-linecap="round"/>${textLines([model.messages.hardNoKicker], 136, 1279, 14, 18, { fill: colors.danger, letterSpacing: 1.8 })}${textBlock(hardNoLayout, 136, 1290, { weight: 500 })}
+    <rect x="62" y="1356" width="${warningPanelWidth}" height="204" rx="23" fill="#1d1016" fill-opacity=".9" stroke="${colors.line}"/><circle cx="101" cy="1394" r="12" fill="none" stroke="${colors.gold}" stroke-opacity=".6"/>${textLines(['i'], 101, 1400, 14, 17, { anchor: 'middle', fill: colors.gold })}${textLines([model.messages.preface], 124, 1401, 16, 20, { fill: colors.gold, letterSpacing: 1.6 })}${textBlock(warningLayout, 88, 1421, { fill: '#e4d6cf' })}${textBlock(warningFooterLayout, 88, 1518, { fill: colors.muted })}
+    ${qrCode && qrTitleLayout ? `<rect x="898" y="1356" width="240" height="204" rx="23" fill="${colors.qrBackground}" stroke="${colors.gold}" stroke-opacity=".55"/><image href="${qrCode}" x="947" y="1368" width="142" height="142" preserveAspectRatio="xMidYMid meet"/>${textBlock(qrTitleLayout, 1018, 1515, { anchor: 'middle', weight: 500, fill: colors.qrInk })}${textLines([model.messages.qrDomain], 1018, 1550, 12, 16, { anchor: 'middle', fill: colors.qrInk, letterSpacing: 0.5 })}` : ''}
   </svg>`;
 }
 
@@ -557,10 +596,12 @@ async function renderSvgToPng(svg: string): Promise<Blob> {
     image.src = svgUrl;
     await image.decode();
     const canvas = document.createElement('canvas');
-    canvas.width = 1200;
-    canvas.height = 1600;
+    canvas.width = shareImageOutputSize.width;
+    canvas.height = shareImageOutputSize.height;
     const context = canvas.getContext('2d');
     if (!context) throw new Error('Canvas rendering is unavailable.');
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = 'high';
     context.drawImage(image, 0, 0, canvas.width, canvas.height);
     return await new Promise<Blob>((resolve, reject) => {
       canvas.toBlob((blob) => {
@@ -578,6 +619,8 @@ export async function prewarmShareImageGenerator(questionBank: QuestionBank): Pr
 }
 
 export async function generateShareImage(options: ShareImageOptions): Promise<Blob> {
+  await document.fonts?.ready;
   const model = createDisplayModel(options);
-  return renderSvgToPng(await renderSvg(model, options.questionBank));
+  const measurer = createCanvasTextMeasurer();
+  return renderSvgToPng(await renderSvg(model, options.questionBank, measurer));
 }
