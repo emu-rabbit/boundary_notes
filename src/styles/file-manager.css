@@ -716,23 +716,25 @@
   }
 
   .file-list-item__actions {
+    --file-action-size: 3rem;
+
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) 3.45rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) var(--file-action-size);
     gap: 0.4rem;
   }
 
   .file-list-item__actions--cloud {
-    grid-template-columns: minmax(0, 1fr) 3.45rem;
+    grid-template-columns: minmax(0, 1fr) var(--file-action-size);
   }
 
   .file-card-action {
     min-width: 0;
-    min-height: 3.45rem;
+    min-height: var(--file-action-size);
     flex-direction: row;
     gap: 0.25rem;
-    font-size: 0.78rem;
-    line-height: 1.15;
-    padding: 0.35rem 0.15rem;
+    font-size: 0.82rem;
+    line-height: 1.2;
+    padding: 0.35rem 0.45rem;
     white-space: nowrap;
   }
 
@@ -747,7 +749,7 @@
 
   .file-card-action--icon {
     width: 100%;
-    min-height: 3.45rem;
+    min-height: var(--file-action-size);
     padding: 0;
   }
 
