@@ -91,7 +91,7 @@ export const jaMessages: LocaleMessages = {
       summary: '複数のファイルを比べ、境界線や気持ちの変化を見ます。',
     },
     about: {
-      label: 'このうさぎについて',
+      label: '概要',
       summary: '境界線と対話の出発点をどう整えるかを知る。',
     },
     versionHistory: {

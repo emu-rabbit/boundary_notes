@@ -91,7 +91,7 @@ export const enMessages: LocaleMessages = {
       summary: 'Compare files and see how boundaries and feelings move.',
     },
     about: {
-      label: 'About This Bunny',
+      label: 'About',
       summary: 'See how this project helps gather boundaries and conversation starters.',
     },
     versionHistory: {

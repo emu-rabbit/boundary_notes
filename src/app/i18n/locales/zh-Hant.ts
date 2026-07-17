@@ -103,7 +103,7 @@ export const zhHantMessages: LocaleMessages = {
       summary: '比對不同檔案之間的變化，看看界線與感覺如何移動。',
     },
     about: {
-      label: '關於這隻兔子',
+      label: '關於',
       summary: '了解這個專案如何陪你整理界線與溝通起點。',
     },
     versionHistory: {

@@ -14,6 +14,7 @@ import type {
   SecretFile,
 } from '../secret-file/domain/types';
 import { getShareMessages } from '../sharing/shareMessages';
+import SponsorDialog from '../sponsor/SponsorDialog.vue';
 import PreviewAnswerSummary from './PreviewAnswerSummary.vue';
 import AnswerRatingIcon from './AnswerRatingIcon.vue';
 import { getResultsAnswerSummary, type QuestionnaireMessages } from './messages';
@@ -55,6 +56,7 @@ const activeCategoryId = ref<string | null>(null);
 const overviewScrollPosition = ref(0);
 const hardNoDialog = ref<HTMLDialogElement | null>(null);
 const shareDialog = ref<HTMLDialogElement | null>(null);
+const sponsorDialog = ref<InstanceType<typeof SponsorDialog> | null>(null);
 const generatingRole = ref<QuestionRole | null>(null);
 const shareFeedback = ref('');
 const shareMessages = computed(() => getShareMessages(props.locale));
@@ -344,7 +346,7 @@ function changeLocale(event: Event): void {
             <span aria-hidden="true">＋</span>
             {{ messages.createMyFile }}
           </button>
-          <button class="preview-sponsor-action" type="button" disabled>
+          <button class="preview-sponsor-action" type="button" @click="sponsorDialog?.open()">
             {{ messages.sponsorWebsite }}
           </button>
         </nav>
@@ -675,5 +677,7 @@ function changeLocale(event: Event): void {
         </p>
       </div>
     </dialog>
+
+    <SponsorDialog ref="sponsorDialog" :locale="locale" />
   </section>
 </template>

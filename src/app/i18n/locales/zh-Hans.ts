@@ -91,7 +91,7 @@ export const zhHansMessages: LocaleMessages = {
       summary: '比对不同档案之间的变化，看看界线和感觉如何移动。',
     },
     about: {
-      label: '关于这只兔子',
+      label: '关于',
       summary: '了解这个项目如何陪你整理界线与沟通起点。',
     },
     versionHistory: {

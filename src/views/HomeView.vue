@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useAppShell } from '../app/useAppShell';
 import SecretFileTitle from '../components/SecretFileTitle.vue';
+import SponsorDialog from '../features/sponsor/SponsorDialog.vue';
+import { getSponsorMessages } from '../features/sponsor/sponsorMessages';
 import { homeRabbitUrl, warmRabbitAssets } from '../features/story/rabbitAssets';
 
 const {
   localizedHomeEntrances: entrances,
+  locale,
   messages,
   navigate,
   titleParts,
@@ -20,6 +23,8 @@ const primaryEntrances = computed(() =>
 );
 const aboutEntrance = computed(() => routeById.value.get('about'));
 const settingsEntrance = computed(() => routeById.value.get('settings'));
+const sponsorDialog = ref<InstanceType<typeof SponsorDialog> | null>(null);
+const sponsorMessages = computed(() => getSponsorMessages(locale.value));
 
 onMounted(() => {
   warmRabbitAssets();
@@ -82,6 +87,15 @@ onMounted(() => {
       >
         {{ aboutEntrance.label }}
       </button>
+      <button
+        class="soft-link-action"
+        type="button"
+        @click="sponsorDialog?.open()"
+      >
+        {{ sponsorMessages.trigger }}
+      </button>
     </div>
+
+    <SponsorDialog ref="sponsorDialog" :locale="locale" />
   </section>
 </template>
