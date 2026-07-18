@@ -62,8 +62,8 @@ onMounted(() => {
         type="button"
         @click="navigate(entrance.id)"
       >
-        <span class="entrance-state">
-          {{ entrance.state === 'ready' ? messages.common.ready : messages.common.planned }}
+        <span v-if="entrance.state === 'planned'" class="entrance-state">
+          {{ messages.common.planned }}
         </span>
         <span class="entrance-title">{{ entrance.label }}</span>
         <span class="entrance-summary">{{ entrance.summary }}</span>

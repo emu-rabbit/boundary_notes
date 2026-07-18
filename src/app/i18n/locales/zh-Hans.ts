@@ -43,7 +43,6 @@ export const zhHansMessages: LocaleMessages = {
   common: {
     backHome: '回主页',
     planned: '规划中',
-    ready: '可使用',
   },
   home: {
     copy: '今天也可以慢慢来，可以创建新档案，也可以接着旧档案继续。噢，你也想看看自己的变化，或把这一部分的你分享给别人吗？',
