@@ -195,8 +195,8 @@ const activeDialogue = computed<DialogueContent>(() => {
           gap.value,
         ),
       ], [
-        choice(copy.choices.ready, 'profileBranch', true),
-        choice(copy.choices.notReady, 'returnSelection'),
+        choice(copy.choices.confirmReady, 'profileBranch', true),
+        choice(copy.choices.confirmWrong, 'returnSelection'),
       ], 'thinking');
     case 'sameProfile':
       return content(
@@ -503,60 +503,53 @@ onMounted(() => {
           <div v-if="step === 'select'" class="dialogue-copy time-machine-selection-copy">
             <p class="rabbit-speech">{{ activeDialogue.lines[0] }}</p>
 
-            <div class="time-machine-selection-grid">
-              <button
-                v-for="slot in selectionSlots"
-                :key="slot.position"
-                class="time-machine-file-slot"
-                :class="{ 'time-machine-file-slot--selected': slot.file }"
-                type="button"
-                :disabled="selectableFiles.length < 2 || selectionLoading"
-                @click="openPicker(slot.position)"
-              >
-                <span class="time-machine-file-slot__label">
-                  {{ slot.label }}
-                </span>
-                <template v-if="slot.file">
-                  <span class="time-machine-file-slot__source">{{ sourceLabel(slot.file) }}</span>
-                  <strong>{{ optionName(slot.file) }}</strong>
-                  <time v-if="slot.file.timestamp" :datetime="slot.file.timestamp">
-                    {{ formatDate(slot.file.timestamp) }}
-                  </time>
-                  <small v-if="slot.file.scope">{{ scopeOf(slot.file.scope) }}</small>
-                  <span class="time-machine-file-slot__action">{{ messages.picker.changeFile }}</span>
-                </template>
-                <template v-else>
-                  <span class="time-machine-file-slot__plus" aria-hidden="true">＋</span>
-                  <span class="time-machine-file-slot__action">{{ messages.picker.chooseFile }}</span>
-                </template>
-              </button>
-            </div>
-
-            <p class="time-machine-selection-hint">{{ messages.picker.localOnlyHint }}</p>
-            <p v-if="selectionError" class="time-machine-error" role="alert">
-              {{ selectionError }}
+            <p v-if="selectableFiles.length < 2" class="time-machine-empty-message">
+              {{ messages.picker.needTwoFiles }}
             </p>
 
-            <div v-if="selectableFiles.length < 2" class="time-machine-empty-actions">
-              <p>{{ messages.picker.needTwoFiles }}</p>
-              <div>
-                <button class="choice-button" type="button" @click="navigate('create')">
-                  {{ messages.picker.createFile }}
-                </button>
-                <button class="choice-button" type="button" @click="navigate('files')">
-                  {{ messages.picker.manageFiles }}
+            <template v-else>
+              <div class="time-machine-selection-grid">
+                <button
+                  v-for="slot in selectionSlots"
+                  :key="slot.position"
+                  class="time-machine-file-slot"
+                  :class="{ 'time-machine-file-slot--selected': slot.file }"
+                  type="button"
+                  :disabled="selectableFiles.length < 2 || selectionLoading"
+                  @click="openPicker(slot.position)"
+                >
+                  <span class="time-machine-file-slot__label">
+                    {{ slot.label }}
+                  </span>
+                  <template v-if="slot.file">
+                    <span class="time-machine-file-slot__source">{{ sourceLabel(slot.file) }}</span>
+                    <strong>{{ optionName(slot.file) }}</strong>
+                    <time v-if="slot.file.timestamp" :datetime="slot.file.timestamp">
+                      {{ formatDate(slot.file.timestamp) }}
+                    </time>
+                    <small v-if="slot.file.scope">{{ scopeOf(slot.file.scope) }}</small>
+                  </template>
+                  <template v-else>
+                    <span class="time-machine-file-slot__plus" aria-hidden="true">＋</span>
+                    <span class="time-machine-file-slot__action">{{ messages.picker.chooseFile }}</span>
+                  </template>
                 </button>
               </div>
-            </div>
-            <button
-              v-else
-              class="primary-action time-machine-selection-continue"
-              type="button"
-              :disabled="!firstFile || !secondFile || selectionLoading"
-              @click="handleAction('confirmSelection')"
-            >
-              {{ selectionLoading ? messages.picker.loading : messages.choices.ready }}
-            </button>
+
+              <p class="time-machine-selection-hint">{{ messages.picker.localOnlyHint }}</p>
+              <p v-if="selectionError" class="time-machine-error" role="alert">
+                {{ selectionError }}
+              </p>
+
+              <button
+                class="primary-action time-machine-selection-continue"
+                type="button"
+                :disabled="!firstFile || !secondFile || selectionLoading"
+                @click="handleAction('confirmSelection')"
+              >
+                {{ selectionLoading ? messages.picker.loading : messages.choices.ready }}
+              </button>
+            </template>
           </div>
 
           <div v-else class="dialogue-copy time-machine-dialogue-copy">

@@ -147,9 +147,8 @@
   text-align: center;
 }
 
-.time-machine-empty-actions {
-  display: grid;
-  gap: 0.72rem;
+.time-machine-empty-message {
+  margin: 0;
   padding: 0.86rem;
   border: 1px solid rgba(236, 198, 187, 0.14);
   border-radius: 0.9rem;
@@ -158,16 +157,6 @@
   font-size: 0.9rem;
   line-height: 1.55;
   text-align: center;
-}
-
-.time-machine-empty-actions p {
-  margin: 0;
-}
-
-.time-machine-empty-actions > div {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.58rem;
 }
 
 .time-machine-lines {
