@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import {
   fitWrappedText,
+  getShareImageFontFamily,
+  getShareImageFontRange,
   layoutStackedText,
   shareImageOutputSize,
   wrapTextToWidth,
@@ -23,6 +25,124 @@ const measurer: TextMeasurer = {
 describe('share image text layout', () => {
   it('輸出維持兼顧閱讀與生成成本的 1200 × 1600', () => {
     expect(shareImageOutputSize).toEqual({ height: 1600, width: 1200 });
+  });
+
+  it('各語系分享圖沿用網頁指定的優先字體', () => {
+    expect(getShareImageFontFamily('zh-Hant')).toMatch(/^"?Huninn/);
+    expect(getShareImageFontFamily('en')).toMatch(/^"?Huninn/);
+    expect(getShareImageFontFamily('zh-Hans')).toMatch(/^"?Noto Sans SC/);
+    expect(getShareImageFontFamily('ja')).toMatch(/^"?Noto Sans JP/);
+  });
+
+  it('CJK 小字保留比英文更高的辨識下限，不被英文長度綁定', () => {
+    for (const locale of ['zh-Hant', 'zh-Hans', 'ja'] as const) {
+      expect(getShareImageFontRange(locale, 'spotlightDescription').minimumFontSize)
+        .toBeGreaterThan(getShareImageFontRange('en', 'spotlightDescription').minimumFontSize);
+      expect(getShareImageFontRange(locale, 'warning').minimumFontSize)
+        .toBeGreaterThan(getShareImageFontRange('en', 'warning').minimumFontSize);
+    }
+  });
+
+  it('繁中分類與警語在最小適應尺寸仍高於原有小字門檻', () => {
+    expect(getShareImageFontRange('zh-Hant', 'categoryTitle').minimumFontSize).toBe(17);
+    expect(getShareImageFontRange('zh-Hant', 'categoryPreference').minimumFontSize).toBe(16);
+    expect(getShareImageFontRange('zh-Hant', 'warning').minimumFontSize).toBe(19);
+  });
+
+  it('英文焦點描述只在兩行放不下時才擴充成三行', () => {
+    const value = 'Receive services that meet your everyday needs or desires';
+    const fontRange = getShareImageFontRange('en', 'spotlightDescription');
+    const compact = fitWrappedText(value, {
+      lineHeightRatio: 1.2,
+      maxHeight: 44,
+      maxLines: 2,
+      maxWidth: 186,
+      ...fontRange,
+      weight: 400,
+    }, 'en', measurer);
+    const expanded = fitWrappedText(value, {
+      lineHeightRatio: 1.2,
+      maxHeight: 60,
+      maxLines: 3,
+      maxWidth: 186,
+      ...fontRange,
+      weight: 400,
+    }, 'en', measurer);
+
+    expect(compact.truncated).toBe(true);
+    expect(expanded.truncated).toBe(false);
+    expect(expanded.lines).toHaveLength(3);
+  });
+
+  it.each([
+    ['zh-Hant', '自己扮演獸或寵物相關的項目'],
+    ['zh-Hans', '自己扮演动物或宠物'],
+    ['ja', '自分が動物やペットの役を演じる'],
+    ['en', 'Receive services that meet your everyday needs or desires'],
+  ] as const)('%s 焦點描述依自身字寬在最多三行內完整適應', (locale, value) => {
+    const fontRange = getShareImageFontRange(locale, 'spotlightDescription');
+    const compact = fitWrappedText(value, {
+      lineHeightRatio: 1.2,
+      maxHeight: 44,
+      maxLines: 2,
+      maxWidth: 186,
+      ...fontRange,
+      weight: 400,
+    }, locale, measurer);
+    const layout = compact.truncated
+      ? fitWrappedText(value, {
+        lineHeightRatio: 1.2,
+        maxHeight: 60,
+        maxLines: 3,
+        maxWidth: 186,
+        ...fontRange,
+        weight: 400,
+      }, locale, measurer)
+      : compact;
+
+    expect(layout.truncated).toBe(false);
+    expect(layout.fontSize).toBeGreaterThanOrEqual(fontRange.minimumFontSize);
+    expect(layout.lines.length).toBeGreaterThan(0);
+    expect(layout.lines.length).toBeLessThanOrEqual(3);
+    expect(layout.lines.every((line) => measurer.measure(line, {
+      fontSize: layout.fontSize,
+      weight: 400,
+    }) <= 186)).toBe(true);
+  });
+
+  it.each([
+    ['zh-Hant', '獸/寵物化類項目'],
+    ['zh-Hans', '兽化／宠物化类项目'],
+    ['ja', 'アニマル／ペットプレイ'],
+    ['en', 'Animal and pet play'],
+  ] as const)('%s 分類標題依指定字型寬度保留完整內容', (locale, value) => {
+    const fontRange = getShareImageFontRange(locale, 'categoryTitle');
+    const layout = fitWrappedText(value, {
+      lineHeightRatio: 1.12,
+      maxLines: 2,
+      maxWidth: 155,
+      ...fontRange,
+      weight: 500,
+    }, locale, measurer);
+
+    expect(layout.truncated).toBe(false);
+    expect(layout.lines.join('').replace(/\s+/gu, '')).toBe(value.replace(/\s+/gu, ''));
+    expect(layout.lines.every((line) => measurer.measure(line, {
+      fontSize: layout.fontSize,
+      weight: 500,
+    }) <= 155)).toBe(true);
+  });
+
+  it('英文未回答短標籤可完整顯示，不需要省略號', () => {
+    const layout = fitWrappedText('Not answered', {
+      lineHeightRatio: 1.15,
+      maxLines: 1,
+      maxWidth: 155,
+      ...getShareImageFontRange('en', 'categoryPreference'),
+    }, 'en', measurer);
+
+    expect(layout.truncated).toBe(false);
+    expect(layout.lines).toEqual(['Not answered']);
   });
 
   it('完整保留嵌入 32 個全形字元的最大名稱標題', () => {
@@ -85,6 +205,19 @@ describe('share image text layout', () => {
     expect(layout.lines[1]?.length).toBeGreaterThan(1);
   });
 
+  it('斜線前只有單一字時不會把短前綴孤立成一行', () => {
+    const layout = fitWrappedText('獸/寵物化類項目', {
+      lineHeightRatio: 1.12,
+      maxLines: 2,
+      maxWidth: 155,
+      minimumFontSize: 17,
+      preferredFontSize: 21,
+      weight: 500,
+    }, 'zh-Hant', measurer);
+
+    expect(layout.lines).toEqual(['獸/寵物', '化類項目']);
+  });
+
   it.each([
     ['單行標題', '鞭打ち'],
     ['雙行標題', 'スパンキング／パドル'],
@@ -111,7 +244,7 @@ describe('share image text layout', () => {
       maxWidth: 170,
       minimumFontSize: 12,
       preferredFontSize: 21,
-      weight: 700,
+      weight: 500,
     }, 30, 5, 13, 102, 'en', measurer);
 
     expect(layout.secondaryTop - (layout.titleTop + layout.title.height)).toBe(5);
@@ -125,15 +258,15 @@ describe('share image text layout', () => {
     const warning = `這份測驗結果僅供參考，並無法完整的描述${name}的喜好或特質，也請勿用來替代任何必要的溝通。面對擁有風險的項目，互動時也請注意安全。`;
     const layout = fitWrappedText(warning, {
       lineHeightRatio: 1.3,
-      maxHeight: 88,
+      maxHeight: 100,
       maxLines: 4,
       maxWidth: 744,
-      minimumFontSize: 14,
-      preferredFontSize: 17,
+      ...getShareImageFontRange('zh-Hant', 'warning'),
     }, 'zh-Hant', measurer);
 
     expect(layout.truncated).toBe(false);
-    expect(layout.height).toBeLessThanOrEqual(88);
+    expect(layout.fontSize).toBeGreaterThanOrEqual(19);
+    expect(layout.height).toBeLessThanOrEqual(100);
     expect(layout.lines.every((line) => measurer.measure(line, {
       fontSize: layout.fontSize,
     }) <= 744)).toBe(true);

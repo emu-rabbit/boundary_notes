@@ -1,7 +1,20 @@
 import type { AppLocale } from '../../app/i18n';
 
-export const shareImageFontFamily = 'Microsoft JhengHei, Meiryo, Arial, sans-serif';
 export const shareImageOutputSize = { height: 1600, width: 1200 } as const;
+
+const shareImageFontTokens: Record<AppLocale, string> = {
+  'zh-Hant': '--font-family-default',
+  'zh-Hans': '--font-family-zh-hans',
+  ja: '--font-family-ja',
+  en: '--font-family-default',
+};
+
+const shareImageFontFallbacks: Record<AppLocale, string> = {
+  'zh-Hant': '"Huninn", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif',
+  'zh-Hans': '"Noto Sans SC", "Source Han Sans SC", "Source Han Sans CN", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", system-ui, sans-serif',
+  ja: '"Noto Sans JP", "Source Han Sans JP", "Hiragino Maru Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, sans-serif',
+  en: '"Huninn", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif',
+};
 
 export interface TextStyle {
   fontSize: number;
@@ -32,6 +45,28 @@ export interface FitTextOptions {
   weight?: number;
 }
 
+export type ShareImageTextRole =
+  | 'brandLine'
+  | 'categoryPreference'
+  | 'categoryTitle'
+  | 'date'
+  | 'hardNoSummary'
+  | 'leadSpotlightDescription'
+  | 'leadSpotlightTitle'
+  | 'metadataLabel'
+  | 'qrTitle'
+  | 'role'
+  | 'spotlightDescription'
+  | 'spotlightEmpty'
+  | 'spotlightTitle'
+  | 'warning'
+  | 'warningFooter';
+
+export interface ShareImageFontRange {
+  minimumFontSize: number;
+  preferredFontSize: number;
+}
+
 export interface StackedTextLayout {
   contentHeight: number;
   contentTop: number;
@@ -43,6 +78,27 @@ export interface StackedTextLayout {
 
 const forbiddenLineStart = /^[!%),.:;?\]}、。，．！？：；）］｝〕〉》」』】〗〙〛’”〞々ー～〜…・／]/u;
 const forbiddenLineEnd = /[([{（［｛〔〈《「『【〖〘〚‘“]$/u;
+
+const shareImageTypography: Record<
+  ShareImageTextRole,
+  { cjk: ShareImageFontRange; latin: ShareImageFontRange }
+> = {
+  brandLine: { cjk: { minimumFontSize: 15, preferredFontSize: 18 }, latin: { minimumFontSize: 14, preferredFontSize: 17 } },
+  categoryPreference: { cjk: { minimumFontSize: 16, preferredFontSize: 19 }, latin: { minimumFontSize: 14, preferredFontSize: 17 } },
+  categoryTitle: { cjk: { minimumFontSize: 17, preferredFontSize: 21 }, latin: { minimumFontSize: 15, preferredFontSize: 20 } },
+  date: { cjk: { minimumFontSize: 18, preferredFontSize: 23 }, latin: { minimumFontSize: 17, preferredFontSize: 21 } },
+  hardNoSummary: { cjk: { minimumFontSize: 18, preferredFontSize: 24 }, latin: { minimumFontSize: 16, preferredFontSize: 22 } },
+  leadSpotlightDescription: { cjk: { minimumFontSize: 18, preferredFontSize: 20 }, latin: { minimumFontSize: 15, preferredFontSize: 18 } },
+  leadSpotlightTitle: { cjk: { minimumFontSize: 22, preferredFontSize: 31 }, latin: { minimumFontSize: 19, preferredFontSize: 29 } },
+  metadataLabel: { cjk: { minimumFontSize: 18, preferredFontSize: 20 }, latin: { minimumFontSize: 16, preferredFontSize: 18 } },
+  qrTitle: { cjk: { minimumFontSize: 15, preferredFontSize: 18 }, latin: { minimumFontSize: 14, preferredFontSize: 17 } },
+  role: { cjk: { minimumFontSize: 17, preferredFontSize: 20 }, latin: { minimumFontSize: 16, preferredFontSize: 19 } },
+  spotlightDescription: { cjk: { minimumFontSize: 16, preferredFontSize: 18 }, latin: { minimumFontSize: 14, preferredFontSize: 17 } },
+  spotlightEmpty: { cjk: { minimumFontSize: 20, preferredFontSize: 26 }, latin: { minimumFontSize: 18, preferredFontSize: 24 } },
+  spotlightTitle: { cjk: { minimumFontSize: 18, preferredFontSize: 25 }, latin: { minimumFontSize: 15, preferredFontSize: 24 } },
+  warning: { cjk: { minimumFontSize: 19, preferredFontSize: 22 }, latin: { minimumFontSize: 17, preferredFontSize: 20 } },
+  warningFooter: { cjk: { minimumFontSize: 17, preferredFontSize: 20 }, latin: { minimumFontSize: 15, preferredFontSize: 18 } },
+};
 
 interface GraphemeSegmenter {
   segment(value: string): Iterable<{ segment: string }>;
@@ -68,6 +124,13 @@ function graphemes(value: string, locale: AppLocale): string[] {
 
 function styleFor(fontSize: number, weight = 400): TextStyle {
   return { fontSize, weight };
+}
+
+export function getShareImageFontRange(
+  locale: AppLocale,
+  role: ShareImageTextRole,
+): ShareImageFontRange {
+  return shareImageTypography[role][locale === 'en' ? 'latin' : 'cjk'];
 }
 
 function trimLine(value: string): string {
@@ -208,7 +271,11 @@ function balanceWrappedLines(
 
       const remainder = findBest(end, remainingLines - 1);
       if (!remainder) continue;
-      const semanticBreakBonus = /[&/・／]$/u.test(line) ? maxWidth ** 2 * 0.4 : 0;
+      const hasMeaningfulPrefixBeforeSeparator = end - start >= 3;
+      const semanticBreakBonus = hasMeaningfulPrefixBeforeSeparator
+        && /[&/・／]$/u.test(line)
+        ? maxWidth ** 2 * 0.4
+        : 0;
       const cost = (maxWidth - width) ** 2 - semanticBreakBonus + remainder.cost;
       if (!best || cost < best.cost) {
         best = { cost, lines: [line, ...remainder.lines] };
@@ -221,18 +288,29 @@ function balanceWrappedLines(
   return findBest(0, lineCount)?.lines ?? null;
 }
 
-export function createCanvasTextMeasurer(): TextMeasurer {
+export function getShareImageFontFamily(locale: AppLocale): string {
+  if (typeof document !== 'undefined' && typeof getComputedStyle === 'function') {
+    const configuredFamily = getComputedStyle(document.documentElement)
+      .getPropertyValue(shareImageFontTokens[locale])
+      .trim();
+    if (configuredFamily) return configuredFamily;
+  }
+  return shareImageFontFallbacks[locale];
+}
+
+export function createCanvasTextMeasurer(locale: AppLocale): TextMeasurer {
   const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d');
   if (!context) throw new Error('Canvas text measurement is unavailable.');
   const widthCache = new Map<string, number>();
+  const fontFamily = getShareImageFontFamily(locale);
   let activeFont = '';
 
   return {
     measure(value, style) {
       const weight = style.weight ?? 400;
       const letterSpacing = style.letterSpacing ?? 0;
-      const font = `${weight} ${style.fontSize}px "Microsoft JhengHei", Meiryo, Arial, sans-serif`;
+      const font = `${weight} ${style.fontSize}px ${fontFamily}`;
       const cacheKey = `${font}|${letterSpacing}|${value}`;
       const cached = widthCache.get(cacheKey);
       if (cached !== undefined) return cached;

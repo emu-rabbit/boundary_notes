@@ -20,6 +20,7 @@ import './styles/file-manager.css';
 import './styles/questionnaire.css';
 import './styles/secret-file-preview.css';
 import './styles/sponsor-dialog.css';
+import './styles/content-warning.css';
 import './styles/analytics-consent.css';
 import './styles/responsive.css';
 

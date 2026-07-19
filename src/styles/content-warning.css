@@ -1,0 +1,101 @@
+/* Content warning: a small, blocking acknowledgement before sensitive material. */
+
+.content-warning-dialog {
+  width: min(calc(100vw - 2rem), 31rem);
+  margin: auto;
+  border: 1px solid rgba(236, 198, 187, 0.28);
+  border-radius: 1.15rem;
+  background:
+    linear-gradient(145deg, rgba(71, 30, 47, 0.98), rgba(26, 12, 21, 0.98)),
+    var(--velvet-deep);
+  color: var(--ink);
+  padding: 0;
+  box-shadow: 0 1.5rem 5rem rgba(0, 0, 0, 0.56);
+}
+
+.content-warning-dialog::backdrop {
+  background: rgba(7, 3, 6, 0.78);
+  backdrop-filter: blur(0.2rem);
+}
+
+.content-warning-dialog__content {
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.3rem, 4vw, 1.8rem);
+}
+
+.content-warning-dialog__content h2,
+.content-warning-dialog__content p {
+  margin: 0;
+}
+
+.content-warning-dialog__content h2 {
+  color: #fff0e8;
+  font-size: clamp(1.18rem, 3vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.content-warning-dialog__content p {
+  color: var(--ink-soft);
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+
+.content-warning-dialog__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.content-warning-dialog__action {
+  min-height: 2.75rem;
+  border: 1px solid rgba(236, 198, 187, 0.28);
+  border-radius: 0.72rem;
+  background: rgba(34, 17, 25, 0.72);
+  color: var(--ink);
+  padding: 0.62rem 0.9rem;
+  transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.content-warning-dialog__action:hover {
+  border-color: rgba(236, 198, 187, 0.48);
+  background: rgba(55, 27, 40, 0.92);
+  transform: translateY(-1px);
+}
+
+.content-warning-dialog__action--confirm {
+  border-color: rgba(225, 166, 156, 0.42);
+  background: linear-gradient(135deg, #8b4356, #6c3346);
+}
+
+.content-warning-dialog__action--confirm:hover {
+  background: linear-gradient(135deg, #a65367, #7d3c50);
+}
+
+@media (max-width: 420px) {
+  .content-warning-dialog {
+    width: min(calc(100vw - 1rem), 31rem);
+  }
+
+  .content-warning-dialog__content {
+    gap: 0.85rem;
+    padding: 1.15rem;
+  }
+
+  .content-warning-dialog__content p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .content-warning-dialog__actions {
+    gap: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content-warning-dialog__action {
+    transition: none;
+  }
+}

@@ -91,7 +91,7 @@
 
 - **自刻但不凌亂**：自刻 UI 不代表每個頁面都各寫各的；應建立可重用的基礎 component、style token、spacing、typography、focus state 與 responsive pattern。
 - **CSS token 與 pattern 優先**：跨頁共用的色彩、字體、焦點、按鈕、route shell、背景層與 responsive pattern 應優先沉澱到 `src/styles/` 的對應 owner 檔案，不把同一視覺規則複製到多個 view。若需要調整單一視覺元素，先確認該元素的 owner 檔案與 mobile override，不在多處同步改十幾行。
-- **字型資源可退化且保留完整字元覆蓋**：`index.html` 在字型 stylesheet 前宣告 Google Fonts 與 fonts.gstatic.com 的 `preconnect`；Google Fonts 以 `display=swap` 提供 `Huninn / jf open 粉圓`、Noto Sans SC 與 Noto Sans JP 的 WOFF2 unicode-range 子集，避免把完整 TTF 打包進應用程式。`src/styles/foundation.css` 只維護 font token 與 locale stack。不得用固定文案清單做 glyph subset，避免使用者輸入未收錄字元時產生不一致 fallback；遠端字型載入失敗時必須保留系統 CJK fallback，不可讓核心流程因字型資源失敗而不可讀。
+- **字型資源可退化且保留完整字元覆蓋**：`index.html` 在字型 stylesheet 前宣告 Google Fonts 與 fonts.gstatic.com 的 `preconnect`；Google Fonts 以 `display=swap` 提供 `Huninn / jf open 粉圓`、Noto Sans SC 與 Noto Sans JP 的 WOFF2 unicode-range 子集，避免把完整 TTF 打包進應用程式。`src/styles/foundation.css` 只維護 font token 與 locale stack。分享圖會依實際輸出字元抓取並內嵌所需的 Google Fonts WOFF2 分段，因此 Hosting CSP 的 `connect-src` 必須同時允許 `fonts.googleapis.com` 與 `fonts.gstatic.com`；這項連線權限不得擴張到 `script-src`。不得用固定文案清單做 glyph subset，避免使用者輸入未收錄字元時產生不一致 fallback；遠端字型載入失敗時必須保留系統 CJK fallback，不可讓核心流程因字型資源失敗而不可讀。
 - **避免模板感**：不得直接套用大型 Vue UI kit、dashboard template 或 landing page template。若使用 headless utility 或小型無樣式 helper，必須確認它不主導視覺語言。
 - **預熱策略要可見於程式**：圖片、插畫、字體、路由 chunk 或大型資料應透過明確的 preload、prefetch、lazy loading、cache warmup 或 staged loading 策略處理。
 - **核心流程優先**：預熱優先服務測驗流程、結果檢閱與分享頁的順暢感；使用者進入前導劇情或主頁時應開始預熱所有兔子圖片，進入雲端檔案檢視時則應在等待 Firestore 回應前開始預熱所有分類圖片。雲端檔案與該頁分類圖片都載入完成後，才接續預熱前導劇情第一幕的兔子圖片，不在目前頁面素材完成前搶佔下載。這些 route-level 預熱不得阻塞畫面，也不得擴張成在 app 初始載入時無差別下載所有非核心裝飾資源。

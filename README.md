@@ -1,34 +1,99 @@
+# Boundary Notes
+
+> **"A gentle place to put your feelings and boundaries into words."**
+
+Boundary Notes is a private notebook for reflecting on BDSM boundaries, interests, and the conditions that matter to you. With the Secret-Keeping Bunny nearby, you can take your time, follow what feels true right now, and turn it into words that are easier to understand.
+
+Visit [boundarynotes.com](https://boundarynotes.com)
+
+## Overview
+
+Some feelings take time to name. Boundary Notes offers a quiet place to record your experiences, interests, boundaries, and notes around different BDSM interactions. There are no right answers here—only the space to understand yourself a little more clearly.
+
+Every real-life interaction deserves a present, willing conversation. A secret file can be a starting point for that conversation.
+
+## What you can do
+
+### Create your own secret file
+
+Move through interaction topics at your own pace and keep track of what you have experienced, what interests you, what feels comfortable, and any conditions you want to remember.
+
+### Return to past notes
+
+Keep your files close and revisit them when your feelings, boundaries, or circumstances change. Looking back can make those changes easier to notice.
+
+### Share with care
+
+When you choose to, create a private link to share a file with someone. It gives you both a clearer place to begin talking about boundaries, expectations, and what matters now.
+
+## Languages
+
+Boundary Notes is available in:
+
+- 繁體中文
+- 简体中文
+- English
+- 日本語
+
+## Built with
+
+- Vue 3
+- TypeScript
+- Vite
+- Firebase
+
+---
+
+*Likes and boundaries have no right or wrong. You are still you, and desire is still desire.*
+
+---
+
+## 繁體中文
+
 # Boundary Notes／兔子的祕密檔案
 
-Boundary Notes 是協助使用者整理 BDSM 界線、準備知情同意對話與進行界線溝通的四語筆記本。它不做配對、契合度判定或角色分類；秘密檔案只支援溝通，不能取代任何一次當下的確認與同意。
+> **「讓感受與界線，有一個可以慢慢整理的地方。」**
 
-正式站：<https://boundarynotes.com>
+Boundary Notes 是一本陪你整理 BDSM 界線、喜好，以及重要前提的私密筆記本。守密兔會安靜待在身旁，讓你依照自己的步調，把此刻真實的感受慢慢寫成能被理解的話。
 
-## 開發指令
+正式網站：[boundarynotes.com](https://boundarynotes.com)
 
-```bash
-npm install
-npm run dev
-npm test
-npm run build
-```
+## 專案簡介
 
-`npm run build` 會依序執行 typecheck、client build、SSR build 與 SEO prerender。輸出包含：
+有些感受需要一點時間，才找得到適合的名字。Boundary Notes 提供一個安靜的位置，讓你記下自己對不同 BDSM 互動項目的經驗、興趣、界線與備註。這裡沒有正確答案，只有更靠近理解自己的空間。
 
-- `/en`、`/zh-hant`、`/zh-hans`、`/ja` 四語既有前導入口；不新增或插入 SEO 專用畫面。
-- 各語系的 About、Terms、Privacy 原始 HTML、canonical、hreflang、Open Graph、Twitter card 與 JSON-LD。
-- 私密／功能頁的本地化 `noindex` shell，不會把暱稱、作答、檔案 ID 或分享 query 寫入 social metadata。
-- `sitemap.xml` 與 `robots.txt`。
+每一次現實中的互動，都值得在當下重新確認彼此知情且自願的意願；祕密檔案可以成為這段對話的起點。
 
-只有正式 production build 應設定 `VITE_PUBLIC_INDEXING=true`。未設定、staging 與 PR preview 都會輸出全站 `noindex`；`robots.txt` 仍允許 crawler 讀取頁面，確保它能實際看見並遵守 `noindex`，且不會刊登 sitemap。
+## 可以做些什麼
 
-## 入口與語系路由
+### 建立自己的祕密檔案
 
-- 首次使用者進入 `/` 時以英文為無法辨識語系的 fallback，導向 `/en`。
-- 語系 URL 永遠優先於 localStorage；切換語系會留在同一功能頁。
-- 首次使用者直接進入根入口或任一語系入口時看到既有前導；已完成前導命名的使用者會在畫面顯示前前往該語系 Home。
-- About 的「重播前導」直接進入 `/{locale}/intro`，不會被回訪導向攔截。
-- 雲端秘密檔案分享連結保留建立時語系的 `/{locale}/preview?...` URL。收件者已有 localStorage 語系時沿用既有設定且不靜默覆寫；沒有紀錄時才採用連結語系並保存。只有使用者親自切換語言時，才同步更新介面、URL 與 localStorage。
-- 舊的無語系路徑會保留 query/hash 並導向已保存語系；沒有可辨識語系時使用英文。
+依照自己的步調瀏覽互動項目，記下你曾有的經驗、感興趣的事、目前覺得自在的範圍，以及想留給自己的提醒。
 
-SEO 分享卡由 `scripts/generate-seo-images.py` 產生，精確重用 `src/assets/story/rabbit-about.webp` 的既有兔子，不重新設計角色。
+### 回看過去的筆記
+
+把檔案留在身邊，當感受、界線或生活情況有所改變時，再回來看看。時間會讓一些變化變得更清楚。
+
+### 謹慎地分享
+
+在你想要的時候，建立一個私密連結，把檔案傳給某個人。它能讓你們更容易開始談界線、期待，以及此刻真正重要的事。
+
+## 多語系支援
+
+Boundary Notes 提供以下語言：
+
+- 繁體中文
+- 简体中文
+- English
+- 日本語
+
+## 主要技術
+
+- Vue 3
+- TypeScript
+- Vite
+- Firebase
+
+---
+
+*喜好、界線沒有對錯，你依舊是你，慾望也依舊是慾望*
