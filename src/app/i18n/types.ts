@@ -115,6 +115,7 @@ export type LocaleMessages = {
   common: {
     backHome: string;
     planned: string;
+    skipStory: string;
   };
   home: {
     copy: string;

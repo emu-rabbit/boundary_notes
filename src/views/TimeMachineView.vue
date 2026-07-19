@@ -16,6 +16,7 @@ import {
   warmTimeMachineRabbitAssets,
   type RabbitPose,
 } from '../features/story/rabbitAssets';
+import { hasPlayedStory, markStoryPlayed } from '../features/story/storyProgress';
 import {
   formatTimeMachineDate,
   getTimeMachineMessages,
@@ -180,6 +181,9 @@ const excludedScope = computed(() => {
   if (scope === 'passiveOnly') return messages.value.scopeLabel('activeOnly');
   return '';
 });
+const canSkipStory = computed(() => hasPlayedStory('timeMachine')
+  && Boolean(firstFile.value && secondFile.value)
+  && !selectionLoading.value);
 
 function findOption(fileKey: string | null): TimeMachineFileOption | null {
   return selectableFiles.value.find((file) => file.key === fileKey) ?? null;
@@ -432,6 +436,11 @@ async function confirmSelection(): Promise<void> {
   }
 }
 
+async function skipStory(): Promise<void> {
+  await confirmSelection();
+  if (comparison.value) showDashboard();
+}
+
 function goToProfileBranch(): void {
   if (comparison.value) step.value = getProfileBranch(comparison.value);
 }
@@ -460,6 +469,7 @@ function returnToSelection(clearSelection = false): void {
 function showDashboard(): void {
   if (!comparison.value) return;
 
+  markStoryPlayed('timeMachine');
   phase.value = 'dashboard';
   void nextTick(() => window.scrollTo({ left: 0, top: 0 }));
 }
@@ -535,12 +545,30 @@ onUnmounted(() => {
     <div class="ambient-grid" aria-hidden="true" />
 
     <header class="story-header">
+      <button
+        v-if="phase === 'dashboard'"
+        class="time-machine-home-action"
+        type="button"
+        @click="navigate('home')"
+      >
+        {{ appMessages.common.backHome }}
+      </button>
       <BrandMark
+        v-else
         :action-label="appMessages.common.backHome"
         :messages="appMessages"
-        :title="phase === 'dashboard' ? appMessages.common.backHome : appTitle"
+        :title="appTitle"
         @restart="navigate('home')"
       />
+
+      <button
+        v-if="phase === 'story' && canSkipStory"
+        class="story-skip-action"
+        type="button"
+        @click="skipStory"
+      >
+        {{ appMessages.common.skipStory }}
+      </button>
 
       <button
         v-if="phase === 'dashboard'"

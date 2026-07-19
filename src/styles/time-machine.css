@@ -8,6 +8,26 @@
     rgba(22, 13, 19, 0.58);
 }
 
+.time-machine-home-action {
+  min-height: 2.25rem;
+  padding: 0.42rem 0.2rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: rgba(246, 232, 223, 0.22);
+  text-underline-offset: 0.3rem;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.time-machine-home-action:hover,
+.time-machine-home-action:focus-visible {
+  color: var(--ink);
+  text-decoration-color: rgba(246, 232, 223, 0.48);
+}
+
 .illustration-scene[data-pose="timeMachineDepart"] .rabbit-pose,
 .illustration-scene[data-pose="timeMachineFiles"] .rabbit-pose,
 .illustration-scene[data-pose="timeMachineGiggle"] .rabbit-pose,

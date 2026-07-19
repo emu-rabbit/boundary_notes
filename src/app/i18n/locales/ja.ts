@@ -43,6 +43,7 @@ export const jaMessages: LocaleMessages = {
   common: {
     backHome: 'ホームへ',
     planned: '準備中',
+    skipStory: 'スキップ',
   },
   home: {
     copy: '今日もゆっくりで大丈夫。新しいファイルを作っても、前の続きからでも。自分の変化を見たり、この一部を誰かに渡したりしてもいい。',

@@ -55,6 +55,7 @@ export const zhHantMessages: LocaleMessages = {
   common: {
     backHome: '回主頁',
     planned: '規劃中',
+    skipStory: '跳過',
   },
   home: {
     copy: '今天也可以慢慢來，可以創建新的檔案，也可以從舊的檔案繼續作答。噢，還是你打算查看自己的變化，或是分享給別人這一部分的你呢？',

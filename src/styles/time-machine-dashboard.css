@@ -1147,20 +1147,11 @@
     gap: 0.5rem;
   }
 
-  .time-machine-route--dashboard .story-header .brand-mark {
+  .time-machine-route--dashboard .story-header .time-machine-home-action {
     flex: 0 1 auto;
     max-width: 43%;
     min-width: 0;
-    min-height: 2.75rem;
-    padding-inline: 0.62rem 0.75rem;
-    gap: 0.38rem;
     font-size: 0.82rem;
-  }
-
-  .time-machine-route--dashboard .story-header .brand-mark > span:last-child {
-    min-width: 0;
-    overflow-wrap: anywhere;
-    text-align: center;
   }
 
   .time-machine-dashboard {

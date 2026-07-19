@@ -43,6 +43,7 @@ export const enMessages: LocaleMessages = {
   common: {
     backHome: 'Home',
     planned: 'Planned',
+    skipStory: 'Skip',
   },
   home: {
     copy: 'Take your time today. You can create a new file, continue from an old one, look at what has changed, or share this part of you with someone.',

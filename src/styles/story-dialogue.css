@@ -24,6 +24,28 @@
   display: none;
 }
 
+.story-skip-action {
+  margin-left: auto;
+  justify-self: center;
+  min-height: 2.25rem;
+  padding: 0.42rem 0.2rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: rgba(246, 232, 223, 0.22);
+  text-underline-offset: 0.3rem;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease;
+}
+
+.story-skip-action:hover,
+.story-skip-action:focus-visible {
+  color: var(--ink);
+  text-decoration-color: rgba(246, 232, 223, 0.48);
+}
+
 .speaker-name {
   position: relative;
   z-index: 1;

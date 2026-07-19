@@ -6,6 +6,7 @@ import RabbitScene from '../../components/RabbitScene.vue';
 import { getQuestionBankCounts } from '../question-bank';
 import type { SecretFileScope } from '../secret-file';
 import { rabbitPoseUrls, type RabbitPose } from '../story/rabbitAssets';
+import { hasPlayedStory, markStoryPlayed } from '../story/storyProgress';
 import type { QuestionnaireMessages } from './messages';
 
 type IntroStep =
@@ -45,6 +46,7 @@ const poseByStep: Record<IntroStep, RabbitPose> = {
 };
 
 const activePose = computed(() => poseByStep[step.value]);
+const canSkipStory = computed(() => selectedScope.value !== null && hasPlayedStory('create'));
 const activeLines = computed(() => {
   switch (step.value) {
     case 'scope':
@@ -80,6 +82,7 @@ function continueIntro(): void {
 
 function start(): void {
   if (selectedScope.value) {
+    markStoryPlayed('create');
     emit('start', selectedScope.value);
   }
 }
@@ -96,6 +99,14 @@ function start(): void {
         :title="appTitle"
         @restart="emit('cancel')"
       />
+      <button
+        v-if="canSkipStory"
+        class="story-skip-action"
+        type="button"
+        @click="start"
+      >
+        {{ appMessages.common.skipStory }}
+      </button>
     </header>
 
     <div class="story-layout">
