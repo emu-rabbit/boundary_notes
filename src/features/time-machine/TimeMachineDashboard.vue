@@ -25,10 +25,15 @@ import {
   getTimeMachineComparisonMessages,
 } from './timeMachineComparisonMessages';
 import { formatTimeMachineDate, getTimeMachineMessages } from './timeMachineMessages';
+import {
+  hasHiddenTimeMachineChanges,
+  selectTimeMachinePreviewChanges,
+} from './timeMachinePreview';
 
 interface ComparisonSection {
   changes: readonly TimeMachineComparisonChange[];
   groups: readonly ComparisonCategoryGroup[];
+  hasMoreChanges: boolean;
   id: TimeMachineComparisonSectionId;
   previewChanges: readonly TimeMachineComparisonChange[];
   title: string;
@@ -85,11 +90,12 @@ const sections = computed<ComparisonSection[]>(() => sectionOrder.map((id) => {
   const changes = (comparison.value[id] as readonly TimeMachineComparisonChange[]).filter(
     (change) => change.question.role === selectedRole.value,
   );
-  const previewChanges = changes.slice(0, previewLimits[id]);
+  const previewChanges = selectTimeMachinePreviewChanges(id, changes, previewLimits[id]);
 
   return {
     changes,
     groups: groupChanges(previewChanges),
+    hasMoreChanges: hasHiddenTimeMachineChanges(id, changes, previewLimits[id]),
     id,
     previewChanges,
     title: messages.value.sections[id],
@@ -360,7 +366,7 @@ onMounted(() => {
         </ol>
 
         <button
-          v-if="section.changes.length > previewLimits[section.id]"
+          v-if="section.hasMoreChanges"
           class="time-machine-difference-section__all"
           type="button"
           @click="openAllChanges(section.id)"
