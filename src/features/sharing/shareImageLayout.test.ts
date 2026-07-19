@@ -179,7 +179,7 @@ describe('share image text layout', () => {
 
   it('日文換行不會讓分隔標點懸掛在新行開頭', () => {
     const lines = wrapTextToWidth(
-      'スパンキング／パドル',
+      'アニマル／ペットプレイ',
       102,
       { fontSize: 17, weight: 500 },
       'ja',
@@ -188,11 +188,11 @@ describe('share image text layout', () => {
 
     expect(lines.length).toBeGreaterThan(1);
     expect(lines.some((line) => line.startsWith('／'))).toBe(false);
-    expect(lines.join('')).toBe('スパンキング／パドル');
+    expect(lines.join('')).toBe('アニマル／ペットプレイ');
   });
 
   it('分類標題會優先使用語意斷點，避免尾行只剩孤字', () => {
-    const layout = fitWrappedText('スパンキング／パドル', {
+    const layout = fitWrappedText('アニマル／ペットプレイ', {
       lineHeightRatio: 1.12,
       maxLines: 2,
       maxWidth: 155,
@@ -201,7 +201,7 @@ describe('share image text layout', () => {
       weight: 500,
     }, 'ja', measurer);
 
-    expect(layout.lines).toEqual(['スパンキング／', 'パドル']);
+    expect(layout.lines).toEqual(['アニマル／', 'ペットプレイ']);
     expect(layout.lines[1]?.length).toBeGreaterThan(1);
   });
 
@@ -220,7 +220,7 @@ describe('share image text layout', () => {
 
   it.each([
     ['單行標題', '鞭打ち'],
-    ['雙行標題', 'スパンキング／パドル'],
+    ['雙行標題', 'アニマル／ペットプレイ'],
   ])('%s 與喜好列維持固定間距，並一起對齊卡片中心', (_, title) => {
     const layout = layoutStackedText(title, {
       lineHeightRatio: 1.12,

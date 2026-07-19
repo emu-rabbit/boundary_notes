@@ -27,7 +27,7 @@ export const localizedCategoryCopy: CategoryLocaleCopy = {
     other: { name: '其他', roles: { active: { description: '呼吸控制、催眠、玩弄食物等无法归入其他分类的项目' }, passive: { description: '呼吸控制、催眠、玩弄食物等无法归入其他分类的项目' } } },
   },
   ja: {
-    impact_spanking: { name: 'スパンキング／パドル', roles: { active: { description: 'スパンキングを含む、手や道具で相手を叩く行為を行う' }, passive: { description: 'スパンキングを含む、手や道具で叩かれる行為を受ける' } } },
+    impact_spanking: { name: 'スパンキング', roles: { active: { description: 'スパンキングを含む、手や道具で相手を叩く行為を行う' }, passive: { description: 'スパンキングを含む、手や道具で叩かれる行為を受ける' } } },
     whipping: { name: '鞭打ち', roles: { active: { description: '鞭で相手を打つ' }, passive: { description: '鞭で打たれる' } } },
     bondage: { name: '拘束', roles: { active: { description: 'ロープや各種の道具で相手を拘束し、動きを制限する' }, passive: { description: 'ロープや各種の道具で拘束され、動きを制限される' } } },
     tickling: { name: 'くすぐり', roles: { active: { description: '手や各種の道具で相手をくすぐる' }, passive: { description: '相手の手や各種の道具でくすぐられる' } } },
@@ -50,7 +50,7 @@ export const localizedCategoryCopy: CategoryLocaleCopy = {
     other: { name: 'その他', roles: { active: { description: '呼吸の制限、催眠、食べ物を使ったプレイなど、ほかに分類しにくい項目' }, passive: { description: '呼吸の制限、催眠、食べ物を使ったプレイなど、ほかに分類しにくい項目' } } },
   },
   en: {
-    impact_spanking: { name: 'Spanking and paddling', roles: { active: { description: 'Spank or paddle the other person, including on the buttocks' }, passive: { description: 'Receive spanking or paddling, including on the buttocks' } } },
+    impact_spanking: { name: 'Spanking', roles: { active: { description: 'Spank or paddle the other person, including on the buttocks' }, passive: { description: 'Receive spanking or paddling, including on the buttocks' } } },
     whipping: { name: 'Whipping', roles: { active: { description: 'Use a whip on the other person' }, passive: { description: 'Receive whipping' } } },
     bondage: { name: 'Bondage', roles: { active: { description: 'Restrain the other person and limit their movement with rope or other equipment' }, passive: { description: 'Be restrained and have your movement limited with rope or other equipment' } } },
     tickling: { name: 'Tickling', roles: { active: { description: 'Tickle the other person with hands or other items' }, passive: { description: 'Be tickled with hands or other items' } } },
