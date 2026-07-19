@@ -41,12 +41,14 @@ export interface TimeMachineMessages {
   picker: {
     chooseFile: string;
     cloudFileFallback: string;
+    cloudFiles: string;
     cloudSource: string;
     cloudUploadedAt: (date: string) => string;
     close: string;
     firstFile: string;
     loadFailed: string;
     loading: string;
+    localFiles: string;
     localSource: string;
     localOnlyHint: string;
     needTwoFiles: string;
@@ -133,12 +135,14 @@ const zhHant: TimeMachineMessages = {
   picker: {
     chooseFile: '選擇檔案',
     cloudFileFallback: '已連結的雲端檔案',
+    cloudFiles: '雲端檔案',
     cloudSource: '雲端',
     cloudUploadedAt: (date) => `上傳於 ${date}`,
     close: '關閉',
     firstFile: '第一份檔案',
     loadFailed: '無法讀取選擇的檔案，請重新選擇。',
     loading: '正在讀取檔案…',
+    localFiles: '本地檔案',
     localSource: '本地',
     localOnlyHint: '可以從本裝置的本地或雲端檔案中選擇',
     needTwoFiles: '至少需要兩份本地或已連結的雲端檔案，才能在兩個時間點之間穿梭。',
@@ -190,7 +194,7 @@ const zhHans: TimeMachineMessages = {
     preferNewName: '我比较喜欢我取的新名字', oldNamePast: (name) => `${name}已经是我的过去式了`, stoleFile: '其实我偷了别人的档案', yes: '对吧！', commemorate: '我会好好纪念的', trash: '我会丢进垃圾桶的', giggle: '嘻嘻', confused: '？？？', crying: '(´;ω;`)', exactly: '没错！', shy: '（害羞）', bothAttractive: '因为都太吸引人了！', overwhelmed: '被淹没了…', easy: '小事情而已', doubleJoy: '两倍的承担也是两倍的快乐', tellStory: '好啊！', hardToSay: '（难以启齿）', greatAnswer: '好耶。', secretAnswer: 'Ouo', stopLooking: (scope) => `我暂时不想看${scope}了`, focusOn: (scope) => `我决定更专注在${scope}这一侧的记录`, okayAnswer: '好。',
   },
   picker: {
-    chooseFile: '选择档案', cloudFileFallback: '已链接的云端档案', cloudSource: '云端', cloudUploadedAt: (date) => `上传于 ${date}`, close: '关闭', firstFile: '第一份档案', loadFailed: '无法读取选择的档案，请重新选择。', loading: '正在读取档案…', localSource: '本地', localOnlyHint: '可以从本地档案，或这台设备已添加链接的云端档案中选择。', needTwoFiles: '至少需要两份本地或已链接的云端档案，才能在两个时间点之间穿梭。', secondFile: '第二份档案', selectFileTitle: (position) => `选择${position}`, selectionRequired: '请先选择两份不同的档案。', updatedAt: (date) => `最后编辑于 ${date}`,
+    chooseFile: '选择档案', cloudFileFallback: '已链接的云端档案', cloudFiles: '云端档案', cloudSource: '云端', cloudUploadedAt: (date) => `上传于 ${date}`, close: '关闭', firstFile: '第一份档案', loadFailed: '无法读取选择的档案，请重新选择。', loading: '正在读取档案…', localFiles: '本地档案', localSource: '本地', localOnlyHint: '可以从本地档案，或这台设备已添加链接的云端档案中选择。', needTwoFiles: '至少需要两份本地或已链接的云端档案，才能在两个时间点之间穿梭。', secondFile: '第二份档案', selectFileTitle: (position) => `选择${position}`, selectionRequired: '请先选择两份不同的档案。', updatedAt: (date) => `最后编辑于 ${date}`,
   },
   scopeLabel: (scope) => scopeLabels['zh-Hans'][scope],
   speakerName: secretKeeperNames['zh-Hans'],
@@ -207,7 +211,7 @@ const ja: TimeMachineMessages = {
     ready: '準備できた！', departReady: '準備できた', confirmReady: '間違いない！', confirmWrong: '取り違えたQQ', notReady: 'まだ。', great: 'すごくよかった', okay: 'まあまあ', notGood: 'あまりよくなかった…', proud: '（誇らしい）', maybe: 'そうかも', hug: '(,,ᴗ ᴗ,,) ⁾⁾', preferNewName: '自分でつけた新しい名前のほうが好き', oldNamePast: (name) => `${name}はもう過去の私`, stoleFile: '実は他の人のファイルを盗んだ', yes: 'でしょ！', commemorate: '大切に覚えておく', trash: 'ゴミ箱に入れる', giggle: 'ふふ', confused: '？？？', crying: '(´;ω;`)', exactly: 'その通り！', shy: '（照れる）', bothAttractive: 'どちらも魅力的すぎるから！', overwhelmed: '埋もれちゃった…', easy: 'これくらい平気', doubleJoy: '背負うものが二倍なら、楽しさも二倍', tellStory: 'いいよ！', hardToSay: '（言いづらい）', greatAnswer: 'わーい。', secretAnswer: 'Ouo', stopLooking: (scope) => `しばらく${scope}は見たくない`, focusOn: (scope) => `${scope}の記録にもっと集中することにした`, okayAnswer: 'うん。',
   },
   picker: {
-    chooseFile: 'ファイルを選ぶ', cloudFileFallback: 'リンク済みクラウドファイル', cloudSource: 'クラウド', cloudUploadedAt: (date) => `アップロード：${date}`, close: '閉じる', firstFile: '一つ目のファイル', loadFailed: '選んだファイルを読み込めませんでした。選び直してください。', loading: 'ファイルを読み込んでいます…', localSource: 'ローカル', localOnlyHint: 'ローカルファイルと、この端末にリンク済みのクラウドファイルから選べます。', needTwoFiles: '二つの時点を行き来するには、ローカルまたはリンク済みクラウドファイルが二つ以上必要です。', secondFile: '二つ目のファイル', selectFileTitle: (position) => `${position}を選ぶ`, selectionRequired: '異なる二つのファイルを選んでください。', updatedAt: (date) => `最終編集：${date}`,
+    chooseFile: 'ファイルを選ぶ', cloudFileFallback: 'リンク済みクラウドファイル', cloudFiles: 'クラウドファイル', cloudSource: 'クラウド', cloudUploadedAt: (date) => `アップロード：${date}`, close: '閉じる', firstFile: '一つ目のファイル', loadFailed: '選んだファイルを読み込めませんでした。選び直してください。', loading: 'ファイルを読み込んでいます…', localFiles: 'ローカルファイル', localSource: 'ローカル', localOnlyHint: 'ローカルファイルと、この端末にリンク済みのクラウドファイルから選べます。', needTwoFiles: '二つの時点を行き来するには、ローカルまたはリンク済みクラウドファイルが二つ以上必要です。', secondFile: '二つ目のファイル', selectFileTitle: (position) => `${position}を選ぶ`, selectionRequired: '異なる二つのファイルを選んでください。', updatedAt: (date) => `最終編集：${date}`,
   },
   scopeLabel: (scope) => scopeLabels.ja[scope],
   speakerName: secretKeeperNames.ja,
@@ -224,7 +228,7 @@ const en: TimeMachineMessages = {
     ready: "I'm ready!", departReady: "I'm ready", confirmReady: "That's right!", confirmWrong: 'I grabbed the wrong files QQ', notReady: 'Not yet.', great: 'Wonderful', okay: 'It was okay', notGood: 'Not so well...', proud: '(Proud)', maybe: 'Maybe', hug: '(,,ᴗ ᴗ,,) ⁾⁾', preferNewName: 'I like the new name I chose better', oldNamePast: (name) => `${name} belongs to my past now`, stoleFile: "I actually stole someone else's file", yes: 'Right?', commemorate: "I'll remember it well", trash: "I'll throw it in the trash", giggle: 'Hehe', confused: '???', crying: '(´;ω;`)', exactly: 'Exactly!', shy: '(Shy)', bothAttractive: 'They are both too appealing!', overwhelmed: 'I was buried...', easy: 'It was nothing', doubleJoy: 'Twice the responsibility, twice the joy', tellStory: 'Sure!', hardToSay: '(Hard to say)', greatAnswer: 'Yay.', secretAnswer: 'Ouo', stopLooking: (scope) => `I don't want to look at ${scope} for now`, focusOn: (scope) => `I decided to focus more on records from ${scope}`, okayAnswer: 'Okay.',
   },
   picker: {
-    chooseFile: 'Choose file', cloudFileFallback: 'Linked cloud file', cloudSource: 'Cloud', cloudUploadedAt: (date) => `Uploaded ${date}`, close: 'Close', firstFile: 'First file', loadFailed: 'The selected files could not be read. Please choose them again.', loading: 'Loading files…', localSource: 'Local', localOnlyHint: 'Choose from local files or cloud files linked on this device.', needTwoFiles: 'You need at least two local or linked cloud files to travel between two points in time.', secondFile: 'Second file', selectFileTitle: (position) => `Choose the ${position.toLowerCase()}`, selectionRequired: 'Choose two different files first.', updatedAt: (date) => `Last edited ${date}`,
+    chooseFile: 'Choose file', cloudFileFallback: 'Linked cloud file', cloudFiles: 'Cloud files', cloudSource: 'Cloud', cloudUploadedAt: (date) => `Uploaded ${date}`, close: 'Close', firstFile: 'First file', loadFailed: 'The selected files could not be read. Please choose them again.', loading: 'Loading files…', localFiles: 'Local files', localSource: 'Local', localOnlyHint: 'Choose from local files or cloud files linked on this device.', needTwoFiles: 'You need at least two local or linked cloud files to travel between two points in time.', secondFile: 'Second file', selectFileTitle: (position) => `Choose the ${position.toLowerCase()}`, selectionRequired: 'Choose two different files first.', updatedAt: (date) => `Last edited ${date}`,
   },
   scopeLabel: (scope) => scopeLabels.en[scope],
   speakerName: secretKeeperNames.en,

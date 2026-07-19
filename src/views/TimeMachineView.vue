@@ -101,6 +101,12 @@ interface TimeMachineFileOption {
   timestamp: string | null;
 }
 
+interface TimeMachinePickerSection {
+  files: TimeMachineFileOption[];
+  label: string;
+  source: TimeMachineFileOption['source'];
+}
+
 const store = useSecretFileStore();
 const {
   appTitle,
@@ -150,9 +156,18 @@ const selectableFiles = computed<TimeMachineFileOption[]>(() => [
     timestamp: file.createdAt,
   })),
 ].sort((left, right) => Date.parse(right.timestamp ?? '') - Date.parse(left.timestamp ?? '')));
-const showFileSources = computed(() => new Set(
-  selectableFiles.value.map((file) => file.source),
-).size > 1);
+const pickerSections = computed<TimeMachinePickerSection[]>(() => ([
+  {
+    files: selectableFiles.value.filter((file) => file.source === 'local'),
+    label: messages.value.picker.localFiles,
+    source: 'local' as const,
+  },
+  {
+    files: selectableFiles.value.filter((file) => file.source === 'cloud'),
+    label: messages.value.picker.cloudFiles,
+    source: 'cloud' as const,
+  },
+]).filter((section) => section.files.length > 0));
 const firstFile = computed(() => findOption(firstFileId.value));
 const secondFile = computed(() => findOption(secondFileId.value));
 const selectionSlots = computed(() => [
@@ -701,41 +716,46 @@ onUnmounted(() => {
         </header>
 
         <div ref="pickerList" class="time-machine-picker-list">
-          <button
-            v-for="file in selectableFiles"
-            :key="file.key"
-            class="time-machine-picker-option"
-            :data-file-key="file.key"
-            :class="{
-              'time-machine-picker-option--selected': file.key === (pickerPosition === 'first' ? firstFileId : secondFileId),
-            }"
-            type="button"
-            :disabled="file.key === unavailableFileId"
-            @click="selectFile(file.key)"
+          <section
+            v-for="section in pickerSections"
+            :key="section.source"
+            class="time-machine-picker-section"
+            :aria-labelledby="`time-machine-picker-section-${section.source}`"
           >
-            <span class="time-machine-picker-option__heading">
-              <strong>{{ optionName(file) }}</strong>
-              <span
-                v-if="showFileSources"
-                class="time-machine-picker-option__source"
-              >
-                {{ sourceLabel(file) }}
-              </span>
-            </span>
+            <h3 :id="`time-machine-picker-section-${section.source}`">
+              {{ section.label }}
+            </h3>
 
-            <span v-if="file.scope || file.timestamp" class="time-machine-picker-option__meta">
-              <small v-if="file.scope">{{ scopeOf(file.scope) }}</small>
-              <time
-                v-if="file.timestamp"
-                :datetime="file.timestamp"
-                :aria-label="file.source === 'local'
-                  ? messages.picker.updatedAt(formatDate(file.timestamp))
-                  : messages.picker.cloudUploadedAt(formatDate(file.timestamp))"
+            <div class="time-machine-picker-section__options">
+              <button
+                v-for="file in section.files"
+                :key="file.key"
+                class="time-machine-picker-option"
+                :data-file-key="file.key"
+                :class="{
+                  'time-machine-picker-option--selected': file.key === (pickerPosition === 'first' ? firstFileId : secondFileId),
+                }"
+                type="button"
+                :disabled="file.key === unavailableFileId"
+                @click="selectFile(file.key)"
               >
-                {{ formatDate(file.timestamp) }}
-              </time>
-            </span>
-          </button>
+                <strong>{{ optionName(file) }}</strong>
+
+                <span v-if="file.scope || file.timestamp" class="time-machine-picker-option__meta">
+                  <small v-if="file.scope">{{ scopeOf(file.scope) }}</small>
+                  <time
+                    v-if="file.timestamp"
+                    :datetime="file.timestamp"
+                    :aria-label="file.source === 'local'
+                      ? messages.picker.updatedAt(formatDate(file.timestamp))
+                      : messages.picker.cloudUploadedAt(formatDate(file.timestamp))"
+                  >
+                    {{ formatDate(file.timestamp) }}
+                  </time>
+                </span>
+              </button>
+            </div>
+          </section>
         </div>
       </article>
     </dialog>

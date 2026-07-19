@@ -104,8 +104,7 @@
   font-size: 0.75rem;
 }
 
-.time-machine-file-slot__source,
-.time-machine-picker-option__source {
+.time-machine-file-slot__source {
   display: inline-flex;
   align-items: center;
   min-height: 1.4rem;
@@ -269,7 +268,8 @@
 
 .time-machine-picker-list {
   display: grid;
-  gap: 0.65rem;
+  align-content: start;
+  gap: 1rem;
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -277,6 +277,34 @@
   scrollbar-gutter: stable;
   scroll-padding-block: 0.45rem;
   padding: 0.4rem 0.7rem 0.55rem 0.35rem;
+}
+
+.time-machine-picker-section {
+  display: grid;
+  gap: 0.58rem;
+}
+
+.time-machine-picker-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+  color: rgba(247, 222, 210, 0.82);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.time-machine-picker-section h3::after {
+  flex: 1;
+  height: 1px;
+  background: rgba(236, 198, 187, 0.16);
+  content: '';
+}
+
+.time-machine-picker-section__options {
+  display: grid;
+  gap: 0.65rem;
 }
 
 .time-machine-picker-option {
@@ -311,14 +339,6 @@
   outline-offset: -3px;
 }
 
-.time-machine-picker-option__heading {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: start;
-  gap: 0.75rem;
-  min-width: 0;
-}
-
 .time-machine-picker-option strong {
   min-width: 0;
   max-width: 100%;
@@ -326,12 +346,6 @@
   font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem);
   font-weight: 590;
   line-height: 1.35;
-}
-
-.time-machine-picker-option__source {
-  min-height: 1.55rem;
-  padding-inline: 0.58rem;
-  font-size: 0.875rem;
 }
 
 .time-machine-picker-option__meta {
