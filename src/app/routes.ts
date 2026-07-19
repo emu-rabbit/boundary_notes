@@ -68,8 +68,8 @@ export const appRoutes = [
   {
     id: 'timeMachine',
     path: '/time-machine',
-    state: 'planned',
-    component: () => import('../views/PlannedRouteView.vue'),
+    state: 'ready',
+    component: () => import('../views/TimeMachineView.vue'),
   },
   {
     id: 'about',

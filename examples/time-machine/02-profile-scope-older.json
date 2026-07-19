@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 2,
+  "fileId": "local_tm_profile_scope_old_20260718",
+  "createdAt": "2026-04-10T03:00:00.000Z",
+  "updatedAt": "2026-04-10T03:25:00.000Z",
+  "profileName": "小杉",
+  "questionBank": {
+    "bankVersion": "2026-07-11",
+    "schemaVersion": 1
+  },
+  "scope": "activeOnly",
+  "answers": {
+    "category.impact_spanking.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "偏好先說清楚範圍。"
+    },
+    "category.bondage.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "neutral",
+      "note": "目前沒有明確偏好。"
+    },
+    "category.impact_spanking.passive": {
+      "state": "filteredOut"
+    },
+    "category.bondage.passive": {
+      "state": "filteredOut"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "love",
+      "note": "偏好能即時確認感受。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-gwssxu.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "neutral",
+      "note": "仍在觀察。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1uy95nk.active": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "like",
+      "note": "有興趣但沒有經驗。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.passive": {
+      "state": "filteredOut"
+    },
+    "detail.impact_spanking.detail-impact_spanking-gwssxu.passive": {
+      "state": "filteredOut"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1uy95nk.passive": {
+      "state": "filteredOut"
+    }
+  },
+  "spotlight": {
+    "active": {
+      "selectedQuestionIds": [
+        "category.impact_spanking.active",
+        "detail.impact_spanking.detail-impact_spanking-1qzzr10.active",
+        "detail.impact_spanking.detail-impact_spanking-1uy95nk.active"
+      ]
+    },
+    "passive": {
+      "selectedQuestionIds": []
+    }
+  }
+}

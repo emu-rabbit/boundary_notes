@@ -12,6 +12,7 @@ export {
   questionBank,
 } from './questionBank';
 export {
+  findCategoryVisualUrl,
   getCategoryVisualUrl,
   warmAllCategoryVisuals,
   warmCategoryVisual,

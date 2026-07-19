@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 2,
+  "fileId": "local_tm_profile_scope_new_20260718",
+  "createdAt": "2026-07-17T05:00:00.000Z",
+  "updatedAt": "2026-07-17T05:45:00.000Z",
+  "profileName": "杉木與晨霧之間",
+  "questionBank": {
+    "bankVersion": "2026-07-11",
+    "schemaVersion": 1
+  },
+  "scope": "all",
+  "answers": {
+    "category.impact_spanking.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "偏好先說清楚範圍。"
+    },
+    "category.bondage.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "neutral",
+      "note": "目前沒有明確偏好。"
+    },
+    "category.impact_spanking.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "like",
+      "note": "新增配合側的目前感受。"
+    },
+    "category.bondage.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "unsure",
+      "note": "還需要更多具體情境。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "love",
+      "note": "偏好能即時確認感受。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-gwssxu.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "neutral",
+      "note": "仍在觀察。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1uy95nk.active": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "like",
+      "note": "有興趣但沒有經驗。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "hardNo",
+      "note": "目前不接受這個細項。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-gwssxu.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "love",
+      "note": "新增後確認為明確喜歡。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1uy95nk.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "neutral",
+      "note": "先保留中性答案。"
+    }
+  },
+  "spotlight": {
+    "active": {
+      "selectedQuestionIds": [
+        "category.impact_spanking.active",
+        "detail.impact_spanking.detail-impact_spanking-1qzzr10.active",
+        "detail.impact_spanking.detail-impact_spanking-1uy95nk.active"
+      ]
+    },
+    "passive": {
+      "selectedQuestionIds": [
+        "category.impact_spanking.passive",
+        "detail.impact_spanking.detail-impact_spanking-gwssxu.passive"
+      ]
+    }
+  }
+}

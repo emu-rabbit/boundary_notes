@@ -1,0 +1,416 @@
+/* Time machine: story handoff, two-file selection, and linked-cloud picker. */
+
+.time-machine-route .scene-backdrop {
+  background:
+    radial-gradient(circle at 70% 32%, transparent 0 2.8rem, rgba(236, 198, 187, 0.055) 2.9rem 3rem, transparent 3.1rem 5.1rem, rgba(236, 198, 187, 0.04) 5.2rem 5.3rem, transparent 5.4rem),
+    linear-gradient(90deg, rgba(30, 14, 23, 0.55) 0 4%, transparent 4% 96%, rgba(30, 14, 23, 0.55) 96%),
+    linear-gradient(180deg, rgba(65, 35, 47, 0.72), rgba(30, 17, 24, 0.52)),
+    rgba(22, 13, 19, 0.58);
+}
+
+.illustration-scene[data-pose="timeMachineDepart"] .rabbit-pose,
+.illustration-scene[data-pose="timeMachineFiles"] .rabbit-pose,
+.illustration-scene[data-pose="timeMachineGiggle"] .rabbit-pose,
+.illustration-scene[data-pose="timeMachineHug"] .rabbit-pose,
+.illustration-scene[data-pose="timeMachineOverwhelmed"] .rabbit-pose,
+.illustration-scene[data-pose="timeMachinePolice"] .rabbit-pose,
+.illustration-scene[data-pose="timeMachineProud"] .rabbit-pose,
+.illustration-scene[data-pose="timeMachineStory"] .rabbit-pose {
+  width: min(70%, 24rem);
+}
+
+.time-machine-panel {
+  max-height: min(78dvh, 46rem);
+}
+
+.time-machine-panel:focus {
+  outline: none;
+}
+
+.dialogue-panel .time-machine-selection-copy,
+.dialogue-panel .time-machine-dialogue-copy {
+  min-height: 0;
+}
+
+.time-machine-selection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.72rem;
+}
+
+.time-machine-file-slot {
+  position: relative;
+  display: grid;
+  min-height: 11.4rem;
+  align-content: center;
+  justify-items: center;
+  gap: 0.42rem;
+  padding: 1rem 0.82rem;
+  border: 1px dashed rgba(236, 198, 187, 0.24);
+  border-radius: 1rem;
+  background:
+    linear-gradient(145deg, rgba(91, 43, 62, 0.58), rgba(35, 18, 28, 0.72));
+  color: var(--ink);
+  text-align: center;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.time-machine-file-slot:hover:not(:disabled),
+.time-machine-file-slot:focus-visible {
+  border-color: rgba(241, 178, 184, 0.56);
+  background:
+    linear-gradient(145deg, rgba(111, 52, 73, 0.66), rgba(43, 21, 34, 0.78));
+  transform: translateY(-0.12rem);
+}
+
+.time-machine-file-slot:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.time-machine-file-slot--selected {
+  border-style: solid;
+  border-color: rgba(222, 151, 158, 0.42);
+}
+
+.time-machine-file-slot__label {
+  position: absolute;
+  top: 0.72rem;
+  left: 0.78rem;
+  color: var(--ink-muted);
+  font-size: 0.75rem;
+}
+
+.time-machine-file-slot__source,
+.time-machine-picker-option__source {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.4rem;
+  padding: 0.14rem 0.5rem;
+  border: 1px solid rgba(236, 198, 187, 0.18);
+  border-radius: 999px;
+  color: rgba(247, 222, 210, 0.72);
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.time-machine-file-slot strong {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.time-machine-file-slot time,
+.time-machine-file-slot small {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+.time-machine-file-slot__plus {
+  display: grid;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(236, 198, 187, 0.2);
+  border-radius: 999px;
+  color: rgba(247, 222, 210, 0.76);
+  font-size: 1.45rem;
+}
+
+.time-machine-file-slot__action {
+  color: rgba(247, 222, 210, 0.82);
+  font-size: 0.82rem;
+}
+
+.time-machine-selection-hint {
+  margin: -0.2rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.time-machine-selection-continue {
+  justify-self: stretch;
+}
+
+.time-machine-selection-continue:disabled {
+  cursor: not-allowed;
+  opacity: 0.46;
+}
+
+.time-machine-error {
+  margin: 0;
+  color: #ffd2d6;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.time-machine-empty-message {
+  margin: 0;
+  padding: 0.86rem;
+  border: 1px solid rgba(236, 198, 187, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(22, 11, 17, 0.42);
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.time-machine-lines {
+  display: grid;
+  gap: 0.78rem;
+  min-height: 0;
+}
+
+.time-machine-lines--long {
+  overflow: auto;
+  padding-right: 0.35rem;
+}
+
+.time-machine-lines--long .rabbit-speech {
+  font-size: clamp(1rem, 1.4vw, 1.24rem);
+  line-height: 1.72;
+}
+
+.time-machine-choices {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 9.25rem), 1fr));
+}
+
+.time-machine-choice--primary {
+  border-color: rgba(222, 151, 158, 0.38);
+  background: rgba(116, 54, 75, 0.86);
+}
+
+.time-machine-picker {
+  width: min(calc(100vw - 2rem), 42rem);
+  max-width: none;
+  max-height: min(86dvh, 44rem);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(236, 198, 187, 0.2);
+  border-radius: 1.2rem;
+  background:
+    linear-gradient(180deg, rgba(55, 25, 43, 0.98), rgba(24, 12, 19, 0.98));
+  color: var(--ink);
+  box-shadow: 0 1.8rem 5rem rgba(6, 3, 5, 0.56);
+}
+
+.time-machine-picker::backdrop {
+  background: rgba(7, 3, 6, 0.72);
+  backdrop-filter: blur(3px);
+}
+
+.time-machine-picker > article {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  max-height: min(86dvh, 44rem);
+  padding: 1.2rem;
+}
+
+.time-machine-picker header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.15rem 0.25rem 1rem;
+}
+
+.time-machine-picker header > div {
+  min-width: 0;
+}
+
+.time-machine-picker h2 {
+  margin: 0;
+  color: #f8ded3;
+  font-size: clamp(1.55rem, 3.4vw, 1.95rem);
+  font-weight: 560;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.time-machine-picker header button {
+  display: grid;
+  width: 2.75rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(236, 198, 187, 0.16);
+  border-radius: 999px;
+  background: rgba(24, 12, 19, 0.56);
+  color: var(--ink);
+  font-size: 1.35rem;
+}
+
+.time-machine-picker-list {
+  display: grid;
+  gap: 0.65rem;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scroll-padding-block: 0.45rem;
+  padding: 0.4rem 0.7rem 0.55rem 0.35rem;
+}
+
+.time-machine-picker-option {
+  display: grid;
+  gap: 0.68rem;
+  min-width: 0;
+  min-height: 5.2rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(236, 198, 187, 0.14);
+  border-radius: 1rem;
+  background:
+    linear-gradient(135deg, rgba(52, 25, 40, 0.82), rgba(31, 15, 25, 0.72));
+  color: var(--ink);
+  text-align: left;
+}
+
+.time-machine-picker-option:hover:not(:disabled),
+.time-machine-picker-option:focus-visible,
+.time-machine-picker-option--selected {
+  border-color: rgba(222, 151, 158, 0.42);
+  background: rgba(68, 31, 47, 0.82);
+}
+
+.time-machine-picker-option:disabled {
+  cursor: not-allowed;
+  border-color: rgba(236, 198, 187, 0.09);
+  background: rgba(23, 12, 18, 0.58);
+  color: rgba(244, 220, 210, 0.58);
+}
+
+.time-machine-picker-option:focus-visible {
+  outline-offset: -3px;
+}
+
+.time-machine-picker-option__heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.time-machine-picker-option strong {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  font-size: clamp(1.05rem, 1rem + 0.25vw, 1.18rem);
+  font-weight: 590;
+  line-height: 1.35;
+}
+
+.time-machine-picker-option__source {
+  min-height: 1.55rem;
+  padding-inline: 0.58rem;
+  font-size: 0.875rem;
+}
+
+.time-machine-picker-option__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.38rem 1rem;
+  min-width: 0;
+}
+
+.time-machine-picker-option small,
+.time-machine-picker-option time {
+  min-width: 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.time-machine-picker-option time {
+  color: rgba(248, 222, 211, 0.78);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 760px) {
+  .dialogue-panel .time-machine-selection-copy,
+  .dialogue-panel .time-machine-dialogue-copy {
+    overflow: hidden;
+  }
+
+  .time-machine-selection-grid {
+    gap: 0.5rem;
+  }
+
+  .time-machine-file-slot {
+    min-height: 9.6rem;
+    padding: 1.55rem 0.5rem 0.68rem;
+  }
+
+  .time-machine-file-slot strong {
+    font-size: 0.94rem;
+  }
+
+  .time-machine-file-slot time,
+  .time-machine-file-slot small,
+  .time-machine-file-slot__action {
+    font-size: 0.72rem;
+  }
+
+  .time-machine-dialogue-copy .time-machine-choices {
+    flex: none;
+    grid-template-columns: 1fr;
+    max-height: min(36dvh, 15rem);
+    overflow-y: auto;
+    padding-top: 0.7rem;
+  }
+
+  .time-machine-lines {
+    flex: 1 1 auto;
+    overflow-y: auto;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .time-machine-picker {
+    width: calc(100vw - 1rem);
+    max-height: calc(100dvh - 1rem);
+    border-radius: 1rem;
+  }
+
+  .time-machine-picker > article {
+    max-height: calc(100dvh - 1rem);
+    padding: 0.85rem;
+  }
+
+  .time-machine-picker header {
+    padding-inline: 0.1rem;
+  }
+
+  .time-machine-picker-list {
+    padding-right: 0.5rem;
+    padding-left: 0.25rem;
+  }
+
+  .time-machine-picker-option {
+    padding: 0.88rem 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .time-machine-file-slot {
+    min-height: 9rem;
+    border-radius: 0.78rem;
+  }
+
+  .time-machine-file-slot__label {
+    top: 0.52rem;
+    left: 0.55rem;
+  }
+}

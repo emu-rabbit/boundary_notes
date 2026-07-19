@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 2,
+  "fileId": "local_tm_four_sections_old_20260718",
+  "createdAt": "2026-06-01T02:00:00.000Z",
+  "updatedAt": "2026-06-01T02:35:00.000Z",
+  "profileName": "晨霧",
+  "questionBank": {
+    "bankVersion": "2026-07-11",
+    "schemaVersion": 1
+  },
+  "scope": "all",
+  "answers": {
+    "category.impact_spanking.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "偏好先確認節奏。"
+    },
+    "category.bondage.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "neutral",
+      "note": "保持足夠活動空間。"
+    },
+    "category.service.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "unsure",
+      "note": "還在整理感受。"
+    },
+    "category.role_play.passive": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "偏好有清楚的收尾。"
+    },
+    "category.whipping.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "reluctant",
+      "note": "目前只願意保留討論空間。"
+    },
+    "category.image_recording.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "neutral",
+      "note": "只想先記錄目前狀態。"
+    },
+    "category.pain_stimulation.active": {
+      "state": "unanswered"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.active": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "love",
+      "note": "偏好用手並持續確認。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-gwssxu.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "like",
+      "note": "材質需要先確認。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1uy95nk.active": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "neutral",
+      "note": "沒有經驗。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-i4vf80.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "neutral",
+      "note": "目前沒有明確偏好。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-i4t2fc.active": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "unsure",
+      "note": "需要更多時間理解。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.passive": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "只接受很輕的程度。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-gwssxu.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "like",
+      "note": "需要保留停止方式。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1uy95nk.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "hardNo",
+      "note": "目前不接受這個項目。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-i4vf80.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "neutral",
+      "note": "尚未形成偏好。"
+    }
+  },
+  "spotlight": {
+    "active": {
+      "selectedQuestionIds": [
+        "category.impact_spanking.active",
+        "detail.impact_spanking.detail-impact_spanking-1qzzr10.active",
+        "detail.impact_spanking.detail-impact_spanking-gwssxu.active"
+      ]
+    },
+    "passive": {
+      "selectedQuestionIds": [
+        "category.role_play.passive",
+        "detail.impact_spanking.detail-impact_spanking-1qzzr10.passive",
+        "detail.impact_spanking.detail-impact_spanking-gwssxu.passive"
+      ]
+    }
+  }
+}

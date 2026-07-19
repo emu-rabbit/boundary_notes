@@ -60,6 +60,10 @@ export const useSecretFileStore = defineStore('secret-file', () => {
     return secretFile;
   }
 
+  function read(fileId: string): SecretFile | null {
+    return repository.read(fileId);
+  }
+
   function persist(secretFile: SecretFile): SecretFile {
     const savedSecretFile = repository.save(secretFile);
     activeSecretFile.value = savedSecretFile;
@@ -84,6 +88,7 @@ export const useSecretFileStore = defineStore('secret-file', () => {
     importJson,
     open,
     persist,
+    read,
     refresh,
     storageStatus,
     validateImportJson,

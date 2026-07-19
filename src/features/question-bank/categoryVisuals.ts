@@ -46,8 +46,12 @@ const categoryVisualUrls: Record<string, string> = {
 
 const categoryVisualWarmups = new Map<string, Promise<boolean>>();
 
+export function findCategoryVisualUrl(categoryId: string): string | null {
+  return categoryVisualUrls[categoryId] ?? null;
+}
+
 export function getCategoryVisualUrl(categoryId: string): string {
-  const visualUrl = categoryVisualUrls[categoryId];
+  const visualUrl = findCategoryVisualUrl(categoryId);
 
   if (!visualUrl) {
     throw new Error(`Missing category visual for ${categoryId}.`);

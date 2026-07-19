@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 2,
+  "fileId": "local_tm_large_differences_new_20260718",
+  "createdAt": "2026-07-18T07:00:00.000Z",
+  "updatedAt": "2026-07-18T07:45:00.000Z",
+  "profileName": "晨星",
+  "questionBank": {
+    "bankVersion": "2026-07-11",
+    "schemaVersion": 1
+  },
+  "scope": "all",
+  "answers": {
+    "category.impact_spanking.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "較新紀錄 01：現在留下了更明確的偏好與界線。"
+    },
+    "category.whipping.active": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "hardNo",
+      "note": "較新紀錄 02：現在留下了更明確的偏好與界線。"
+    },
+    "category.bondage.active": {
+      "state": "answered",
+      "experience": "veryExtensive",
+      "preference": "like",
+      "note": "較新紀錄 03：現在留下了更明確的偏好與界線。"
+    },
+    "category.tickling.active": {
+      "state": "answered",
+      "experience": "unsure",
+      "preference": "love",
+      "note": "較新紀錄 04：現在留下了更明確的偏好與界線。"
+    },
+    "category.pain_stimulation.active": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "neutral",
+      "note": "較新紀錄 05：現在留下了更明確的偏好與界線。"
+    },
+    "category.humiliation.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "like",
+      "note": "較新紀錄 06：現在留下了更明確的偏好與界線。"
+    },
+    "category.service.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "love",
+      "note": "較新紀錄 07：現在留下了更明確的偏好與界線。"
+    },
+    "category.discipline.active": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "reluctant",
+      "note": "較新紀錄 08：現在留下了更明確的偏好與界線。"
+    },
+    "category.sexual_interaction.active": {
+      "state": "answered",
+      "experience": "veryExtensive",
+      "preference": "like",
+      "note": "較新紀錄 09：現在留下了更明確的偏好與界線。"
+    },
+    "category.role_play.active": {
+      "state": "answered",
+      "experience": "unsure",
+      "preference": "hardNo",
+      "note": "較新紀錄 10：現在留下了更明確的偏好與界線。"
+    },
+    "category.objectification.active": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "like",
+      "note": "較新紀錄 11：現在留下了更明確的偏好與界線。"
+    },
+    "category.behavior_restriction.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "love",
+      "note": "較新紀錄 12：現在留下了更明確的偏好與界線。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "neutral",
+      "note": "較新紀錄 13：現在留下了更明確的偏好與界線。"
+    },
+    "detail.whipping.detail-whipping-9q3jnv.active": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "like",
+      "note": "較新紀錄 14：現在留下了更明確的偏好與界線。"
+    },
+    "detail.bondage.detail-bondage-122x6cf.active": {
+      "state": "answered",
+      "experience": "veryExtensive",
+      "preference": "love",
+      "note": "較新紀錄 15：現在留下了更明確的偏好與界線。"
+    },
+    "detail.tickling.detail-tickling-hvz7o9.active": {
+      "state": "answered",
+      "experience": "unsure",
+      "preference": "reluctant",
+      "note": "較新紀錄 16：現在留下了更明確的偏好與界線。"
+    },
+    "detail.pain_stimulation.detail-pain_stimulation-3jsgcf.active": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "like",
+      "note": "較新紀錄 17：現在留下了更明確的偏好與界線。"
+    },
+    "detail.humiliation.detail-humiliation-ngy4jt.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "hardNo",
+      "note": "較新紀錄 18：現在留下了更明確的偏好與界線。"
+    },
+    "detail.service.detail-service-7v0tu6.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "較新紀錄 19：現在留下了更明確的偏好與界線。"
+    },
+    "detail.discipline.detail-discipline-11uedoh.active": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "love",
+      "note": "較新紀錄 20：現在留下了更明確的偏好與界線。"
+    },
+    "category.impact_spanking.passive": {
+      "state": "answered",
+      "experience": "veryExtensive",
+      "preference": "neutral",
+      "note": "較新紀錄 21：現在留下了更明確的偏好與界線。"
+    },
+    "category.whipping.passive": {
+      "state": "answered",
+      "experience": "unsure",
+      "preference": "like",
+      "note": "較新紀錄 22：現在留下了更明確的偏好與界線。"
+    },
+    "category.bondage.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "love",
+      "note": "較新紀錄 23：現在留下了更明確的偏好與界線。"
+    },
+    "category.tickling.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "reluctant",
+      "note": "較新紀錄 24：現在留下了更明確的偏好與界線。"
+    },
+    "category.pain_stimulation.passive": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "較新紀錄 25：現在留下了更明確的偏好與界線。"
+    },
+    "category.humiliation.passive": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "hardNo",
+      "note": "較新紀錄 26：現在留下了更明確的偏好與界線。"
+    },
+    "category.service.passive": {
+      "state": "answered",
+      "experience": "veryExtensive",
+      "preference": "like",
+      "note": "較新紀錄 27：現在留下了更明確的偏好與界線。"
+    },
+    "category.discipline.passive": {
+      "state": "answered",
+      "experience": "unsure",
+      "preference": "love",
+      "note": "較新紀錄 28：現在留下了更明確的偏好與界線。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "neutral",
+      "note": "較新紀錄 29：現在留下了更明確的偏好與界線。"
+    },
+    "detail.whipping.detail-whipping-9q3jnv.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "like",
+      "note": "較新紀錄 30：現在留下了更明確的偏好與界線。"
+    },
+    "detail.bondage.detail-bondage-122x6cf.passive": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "love",
+      "note": "較新紀錄 31：現在留下了更明確的偏好與界線。"
+    },
+    "detail.tickling.detail-tickling-hvz7o9.passive": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "reluctant",
+      "note": "較新紀錄 32：現在留下了更明確的偏好與界線。"
+    },
+    "detail.pain_stimulation.detail-pain_stimulation-3jsgcf.passive": {
+      "state": "answered",
+      "experience": "veryExtensive",
+      "preference": "like",
+      "note": "較新紀錄 33：現在留下了更明確的偏好與界線。"
+    },
+    "detail.humiliation.detail-humiliation-ngy4jt.passive": {
+      "state": "answered",
+      "experience": "unsure",
+      "preference": "hardNo",
+      "note": "較新紀錄 34：現在留下了更明確的偏好與界線。"
+    },
+    "detail.service.detail-service-7v0tu6.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "like",
+      "note": "較新紀錄 35：現在留下了更明確的偏好與界線。"
+    },
+    "detail.discipline.detail-discipline-11uedoh.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "love",
+      "note": "較新紀錄 36：現在留下了更明確的偏好與界線。"
+    }
+  },
+  "spotlight": {
+    "active": {
+      "selectedQuestionIds": [
+        "category.pain_stimulation.active",
+        "detail.impact_spanking.detail-impact_spanking-1qzzr10.active",
+        "category.service.active",
+        "detail.bondage.detail-bondage-122x6cf.active",
+        "category.whipping.active"
+      ]
+    },
+    "passive": {
+      "selectedQuestionIds": [
+        "detail.bondage.detail-bondage-122x6cf.passive",
+        "category.service.passive",
+        "category.impact_spanking.passive",
+        "detail.pain_stimulation.detail-pain_stimulation-3jsgcf.passive",
+        "category.discipline.passive"
+      ]
+    }
+  }
+}

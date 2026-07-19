@@ -11,6 +11,8 @@ import './styles/foundation.css';
 import './styles/route-shell.css';
 import './styles/story-stage.css';
 import './styles/story-dialogue.css';
+import './styles/time-machine.css';
+import './styles/time-machine-dashboard.css';
 import './styles/home-page.css';
 import './styles/secondary-pages.css';
 import './styles/legal-pages.css';

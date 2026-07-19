@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "fileId": "local_tm_four_sections_new_20260718",
+  "createdAt": "2026-07-15T08:00:00.000Z",
+  "updatedAt": "2026-07-15T08:40:00.000Z",
+  "profileName": "晨霧",
+  "questionBank": {
+    "bankVersion": "2026-07-11",
+    "schemaVersion": 1
+  },
+  "scope": "all",
+  "answers": {
+    "category.impact_spanking.active": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "love",
+      "note": "更偏好清楚而穩定的節奏。"
+    },
+    "category.bondage.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "保持足夠活動空間。"
+    },
+    "category.service.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "neutral",
+      "note": "已有較明確的感受。"
+    },
+    "category.role_play.passive": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "偏好有清楚的開始與收尾。"
+    },
+    "category.whipping.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "hardNo",
+      "note": "目前列為絕對禁止。"
+    },
+    "category.image_recording.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "hardNo",
+      "note": "不接受保存或分享影像。"
+    },
+    "category.pain_stimulation.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "love",
+      "note": "只限事前確認過的範圍。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.active": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "love",
+      "note": "偏好用手並持續確認。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-gwssxu.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "love",
+      "note": "材質與力道都要先確認。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1uy95nk.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "like",
+      "note": "有少量經驗。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-i4vf80.active": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "neutral",
+      "note": "經驗增加，但偏好沒有改變。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-i4t2fc.active": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "neutral",
+      "note": "目前傾向中性。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.passive": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "只接受輕微且能隨時停止的程度。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-gwssxu.passive": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "love",
+      "note": "偏好先確認停止方式。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1uy95nk.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "neutral",
+      "note": "不再列為絕對禁止，但仍需個別確認。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-i4vf80.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "like",
+      "note": "目前感受偏正向。"
+    }
+  },
+  "spotlight": {
+    "active": {
+      "selectedQuestionIds": [
+        "detail.impact_spanking.detail-impact_spanking-1qzzr10.active",
+        "category.impact_spanking.active",
+        "category.pain_stimulation.active",
+        "detail.impact_spanking.detail-impact_spanking-gwssxu.active"
+      ]
+    },
+    "passive": {
+      "selectedQuestionIds": [
+        "detail.impact_spanking.detail-impact_spanking-gwssxu.passive",
+        "category.role_play.passive",
+        "detail.impact_spanking.detail-impact_spanking-1qzzr10.passive",
+        "detail.impact_spanking.detail-impact_spanking-i4vf80.passive"
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 2,
+  "fileId": "local_tm_timestamp_only_new_20260718",
+  "createdAt": "2026-05-20T03:00:00.000Z",
+  "updatedAt": "2026-07-18T09:15:00.000Z",
+  "profileName": "靜河",
+  "questionBank": {
+    "bankVersion": "2026-07-11",
+    "schemaVersion": 1
+  },
+  "scope": "all",
+  "answers": {
+    "category.impact_spanking.active": {
+      "state": "answered",
+      "experience": "some",
+      "preference": "like",
+      "note": "慢慢確認即可。"
+    },
+    "category.impact_spanking.passive": {
+      "state": "answered",
+      "experience": "little",
+      "preference": "neutral",
+      "note": "目前維持中性。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.active": {
+      "state": "answered",
+      "experience": "extensive",
+      "preference": "love",
+      "note": "偏好保留即時溝通。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-1qzzr10.passive": {
+      "state": "answered",
+      "experience": "none",
+      "preference": "hardNo",
+      "note": "目前不接受。"
+    },
+    "detail.impact_spanking.detail-impact_spanking-gwssxu.active": {
+      "state": "unanswered"
+    }
+  },
+  "spotlight": {
+    "active": {
+      "selectedQuestionIds": [
+        "category.impact_spanking.active",
+        "detail.impact_spanking.detail-impact_spanking-1qzzr10.active"
+      ]
+    },
+    "passive": {
+      "selectedQuestionIds": []
+    }
+  }
+}
