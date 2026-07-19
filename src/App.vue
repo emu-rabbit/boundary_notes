@@ -14,6 +14,8 @@ import { provideAppShell } from './app/useAppShell';
 import { saveStoredProfileName } from './app/useProfileNameStorage';
 import { useSecretFileTitle } from './app/useSecretFileTitle';
 import AnalyticsConsentBanner from './components/AnalyticsConsentBanner.vue';
+import ContentWarningDialog from './features/content-warning/ContentWarningDialog.vue';
+import { resolveContentWarningLocale } from './features/content-warning/contentWarning';
 import {
   analyticsConsentState,
   isAnalyticsConsentUiEnabled,
@@ -57,6 +59,11 @@ const showAnalyticsConsent = computed(() => shouldShowAnalyticsConsent({
   source: route.query.source,
   uiEnabled: isAnalyticsConsentUiEnabled,
 }));
+const contentWarningLocale = computed(() => resolveContentWarningLocale(
+  locale.value,
+  fromLocalePathSegment(route.params.locale),
+  loadStoredLocaleOrNull(),
+));
 const publicIndexingBuild = import.meta.env.VITE_PUBLIC_INDEXING === 'true'
   || (typeof document !== 'undefined'
     && document.documentElement.dataset.publicIndexing === 'true');
@@ -163,5 +170,6 @@ provideAppShell({
   <main class="app-shell min-h-dvh text-ink-900">
     <RouterView />
   </main>
+  <ContentWarningDialog :locale="contentWarningLocale" />
   <AnalyticsConsentBanner v-if="showAnalyticsConsent" />
 </template>
