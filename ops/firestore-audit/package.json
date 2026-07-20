@@ -1,0 +1,15 @@
+{
+  "name": "boundary-notes-firestore-audit",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "audit": "node src/cli.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@google-cloud/firestore": "8.6.0"
+  }
+}
