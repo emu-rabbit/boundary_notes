@@ -74,6 +74,7 @@ export interface QuestionnaireMessages {
     spotlightCurrent: string;
     spotlightDelete: string;
     spotlightDialogTitle: string;
+    spotlightDialogNote: string;
     spotlightEmpty: string;
     spotlightHelp: string;
     spotlightSelect: string;
@@ -222,6 +223,7 @@ const zhHant: QuestionnaireMessages = {
     spotlightCurrent: '目前選擇',
     spotlightDelete: '刪除這個焦點喜好',
     spotlightDialogTitle: '選擇焦點喜好',
+    spotlightDialogNote: '僅有被你選中為喜歡和很喜歡的項目才可以被選為焦點喜好',
     spotlightEmpty: '目前還沒有填寫「喜歡」或「很喜歡」的項目。',
     spotlightHelp: '挑出最想先讓人看見的分類或項目。',
     spotlightSelect: '選擇這個項目',
@@ -367,6 +369,7 @@ const zhHans: QuestionnaireMessages = {
     spotlightCurrent: '当前选择',
     spotlightDelete: '删除这个焦点喜好',
     spotlightDialogTitle: '选择焦点喜好',
+    spotlightDialogNote: '只有被你选为喜欢或很喜欢的项目，才可以选为焦点喜好。',
     spotlightEmpty: '目前还没有填写“喜欢”或“很喜欢”的项目。',
     spotlightHelp: '挑出最想先让人看见的分类或项目。',
     spotlightSelect: '选择这个项目',
@@ -507,6 +510,7 @@ const ja: QuestionnaireMessages = {
     spotlightCurrent: '現在の選択',
     spotlightDelete: 'この注目ポイントを削除',
     spotlightDialogTitle: '注目ポイントを選ぶ',
+    spotlightDialogNote: '「好き」または「大好き」と選んだ項目だけを、注目ポイントに選べます。',
     spotlightEmpty: '「好き」または「大好き」と回答した項目はまだありません。',
     spotlightHelp: '最初に見てほしいカテゴリーや項目を選びます。',
     spotlightSelect: 'この項目を選ぶ',
@@ -649,6 +653,7 @@ const en: QuestionnaireMessages = {
     spotlightCurrent: 'Current selection',
     spotlightDelete: 'Remove this highlight',
     spotlightDialogTitle: 'Choose a highlight',
+    spotlightDialogNote: 'Only items you marked Like or Love can be chosen as highlights.',
     spotlightEmpty: 'You have not answered Like or Love for any items yet.',
     spotlightHelp: 'Choose the categories or items you most want people to notice first.',
     spotlightSelect: 'Choose this item',

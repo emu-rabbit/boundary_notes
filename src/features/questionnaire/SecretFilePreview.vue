@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue';
 import type { AppLocale, LocaleOption } from '../../app/i18n';
+import { useTransientActionFeedback } from '../../app/useTransientActionFeedback';
+import ActionFeedbackIcon from '../../components/ActionFeedbackIcon.vue';
 import {
   getCategoryQuestionId,
   getCategoryVisualUrl,
@@ -55,10 +57,15 @@ const selectedRole = ref<QuestionRole>(
 const activeCategoryId = ref<string | null>(null);
 const overviewScrollPosition = ref(0);
 const hardNoDialog = ref<HTMLDialogElement | null>(null);
+const loveDialog = ref<HTMLDialogElement | null>(null);
 const shareDialog = ref<HTMLDialogElement | null>(null);
 const sponsorDialog = ref<InstanceType<typeof SponsorDialog> | null>(null);
 const generatingRole = ref<QuestionRole | null>(null);
-const shareFeedback = ref('');
+const {
+  clear: clearShareActionFeedback,
+  feedback: shareActionFeedback,
+  show: showShareActionFeedback,
+} = useTransientActionFeedback(3000);
 const shareMessages = computed(() => getShareMessages(props.locale));
 let shareImageModulePromise: ReturnType<typeof loadShareImageModule> | null = null;
 
@@ -166,6 +173,23 @@ const hardNoItems = computed(() => {
   return items;
 });
 
+const loveItems = computed(() => {
+  const items: DisplayItem[] = [];
+  const role = selectedRole.value;
+
+  for (const category of props.questionBank.categories) {
+    const categoryItem = createCategoryItem(category, role);
+    if (categoryItem?.answer?.preference === 'love') items.push(categoryItem);
+
+    for (const detail of category.detailItems) {
+      const detailItem = createDetailItem(category, detail, role);
+      if (detailItem.answer?.preference === 'love') items.push(detailItem);
+    }
+  }
+
+  return items;
+});
+
 const activeDetailItems = computed(() => {
   const category = activeCategory.value;
   if (!category) return [];
@@ -190,8 +214,12 @@ function openHardNoDialog(): void {
   hardNoDialog.value?.showModal();
 }
 
+function openLoveDialog(): void {
+  loveDialog.value?.showModal();
+}
+
 function openShareDialog(): void {
-  shareFeedback.value = '';
+  clearShareActionFeedback();
   shareDialog.value?.showModal();
   shareImageModulePromise ??= loadShareImageModule();
   void shareImageModulePromise
@@ -212,7 +240,7 @@ function createShareImageFileName(role: QuestionRole): string {
 async function downloadShareImage(role: QuestionRole): Promise<void> {
   if (generatingRole.value) return;
   generatingRole.value = role;
-  shareFeedback.value = '';
+  clearShareActionFeedback();
 
   try {
     shareImageModulePromise ??= loadShareImageModule();
@@ -233,8 +261,9 @@ async function downloadShareImage(role: QuestionRole): Promise<void> {
     link.click();
     link.remove();
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    showShareActionFeedback(`image:${role}`, 'success', shareMessages.value.downloaded);
   } catch {
-    shareFeedback.value = shareMessages.value.downloadFailed;
+    showShareActionFeedback(`image:${role}`, 'error', shareMessages.value.downloadFailed);
   } finally {
     generatingRole.value = null;
   }
@@ -242,7 +271,7 @@ async function downloadShareImage(role: QuestionRole): Promise<void> {
 
 async function copyShareLink(): Promise<void> {
   if (!props.shareUrl) return;
-  shareFeedback.value = '';
+  clearShareActionFeedback();
 
   try {
     if (navigator.clipboard?.writeText) {
@@ -257,9 +286,9 @@ async function copyShareLink(): Promise<void> {
       if (!document.execCommand('copy')) throw new Error('Copy was rejected.');
       input.remove();
     }
-    shareFeedback.value = shareMessages.value.copied;
+    showShareActionFeedback('copy-link', 'success', shareMessages.value.copied);
   } catch {
-    shareFeedback.value = shareMessages.value.copyFailed;
+    showShareActionFeedback('copy-link', 'error', shareMessages.value.copyFailed);
   }
 }
 
@@ -396,7 +425,17 @@ function changeLocale(event: Event): void {
           </button>
         </div>
 
-        <section v-if="spotlightItems.length" class="preview-ranking">
+        <section
+          v-if="spotlightItems.length"
+          class="preview-ranking"
+          :class="{ 'is-selectable': loveItems.length }"
+          :role="loveItems.length ? 'button' : undefined"
+          :tabindex="loveItems.length ? 0 : undefined"
+          :aria-label="loveItems.length ? messages.loveButton(loveItems.length) : undefined"
+          @click="loveItems.length && openLoveDialog()"
+          @keydown.enter="loveItems.length && openLoveDialog()"
+          @keydown.space.prevent="loveItems.length && openLoveDialog()"
+        >
           <header class="preview-ranking__heading">
             <div>
               <p>{{ messages.spotlightKicker }}</p>
@@ -426,6 +465,10 @@ function changeLocale(event: Event): void {
                 />
               </div>
             </article>
+          </div>
+
+          <div v-if="loveItems.length" class="preview-ranking__footer">
+            <span>{{ messages.loveButton(loveItems.length) }}&nbsp;<span aria-hidden="true">→</span></span>
           </div>
         </section>
 
@@ -623,6 +666,28 @@ function changeLocale(event: Event): void {
       </ul>
     </dialog>
 
+    <dialog v-if="loveItems.length" ref="loveDialog" class="preview-hard-no-dialog preview-love-dialog">
+      <div class="preview-hard-no-dialog__heading">
+        <div>
+          <p>{{ messages.spotlightKicker }}</p>
+          <h2>{{ messages.loveDialogTitle }}</h2>
+        </div>
+        <button type="button" :aria-label="questionnaireMessages.closeDetails" @click="loveDialog?.close()">×</button>
+      </div>
+      <p class="preview-hard-no-dialog__description">{{ messages.loveDialogDescription }}</p>
+      <ul class="preview-hard-no-list">
+        <li v-for="item in loveItems" :key="item.questionId">
+          <img :src="getCategoryVisualUrl(item.categoryId)" alt="" width="72" height="72" />
+          <div>
+            <small>{{ item.categoryName }}</small>
+            <strong>{{ item.title }}</strong>
+            <p>{{ item.description }}</p>
+            <p v-if="item.answer?.note.trim()" class="preview-hard-no-list__note">{{ item.answer.note }}</p>
+          </div>
+        </li>
+      </ul>
+    </dialog>
+
     <dialog ref="shareDialog" class="preview-share-dialog">
       <div class="preview-share-dialog__heading">
         <h2>{{ shareMessages.title }}</h2>
@@ -640,13 +705,38 @@ function changeLocale(event: Event): void {
               v-for="role in availableRoles"
               :key="role"
               class="preview-share-primary"
+              :class="shareActionFeedback?.id === `image:${role}`
+                ? `is-${shareActionFeedback.kind}`
+                : undefined"
               type="button"
               :disabled="generatingRole !== null"
+              :aria-label="shareActionFeedback?.id === `image:${role}`
+                ? shareActionFeedback.message
+                : generatingRole === role
+                  ? shareMessages.generating
+                  : shareMessages.downloadImage(role)"
+              :title="shareActionFeedback?.id === `image:${role}`
+                ? shareActionFeedback.message
+                : undefined"
               @click="downloadShareImage(role)"
             >
-              {{ generatingRole === role
-                ? shareMessages.generating
-                : shareMessages.downloadImage(role) }}
+              <ActionFeedbackIcon
+                v-if="shareActionFeedback?.id === `image:${role}`"
+                :kind="shareActionFeedback.kind"
+              />
+              <span class="action-feedback-label">
+                {{ shareActionFeedback?.id === `image:${role}`
+                  ? shareActionFeedback.message
+                  : generatingRole === role
+                    ? shareMessages.generating
+                    : shareMessages.downloadImage(role) }}
+              </span>
+              <span
+                v-if="shareActionFeedback?.id === `image:${role}`"
+                class="sr-only"
+                role="status"
+                aria-live="polite"
+              >{{ shareActionFeedback.message }}</span>
             </button>
           </div>
         </section>
@@ -664,17 +754,36 @@ function changeLocale(event: Event): void {
           </div>
           <button
             class="preview-share-secondary"
+            :class="shareActionFeedback?.id === 'copy-link'
+              ? `is-${shareActionFeedback.kind}`
+              : undefined"
             type="button"
             :disabled="!shareUrl || shareLinkState === 'checking'"
+            :aria-label="shareActionFeedback?.id === 'copy-link'
+              ? shareActionFeedback.message
+              : shareMessages.copyLink"
+            :title="shareActionFeedback?.id === 'copy-link'
+              ? shareActionFeedback.message
+              : undefined"
             @click="copyShareLink"
           >
-            {{ shareMessages.copyLink }}
+            <ActionFeedbackIcon
+              v-if="shareActionFeedback?.id === 'copy-link'"
+              :kind="shareActionFeedback.kind"
+            />
+            <span class="action-feedback-label">
+              {{ shareActionFeedback?.id === 'copy-link'
+                ? shareActionFeedback.message
+                : shareMessages.copyLink }}
+            </span>
+            <span
+              v-if="shareActionFeedback?.id === 'copy-link'"
+              class="sr-only"
+              role="status"
+              aria-live="polite"
+            >{{ shareActionFeedback.message }}</span>
           </button>
         </section>
-
-        <p v-if="shareFeedback" class="preview-share-dialog__feedback" role="status" aria-live="polite">
-          {{ shareFeedback }}
-        </p>
       </div>
     </dialog>
 

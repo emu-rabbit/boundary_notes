@@ -82,3 +82,40 @@ textarea:focus-visible {
   outline: 3px solid rgba(197, 138, 124, 0.72);
   outline-offset: 4px;
 }
+/* Transient action results stay inside the triggering control so they never add layout rows. */
+.action-feedback-icon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: action-feedback-enter 220ms cubic-bezier(0.2, 0.8, 0.3, 1) both;
+}
+
+.action-feedback-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@keyframes action-feedback-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.2rem) scale(0.82);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action-feedback-icon {
+    animation: none;
+  }
+}

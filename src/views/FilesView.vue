@@ -3,6 +3,8 @@ import { computed, nextTick, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useAppShell } from '../app/useAppShell';
 import { getLocalizedRouteLocation } from '../app/routes';
+import { useTransientActionFeedback } from '../app/useTransientActionFeedback';
+import ActionFeedbackIcon from '../components/ActionFeedbackIcon.vue';
 import {
   trackCloudShareUnlinked,
   trackSecretFileDeleted,
@@ -12,12 +14,14 @@ import {
 import {
   CloudShareLinkStorageError,
   CloudSharingError,
+  hideAuthorExampleCloudFile,
+  isAuthorExampleCloudFile,
   linkCloudShare,
-  listLinkedCloudShares,
+  listCloudFiles,
   loadCloudSecretFile,
   parseCloudShareId,
   unlinkCloudShare,
-  type LinkedCloudShare,
+  type CloudFileListItem,
 } from '../features/cloud-sharing';
 import { filesRabbitUrl } from '../features/story/rabbitAssets';
 import { useSecretFileStore } from '../features/secret-file/application/useSecretFileStore';
@@ -41,14 +45,18 @@ const importDialog = ref<HTMLDialogElement | null>(null);
 const localImportInput = ref<HTMLInputElement | null>(null);
 const localImportBusy = ref(false);
 const cloudImportUrl = ref('');
-const importFeedback = ref('');
-const importFeedbackKind = ref<'error' | 'info' | 'success' | null>(null);
 const cloudImportBusy = ref(false);
-const cloudShares = ref<LinkedCloudShare[]>([]);
-const cloudListFeedback = ref('');
-const fileActionFeedbackId = ref<string | null>(null);
-const fileActionFeedbackKind = ref<'error' | 'success' | null>(null);
-const fileActionFeedbackMessage = ref('');
+const cloudShares = ref<CloudFileListItem[]>([]);
+const {
+  clear: clearFileActionFeedback,
+  feedback: fileActionFeedback,
+  show: showFileActionFeedback,
+} = useTransientActionFeedback();
+const {
+  clear: clearImportActionFeedback,
+  feedback: importActionFeedback,
+  show: showImportActionFeedback,
+} = useTransientActionFeedback(3200);
 const cloudFileCount = computed(() => cloudShares.value.length);
 
 function formatDateTime(value: string): string {
@@ -78,8 +86,7 @@ function cloudPreviewHref(shareId: string): string {
 
 function selectViewer(source: FileViewerSource): void {
   activeViewer.value = source;
-  importFeedback.value = '';
-  importFeedbackKind.value = null;
+  clearImportActionFeedback();
 }
 
 function editFile(file: SecretFileSummary): void {
@@ -89,8 +96,7 @@ function editFile(file: SecretFileSummary): void {
 }
 
 function openImportDialog(): void {
-  importFeedback.value = '';
-  importFeedbackKind.value = null;
+  clearImportActionFeedback();
   void nextTick(() => importDialog.value?.showModal());
 }
 
@@ -131,11 +137,11 @@ function safeDownloadFileName(value: string): string {
 
 async function downloadFile(file: SecretFileSummary): Promise<void> {
   const json = store.exportJson(file.fileId);
+  const feedbackId = `download:${file.fileId}`;
+  clearFileActionFeedback();
 
   if (!json) {
-    fileActionFeedbackId.value = file.fileId;
-    fileActionFeedbackKind.value = 'error';
-    fileActionFeedbackMessage.value = messages.value.downloadError;
+    showFileActionFeedback(feedbackId, 'error', messages.value.downloadError);
     return;
   }
 
@@ -149,19 +155,15 @@ async function downloadFile(file: SecretFileSummary): Promise<void> {
     link.click();
     link.remove();
     window.setTimeout(() => URL.revokeObjectURL(blobUrl), 0);
-    fileActionFeedbackId.value = null;
-    fileActionFeedbackMessage.value = '';
+    showFileActionFeedback(feedbackId, 'success', messages.value.downloadSuccess);
     trackSecretFileDownloaded(file.scope);
   } catch {
-    fileActionFeedbackId.value = file.fileId;
-    fileActionFeedbackKind.value = 'error';
-    fileActionFeedbackMessage.value = messages.value.downloadError;
+    showFileActionFeedback(feedbackId, 'error', messages.value.downloadError);
   }
 }
 
 async function submitLocalImport(event: Event): Promise<void> {
-  importFeedback.value = '';
-  importFeedbackKind.value = null;
+  clearImportActionFeedback();
   const input = event.currentTarget as HTMLInputElement;
   const selectedFile = input.files?.[0];
 
@@ -190,11 +192,13 @@ async function submitLocalImport(event: Event): Promise<void> {
     const overwroteExisting = Boolean(existingFile);
     const secretFile = store.importFile(candidate);
     trackSecretFileImported('local_json', secretFile.scope, overwroteExisting);
-    importFeedback.value = messages.value.importSuccess(secretFile.profileName);
-    importFeedbackKind.value = 'success';
+    showImportActionFeedback(
+      'local-import',
+      'success',
+      messages.value.importSuccess(secretFile.profileName),
+    );
   } catch {
-    importFeedback.value = messages.value.importReadError;
-    importFeedbackKind.value = 'error';
+    showImportActionFeedback('local-import', 'error', messages.value.importReadError);
   } finally {
     input.value = '';
     localImportBusy.value = false;
@@ -202,16 +206,15 @@ async function submitLocalImport(event: Event): Promise<void> {
 }
 
 async function copyCloudShareLink(shareId: string): Promise<void> {
+  const feedbackId = `copy:${shareId}`;
+  clearFileActionFeedback();
+
   try {
     const shareUrl = new URL(cloudPreviewHref(shareId), window.location.href).href;
     await writeClipboard(shareUrl);
-    fileActionFeedbackId.value = shareId;
-    fileActionFeedbackKind.value = 'success';
-    fileActionFeedbackMessage.value = messages.value.shareLinkCopySuccess;
+    showFileActionFeedback(feedbackId, 'success', messages.value.shareLinkCopySuccess);
   } catch {
-    fileActionFeedbackId.value = shareId;
-    fileActionFeedbackKind.value = 'error';
-    fileActionFeedbackMessage.value = messages.value.shareLinkCopyError;
+    showFileActionFeedback(feedbackId, 'error', messages.value.shareLinkCopyError);
   }
 }
 
@@ -228,13 +231,11 @@ function getCloudErrorMessage(error: unknown): string {
 }
 
 async function submitCloudImport(): Promise<void> {
-  importFeedback.value = '';
-  importFeedbackKind.value = null;
+  clearImportActionFeedback();
   const shareId = parseCloudShareId(cloudImportUrl.value, window.location.href);
 
   if (!shareId) {
-    importFeedback.value = messages.value.invalidCloudUrl;
-    importFeedbackKind.value = 'error';
+    showImportActionFeedback('cloud-import', 'error', messages.value.invalidCloudUrl);
     return;
   }
 
@@ -248,17 +249,20 @@ async function submitCloudImport(): Promise<void> {
 
   try {
     const snapshot = await loadCloudSecretFile(shareId);
-    cloudShares.value = linkCloudShare({
+    linkCloudShare({
       createdAt: snapshot.createdAt,
       profileName: snapshot.secretFile.profileName,
       scope: snapshot.secretFile.scope,
       shareId,
       sourceContentFingerprint: null,
     });
+    cloudShares.value = listCloudFiles();
     trackSecretFileImported('cloud_share', snapshot.secretFile.scope, false);
-    cloudListFeedback.value = '';
-    importFeedback.value = messages.value.cloudImportSuccess(snapshot.secretFile.profileName);
-    importFeedbackKind.value = 'success';
+    showImportActionFeedback(
+      'cloud-import',
+      'success',
+      messages.value.cloudImportSuccess(snapshot.secretFile.profileName),
+    );
     cloudImportUrl.value = '';
 
     if (previewWindow && !previewWindow.closed) {
@@ -266,32 +270,42 @@ async function submitCloudImport(): Promise<void> {
     }
   } catch (error) {
     if (previewWindow && !previewWindow.closed) previewWindow.close();
-    importFeedback.value = getCloudErrorMessage(error);
-    importFeedbackKind.value = 'error';
+    showImportActionFeedback('cloud-import', 'error', getCloudErrorMessage(error));
   } finally {
     cloudImportBusy.value = false;
   }
 }
 
-function unlinkCloudFile(
-  shareId: string,
-  name: string,
-  scope: LinkedCloudShare['scope'],
-): void {
-  if (!window.confirm(messages.value.cloudUnlinkConfirmation(name))) return;
+function unlinkCloudFile(file: CloudFileListItem): void {
+  const isAuthorExample = isAuthorExampleCloudFile(file.shareId);
+  const confirmation = isAuthorExample
+    ? messages.value.cloudExampleUnlinkConfirmation
+    : messages.value.cloudUnlinkConfirmation(file.profileName ?? file.shareId);
+
+  if (!window.confirm(confirmation)) return;
+  clearFileActionFeedback();
 
   try {
-    cloudShares.value = unlinkCloudShare(shareId);
-    trackCloudShareUnlinked(scope ?? null);
-    cloudListFeedback.value = '';
+    if (isAuthorExample) {
+      hideAuthorExampleCloudFile();
+    } else {
+      unlinkCloudShare(file.shareId);
+      trackCloudShareUnlinked(file.scope ?? null);
+    }
+
+    cloudShares.value = listCloudFiles();
   } catch {
-    cloudListFeedback.value = messages.value.cloudLinkStorageFailed;
+    showFileActionFeedback(
+      `unlink:${file.shareId}`,
+      'error',
+      messages.value.cloudLinkStorageFailed,
+    );
   }
 }
 
 onMounted(() => {
   store.refresh();
-  cloudShares.value = listLinkedCloudShares();
+  cloudShares.value = listCloudFiles();
   activeViewer.value = resolveInitialFileViewer(store.files.length, cloudFileCount.value);
   window.scrollTo({ left: 0, top: 0 });
 });
@@ -414,15 +428,32 @@ onMounted(() => {
               </button>
               <button
                 class="file-card-action file-card-action--icon"
+                :class="fileActionFeedback?.id === `download:${file.fileId}`
+                  ? `is-${fileActionFeedback.kind}`
+                  : undefined"
                 type="button"
-                :aria-label="messages.download"
-                :title="messages.download"
+                :aria-label="fileActionFeedback?.id === `download:${file.fileId}`
+                  ? fileActionFeedback.message
+                  : messages.download"
+                :title="fileActionFeedback?.id === `download:${file.fileId}`
+                  ? fileActionFeedback.message
+                  : messages.download"
                 @click="downloadFile(file)"
               >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <ActionFeedbackIcon
+                  v-if="fileActionFeedback?.id === `download:${file.fileId}`"
+                  :kind="fileActionFeedback.kind"
+                />
+                <svg v-else viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5" />
                   <path d="M5 19.5h14" />
                 </svg>
+                <span
+                  v-if="fileActionFeedback?.id === `download:${file.fileId}`"
+                  class="sr-only"
+                  role="status"
+                  aria-live="polite"
+                >{{ fileActionFeedback.message }}</span>
               </button>
               <button
                 class="file-card-action file-card-action--delete"
@@ -436,15 +467,6 @@ onMounted(() => {
                 </svg>
               </button>
             </div>
-            <p
-              v-if="fileActionFeedbackId === file.fileId"
-              class="file-card-feedback"
-              :class="`file-card-feedback--${fileActionFeedbackKind}`"
-              role="status"
-              aria-live="polite"
-            >
-              {{ fileActionFeedbackMessage }}
-            </p>
           </article>
         </div>
 
@@ -473,14 +495,6 @@ onMounted(() => {
           {{ messages.cloudReadOnlyNotice }}
         </p>
 
-        <p
-          v-if="cloudListFeedback"
-          class="file-manager-feedback file-manager-feedback--error"
-          role="alert"
-        >
-          {{ cloudListFeedback }}
-        </p>
-
         <div v-if="cloudShares.length" class="file-list">
           <article
             v-for="file in cloudShares"
@@ -489,9 +503,15 @@ onMounted(() => {
           >
             <div class="file-list-item__copy">
               <div class="file-list-item__identity">
-                <h2>{{ file.profileName ?? messages.cloudUnavailable }}</h2>
+                <h2>{{ file.isAuthorExample ? messages.authorExampleTitle : file.profileName ?? messages.cloudUnavailable }}</h2>
+                <span v-if="file.isAuthorExample">
+                  {{ messages.authorExampleBadge }}
+                </span>
                 <span v-if="file.scope">{{ messages.scope(file.scope) }}</span>
               </div>
+              <p v-if="file.isAuthorExample" class="file-list-item__example-description">
+                {{ messages.authorExampleDescription }}
+              </p>
               <time v-if="file.createdAt" :datetime="file.createdAt">
                 {{ messages.cloudUploadedAt(formatDateTime(file.createdAt)) }}
               </time>
@@ -511,43 +531,64 @@ onMounted(() => {
               </a>
               <button
                 class="file-card-action file-card-action--icon"
+                :class="fileActionFeedback?.id === `copy:${file.shareId}`
+                  ? `is-${fileActionFeedback.kind}`
+                  : undefined"
                 type="button"
-                :aria-label="messages.shareLink"
-                :title="messages.shareLink"
+                :aria-label="fileActionFeedback?.id === `copy:${file.shareId}`
+                  ? fileActionFeedback.message
+                  : messages.shareLink"
+                :title="fileActionFeedback?.id === `copy:${file.shareId}`
+                  ? fileActionFeedback.message
+                  : messages.shareLink"
                 @click="copyCloudShareLink(file.shareId)"
               >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <ActionFeedbackIcon
+                  v-if="fileActionFeedback?.id === `copy:${file.shareId}`"
+                  :kind="fileActionFeedback.kind"
+                />
+                <svg v-else viewBox="0 0 24 24" aria-hidden="true">
                   <rect x="8" y="8" width="11" height="11" rx="2" />
                   <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2" />
                 </svg>
+                <span
+                  v-if="fileActionFeedback?.id === `copy:${file.shareId}`"
+                  class="sr-only"
+                  role="status"
+                  aria-live="polite"
+                >{{ fileActionFeedback.message }}</span>
               </button>
               <button
                 class="file-card-action file-card-action--delete"
+                :class="fileActionFeedback?.id === `unlink:${file.shareId}`
+                  ? `is-${fileActionFeedback.kind}`
+                  : undefined"
                 type="button"
-                :aria-label="messages.cloudUnlink"
-                :title="messages.cloudUnlink"
-                @click="unlinkCloudFile(
-                  file.shareId,
-                  file.profileName ?? file.shareId,
-                  file.scope,
-                )"
+                :aria-label="fileActionFeedback?.id === `unlink:${file.shareId}`
+                  ? fileActionFeedback.message
+                  : file.isAuthorExample ? messages.cloudExampleUnlink : messages.cloudUnlink"
+                :title="fileActionFeedback?.id === `unlink:${file.shareId}`
+                  ? fileActionFeedback.message
+                  : file.isAuthorExample ? messages.cloudExampleUnlink : messages.cloudUnlink"
+                @click="unlinkCloudFile(file)"
               >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
+                <ActionFeedbackIcon
+                  v-if="fileActionFeedback?.id === `unlink:${file.shareId}`"
+                  :kind="fileActionFeedback.kind"
+                />
+                <svg v-else viewBox="0 0 24 24" aria-hidden="true">
                   <path d="m14.8 7.2 1.4-1.4a3.4 3.4 0 1 1 4.8 4.8L19.6 12" />
                   <path d="m9.2 16.8-1.4 1.4A3.4 3.4 0 1 1 3 13.4L4.4 12" />
                   <path d="M8 3v3M3 8h3M16 18v3M18 16h3" />
                 </svg>
+                <span
+                  v-if="fileActionFeedback?.id === `unlink:${file.shareId}`"
+                  class="sr-only"
+                  role="status"
+                  aria-live="polite"
+                >{{ fileActionFeedback.message }}</span>
               </button>
             </div>
-            <p
-              v-if="fileActionFeedbackId === file.shareId"
-              class="file-card-feedback"
-              :class="`file-card-feedback--${fileActionFeedbackKind}`"
-              role="status"
-              aria-live="polite"
-            >
-              {{ fileActionFeedbackMessage }}
-            </p>
           </article>
         </div>
 
@@ -594,15 +635,36 @@ onMounted(() => {
         />
         <button
           class="files-dialog-primary-action"
+          :class="importActionFeedback?.id === 'local-import'
+            ? `is-${importActionFeedback.kind}`
+            : undefined"
           type="button"
           :disabled="localImportBusy"
+          :aria-label="importActionFeedback?.id === 'local-import'
+            ? importActionFeedback.message
+            : messages.importJson"
+          :title="importActionFeedback?.id === 'local-import' ? importActionFeedback.message : undefined"
           @click="localImportInput?.click()"
         >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
+          <ActionFeedbackIcon
+            v-if="importActionFeedback?.id === 'local-import'"
+            :kind="importActionFeedback.kind"
+          />
+          <svg v-else viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5" />
             <path d="M5 13v6.5h14V13" />
           </svg>
-          {{ messages.importJson }}
+          <span class="action-feedback-label">
+            {{ importActionFeedback?.id === 'local-import'
+              ? importActionFeedback.message
+              : messages.importJson }}
+          </span>
+          <span
+            v-if="importActionFeedback?.id === 'local-import'"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+          >{{ importActionFeedback.message }}</span>
         </button>
       </div>
 
@@ -618,22 +680,33 @@ onMounted(() => {
         />
         <button
           class="files-dialog-primary-action"
+          :class="importActionFeedback?.id === 'cloud-import'
+            ? `is-${importActionFeedback.kind}`
+            : undefined"
           type="submit"
           :disabled="!cloudImportUrl.trim() || cloudImportBusy"
+          :aria-label="importActionFeedback?.id === 'cloud-import'
+            ? importActionFeedback.message
+            : cloudImportBusy ? messages.cloudLoading : messages.cloudImportSubmit"
+          :title="importActionFeedback?.id === 'cloud-import' ? importActionFeedback.message : undefined"
         >
-          {{ cloudImportBusy ? messages.cloudLoading : messages.cloudImportSubmit }}
+          <ActionFeedbackIcon
+            v-if="importActionFeedback?.id === 'cloud-import'"
+            :kind="importActionFeedback.kind"
+          />
+          <span class="action-feedback-label">
+            {{ importActionFeedback?.id === 'cloud-import'
+              ? importActionFeedback.message
+              : cloudImportBusy ? messages.cloudLoading : messages.cloudImportSubmit }}
+          </span>
+          <span
+            v-if="importActionFeedback?.id === 'cloud-import'"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+          >{{ importActionFeedback.message }}</span>
         </button>
       </form>
-
-      <p
-        v-if="importFeedback"
-        class="file-manager-feedback"
-        :class="`file-manager-feedback--${importFeedbackKind}`"
-        role="status"
-        aria-live="polite"
-      >
-        {{ importFeedback }}
-      </p>
     </dialog>
 
   </section>

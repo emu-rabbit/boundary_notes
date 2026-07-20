@@ -3,8 +3,10 @@ import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useAppShell } from '../app/useAppShell';
 import { getLocalizedRouteLocation } from '../app/routes';
+import { useTransientActionFeedback } from '../app/useTransientActionFeedback';
 import { getProfileEntryRoute, loadStoredProfileName } from '../app/useProfileNameStorage';
 import { formatDocumentTitle } from '../app/useSecretFileTitle';
+import ActionFeedbackIcon from '../components/ActionFeedbackIcon.vue';
 import { trackSecretFileViewed } from '../features/analytics/analytics';
 import {
   CloudSharingError,
@@ -36,7 +38,11 @@ const shareLinkState = ref<'available' | 'checking' | 'missing'>('checking');
 const loadState = ref<
   'cloudAppCheckUnavailable' | 'cloudMissing' | 'cloudUnavailable' | 'loading' | 'localMissing' | 'ready'
 >('loading');
-const copyFeedback = ref('');
+const {
+  clear: clearCopyActionFeedback,
+  feedback: copyActionFeedback,
+  show: showCopyActionFeedback,
+} = useTransientActionFeedback(3000);
 let loadRequestId = 0;
 const messages = computed(() => getPreviewMessages(locale.value));
 const questionnaireMessages = computed(() => getQuestionnaireMessages(locale.value));
@@ -84,7 +90,7 @@ async function loadPreview(): Promise<void> {
   secretFile.value = null;
   shareUrl.value = null;
   shareLinkState.value = 'checking';
-  copyFeedback.value = '';
+  clearCopyActionFeedback();
 
   if (!request) {
     loadState.value = 'localMissing';
@@ -137,7 +143,7 @@ async function loadPreview(): Promise<void> {
 }
 
 async function copyCurrentShareLink(): Promise<void> {
-  copyFeedback.value = '';
+  clearCopyActionFeedback();
 
   try {
     const currentUrl = window.location.href;
@@ -157,9 +163,9 @@ async function copyCurrentShareLink(): Promise<void> {
       if (!copied) throw new Error('Clipboard copy failed.');
     }
 
-    copyFeedback.value = messages.value.cloudLinkCopied;
+    showCopyActionFeedback('copy-cloud-link', 'success', messages.value.cloudLinkCopied);
   } catch {
-    copyFeedback.value = messages.value.cloudLinkCopyFailed;
+    showCopyActionFeedback('copy-cloud-link', 'error', messages.value.cloudLinkCopyFailed);
   }
 }
 
@@ -211,16 +217,24 @@ onUnmounted(() => {
     <div class="preview-load-state__card">
       <p role="status">{{ loadMessage }}</p>
       <template v-if="previewSource === 'cloud' && loadState !== 'loading'">
-        <button type="button" @click="copyCurrentShareLink">
-          {{ messages.copyCloudLink }}
-        </button>
-        <p
-          v-if="copyFeedback"
-          class="preview-load-state__feedback"
-          aria-live="polite"
+        <button
+          type="button"
+          :class="copyActionFeedback ? `is-${copyActionFeedback.kind}` : undefined"
+          :aria-label="copyActionFeedback?.message ?? messages.copyCloudLink"
+          :title="copyActionFeedback?.message"
+          @click="copyCurrentShareLink"
         >
-          {{ copyFeedback }}
-        </p>
+          <ActionFeedbackIcon v-if="copyActionFeedback" :kind="copyActionFeedback.kind" />
+          <span class="action-feedback-label">
+            {{ copyActionFeedback?.message ?? messages.copyCloudLink }}
+          </span>
+          <span
+            v-if="copyActionFeedback"
+            class="sr-only"
+            role="status"
+            aria-live="polite"
+          >{{ copyActionFeedback.message }}</span>
+        </button>
       </template>
     </div>
   </section>

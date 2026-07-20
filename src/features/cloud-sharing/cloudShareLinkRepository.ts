@@ -3,7 +3,9 @@ import { isCloudShareId } from './cloudShareId';
 
 const cloudSharesKey = 'bdsm-boundary-test-cloud-shares:v2';
 const legacyCloudShareIdsKey = 'bdsm-boundary-test-cloud-share-ids:v1';
+const authorExampleHiddenKey = 'bdsm-boundary-test-author-example-cloud-file:hidden';
 export const maxLinkedCloudShares = 50;
+export const authorExampleCloudShareId = 'sf_d82MBFoxZq81Gv4Jcp4Zjm56';
 
 export interface KeyValueStorage {
   getItem(key: string): string | null;
@@ -18,6 +20,18 @@ export interface LinkedCloudShare {
   shareId: string;
   sourceContentFingerprint: string | null;
 }
+
+export interface CloudFileListItem extends LinkedCloudShare {
+  isAuthorExample: boolean;
+}
+
+const authorExampleCloudShare: LinkedCloudShare = {
+  createdAt: null,
+  profileName: null,
+  scope: null,
+  shareId: authorExampleCloudShareId,
+  sourceContentFingerprint: null,
+};
 
 export class CloudShareLinkStorageError extends Error {
   constructor() {
@@ -147,6 +161,28 @@ export class CloudShareLinkRepository {
     return this.shares.map((share) => ({ ...share }));
   }
 
+  isAuthorExampleHidden(): boolean {
+    if (!this.storage) return false;
+
+    try {
+      return this.storage.getItem(authorExampleHiddenKey) === 'true';
+    } catch {
+      return false;
+    }
+  }
+
+  hideAuthorExample(): void {
+    if (!this.storage) {
+      throw new CloudShareLinkStorageError();
+    }
+
+    try {
+      this.storage.setItem(authorExampleHiddenKey, 'true');
+    } catch {
+      throw new CloudShareLinkStorageError();
+    }
+  }
+
   remove(shareId: string): LinkedCloudShare[] {
     this.ensureLoaded();
     const nextShares = this.shares.filter((existing) => existing.shareId !== shareId);
@@ -214,6 +250,26 @@ export function linkCloudShare(share: LinkedCloudShare): LinkedCloudShare[] {
 
 export function listLinkedCloudShares(): LinkedCloudShare[] {
   return cloudShareLinkRepository.list();
+}
+
+export function listCloudFiles(): CloudFileListItem[] {
+  const linkedShares = listLinkedCloudShares()
+    .filter((share) => share.shareId !== authorExampleCloudShareId)
+    .map((share) => ({ ...share, isAuthorExample: false }));
+
+  if (cloudShareLinkRepository.isAuthorExampleHidden()) {
+    return linkedShares;
+  }
+
+  return [{ ...authorExampleCloudShare, isAuthorExample: true }, ...linkedShares];
+}
+
+export function isAuthorExampleCloudFile(shareId: string): boolean {
+  return shareId === authorExampleCloudShareId;
+}
+
+export function hideAuthorExampleCloudFile(): void {
+  cloudShareLinkRepository.hideAuthorExample();
 }
 
 export function findLinkedCloudShareByContentFingerprint(

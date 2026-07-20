@@ -96,34 +96,31 @@ const selectedSpotlightQuestionIds = computed(
   () => props.secretFile.spotlight[selectedRole.value].selectedQuestionIds,
 );
 
-const candidatePreferenceGroups = computed(() => {
+const candidateCategoryGroups = computed(() => {
   const selected = new Set(selectedSpotlightQuestionIds.value);
   const currentId = activeSpotlightIndex.value === null
     ? null
     : selectedSpotlightQuestionIds.value[activeSpotlightIndex.value] ?? null;
-  const groups = (['love', 'like'] as const).map((preference) => ({
-    categories: new Map<string, { categoryId: string; categoryName: string; items: SpotlightCandidate[] }>(),
-    preference,
-  }));
+  const categories = new Map<string, { categoryId: string; categoryName: string; items: SpotlightCandidate[] }>();
 
   for (const candidate of spotlightCandidates.value) {
     if (selected.has(candidate.questionId) && candidate.questionId !== currentId) continue;
-    const preferenceGroup = groups.find((group) => group.preference === candidate.preference)!;
-    const category = preferenceGroup.categories.get(candidate.categoryId) ?? {
+    const category = categories.get(candidate.categoryId) ?? {
       categoryId: candidate.categoryId,
       categoryName: candidate.categoryName,
       items: [],
     };
     category.items.push(candidate);
-    preferenceGroup.categories.set(candidate.categoryId, category);
+    categories.set(candidate.categoryId, category);
   }
 
-  return groups
-    .map((group) => ({
-      categories: [...group.categories.values()],
-      preference: group.preference,
-    }))
-    .filter((group) => group.categories.length > 0);
+  return [...categories.values()].map((category) => ({
+    ...category,
+    items: [...category.items].sort((left, right) => {
+      const preferenceOrder = { love: 0, like: 1 } as const;
+      return preferenceOrder[left.preference] - preferenceOrder[right.preference];
+    }),
+  }));
 });
 
 function getSpotlightCandidate(questionId: string): SpotlightCandidate | null {
@@ -547,29 +544,30 @@ const overallProgress = computed(() => {
           {{ messages.results.spotlightDelete }}
         </button>
       </div>
-      <p v-if="candidatePreferenceGroups.length === 0" class="spotlight-dialog__empty">{{ messages.results.spotlightEmpty }}</p>
+      <p class="spotlight-dialog__note">{{ messages.results.spotlightDialogNote }}</p>
+      <p v-if="candidateCategoryGroups.length === 0" class="spotlight-dialog__empty">{{ messages.results.spotlightEmpty }}</p>
       <div v-else class="spotlight-dialog__groups">
-        <section v-for="preferenceGroup in candidatePreferenceGroups" :key="preferenceGroup.preference" class="spotlight-dialog__preference-group">
-          <h3>{{ messages.preferenceLabels[preferenceGroup.preference] }}</h3>
-          <div v-for="group in preferenceGroup.categories" :key="group.categoryId" class="spotlight-dialog__category-group">
-            <div class="spotlight-dialog__category">
-              <img :src="getCategoryVisualUrl(group.categoryId)" alt="" />
-              <h4>{{ group.categoryName }}</h4>
-            </div>
-            <button
-              v-for="candidate in group.items"
-              :key="candidate.questionId"
-              type="button"
-              :class="{ 'is-selected': selectedSpotlightQuestionIds[activeSpotlightIndex ?? -1] === candidate.questionId }"
-              :aria-label="`${messages.results.spotlightSelect}：${candidate.title}`"
-              @click="selectSpotlight(candidate.questionId)"
-            >
-              <span class="spotlight-dialog__item-copy">
-                <strong>{{ candidate.title }}</strong>
-                <small>{{ candidate.description }}</small>
-              </span>
-            </button>
+        <section v-for="group in candidateCategoryGroups" :key="group.categoryId" class="spotlight-dialog__category-group">
+          <div class="spotlight-dialog__category">
+            <img :src="getCategoryVisualUrl(group.categoryId)" alt="" />
+            <h3>{{ group.categoryName }}</h3>
           </div>
+          <button
+            v-for="candidate in group.items"
+            :key="candidate.questionId"
+            type="button"
+            :class="{ 'is-selected': selectedSpotlightQuestionIds[activeSpotlightIndex ?? -1] === candidate.questionId }"
+            :aria-label="`${messages.results.spotlightSelect}：${candidate.title}，${messages.preferenceLabels[candidate.preference]}`"
+            @click="selectSpotlight(candidate.questionId)"
+          >
+            <span class="spotlight-dialog__item-copy">
+              <strong>{{ candidate.title }}</strong>
+              <small>{{ candidate.description }}</small>
+            </span>
+            <span class="spotlight-dialog__preference-icon" aria-hidden="true">
+              <AnswerRatingIcon kind="preference" :value="candidate.preference" />
+            </span>
+          </button>
         </section>
       </div>
     </dialog>

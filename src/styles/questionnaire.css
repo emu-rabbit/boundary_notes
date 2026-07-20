@@ -1199,20 +1199,21 @@
 .spotlight-dialog__heading button:hover { background: rgba(255, 255, 255, 0.06); color: var(--ink); }
 .spotlight-dialog__current { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; margin-top: 0.8rem; padding: 0.72rem 0.78rem; border: 1px solid rgba(229, 183, 132, 0.32); border-radius: 0.7rem; background: rgba(142, 89, 62, 0.18); }
 .spotlight-dialog__current .spotlight-dialog__item-copy > small:first-child { color: #efc998; font-size: 0.72rem; }
+.spotlight-dialog__note { margin: 0.8rem 0 0; color: var(--ink-muted); font-size: 0.76rem; line-height: 1.55; }
 .spotlight-dialog__groups { display: grid; gap: 1rem; margin-top: 1rem; }
-.spotlight-dialog__preference-group { display: grid; gap: 0.7rem; }
-.spotlight-dialog__preference-group + .spotlight-dialog__preference-group { padding-top: 1rem; border-top: 1px solid rgba(236, 198, 187, 0.14); }
-.spotlight-dialog__preference-group > h3 { margin: 0; color: #efc998; font-size: 1rem; }
 .spotlight-dialog__category-group { display: grid; gap: 0.45rem; }
+.spotlight-dialog__category-group + .spotlight-dialog__category-group { padding-top: 1rem; border-top: 1px solid rgba(236, 198, 187, 0.14); }
 .spotlight-dialog__category { display: flex; align-items: center; gap: 0.6rem; }
 .spotlight-dialog__category img { width: 2.4rem; height: 2.4rem; border-radius: 0.55rem; object-fit: cover; }
-.spotlight-dialog__category h4 { margin: 0; font-size: 0.95rem; }
+.spotlight-dialog__category h3 { margin: 0; color: #efc998; font-size: 0.95rem; }
 .spotlight-dialog__category-group > button { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.7rem 0.8rem; border: 1px solid rgba(236, 198, 187, 0.14); border-radius: 0.7rem; background: rgba(255, 255, 255, 0.035); color: var(--ink); text-align: left; cursor: pointer; }
 .spotlight-dialog__category-group > button.is-selected { border-color: rgba(229, 183, 132, 0.55); background: rgba(142, 89, 62, 0.22); }
 .spotlight-dialog__groups small { color: var(--ink-muted); white-space: nowrap; }
 .spotlight-dialog__item-copy { display: grid; gap: 0.18rem; min-width: 0; }
 .spotlight-dialog__item-copy strong { font-size: 0.88rem; font-weight: 500; }
 .spotlight-dialog__item-copy small { line-height: 1.45; white-space: normal; }
+.spotlight-dialog__preference-icon { display: grid; width: 1.5rem; height: 1.5rem; flex: none; place-items: center; color: #efc998; }
+.spotlight-dialog__preference-icon .answer-rating-icon { width: 1.18rem; height: 1.18rem; }
 .spotlight-dialog__empty { color: var(--ink-muted); }
 .spotlight-dialog__delete { flex: none; padding: 0.55rem 0.68rem; border: 1px solid rgba(217, 125, 125, 0.28); border-radius: 0.55rem; background: transparent; color: #e3aaa4; cursor: pointer; font: inherit; font-size: 0.78rem; }
 

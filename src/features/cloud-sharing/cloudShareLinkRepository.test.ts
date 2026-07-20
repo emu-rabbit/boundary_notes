@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   CloudShareLinkRepository,
   CloudShareLinkStorageError,
+  authorExampleCloudShareId,
   type KeyValueStorage,
   type LinkedCloudShare,
 } from './cloudShareLinkRepository';
@@ -102,6 +103,19 @@ describe('CloudShareLinkRepository', () => {
 
     repository.add(share);
     expect(repository.remove(share.shareId)).toEqual([]);
+  });
+
+  it('keeps the author example separate from linked cloud-file metadata and can hide it locally', () => {
+    const storage = new MemoryStorage();
+    const repository = new CloudShareLinkRepository(storage);
+
+    expect(repository.list()).not.toContainEqual(expect.objectContaining({ shareId: authorExampleCloudShareId }));
+    expect(repository.isAuthorExampleHidden()).toBe(false);
+
+    repository.hideAuthorExample();
+
+    expect(repository.isAuthorExampleHidden()).toBe(true);
+    expect(repository.list()).toEqual([]);
   });
 
   it('does not claim success or mutate memory when local persistence fails', () => {
