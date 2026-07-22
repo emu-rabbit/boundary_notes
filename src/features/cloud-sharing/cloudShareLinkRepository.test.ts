@@ -25,6 +25,10 @@ function createShare(shareId: string, profileName: string, createdAt: string): L
 }
 
 describe('CloudShareLinkRepository', () => {
+  it('uses the current fixed author example cloud file', () => {
+    expect(authorExampleCloudShareId).toBe('sf_L1XzUvsVMPqGVZSTzDcjhmDY');
+  });
+
   it('persists display metadata in newest-first order and replaces duplicates', () => {
     const storage = new MemoryStorage();
     const repository = new CloudShareLinkRepository(storage);
