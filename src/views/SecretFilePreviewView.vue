@@ -17,6 +17,7 @@ import {
 import {
   localizeQuestionBank,
   questionBank,
+  reconcileSecretFileWithQuestionBank,
   warmAllCategoryVisuals,
 } from '../features/question-bank';
 import { getQuestionnaireMessages } from '../features/questionnaire/messages';
@@ -99,11 +100,15 @@ async function loadPreview(): Promise<void> {
 
   if (request.source === 'local') {
     const opened = store.open(request.fileId);
-    secretFile.value = opened;
+    const reconciled = opened ? reconcileSecretFileWithQuestionBank(opened) : null;
+    secretFile.value = reconciled;
     loadState.value = opened ? 'ready' : 'localMissing';
-    if (opened) {
-      trackSecretFileViewed('local', opened.scope);
-      void resolveLocalCloudShare(opened, requestId);
+    if (reconciled) {
+      if (reconciled !== opened) {
+        store.persist(reconciled);
+      }
+      trackSecretFileViewed('local', reconciled.scope);
+      void resolveLocalCloudShare(reconciled, requestId);
     }
     return;
   }
@@ -115,7 +120,7 @@ async function loadPreview(): Promise<void> {
     const snapshot = await loadCloudSecretFile(request.fileId);
 
     if (requestId !== loadRequestId) return;
-    secretFile.value = snapshot.secretFile;
+    secretFile.value = reconcileSecretFileWithQuestionBank(snapshot.secretFile);
     shareUrl.value = getCloudPreviewUrl(request.fileId);
     shareLinkState.value = 'available';
     loadState.value = 'ready';

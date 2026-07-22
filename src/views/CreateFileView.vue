@@ -30,6 +30,7 @@ import {
   getLocalizedCategoryQuestionsForScope,
   localizeQuestionBank,
   questionBank,
+  reconcileSecretFileWithQuestionBank,
   warmCategoryVisual,
   type CategoryQuestion,
   type DetailQuestion,
@@ -43,7 +44,6 @@ import {
   createSecretFile,
   LocalSecretFileLimitError,
   maxLocalSecretFiles,
-  reconcileSecretFileQuestions,
   type AnswerQuestionInput,
   type QuestionRole,
   type SecretFile,
@@ -664,7 +664,7 @@ onMounted(() => {
 
   trackSecretFileEditOpened(opened.scope);
 
-  const reconciled = reconcileSecretFileQuestions(opened, allQuestionDefinitions);
+  const reconciled = reconcileSecretFileWithQuestionBank(opened);
   if (reconciled !== opened) {
     store.persist(reconciled);
   }
