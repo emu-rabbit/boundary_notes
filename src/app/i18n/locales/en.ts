@@ -58,10 +58,16 @@ export const enMessages: LocaleMessages = {
   },
   versionHistory: {
     backToAbout: 'Back to About This Bunny',
-    entries: [{
-      version: '1.0.0',
-      items: ['Official release', 'Create notes', 'Manage existing files', 'Upload and share'],
-    }],
+    entries: [
+      {
+        version: '1.0.1',
+        items: ['Added questions about latex clothing, hoods, and BDSM settings', 'Updated the appearance of spotlight items', 'Revised some unsuitable wording across the website'],
+      },
+      {
+        version: '1.0.0',
+        items: ['Official release', 'Create notes', 'Manage existing files', 'Upload and share'],
+      },
+    ],
     eyebrow: 'Boundary Notes',
     title: 'Version History',
   },
