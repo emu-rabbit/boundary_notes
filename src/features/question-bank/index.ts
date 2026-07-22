@@ -10,6 +10,7 @@ export {
   getQuestionBankCounts,
   getResultCategories,
   questionBank,
+  reconcileSecretFileWithQuestionBank,
 } from './questionBank';
 export {
   findCategoryVisualUrl,

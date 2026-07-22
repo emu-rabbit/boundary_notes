@@ -1,5 +1,5 @@
-import { isRoleIncludedInScope } from '../secret-file';
-import type { QuestionRole, SecretFileScope } from '../secret-file';
+import { isRoleIncludedInScope, reconcileSecretFileQuestions } from '../secret-file';
+import type { QuestionRole, SecretFile, SecretFileScope } from '../secret-file';
 import { getDetailTitle } from './detailTitles';
 import type {
   CategoryQuestion,
@@ -2457,6 +2457,19 @@ const categoryDetailItemSource: Record<string, readonly QuestionBankDetailItemSo
       warning: null
     },
     {
+      detailId: 'detail-enslavement-bdsmspaceleash',
+      label: "BDSM 相關空間牽繩牽引",
+      roles: {
+        active: {
+          description: "在 BDSM 相關空間以牽繩牽引對方"
+        },
+        passive: {
+          description: "在 BDSM 相關空間被對方以牽繩牽引"
+        }
+      },
+      warning: null
+    },
+    {
       detailId: 'detail-enslavement-1654r6x',
       label: "公開空間牽繩牽引",
       roles: {
@@ -2654,6 +2667,19 @@ const categoryDetailItemSource: Record<string, readonly QuestionBankDetailItemSo
       warning: null
     },
     {
+      detailId: 'detail-pet_play-bdsmspaceleash',
+      label: "BDSM 相關空間牽繩牽引",
+      roles: {
+        active: {
+          description: "在 BDSM 相關空間以牽繩牽引扮演寵物的對方"
+        },
+        passive: {
+          description: "在 BDSM 相關空間被對方以牽繩牽引"
+        }
+      },
+      warning: null
+    },
+    {
       detailId: 'detail-pet_play-1efmrop',
       label: "公開空間牽繩牽引",
       roles: {
@@ -2688,6 +2714,19 @@ const categoryDetailItemSource: Record<string, readonly QuestionBankDetailItemSo
         },
         passive: {
           description: "穿戴寵物髮飾或尾巴扮演寵物"
+        }
+      },
+      warning: null
+    },
+    {
+      detailId: 'detail-pet_play-k9hood',
+      label: "K9犬奴頭套",
+      roles: {
+        active: {
+          description: "要求對方穿戴 K9 犬奴頭套並與對方互動"
+        },
+        passive: {
+          description: "穿戴 K9 犬奴頭套並與對方互動"
         }
       },
       warning: null
@@ -3110,6 +3149,19 @@ const categoryDetailItemSource: Record<string, readonly QuestionBankDetailItemSo
         },
         passive: {
           description: "在私人空間暴露身體"
+        }
+      },
+      warning: null
+    },
+    {
+      detailId: 'detail-exposure-bdsmspace',
+      label: "在 BDSM 相關空間暴露",
+      roles: {
+        active: {
+          description: "要求對方在 BDSM 相關空間暴露身體"
+        },
+        passive: {
+          description: "在 BDSM 相關空間暴露身體"
         }
       },
       warning: null
@@ -3814,6 +3866,19 @@ const categoryDetailItemSource: Record<string, readonly QuestionBankDetailItemSo
       warning: null
     },
     {
+      detailId: 'detail-other-latexclothing',
+      label: "膠衣",
+      roles: {
+        active: {
+          description: "在自己或對方穿著膠衣的互動中擔任主導側"
+        },
+        passive: {
+          description: "在自己或對方穿著膠衣的互動中擔任配合側"
+        }
+      },
+      warning: null
+    },
+    {
       detailId: 'detail-other-967tbj',
       label: "決定對方的食物",
       roles: {
@@ -3949,7 +4014,7 @@ const categoryDetailItemSource: Record<string, readonly QuestionBankDetailItemSo
 const categoryDetailItems = createDetailItems(categoryDetailItemSource);
 
 export const questionBank: QuestionBank = {
-  bankVersion: '2026-07-11',
+  bankVersion: '2026-07-22',
   schemaVersion: 1,
   source: {
     fileId: '1shrEavMkoumIpe07vL3DXp0uj7tcHzqgPV6qzU6jvAE',
@@ -3969,16 +4034,16 @@ export const questionBank: QuestionBank = {
     category('sexual_interaction', '性愛類項目', '與性器官互動相關的項目', '與性器官互動相關的項目', 21),
     category('anal_interaction', '肛門類項目', '與肛門互動相關的項目', '與肛門互動相關的項目', 15),
     category('multi_party_interaction', '多方互動類項目', '如多人、或關係外第三人相關的項目', '如多人、或關係外第三人相關的項目', 11),
-    category('enslavement', '奴化類項目', '讓對方扮演某種範圍內的奴隸的項目', '自己扮演某種範圍內奴隸的項目', 14),
-    category('pet_play', '獸/寵物化類項目', '讓對方扮演獸/寵物相關的項目', '自己扮演獸或寵物相關的項目', 16),
+    category('enslavement', '奴化類項目', '讓對方扮演某種範圍內的奴隸的項目', '自己扮演某種範圍內奴隸的項目', 15),
+    category('pet_play', '獸/寵物化類項目', '讓對方扮演獸/寵物相關的項目', '自己扮演獸或寵物相關的項目', 18),
     category('role_play', '角色扮演類項目', '引導對方進行情境扮演的項目', '自己進行情境扮演的項目', 14),
     category('objectification', '物化類項目', '在合意情境中，暫時把對方當作物品、家具或工具對待的項目', '在合意情境中，暫時被當作物品、家具或工具對待的項目', 11),
-    category('exposure', '暴露類項目', '讓對方在各種情境下裸露身體的項目', '讓自己在各種情境下裸露身體的項目', 10),
+    category('exposure', '暴露類項目', '讓對方在各種情境下裸露身體的項目', '讓自己在各種情境下裸露身體的項目', 11),
     category('image_recording', '影像類項目', '拍攝、保存、傳送、公開或分享對方影像的項目', '自己被拍攝、保存、傳送、公開或分享影像的項目', 9),
     category('piercing_cutting', '穿刺/割類項目', '對對方或要求對方身體某處進行穿刺或刀割相關的項目', '在自己身體某處接受穿刺或刀割相關的項目', 11),
     category('excretion', '排泄類項目', '與排泄物相關的項目', '與排泄物相關的項目', 9),
     category('behavior_restriction', '行為限制類項目', '在合意下，限制對方的需求或偏好的項目', '在合意下，被限制自身需求或偏好的項目', 9),
-    category('other', '其他', '如呼吸控制、催眠、玩弄食物等無法被分類的項目', '如呼吸控制、催眠、玩弄食物等無法被分類的項目', 19, false),
+    category('other', '其他', '如呼吸控制、催眠、玩弄食物等無法被分類的項目', '如呼吸控制、催眠、玩弄食物等無法被分類的項目', 20, false),
   ],
 };
 
@@ -4024,6 +4089,22 @@ export const allQuestionDefinitions = [
   ...allCategoryQuestionDefinitions,
   ...allDetailQuestionDefinitions,
 ];
+
+export function reconcileSecretFileWithQuestionBank(secretFile: SecretFile): SecretFile {
+  const reconciled = reconcileSecretFileQuestions(secretFile, allQuestionDefinitions);
+
+  if (reconciled === secretFile) {
+    return secretFile;
+  }
+
+  return {
+    ...reconciled,
+    questionBank: {
+      bankVersion: questionBank.bankVersion,
+      schemaVersion: questionBank.schemaVersion,
+    },
+  };
+}
 
 export const categoryQuestionsByScope: CategoryQuestionsByScope = {
   activeOnly: categoryRoundQuestions.filter((question) => question.role === 'active'),

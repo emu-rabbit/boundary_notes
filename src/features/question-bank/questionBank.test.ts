@@ -7,24 +7,26 @@ import {
   getCategoryQuestionsForScope,
   getQuestionBankCounts,
   questionBank,
+  reconcileSecretFileWithQuestionBank,
 } from './questionBank';
 import { localizeQuestionBank } from './locales';
+import { createSecretFile } from '../secret-file';
 
 describe('first-phase question bank', () => {
-  it('keeps the live spreadsheet totals and places other last', () => {
+  it('keeps the current runtime totals and places other last', () => {
     expect(questionBank.categories).toHaveLength(21);
     expect(questionBank.categories[questionBank.categories.length - 1]).toMatchObject({
       categoryId: 'other',
       includeInCategoryRound: false,
-      itemCount: 19,
+      itemCount: 20,
     });
     expect(getQuestionBankCounts('activeOnly')).toEqual({
       categoryCount: 20,
-      detailQuestionCount: 294,
+      detailQuestionCount: 299,
     });
     expect(getQuestionBankCounts('all')).toEqual({
       categoryCount: 40,
-      detailQuestionCount: 588,
+      detailQuestionCount: 598,
     });
   });
 
@@ -47,8 +49,8 @@ describe('first-phase question bank', () => {
       id: `detail.${category!.categoryId}.${category!.detailItems[0]!.detailId}.active`,
       level: 'detail',
     });
-    expect(allDetailQuestionDefinitions).toHaveLength(588);
-    expect(allQuestionDefinitions).toHaveLength(628);
+    expect(allDetailQuestionDefinitions).toHaveLength(598);
+    expect(allQuestionDefinitions).toHaveLength(638);
   });
 
   it('uses unique stable ASCII detail IDs instead of source-language labels', () => {
@@ -56,8 +58,8 @@ describe('first-phase question bank', () => {
       category.detailItems.map((item) => item.detailId),
     );
 
-    expect(detailIds).toHaveLength(294);
-    expect(new Set(detailIds).size).toBe(294);
+    expect(detailIds).toHaveLength(299);
+    expect(new Set(detailIds).size).toBe(299);
     expect(detailIds.every((detailId) => /^detail-[a-z_]+-[a-z0-9]+$/.test(detailId))).toBe(true);
   });
 
@@ -83,6 +85,80 @@ describe('first-phase question bank', () => {
 
     expect(flogging?.roles.active.title).toBe('用散鞭');
     expect(flogging?.roles.passive.title).toBe('用散鞭');
+  });
+
+  it('keeps the BDSM-space scenarios between private and public and uses role-aware copy', () => {
+    const expectedOrder = {
+      enslavement: [
+        'detail-enslavement-wgiuuj',
+        'detail-enslavement-bdsmspaceleash',
+        'detail-enslavement-1654r6x',
+      ],
+      pet_play: [
+        'detail-pet_play-ljh0h7',
+        'detail-pet_play-bdsmspaceleash',
+        'detail-pet_play-1efmrop',
+      ],
+      exposure: [
+        'detail-exposure-cf5jn6',
+        'detail-exposure-bdsmspace',
+        'detail-exposure-jg19zi',
+      ],
+    } as const;
+
+    Object.entries(expectedOrder).forEach(([categoryId, orderedIds]) => {
+      const details = questionBank.categories
+        .find((category) => category.categoryId === categoryId)
+        ?.detailItems ?? [];
+      const ids = details.map((item) => item.detailId);
+      const positions = orderedIds.map((id) => ids.indexOf(id));
+
+      expect(positions.every((position) => position >= 0)).toBe(true);
+      expect(positions[1]).toBe(positions[0]! + 1);
+      expect(positions[2]).toBe(positions[1]! + 1);
+      expect(details[positions[1]!]!.warning).toBeNull();
+    });
+
+    const latex = questionBank.categories
+      .find((category) => category.categoryId === 'other')
+      ?.detailItems.find((item) => item.detailId === 'detail-other-latexclothing');
+    const k9Hood = questionBank.categories
+      .find((category) => category.categoryId === 'pet_play')
+      ?.detailItems.find((item) => item.detailId === 'detail-pet_play-k9hood');
+
+    expect(latex?.roles.active.description).toContain('自己或對方穿著膠衣');
+    expect(latex?.roles.passive.description).toContain('自己或對方穿著膠衣');
+    expect(k9Hood?.roles.active.description).toBe('要求對方穿戴 K9 犬奴頭套並與對方互動');
+    expect(k9Hood?.roles.passive.description).toBe('穿戴 K9 犬奴頭套並與對方互動');
+  });
+
+  it('migrates older files with the new questions without changing prior timestamps', () => {
+    const newDetailIds = new Set([
+      'detail-enslavement-bdsmspaceleash',
+      'detail-pet_play-bdsmspaceleash',
+      'detail-pet_play-k9hood',
+      'detail-exposure-bdsmspace',
+      'detail-other-latexclothing',
+    ]);
+    const legacyQuestions = allQuestionDefinitions.filter((question) =>
+      ![...newDetailIds].some((detailId) => question.id.includes(detailId)),
+    );
+    const legacy = createSecretFile({
+      bankSchemaVersion: 1,
+      bankVersion: '2026-07-11',
+      createdAt: '2026-07-11T06:14:45.603Z',
+      fileId: 'local_legacy-question-bank',
+      profileName: '兔子',
+      questions: legacyQuestions,
+      scope: 'activeOnly',
+    });
+    const migrated = reconcileSecretFileWithQuestionBank(legacy);
+
+    expect(migrated.updatedAt).toBe(legacy.updatedAt);
+    expect(migrated.questionBank.bankVersion).toBe(questionBank.bankVersion);
+    expect(migrated.answers['detail.other.detail-other-latexclothing.active']).toEqual({ state: 'unanswered' });
+    expect(migrated.answers['detail.other.detail-other-latexclothing.passive']).toEqual({ state: 'filteredOut' });
+    expect(Object.keys(migrated.answers)).toHaveLength(allQuestionDefinitions.length);
   });
 
   it('keeps ambiguous role descriptions neutral and the requested titles direction-free', () => {
@@ -116,7 +192,7 @@ describe('question-bank translations', () => {
     const localized = localizeQuestionBank(questionBank, locale);
 
     expect(localized.categories).toHaveLength(questionBank.categories.length);
-    expect(localized.categories.reduce((total, category) => total + category.detailItems.length, 0)).toBe(294);
+    expect(localized.categories.reduce((total, category) => total + category.detailItems.length, 0)).toBe(299);
 
     localized.categories.forEach((category, categoryIndex) => {
       const sourceCategory = questionBank.categories[categoryIndex];
