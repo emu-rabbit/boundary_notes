@@ -58,10 +58,16 @@ export const jaMessages: LocaleMessages = {
   },
   versionHistory: {
     backToAbout: 'このうさぎについてへ戻る',
-    entries: [{
-      version: '1.0.0',
-      items: ['正式版をリリース', 'ノート作成機能', '過去のファイル管理機能', 'アップロード・共有機能'],
-    }],
+    entries: [
+      {
+        version: '1.0.1',
+        items: ['ラバースーツ、フード、BDSM の場面に関する質問を追加', '注目項目の外観を調整', 'ウェブページ内の不適切な表現を一部修正'],
+      },
+      {
+        version: '1.0.0',
+        items: ['正式版をリリース', 'ノート作成機能', '過去のファイル管理機能', 'アップロード・共有機能'],
+      },
+    ],
     eyebrow: 'Boundary Notes',
     title: '更新履歴',
   },

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { answerSecretFileQuestion } from './answers';
 import { createSecretFile, reconcileSecretFileQuestions } from './secretFile';
-import { getSecretFileProgress } from './progress';
+import { calculateProgressPercent, getSecretFileProgress } from './progress';
 import type { QuestionDefinition } from './types';
 
 const createdAt = '2026-07-10T06:00:00.000Z';
@@ -24,6 +24,13 @@ function createActiveOnlyFile() {
 }
 
 describe('secret-file domain', () => {
+  it('rounds progress down so incomplete work never displays as 100 percent', () => {
+    expect(calculateProgressPercent(0, 0)).toBe(0);
+    expect(calculateProgressPercent(1, 3)).toBe(33);
+    expect(calculateProgressPercent(198, 199)).toBe(99);
+    expect(calculateProgressPercent(199, 199)).toBe(100);
+  });
+
   it('initializes unanswered and filteredOut states from the selected scope', () => {
     const secretFile = createActiveOnlyFile();
 

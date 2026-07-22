@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue';
+import { calculateProgressPercent } from '../secret-file/domain/progress';
 import {
   getCategoryQuestionId,
   getCategoryVisualUrl,
@@ -14,6 +15,7 @@ import type {
   SecretFile,
 } from '../secret-file/domain/types';
 import AnswerRatingIcon from './AnswerRatingIcon.vue';
+import { shouldOfferDetailStartChoice } from './detailStartChoice';
 import { getResultsAnswerSummary, type QuestionnaireMessages } from './messages';
 
 const props = defineProps<{
@@ -199,7 +201,7 @@ function getCategoryProgress(category: QuestionBankCategory) {
 
   return {
     answered,
-    percent: total === 0 ? 0 : Math.round((answered / total) * 100),
+    percent: calculateProgressPercent(answered, total),
     total,
   };
 }
@@ -225,7 +227,10 @@ function getCategoryNote(categoryId: string): string {
 function openCategory(category: QuestionBankCategory): void {
   const progress = getCategoryProgress(category);
 
-  if (!getCategoryAnswer(category.categoryId) || progress.answered === progress.total) {
+  if (!shouldOfferDetailStartChoice({
+    answered: progress.answered,
+    total: progress.total,
+  })) {
     emit('editCategory', category.categoryId, selectedRole.value, 'all');
     return;
   }
@@ -292,7 +297,7 @@ const overallProgress = computed(() => {
 
   return {
     ...totals,
-    percent: totals.total === 0 ? 0 : Math.round((totals.answered / totals.total) * 100),
+    percent: calculateProgressPercent(totals.answered, totals.total),
   };
 });
 </script>

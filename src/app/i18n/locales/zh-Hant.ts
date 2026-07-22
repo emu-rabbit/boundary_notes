@@ -70,10 +70,16 @@ export const zhHantMessages: LocaleMessages = {
   },
   versionHistory: {
     backToAbout: '回到關於這隻兔子',
-    entries: [{
-      version: '1.0.0',
-      items: ['正式版本釋出', '創建筆記功能', '管理舊檔案功能', '上傳分享功能'],
-    }],
+    entries: [
+      {
+        version: '1.0.1',
+        items: ['增加膠衣、頭套，與 BDSM 場合相關問題', '調整焦點項目的外觀', '修正網頁部分不合適的描述'],
+      },
+      {
+        version: '1.0.0',
+        items: ['正式版本釋出', '創建筆記功能', '管理舊檔案功能', '上傳分享功能'],
+      },
+    ],
     eyebrow: 'Boundary Notes',
     title: '版本歷史',
   },

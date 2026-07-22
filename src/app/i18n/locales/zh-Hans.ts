@@ -58,10 +58,16 @@ export const zhHansMessages: LocaleMessages = {
   },
   versionHistory: {
     backToAbout: '回到关于这只兔子',
-    entries: [{
-      version: '1.0.0',
-      items: ['正式版本发布', '创建笔记功能', '管理旧档案功能', '上传分享功能'],
-    }],
+    entries: [
+      {
+        version: '1.0.1',
+        items: ['增加胶衣、头套，以及 BDSM 场合相关问题', '调整焦点项目的外观', '修正网页中部分不合适的描述'],
+      },
+      {
+        version: '1.0.0',
+        items: ['正式版本发布', '创建笔记功能', '管理旧档案功能', '上传分享功能'],
+      },
+    ],
     eyebrow: 'Boundary Notes',
     title: '版本历史',
   },

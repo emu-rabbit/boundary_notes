@@ -8,6 +8,10 @@ export interface SecretFileProgress {
   unanswered: number;
 }
 
+export function calculateProgressPercent(answered: number, total: number): number {
+  return total === 0 ? 0 : Math.floor((answered / total) * 100);
+}
+
 export function getSecretFileProgress(
   secretFile: SecretFile,
   currentQuestions: readonly QuestionDefinition[],
@@ -29,7 +33,7 @@ export function getSecretFileProgress(
 
   return {
     answered,
-    percent: total === 0 ? 0 : Math.round((answered / total) * 100),
+    percent: calculateProgressPercent(answered, total),
     total,
     unanswered: total - answered,
   };

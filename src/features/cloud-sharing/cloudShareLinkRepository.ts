@@ -5,7 +5,7 @@ const cloudSharesKey = 'bdsm-boundary-test-cloud-shares:v2';
 const legacyCloudShareIdsKey = 'bdsm-boundary-test-cloud-share-ids:v1';
 const authorExampleHiddenKey = 'bdsm-boundary-test-author-example-cloud-file:hidden';
 export const maxLinkedCloudShares = 50;
-export const authorExampleCloudShareId = 'sf_d82MBFoxZq81Gv4Jcp4Zjm56';
+export const authorExampleCloudShareId = 'sf_L1XzUvsVMPqGVZSTzDcjhmDY';
 
 export interface KeyValueStorage {
   getItem(key: string): string | null;
