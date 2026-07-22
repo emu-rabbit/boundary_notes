@@ -14,6 +14,7 @@ import type {
   SecretFile,
 } from '../secret-file/domain/types';
 import AnswerRatingIcon from './AnswerRatingIcon.vue';
+import { shouldOfferDetailStartChoice } from './detailStartChoice';
 import { getResultsAnswerSummary, type QuestionnaireMessages } from './messages';
 
 const props = defineProps<{
@@ -225,7 +226,10 @@ function getCategoryNote(categoryId: string): string {
 function openCategory(category: QuestionBankCategory): void {
   const progress = getCategoryProgress(category);
 
-  if (!getCategoryAnswer(category.categoryId) || progress.answered === progress.total) {
+  if (!shouldOfferDetailStartChoice({
+    answered: progress.answered,
+    total: progress.total,
+  })) {
     emit('editCategory', category.categoryId, selectedRole.value, 'all');
     return;
   }
