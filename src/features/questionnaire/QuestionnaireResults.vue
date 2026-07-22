@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, ref } from 'vue';
+import { calculateProgressPercent } from '../secret-file/domain/progress';
 import {
   getCategoryQuestionId,
   getCategoryVisualUrl,
@@ -200,7 +201,7 @@ function getCategoryProgress(category: QuestionBankCategory) {
 
   return {
     answered,
-    percent: total === 0 ? 0 : Math.round((answered / total) * 100),
+    percent: calculateProgressPercent(answered, total),
     total,
   };
 }
@@ -296,7 +297,7 @@ const overallProgress = computed(() => {
 
   return {
     ...totals,
-    percent: totals.total === 0 ? 0 : Math.round((totals.answered / totals.total) * 100),
+    percent: calculateProgressPercent(totals.answered, totals.total),
   };
 });
 </script>
