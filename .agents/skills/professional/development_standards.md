@@ -44,7 +44,7 @@
 2. 判斷是否真的需要新工具、套件、框架或架構；沒有明確理由時維持簡單，並確認不違反 `.agents/skills/professional/technical_architecture.md`。
 3. 建立或修改程式碼時，同時考慮可讀性、效能、可維護性、錯誤處理與驗證方式。
 4. 完成後執行可用且符合風險的 build、lint、test、typecheck 或其他機械檢查。
-5. 任務結束前依 `documentation_sync.md` 檢查文件是否需要同步。
+5. 若本次變更改變持久契約，依 `.agents/skills/core/documentation_governance.md` 更新 canonical 文件；純問答、診斷或未改變契約的修正不需例行增加文件。
 
 ## 注意事項
 

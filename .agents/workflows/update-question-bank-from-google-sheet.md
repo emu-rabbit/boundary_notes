@@ -51,7 +51,7 @@
 15. 逐題更新非繁中翻譯；翻譯應貼合 BDSM 圈子與知情同意語境、維持繁中原句的語義，不得字面硬翻、bulk translation 或改得更露骨，且 release 前必須經人工審核。
 16. 產生或更新題庫變更摘要，至少列出新增、刪除、改名、警示變更與翻譯待確認項。
 17. 若新增分類，回報中必須提醒使用者完成該分類圖片製作；workflow 不需要自動建立缺圖待辦檔。
-18. 執行 schema validation、typecheck 或 build；若驗證受 Windows/Codex sandbox 影響，依 `AGENTS.md` 的 Vite/npm 指引處理。
+18. 執行 schema validation、typecheck 或 build；若驗證受 Windows/Codex sandbox 影響，依 user-level Agent guidance 處理，並區分環境限制與真正程式錯誤。
 
 ## 內容保護規則
 
