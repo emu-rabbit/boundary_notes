@@ -35,6 +35,10 @@ Service Account 預期只在 `boundary-notes-prod` 取得 `roles/datastore.viewe
 npm --prefix ops/firestore-audit run audit -- --project boundary-notes-prod
 ```
 
+每次 audit 都會將報告自動寫入 `ops/firestore-audit/output/`，檔名使用 UTC
+時間戳（例如 `2026-07-24T12_34_56.789Z`）；使用 `--json` 時會寫入 JSON 報告。
+此目錄已加入 Git ignore。
+
 輸出 JSON：
 
 ```powershell

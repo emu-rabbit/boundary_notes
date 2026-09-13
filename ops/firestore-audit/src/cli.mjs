@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 
-import { pathToFileURL } from 'node:url';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { join } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { Firestore } from '@google-cloud/firestore';
 import { analyzeAuditData, createSafeReport } from './audit.mjs';
 
 const productionProjectId = 'boundary-notes-prod';
 const auditorServiceAccount = 'firestore-auditor@boundary-notes-prod.iam.gserviceaccount.com';
+const defaultOutputDirectory = fileURLToPath(new URL('../output/', import.meta.url));
 
 function printHelp() {
   console.log(`Boundary Notes Firestore audit
@@ -108,71 +111,91 @@ function formatBytes(value) {
   return `${(value / 1024).toFixed(1)} KiB`;
 }
 
-function printHumanReport(report, options) {
-  console.log('Boundary Notes Firestore audit');
-  console.log(`Project: ${options.projectId}`);
-  console.log(`Database: ${options.databaseId}`);
-  console.log(`Generated: ${report.generatedAt}`);
-  console.log(`Status: ${report.status === 'normal' ? 'no obvious signal' : 'review suggested'}`);
-  console.log('');
-  console.log('Documents');
-  console.log(`  Shared files: ${report.totals.sharedSecretFiles}`);
-  console.log(`  Private metadata: ${report.totals.metadataRecords}`);
-  console.log(`  Matched pairs: ${report.totals.matchedRecords}`);
-  console.log(`  Shared without metadata: ${report.totals.sharedWithoutMetadata}`);
-  console.log(`  Metadata without shared file: ${report.totals.metadataWithoutShared}`);
-  console.log('');
-  console.log('Successful uploads');
-  console.log(`  Last hour: ${report.recentSuccessfulUploads.lastHour}`);
-  console.log(`  Last 24 hours: ${report.recentSuccessfulUploads.lastDay}`);
-  console.log(`  Last 7 days: ${report.recentSuccessfulUploads.lastSevenDays}`);
-  console.log('');
-  console.log('Approximate sources');
-  console.log(`  Source hashes: ${report.sources.uniqueSourceHashes}`);
-  console.log(`  Source fingerprint hashes: ${report.sources.uniqueFingerprintHashes}`);
-  console.log(`  Flagged sources: ${report.sources.flaggedSourceCount}`);
-  console.log(`  Distinct profileName values: ${report.profiles.distinctProfileNames}`);
-  console.log(`  Default profileName uploads: ${report.profiles.defaultProfileNameUploads}`);
-  console.log('');
-  console.log('Top sources');
+function printHumanReport(report, options, log = console.log) {
+  log('Boundary Notes Firestore audit');
+  log(`Project: ${options.projectId}`);
+  log(`Database: ${options.databaseId}`);
+  log(`Generated: ${report.generatedAt}`);
+  log(`Status: ${report.status === 'normal' ? 'no obvious signal' : 'review suggested'}`);
+  log('');
+  log('Documents');
+  log(`  Shared files: ${report.totals.sharedSecretFiles}`);
+  log(`  Private metadata: ${report.totals.metadataRecords}`);
+  log(`  Matched pairs: ${report.totals.matchedRecords}`);
+  log(`  Shared without metadata: ${report.totals.sharedWithoutMetadata}`);
+  log(`  Metadata without shared file: ${report.totals.metadataWithoutShared}`);
+  log('');
+  log('Successful uploads');
+  log(`  Last hour: ${report.recentSuccessfulUploads.lastHour}`);
+  log(`  Last 24 hours: ${report.recentSuccessfulUploads.lastDay}`);
+  log(`  Last 7 days: ${report.recentSuccessfulUploads.lastSevenDays}`);
+  log('');
+  log('Approximate sources');
+  log(`  Source hashes: ${report.sources.uniqueSourceHashes}`);
+  log(`  Source fingerprint hashes: ${report.sources.uniqueFingerprintHashes}`);
+  log(`  Flagged sources: ${report.sources.flaggedSourceCount}`);
+  log(`  Distinct profileName values: ${report.profiles.distinctProfileNames}`);
+  log(`  Default profileName uploads: ${report.profiles.defaultProfileNameUploads}`);
+  log('');
+  log('Top sources');
   if (report.sources.top.length === 0) {
-    console.log('  No successful uploads found.');
+    log('  No successful uploads found.');
   } else {
     for (const source of report.sources.top) {
       const signals = source.signals.length > 0 ? ` [${source.signals.join(', ')}]` : '';
-      console.log(
+      log(
         `  ${source.source}: ${source.successfulUploads} total, ${source.lastHour}/1h, `
         + `${source.lastDay}/24h, ${source.fingerprintCount} fingerprints, `
         + `${source.profileNameCount} profiles, ${formatBytes(source.payloadBytes)}${signals}`,
       );
       if (options.includeProfileNames && source.profiles.length > 0) {
-        console.log(`    profileName: ${source.profiles.join(', ')}`);
+        log(`    profileName: ${source.profiles.join(', ')}`);
       }
     }
   }
-  console.log('');
-  console.log('Cross-source profileName patterns (excluding default names)');
+  log('');
+  log('Cross-source profileName patterns (excluding default names)');
   if (report.profiles.crossSourcePatterns.length === 0) {
-    console.log('  None.');
+    log('  None.');
   } else {
     for (const pattern of report.profiles.crossSourcePatterns) {
-      console.log(
+      log(
         `  ${pattern.profile}: ${pattern.sourceCount} sources, `
         + `${pattern.successfulUploads} successful uploads`,
       );
     }
   }
-  console.log('');
-  console.log('Data quality');
-  console.log(`  Invalid createdAt: ${report.dataQuality.invalidCreatedAt}`);
-  console.log(`  Missing sourceHash: ${report.dataQuality.missingSourceHash}`);
-  console.log(`  Missing sourceFingerprintHash: ${report.dataQuality.missingFingerprintHash}`);
-  console.log(`  Unknown appId: ${report.dataQuality.unknownAppId}`);
-  console.log('');
-  console.log('Note: this report only sees successful Firestore creations. Rejected App Check,');
-  console.log('rate-limit, validation, and other failed attempts require Cloud Logging/metrics.');
-  console.log('Source hashes, fingerprints, and profileName correlations are approximate signals,');
-  console.log('not user identities or proof of abuse.');
+  log('');
+  log('Data quality');
+  log(`  Invalid createdAt: ${report.dataQuality.invalidCreatedAt}`);
+  log(`  Missing sourceHash: ${report.dataQuality.missingSourceHash}`);
+  log(`  Missing sourceFingerprintHash: ${report.dataQuality.missingFingerprintHash}`);
+  log(`  Unknown appId: ${report.dataQuality.unknownAppId}`);
+  log('');
+  log('Note: this report only sees successful Firestore creations. Rejected App Check,');
+  log('rate-limit, validation, and other failed attempts require Cloud Logging/metrics.');
+  log('Source hashes, fingerprints, and profileName correlations are approximate signals,');
+  log('not user identities or proof of abuse.');
+}
+
+export function reportFilename(generatedAt) {
+  return generatedAt.replaceAll(':', '_');
+}
+
+export async function writeAuditReport(content, generatedAt, outputDirectory = defaultOutputDirectory) {
+  await mkdir(outputDirectory, { recursive: true });
+  const baseFilename = reportFilename(generatedAt);
+
+  for (let suffix = 0; ; suffix += 1) {
+    const filename = suffix === 0 ? baseFilename : `${baseFilename}-${suffix}`;
+    const filePath = join(outputDirectory, filename);
+    try {
+      await writeFile(filePath, content, { encoding: 'utf8', flag: 'wx' });
+      return filePath;
+    } catch (error) {
+      if (error?.code !== 'EEXIST') throw error;
+    }
+  }
 }
 
 async function main() {
@@ -204,16 +227,23 @@ async function main() {
     const auditData = await readAuditData(db);
     const analysis = analyzeAuditData(auditData);
     const report = createSafeReport(analysis, options);
+    let output;
 
     if (options.json) {
-      console.log(JSON.stringify({
+      output = JSON.stringify({
         projectId: options.projectId,
         databaseId: options.databaseId,
         ...report,
-      }, null, 2));
+      }, null, 2);
     } else {
-      printHumanReport(report, options);
+      const lines = [];
+      printHumanReport(report, options, (line) => lines.push(line));
+      output = lines.join('\n');
     }
+
+    const reportPath = await writeAuditReport(`${output}\n`, report.generatedAt);
+    console.log(output);
+    console.error(`Audit report written to ${reportPath}`);
   } catch (error) {
     console.error('Firestore audit failed.');
     console.error(error instanceof Error ? error.message : String(error));
