@@ -6,6 +6,10 @@ Boundary Notes is a private notebook for reflecting on BDSM boundaries, interest
 
 Visit [boundarynotes.com](https://boundarynotes.com)
 
+## Licensing and reuse
+
+**Planning to reuse or adapt this project?** Read [NOTICE.md](NOTICE.md) first. The [MIT license](LICENSE) covers source code only; artwork (including the rabbit and category images), the question bank, application copy, legal documents, and third-party materials are not automatically licensed under MIT.
+
 ## Overview
 
 Some feelings take time to name. Boundary Notes offers a quiet place to record your experiences, interests, boundaries, and notes around different BDSM interactions. There are no right answers here—only the space to understand yourself a little more clearly.
@@ -57,6 +61,10 @@ Boundary Notes is available in:
 Boundary Notes 是一本陪你整理 BDSM 界線、喜好，以及重要前提的私密筆記本。守密兔會安靜待在身旁，讓你依照自己的步調，把此刻真實的感受慢慢寫成能被理解的話。
 
 正式網站：[boundarynotes.com](https://boundarynotes.com)
+
+## 授權與二次製作
+
+**打算使用或改作本專案？** 請先閱讀 [NOTICE.md](NOTICE.md)。[MIT 授權](LICENSE) 僅涵蓋原始程式碼；守密兔與分類圖片等圖像、題庫、應用程式文案、法律文件及第三方素材，不會因此自動取得 MIT 授權。
 
 ## 專案簡介
 
