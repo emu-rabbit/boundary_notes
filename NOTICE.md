@@ -1,17 +1,33 @@
 # Licensing and Third-Party Notices
 
-## Project source code
+## Materials licensed under MIT
 
-Unless a file or directory states otherwise, the source code in this
-repository is licensed under the MIT License. See [`LICENSE`](LICENSE).
+The following Boundary Notes materials are licensed under the [MIT License](LICENSE):
 
-The MIT License covers the project source code only. It does not grant rights
-to reuse the Boundary Notes name, logos, trademarks, rabbit character, or
-other brand identity. It also does not automatically grant rights to reuse the
-question bank, application copy, legal documents, artwork, or other content;
-those remain subject to their applicable copyright and licensing terms.
+- The source code in this repository, unless an individual file or directory
+  states a different license.
+- The published question bank, including its selection and arrangement;
+  categories and detail items; identifiers, names, labels, titles,
+  descriptions, and warnings; Leading/Following variants; and published
+  translations. The question bank is currently maintained in
+  `src/features/question-bank/questionBank.ts`,
+  `src/features/question-bank/detailTitles.ts`, and
+  `src/features/question-bank/locales/`.
 
-Third-party materials remain under their own licenses, which are listed below.
+The term "Software" in `LICENSE` covers both materials listed above. The MIT
+License permits use, copying, reproduction, modification, publication,
+distribution, sublicensing, and sale of these materials, in whole or in part,
+including adaptations, subject to its copyright and license notice requirement.
+
+## Materials requiring separate permission
+
+The Boundary Notes name, logos, trademarks, rabbit character and other brand
+identity, category illustrations and other artwork, application copy outside
+the question bank, and legal documents require separate permission for reuse
+unless separately licensed. References to image filenames in the question bank
+do not license the images.
+
+Third-party materials are governed by their own licenses, listed below.
 
 ## jf open-huninn / jf open 粉圓
 

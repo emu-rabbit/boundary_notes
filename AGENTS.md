@@ -27,6 +27,7 @@ Repository 文件使用四種規則層級：
 
 | 任務類型 | 必讀文件 |
 | --- | --- |
+| 授權、素材再利用或第三方聲明 | `NOTICE.md` 與 `LICENSE` |
 | 任何程式碼、設定、測試或 code review | `.agents/skills/professional/development_standards.md` |
 | 產品方向、公開定位、功能規劃、語氣 | `.agents/mission/project_mission.md` |
 | UI、layout、CSS、responsive、文案、互動 | `.agents/skills/professional/ui_ux_standards.md`；涉及既有功能契約時再讀 `.agents/specs/product_experience.md` |

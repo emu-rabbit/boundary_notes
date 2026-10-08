@@ -8,7 +8,13 @@ Visit [boundarynotes.com](https://boundarynotes.com)
 
 ## Licensing and reuse
 
-**Planning to reuse or adapt this project?** Read [NOTICE.md](NOTICE.md) first. The [MIT license](LICENSE) covers source code only; artwork (including the rabbit and category images), the question bank, application copy, legal documents, and third-party materials are not automatically licensed under MIT.
+The [MIT License](LICENSE) covers the source code and published question bank,
+including its categories, items, warnings, and translations. It permits use,
+copying, modification, and redistribution under its notice requirement.
+Boundary Notes branding, rabbit and category images, other artwork, application
+copy outside the question bank, and legal documents require separate permission.
+Third-party materials follow their own licenses. See [NOTICE.md](NOTICE.md) for
+the full scope and third-party notices.
 
 ## Overview
 
@@ -64,7 +70,11 @@ Boundary Notes 是一本陪你整理 BDSM 界線、喜好，以及重要前提�
 
 ## 授權與二次製作
 
-**打算使用或改作本專案？** 請先閱讀 [NOTICE.md](NOTICE.md)。[MIT 授權](LICENSE) 僅涵蓋原始程式碼；守密兔與分類圖片等圖像、題庫、應用程式文案、法律文件及第三方素材，不會因此自動取得 MIT 授權。
+[MIT 授權](LICENSE)適用於原始程式碼與已發布的題庫，包括分類、細項、警示及翻譯。
+依 MIT 條款保留著作權與授權聲明後，即可使用、複製、再製、修改及散布這些內容。
+Boundary Notes 品牌、守密兔與分類圖片等圖像、其他美術素材、題庫以外的應用程式文案
+及法律文件須另行取得使用許可。第三方素材依各自授權使用。完整範圍與第三方聲明
+請見 [NOTICE.md](NOTICE.md)。
 
 ## 專案簡介
 

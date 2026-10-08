@@ -17,7 +17,8 @@
 3. `.agents/skills/domain/bdsm_consent_background.md`
 4. `.agents/skills/professional/technical_architecture.md`
 5. `.agents/specs/question_bank_and_secret_file_system.md`
-6. 本文件
+6. `NOTICE.md` 與 `LICENSE`，確認題庫內容與圖片的授權界線
+7. 本文件
 
 若涉及 UI 呈現、圖片或翻譯，也讀取：
 
