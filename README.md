@@ -16,6 +16,10 @@ copy outside the question bank, and legal documents require separate permission.
 Third-party materials follow their own licenses. See [NOTICE.md](NOTICE.md) for
 the full scope and third-party notices.
 
+Download the [standalone question bank](data/question-bank/README.md) as JSON,
+CSV, or TypeScript. Image licensing notices are also available in
+[`src/assets/`](src/assets/README.md) and [`public/`](public/README.md).
+
 ## Overview
 
 Some feelings take time to name. Boundary Notes offers a quiet place to record your experiences, interests, boundaries, and notes around different BDSM interactions. There are no right answers here—only the space to understand yourself a little more clearly.
@@ -75,6 +79,9 @@ Boundary Notes 是一本陪你整理 BDSM 界線、喜好，以及重要前提�
 Boundary Notes 品牌、守密兔與分類圖片等圖像、其他美術素材、題庫以外的應用程式文案
 及法律文件須另行取得使用許可。第三方素材依各自授權使用。完整範圍與第三方聲明
 請見 [NOTICE.md](NOTICE.md)。
+
+題庫另提供可獨立使用的 [JSON、CSV 與 TypeScript 版本](data/question-bank/README.md)。
+圖像素材目錄亦有就近的授權提示：[網站插圖](src/assets/README.md)、[圖示與 SEO 圖片](public/README.md)。
 
 ## 專案簡介
 

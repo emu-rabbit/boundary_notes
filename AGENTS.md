@@ -34,6 +34,7 @@ Repository 文件使用四種規則層級：
 | 架構、Firebase、Firestore、GA、資料或部署 | `.agents/skills/professional/technical_architecture.md`；需要目前實作位置或狀態時再讀 `.agents/skills/professional/current_system_state.md` |
 | BDSM、知情同意、limits、safeword、高風險或敏感文案 | `.agents/skills/domain/bdsm_consent_background.md` |
 | 題庫、回答 JSON、本地秘密檔案、Firestore 分享資料 | `.agents/specs/question_bank_and_secret_file_system.md` |
+| 題庫的 JSON／CSV／TypeScript 對外匯出 | `data/question-bank/README.md` |
 | 從 Google Sheet 更新題庫 | `.agents/workflows/update-question-bank-from-google-sheet.md` |
 | 主角兔子圖片、prompt、brief 或審圖 | `.agents/skills/visual/main_rabbit_image_generation.md` 與 `.agents/assets/characters/main_rabbit_role.png` |
 | 可委派的守密兔繪圖工作 | `.agents/subagents/secret-rabbit-artist.toml` |

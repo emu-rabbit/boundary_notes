@@ -1,0 +1,4857 @@
+{
+  "exportSchemaVersion": 1,
+  "locale": "en",
+  "license": "MIT",
+  "bankVersion": "2026-07-22",
+  "schemaVersion": 1,
+  "source": {
+    "fileId": "1shrEavMkoumIpe07vL3DXp0uj7tcHzqgPV6qzU6jvAE",
+    "kind": "google-sheet",
+    "modifiedTime": "2026-07-11T06:14:45.603Z",
+    "title": "BDSM boundary test items"
+  },
+  "categories": [
+    {
+      "categoryId": "impact_spanking",
+      "detailItems": [
+        {
+          "detailId": "detail-impact_spanking-1qzzr10",
+          "roles": {
+            "active": {
+              "description": "Use your hand to spank the other person",
+              "title": "By hand"
+            },
+            "passive": {
+              "description": "Be spanked by the other person’s hand",
+              "title": "By hand"
+            }
+          },
+          "sourceLabel": "By hand",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-gwssxu",
+          "roles": {
+            "active": {
+              "description": "Use a leather paddle to spank the other person",
+              "title": "With a leather paddle"
+            },
+            "passive": {
+              "description": "Be spanked with a leather paddle",
+              "title": "With a leather paddle"
+            }
+          },
+          "sourceLabel": "With a leather paddle",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-1uy95nk",
+          "roles": {
+            "active": {
+              "description": "Use a wooden paddle to spank the other person",
+              "title": "With a wooden paddle"
+            },
+            "passive": {
+              "description": "Be spanked with a wooden paddle",
+              "title": "With a wooden paddle"
+            }
+          },
+          "sourceLabel": "With a wooden paddle",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-i4vf80",
+          "roles": {
+            "active": {
+              "description": "Use a wooden stick to strike the other person",
+              "title": "With a wooden stick"
+            },
+            "passive": {
+              "description": "Be struck with a wooden stick",
+              "title": "With a wooden stick"
+            }
+          },
+          "sourceLabel": "With a wooden stick",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-i4t2fc",
+          "roles": {
+            "active": {
+              "description": "Use a hard plastic or acrylic implement to strike the other person",
+              "title": "With hard plastic or acrylic"
+            },
+            "passive": {
+              "description": "Be struck with a hard plastic or acrylic implement",
+              "title": "With hard plastic or acrylic"
+            }
+          },
+          "sourceLabel": "With hard plastic or acrylic",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-1uxz7gx",
+          "roles": {
+            "active": {
+              "description": "Use a soft plastic implement to strike the other person",
+              "title": "With soft plastic"
+            },
+            "passive": {
+              "description": "Be struck with a soft plastic implement",
+              "title": "With soft plastic"
+            }
+          },
+          "sourceLabel": "With soft plastic",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-1lmlugr",
+          "roles": {
+            "active": {
+              "description": "Use a hot-glue stick to strike the other person",
+              "title": "With a hot-glue stick"
+            },
+            "passive": {
+              "description": "Be struck with a hot-glue stick",
+              "title": "With a hot-glue stick"
+            }
+          },
+          "sourceLabel": "With a hot-glue stick",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-1bcfzjw",
+          "roles": {
+            "active": {
+              "description": "Use a cane to strike the other person",
+              "title": "With a cane"
+            },
+            "passive": {
+              "description": "Be caned by the other person",
+              "title": "With a cane"
+            }
+          },
+          "sourceLabel": "With a cane",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-14bm3qs",
+          "roles": {
+            "active": {
+              "description": "Use a comb to spank the other person",
+              "title": "With a comb"
+            },
+            "passive": {
+              "description": "Be spanked with a comb",
+              "title": "With a comb"
+            }
+          },
+          "sourceLabel": "With a comb",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-1i2vvrm",
+          "roles": {
+            "active": {
+              "description": "Spank the other person until their skin becomes red",
+              "title": "Until the skin is red"
+            },
+            "passive": {
+              "description": "Be spanked until your skin becomes red",
+              "title": "Until the skin is red"
+            }
+          },
+          "sourceLabel": "Until the skin is red",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-t3fgz5",
+          "roles": {
+            "active": {
+              "description": "Spank the other person until light bruising appears",
+              "title": "Until there is light bruising"
+            },
+            "passive": {
+              "description": "Be spanked until light bruising appears",
+              "title": "Until there is light bruising"
+            }
+          },
+          "sourceLabel": "Until there is light bruising",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-1ijb2cv",
+          "roles": {
+            "active": {
+              "description": "Spank the other person until extensive, severe bruising appears",
+              "title": "Until there is extensive, severe bruising"
+            },
+            "passive": {
+              "description": "Be spanked until extensive, severe bruising appears",
+              "title": "Until there is extensive, severe bruising"
+            }
+          },
+          "sourceLabel": "Until there is extensive, severe bruising",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-19dbc6o",
+          "roles": {
+            "active": {
+              "description": "Spank the other person until the skin breaks and releases wound fluid",
+              "title": "Until the skin breaks and weeps"
+            },
+            "passive": {
+              "description": "Be spanked until the skin breaks and releases wound fluid",
+              "title": "Until the skin breaks and weeps"
+            }
+          },
+          "sourceLabel": "Until the skin breaks and weeps",
+          "warning": "Pay attention to wound care and follow-up treatment"
+        },
+        {
+          "detailId": "detail-impact_spanking-1q2onnn",
+          "roles": {
+            "active": {
+              "description": "Spank the other person until the skin breaks and bleeds",
+              "title": "Until the skin breaks and bleeds"
+            },
+            "passive": {
+              "description": "Be spanked until the skin breaks and bleeds",
+              "title": "Until the skin breaks and bleeds"
+            }
+          },
+          "sourceLabel": "Until the skin breaks and bleeds",
+          "warning": "Pay attention to wound care and follow-up treatment"
+        },
+        {
+          "detailId": "detail-impact_spanking-1744x4z",
+          "roles": {
+            "active": {
+              "description": "Spank the other person’s buttocks",
+              "title": "Spank the buttocks"
+            },
+            "passive": {
+              "description": "Have your buttocks spanked",
+              "title": "Spank the buttocks"
+            }
+          },
+          "sourceLabel": "Spank the buttocks",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-915jo9",
+          "roles": {
+            "active": {
+              "description": "Slap the other person’s chest",
+              "title": "Slap the chest"
+            },
+            "passive": {
+              "description": "Have your chest slapped",
+              "title": "Slap the chest"
+            }
+          },
+          "sourceLabel": "Slap the chest",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-9ncnsk",
+          "roles": {
+            "active": {
+              "description": "Slap the other person’s genitals",
+              "title": "Slap the genitals"
+            },
+            "passive": {
+              "description": "Have your genitals slapped",
+              "title": "Slap the genitals"
+            }
+          },
+          "sourceLabel": "Slap the genitals",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-syc2dj",
+          "roles": {
+            "active": {
+              "description": "Slap the other person’s thighs",
+              "title": "Slap the thighs"
+            },
+            "passive": {
+              "description": "Have your thighs slapped",
+              "title": "Slap the thighs"
+            }
+          },
+          "sourceLabel": "Slap the thighs",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-1lby5ih",
+          "roles": {
+            "active": {
+              "description": "Slap the soles of the other person’s feet",
+              "title": "Slap the soles"
+            },
+            "passive": {
+              "description": "Have the soles of your feet slapped",
+              "title": "Slap the soles"
+            }
+          },
+          "sourceLabel": "Slap the soles",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-18swthz",
+          "roles": {
+            "active": {
+              "description": "Slap the other person’s palms",
+              "title": "Slap the palms"
+            },
+            "passive": {
+              "description": "Have your palms slapped",
+              "title": "Slap the palms"
+            }
+          },
+          "sourceLabel": "Slap the palms",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-1pli4vm",
+          "roles": {
+            "active": {
+              "description": "Have the other person lie across your lap to be spanked",
+              "title": "Over-the-knee spanking"
+            },
+            "passive": {
+              "description": "Lie across the other person’s lap and be spanked",
+              "title": "Over-the-knee spanking"
+            }
+          },
+          "sourceLabel": "Over-the-knee spanking",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-m08x3j",
+          "roles": {
+            "active": {
+              "description": "Place the other person in a diapering position and spank them",
+              "title": "Spanking in a diapering position"
+            },
+            "passive": {
+              "description": "Be placed in a diapering position and spanked",
+              "title": "Spanking in a diapering position"
+            }
+          },
+          "sourceLabel": "Spanking in a diapering position",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-yjl4cm",
+          "roles": {
+            "active": {
+              "description": "Have the other person stand while you spank them",
+              "title": "Standing spanking"
+            },
+            "passive": {
+              "description": "Stand while the other person spanks you",
+              "title": "Standing spanking"
+            }
+          },
+          "sourceLabel": "Standing spanking",
+          "warning": null
+        },
+        {
+          "detailId": "detail-impact_spanking-cnf6uz",
+          "roles": {
+            "active": {
+              "description": "Have the other person stand on tiptoe while you spank them",
+              "title": "Spanking on tiptoe"
+            },
+            "passive": {
+              "description": "Stand on tiptoe while the other person spanks you",
+              "title": "Spanking on tiptoe"
+            }
+          },
+          "sourceLabel": "Spanking on tiptoe",
+          "warning": null
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 24,
+      "name": "Spanking",
+      "roles": {
+        "active": {
+          "description": "Spank or paddle the other person, including on the buttocks"
+        },
+        "passive": {
+          "description": "Receive spanking or paddling, including on the buttocks"
+        }
+      },
+      "sourceSheetName": "拍打類項目"
+    },
+    {
+      "categoryId": "whipping",
+      "detailItems": [
+        {
+          "detailId": "detail-whipping-9q3jnv",
+          "roles": {
+            "active": {
+              "description": "Flog the other person",
+              "title": "With a flogger"
+            },
+            "passive": {
+              "description": "Be flogged",
+              "title": "With a flogger"
+            }
+          },
+          "sourceLabel": "With a flogger",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-1w83a3j",
+          "roles": {
+            "active": {
+              "description": "Whip the other person with a long whip",
+              "title": "With a long whip"
+            },
+            "passive": {
+              "description": "Be struck with a long whip",
+              "title": "With a long whip"
+            }
+          },
+          "sourceLabel": "With a long whip",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-d25qdd",
+          "roles": {
+            "active": {
+              "description": "Whip the other person with a bullwhip",
+              "title": "With a bullwhip"
+            },
+            "passive": {
+              "description": "Be struck with a bullwhip",
+              "title": "With a bullwhip"
+            }
+          },
+          "sourceLabel": "With a bullwhip",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-pt4u3j",
+          "roles": {
+            "active": {
+              "description": "Strike the other person with a belt",
+              "title": "With a belt"
+            },
+            "passive": {
+              "description": "Be struck with a belt",
+              "title": "With a belt"
+            }
+          },
+          "sourceLabel": "With a belt",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-2nwvqy",
+          "roles": {
+            "active": {
+              "description": "Whip the other person until their skin becomes red",
+              "title": "Until the skin is red"
+            },
+            "passive": {
+              "description": "Be whipped until your skin becomes red",
+              "title": "Until the skin is red"
+            }
+          },
+          "sourceLabel": "Until the skin is red",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-sw4wfd",
+          "roles": {
+            "active": {
+              "description": "Whip the other person until light bruising appears",
+              "title": "Until there is light bruising"
+            },
+            "passive": {
+              "description": "Be whipped until light bruising appears",
+              "title": "Until there is light bruising"
+            }
+          },
+          "sourceLabel": "Until there is light bruising",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-hekt6v",
+          "roles": {
+            "active": {
+              "description": "Whip the other person until extensive, severe bruising appears",
+              "title": "Until there is extensive, severe bruising"
+            },
+            "passive": {
+              "description": "Be whipped until extensive, severe bruising appears",
+              "title": "Until there is extensive, severe bruising"
+            }
+          },
+          "sourceLabel": "Until there is extensive, severe bruising",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-k3sn5k",
+          "roles": {
+            "active": {
+              "description": "Whip the other person until the skin breaks and releases wound fluid",
+              "title": "Until the skin breaks and weeps"
+            },
+            "passive": {
+              "description": "Be whipped until the skin breaks and releases wound fluid",
+              "title": "Until the skin breaks and weeps"
+            }
+          },
+          "sourceLabel": "Until the skin breaks and weeps",
+          "warning": "Pay attention to wound care and follow-up treatment"
+        },
+        {
+          "detailId": "detail-whipping-1oyyq0b",
+          "roles": {
+            "active": {
+              "description": "Whip the other person until the skin breaks and bleeds",
+              "title": "Until the skin breaks and bleeds"
+            },
+            "passive": {
+              "description": "Be whipped until the skin breaks and bleeds",
+              "title": "Until the skin breaks and bleeds"
+            }
+          },
+          "sourceLabel": "Until the skin breaks and bleeds",
+          "warning": "Pay attention to wound care and follow-up treatment"
+        },
+        {
+          "detailId": "detail-whipping-15c25xn",
+          "roles": {
+            "active": {
+              "description": "Whip the other person’s buttocks",
+              "title": "Whip the buttocks"
+            },
+            "passive": {
+              "description": "Have your buttocks whipped",
+              "title": "Whip the buttocks"
+            }
+          },
+          "sourceLabel": "Whip the buttocks",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-1f72zmt",
+          "roles": {
+            "active": {
+              "description": "Whip the other person’s back",
+              "title": "Whip the back"
+            },
+            "passive": {
+              "description": "Have your back whipped",
+              "title": "Whip the back"
+            }
+          },
+          "sourceLabel": "Whip the back",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-1lvzphd",
+          "roles": {
+            "active": {
+              "description": "Whip the other person’s chest",
+              "title": "Whip the chest"
+            },
+            "passive": {
+              "description": "Have your chest whipped",
+              "title": "Whip the chest"
+            }
+          },
+          "sourceLabel": "Whip the chest",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-1kkr5xo",
+          "roles": {
+            "active": {
+              "description": "Whip the other person’s genitals",
+              "title": "Whip the genitals"
+            },
+            "passive": {
+              "description": "Have your genitals whipped",
+              "title": "Whip the genitals"
+            }
+          },
+          "sourceLabel": "Whip the genitals",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-pby8ov",
+          "roles": {
+            "active": {
+              "description": "Whip the other person’s thighs",
+              "title": "Whip the thighs"
+            },
+            "passive": {
+              "description": "Have your thighs whipped",
+              "title": "Whip the thighs"
+            }
+          },
+          "sourceLabel": "Whip the thighs",
+          "warning": null
+        },
+        {
+          "detailId": "detail-whipping-1bop80o",
+          "roles": {
+            "active": {
+              "description": "Whip the other person’s abdomen",
+              "title": "Whip the abdomen"
+            },
+            "passive": {
+              "description": "Have your abdomen whipped",
+              "title": "Whip the abdomen"
+            }
+          },
+          "sourceLabel": "Whip the abdomen",
+          "warning": null
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 15,
+      "name": "Whipping",
+      "roles": {
+        "active": {
+          "description": "Use a whip on the other person"
+        },
+        "passive": {
+          "description": "Receive whipping"
+        }
+      },
+      "sourceSheetName": "鞭打類項目"
+    },
+    {
+      "categoryId": "bondage",
+      "detailItems": [
+        {
+          "detailId": "detail-bondage-122x6cf",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person and limit their movement with jute rope",
+              "title": "With jute rope"
+            },
+            "passive": {
+              "description": "Be restrained and have your movement limited with jute rope",
+              "title": "With jute rope"
+            }
+          },
+          "sourceLabel": "With jute rope",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-1tiowlt",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person and limit their movement with cotton rope",
+              "title": "With cotton rope"
+            },
+            "passive": {
+              "description": "Be restrained and have your movement limited with cotton rope",
+              "title": "With cotton rope"
+            }
+          },
+          "sourceLabel": "With cotton rope",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-3cl427",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person and limit their movement with belts",
+              "title": "With belts"
+            },
+            "passive": {
+              "description": "Be restrained and have your movement limited with belts",
+              "title": "With belts"
+            }
+          },
+          "sourceLabel": "With belts",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-1fq32i8",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person and limit their movement with handcuffs",
+              "title": "With handcuffs"
+            },
+            "passive": {
+              "description": "Be restrained and have your movement limited with handcuffs",
+              "title": "With handcuffs"
+            }
+          },
+          "sourceLabel": "With handcuffs",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-1b5wnt",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person and limit their movement with chains",
+              "title": "With chains"
+            },
+            "passive": {
+              "description": "Be restrained and have your movement limited with chains",
+              "title": "With chains"
+            }
+          },
+          "sourceLabel": "With chains",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-1atcv41",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person and limit their movement with cloth or fabric strips",
+              "title": "With cloth or fabric strips"
+            },
+            "passive": {
+              "description": "Be restrained and have your movement limited with cloth or fabric strips",
+              "title": "With cloth or fabric strips"
+            }
+          },
+          "sourceLabel": "With cloth or fabric strips",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-1pcf9zg",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person and limit their movement with self-fusing tape",
+              "title": "With self-fusing tape"
+            },
+            "passive": {
+              "description": "Be restrained and have your movement limited with self-fusing tape",
+              "title": "With self-fusing tape"
+            }
+          },
+          "sourceLabel": "With self-fusing tape",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-1eqwak3",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person and limit their movement with large bondage furniture",
+              "title": "With large bondage furniture"
+            },
+            "passive": {
+              "description": "Be restrained and have your movement limited with large bondage furniture",
+              "title": "With large bondage furniture"
+            }
+          },
+          "sourceLabel": "With large bondage furniture",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-14lh93b",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person and limit their movement with small bondage equipment",
+              "title": "With small bondage equipment"
+            },
+            "passive": {
+              "description": "Be restrained and have your movement limited with small bondage equipment",
+              "title": "With small bondage equipment"
+            }
+          },
+          "sourceLabel": "With small bondage equipment",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-9mjx48",
+          "roles": {
+            "active": {
+              "description": "Use your body to hold the other person down and limit their movement",
+              "title": "With physical restraint"
+            },
+            "passive": {
+              "description": "Be held down by the other person and have your movement limited",
+              "title": "With physical restraint"
+            }
+          },
+          "sourceLabel": "With physical restraint",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-1b013pq",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person for up to about ten minutes",
+              "title": "For up to about ten minutes"
+            },
+            "passive": {
+              "description": "Be restrained for up to about ten minutes",
+              "title": "For up to about ten minutes"
+            }
+          },
+          "sourceLabel": "For up to about ten minutes",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-spf6ae",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person for about ten minutes to one hour",
+              "title": "For about ten minutes to one hour"
+            },
+            "passive": {
+              "description": "Be restrained for about ten minutes to one hour",
+              "title": "For about ten minutes to one hour"
+            }
+          },
+          "sourceLabel": "For about ten minutes to one hour",
+          "warning": "Watch for numbness, soreness, and changes in circulation"
+        },
+        {
+          "detailId": "detail-bondage-m6v84b",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person for about one to three hours",
+              "title": "For about one to three hours"
+            },
+            "passive": {
+              "description": "Be restrained for about one to three hours",
+              "title": "For about one to three hours"
+            }
+          },
+          "sourceLabel": "For about one to three hours",
+          "warning": "Watch for prolonged pressure from posture, circulation, hydration, and rest needs"
+        },
+        {
+          "detailId": "detail-bondage-1ey2gp4",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person for more than three hours",
+              "title": "For more than three hours"
+            },
+            "passive": {
+              "description": "Be restrained for more than three hours",
+              "title": "For more than three hours"
+            }
+          },
+          "sourceLabel": "For more than three hours",
+          "warning": "Watch for circulation problems, nerve compression, and physical or psychological strain from prolonged restraint"
+        },
+        {
+          "detailId": "detail-bondage-mueg5n",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person’s hands and limit their movement",
+              "title": "Restrain the hands"
+            },
+            "passive": {
+              "description": "Have your hands restrained and your movement limited",
+              "title": "Restrain the hands"
+            }
+          },
+          "sourceLabel": "Restrain the hands",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-o3hqfj",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person’s legs and limit their movement",
+              "title": "Restrain the legs"
+            },
+            "passive": {
+              "description": "Have your legs restrained and your movement limited",
+              "title": "Restrain the legs"
+            }
+          },
+          "sourceLabel": "Restrain the legs",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-1vyd9h5",
+          "roles": {
+            "active": {
+              "description": "Restrain the other person’s whole body and limit their movement",
+              "title": "Restrain the whole body"
+            },
+            "passive": {
+              "description": "Have your whole body restrained and your movement limited",
+              "title": "Restrain the whole body"
+            }
+          },
+          "sourceLabel": "Restrain the whole body",
+          "warning": null
+        },
+        {
+          "detailId": "detail-bondage-gyoc0q",
+          "roles": {
+            "active": {
+              "description": "Suspend and restrain the other person, limiting their movement",
+              "title": "Suspension bondage"
+            },
+            "passive": {
+              "description": "Be suspended and restrained, with your movement limited",
+              "title": "Suspension bondage"
+            }
+          },
+          "sourceLabel": "Suspension bondage",
+          "warning": "Suspension carries serious risks and requires experience, monitoring, and an emergency release method"
+        },
+        {
+          "detailId": "detail-bondage-bagc3e",
+          "roles": {
+            "active": {
+              "description": "Wrap the other person in a mummified position and limit their movement",
+              "title": "Mummification bondage"
+            },
+            "passive": {
+              "description": "Be wrapped in a mummified position and have your movement limited",
+              "title": "Mummification bondage"
+            }
+          },
+          "sourceLabel": "Mummification bondage",
+          "warning": "Watch breathing, heat dissipation, circulation, and panic responses"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 19,
+      "name": "Bondage",
+      "roles": {
+        "active": {
+          "description": "Restrain the other person and limit their movement with rope or other equipment"
+        },
+        "passive": {
+          "description": "Be restrained and have your movement limited with rope or other equipment"
+        }
+      },
+      "sourceSheetName": "束縛類項目"
+    },
+    {
+      "categoryId": "tickling",
+      "detailItems": [
+        {
+          "detailId": "detail-tickling-hvz7o9",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person with your hands",
+              "title": "With hands"
+            },
+            "passive": {
+              "description": "Be tickled by the other person’s hands",
+              "title": "With hands"
+            }
+          },
+          "sourceLabel": "With hands",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-axmdvn",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person with a comb",
+              "title": "With a comb"
+            },
+            "passive": {
+              "description": "Be tickled with a comb",
+              "title": "With a comb"
+            }
+          },
+          "sourceLabel": "With a comb",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-10fu930",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person with a feather",
+              "title": "With a feather"
+            },
+            "passive": {
+              "description": "Be tickled with a feather",
+              "title": "With a feather"
+            }
+          },
+          "sourceLabel": "With a feather",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-1hi631w",
+          "roles": {
+            "active": {
+              "description": "Tickle or stimulate the other person with a pinwheel",
+              "title": "With a pinwheel"
+            },
+            "passive": {
+              "description": "Be tickled or stimulated with a pinwheel",
+              "title": "With a pinwheel"
+            }
+          },
+          "sourceLabel": "With a pinwheel",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-1a2ptfb",
+          "roles": {
+            "active": {
+              "description": "Tickle or stimulate the other person with a vibrating toy",
+              "title": "With a vibrating toy"
+            },
+            "passive": {
+              "description": "Be tickled or stimulated with a vibrating toy",
+              "title": "With a vibrating toy"
+            }
+          },
+          "sourceLabel": "With a vibrating toy",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-1uurnpt",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person lightly",
+              "title": "Light tickling"
+            },
+            "passive": {
+              "description": "Be tickled lightly by the other person",
+              "title": "Light tickling"
+            }
+          },
+          "sourceLabel": "Light tickling",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-dhntqh",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person more intensely",
+              "title": "Intense tickling"
+            },
+            "passive": {
+              "description": "Be tickled more intensely by the other person",
+              "title": "Intense tickling"
+            }
+          },
+          "sourceLabel": "Intense tickling",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-j94l9q",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person while they are restrained",
+              "title": "Tickling while restrained"
+            },
+            "passive": {
+              "description": "Be tickled by the other person while restrained",
+              "title": "Tickling while restrained"
+            }
+          },
+          "sourceLabel": "Tickling while restrained",
+          "warning": "Watch for panic responses, breathing difficulty, and distress from being unable to move away"
+        },
+        {
+          "detailId": "detail-tickling-1krfcvz",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person while they are naked",
+              "title": "Tickling while naked"
+            },
+            "passive": {
+              "description": "Be tickled while naked",
+              "title": "Tickling while naked"
+            }
+          },
+          "sourceLabel": "Tickling while naked",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-1nouw8a",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person while they are wearing only underwear",
+              "title": "Tickling in underwear"
+            },
+            "passive": {
+              "description": "Be tickled while wearing only underwear",
+              "title": "Tickling in underwear"
+            }
+          },
+          "sourceLabel": "Tickling in underwear",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-uttpwj",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person through their clothing",
+              "title": "Tickling through clothing"
+            },
+            "passive": {
+              "description": "Be tickled through your clothing",
+              "title": "Tickling through clothing"
+            }
+          },
+          "sourceLabel": "Tickling through clothing",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-ni7x64",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person’s neck",
+              "title": "Tickle the neck"
+            },
+            "passive": {
+              "description": "Have your neck tickled",
+              "title": "Tickle the neck"
+            }
+          },
+          "sourceLabel": "Tickle the neck",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-11gglre",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person’s ears",
+              "title": "Tickle the ears"
+            },
+            "passive": {
+              "description": "Have your ears tickled",
+              "title": "Tickle the ears"
+            }
+          },
+          "sourceLabel": "Tickle the ears",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-ayd8dk",
+          "roles": {
+            "active": {
+              "description": "Tickle the other person’s armpits",
+              "title": "Tickle the armpits"
+            },
+            "passive": {
+              "description": "Have your armpits tickled",
+              "title": "Tickle the armpits"
+            }
+          },
+          "sourceLabel": "Tickle the armpits",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-s5eumi",
+          "roles": {
+            "active": {
+              "description": "Tickle the soles of the other person’s feet",
+              "title": "Tickle the soles"
+            },
+            "passive": {
+              "description": "Have the soles of your feet tickled",
+              "title": "Tickle the soles"
+            }
+          },
+          "sourceLabel": "Tickle the soles",
+          "warning": null
+        },
+        {
+          "detailId": "detail-tickling-cypicd",
+          "roles": {
+            "active": {
+              "description": "Tickle the spaces between the other person’s ribs",
+              "title": "Tickle between the ribs"
+            },
+            "passive": {
+              "description": "Be tickled between the ribs",
+              "title": "Tickle between the ribs"
+            }
+          },
+          "sourceLabel": "Tickle between the ribs",
+          "warning": null
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 16,
+      "name": "Tickling",
+      "roles": {
+        "active": {
+          "description": "Tickle the other person with hands or other items"
+        },
+        "passive": {
+          "description": "Be tickled with hands or other items"
+        }
+      },
+      "sourceSheetName": "搔癢類項目"
+    },
+    {
+      "categoryId": "pain_stimulation",
+      "detailItems": [
+        {
+          "detailId": "detail-pain_stimulation-3jsgcf",
+          "roles": {
+            "active": {
+              "description": "Use nipple clamps lightly on the other person’s nipples or breasts",
+              "title": "Light nipple clamps"
+            },
+            "passive": {
+              "description": "Have nipple clamps applied lightly to your nipples or breasts",
+              "title": "Light nipple clamps"
+            }
+          },
+          "sourceLabel": "Light nipple clamps",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pain_stimulation-qux8jb",
+          "roles": {
+            "active": {
+              "description": "Use nipple clamps firmly on the other person’s nipples or breasts",
+              "title": "Heavy nipple clamps"
+            },
+            "passive": {
+              "description": "Have nipple clamps applied firmly to your nipples or breasts",
+              "title": "Heavy nipple clamps"
+            }
+          },
+          "sourceLabel": "Heavy nipple clamps",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pain_stimulation-6cy0m2",
+          "roles": {
+            "active": {
+              "description": "Add weight or pulling force to the other person’s nipple clamps",
+              "title": "Weighted nipple clamps"
+            },
+            "passive": {
+              "description": "Have weight or pulling force applied through nipple clamps",
+              "title": "Weighted nipple clamps"
+            }
+          },
+          "sourceLabel": "Weighted nipple clamps",
+          "warning": "Watch for tearing, restricted circulation, and excessive pulling"
+        },
+        {
+          "detailId": "detail-pain_stimulation-9h5col",
+          "roles": {
+            "active": {
+              "description": "Squeeze, pull, or stimulate the other person’s breasts by hand to cause pain",
+              "title": "Painful breast stimulation by hand"
+            },
+            "passive": {
+              "description": "Have your breasts squeezed, pulled, or stimulated by hand to cause pain",
+              "title": "Painful breast stimulation by hand"
+            }
+          },
+          "sourceLabel": "Painful breast stimulation by hand",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pain_stimulation-fg5ey3",
+          "roles": {
+            "active": {
+              "description": "Give the other person mild electrical stimulation",
+              "title": "Mild electrical stimulation"
+            },
+            "passive": {
+              "description": "Receive mild electrical stimulation",
+              "title": "Mild electrical stimulation"
+            }
+          },
+          "sourceLabel": "Mild electrical stimulation",
+          "warning": "Avoid the area around the heart and the head and neck; do not use with health conditions that make it unsuitable"
+        },
+        {
+          "detailId": "detail-pain_stimulation-rqbs5g",
+          "roles": {
+            "active": {
+              "description": "Give the other person stronger electrical stimulation",
+              "title": "Stronger electrical stimulation"
+            },
+            "passive": {
+              "description": "Receive stronger electrical stimulation",
+              "title": "Stronger electrical stimulation"
+            }
+          },
+          "sourceLabel": "Stronger electrical stimulation",
+          "warning": "Watch for cardiac risks, muscle contractions, burns, and physical distress"
+        },
+        {
+          "detailId": "detail-pain_stimulation-mjdyqb",
+          "roles": {
+            "active": {
+              "description": "Apply electrical stimulation to the other person’s genitals",
+              "title": "Electrical stimulation of the genitals"
+            },
+            "passive": {
+              "description": "Receive electrical stimulation on the genitals",
+              "title": "Electrical stimulation of the genitals"
+            }
+          },
+          "sourceLabel": "Electrical stimulation of the genitals",
+          "warning": "Watch for genital injury, burns, numbness, and physical distress"
+        },
+        {
+          "detailId": "detail-pain_stimulation-565m1l",
+          "roles": {
+            "active": {
+              "description": "Apply ginger stimulation around the other person’s genitals",
+              "title": "Ginger play around the genitals"
+            },
+            "passive": {
+              "description": "Receive ginger stimulation around the genitals",
+              "title": "Ginger play around the genitals"
+            }
+          },
+          "sourceLabel": "Ginger play around the genitals",
+          "warning": "Watch for skin and mucous-membrane irritation, burning sensations, and allergic reactions"
+        },
+        {
+          "detailId": "detail-pain_stimulation-10b0fb5",
+          "roles": {
+            "active": {
+              "description": "Apply ginger internally to the other person’s genitals",
+              "title": "Internal genital ginger play"
+            },
+            "passive": {
+              "description": "Receive internal genital stimulation with ginger",
+              "title": "Internal genital ginger play"
+            }
+          },
+          "sourceLabel": "Internal genital ginger play",
+          "warning": "Watch for mucous-membrane injury, infection, burning sensations, and physical distress"
+        },
+        {
+          "detailId": "detail-pain_stimulation-145kjnj",
+          "roles": {
+            "active": {
+              "description": "Apply ginger stimulation around the other person’s anus",
+              "title": "Ginger play around the anus"
+            },
+            "passive": {
+              "description": "Receive ginger stimulation around the anus",
+              "title": "Ginger play around the anus"
+            }
+          },
+          "sourceLabel": "Ginger play around the anus",
+          "warning": "Watch for skin and mucous-membrane irritation, burning sensations, and allergic reactions"
+        },
+        {
+          "detailId": "detail-pain_stimulation-10kh2bt",
+          "roles": {
+            "active": {
+              "description": "Apply ginger internally to the other person’s anus",
+              "title": "Internal anal ginger play"
+            },
+            "passive": {
+              "description": "Receive internal anal stimulation with ginger",
+              "title": "Internal anal ginger play"
+            }
+          },
+          "sourceLabel": "Internal anal ginger play",
+          "warning": "Watch for mucous-membrane injury, infection, burning sensations, and physical distress"
+        },
+        {
+          "detailId": "detail-pain_stimulation-369ag3",
+          "roles": {
+            "active": {
+              "description": "Drip low-temperature wax onto the other person’s body for stimulation",
+              "title": "Wax play on the body"
+            },
+            "passive": {
+              "description": "Have low-temperature wax dripped onto your body for heat or painful stimulation",
+              "title": "Wax play on the body"
+            }
+          },
+          "sourceLabel": "Wax play on the body",
+          "warning": "Watch for burns, skin sensitivity, and wax temperature"
+        },
+        {
+          "detailId": "detail-pain_stimulation-8lrs4c",
+          "roles": {
+            "active": {
+              "description": "Drip low-temperature wax onto the other person’s chest for stimulation",
+              "title": "Wax play on the chest"
+            },
+            "passive": {
+              "description": "Have low-temperature wax dripped onto your chest for stimulation",
+              "title": "Wax play on the chest"
+            }
+          },
+          "sourceLabel": "Wax play on the chest",
+          "warning": "Watch for burns, skin sensitivity, and excessive stimulation around the nipples"
+        },
+        {
+          "detailId": "detail-pain_stimulation-j8e4pr",
+          "roles": {
+            "active": {
+              "description": "Drip low-temperature wax onto the other person’s genitals for stimulation",
+              "title": "Wax play on the genitals"
+            },
+            "passive": {
+              "description": "Have low-temperature wax dripped onto your genitals for stimulation",
+              "title": "Wax play on the genitals"
+            }
+          },
+          "sourceLabel": "Wax play on the genitals",
+          "warning": "Watch for burns to mucous membranes, skin sensitivity, and infection risk"
+        },
+        {
+          "detailId": "detail-pain_stimulation-1jrzewy",
+          "roles": {
+            "active": {
+              "description": "Bite the other person lightly to cause painful stimulation",
+              "title": "Light biting"
+            },
+            "passive": {
+              "description": "Be bitten lightly by the other person for painful stimulation",
+              "title": "Being lightly bitten"
+            }
+          },
+          "sourceLabel": "Light biting",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pain_stimulation-j9milm",
+          "roles": {
+            "active": {
+              "description": "Bite the other person hard to cause painful stimulation",
+              "title": "Intense biting"
+            },
+            "passive": {
+              "description": "Be bitten hard by the other person for painful stimulation",
+              "title": "Being intensely bitten"
+            }
+          },
+          "sourceLabel": "Hard biting",
+          "warning": "Watch for broken skin, infection risk, and wound care"
+        },
+        {
+          "detailId": "detail-pain_stimulation-yllz3q",
+          "roles": {
+            "active": {
+              "description": "Pull the other person’s hair to cause painful stimulation",
+              "title": "Hair pulling"
+            },
+            "passive": {
+              "description": "Have your hair pulled by the other person for painful stimulation",
+              "title": "Hair pulling"
+            }
+          },
+          "sourceLabel": "Hair pulling",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pain_stimulation-151bev7",
+          "roles": {
+            "active": {
+              "description": "Apply clamps to the other person’s labia or clitoris",
+              "title": "Labia or clitoral clamps"
+            },
+            "passive": {
+              "description": "Have clamps applied to your labia or clitoris",
+              "title": "Labia or clitoral clamps"
+            }
+          },
+          "sourceLabel": "Labia or clitoral clamps",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pain_stimulation-fdi4gl",
+          "roles": {
+            "active": {
+              "description": "Use ice to give the other person cold stimulation",
+              "title": "Ice stimulation"
+            },
+            "passive": {
+              "description": "Receive cold stimulation with ice from the other person",
+              "title": "Ice stimulation"
+            }
+          },
+          "sourceLabel": "Ice stimulation",
+          "warning": "Watch for frostbite, numbness, body temperature, and skin discomfort"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 19,
+      "name": "Pain stimulation",
+      "roles": {
+        "active": {
+          "description": "Give painful stimulation such as nipple clamps, wax, or electrical stimulation"
+        },
+        "passive": {
+          "description": "Receive painful stimulation such as nipple clamps, wax, or electrical stimulation"
+        }
+      },
+      "sourceSheetName": "疼痛刺激類項目"
+    },
+    {
+      "categoryId": "humiliation",
+      "detailItems": [
+        {
+          "detailId": "detail-humiliation-ngy4jt",
+          "roles": {
+            "active": {
+              "description": "Slap the other person’s face as humiliation or discipline",
+              "title": "Slapping the face"
+            },
+            "passive": {
+              "description": "Be slapped in the face as humiliation or discipline",
+              "title": "Slapping the face"
+            }
+          },
+          "sourceLabel": "Slapping the face",
+          "warning": "Watch for injury to the face, ears, teeth, and neck"
+        },
+        {
+          "detailId": "detail-humiliation-pn03",
+          "roles": {
+            "active": {
+              "description": "Demean, mock, or humiliate the other person with words",
+              "title": "Verbal humiliation"
+            },
+            "passive": {
+              "description": "Be demeaned, mocked, or humiliated by the other person’s words",
+              "title": "Verbal humiliation"
+            }
+          },
+          "sourceLabel": "Verbal humiliation",
+          "warning": null
+        },
+        {
+          "detailId": "detail-humiliation-18rp5a3",
+          "roles": {
+            "active": {
+              "description": "Require the other person to urinate in bed to evoke humiliation",
+              "title": "Requiring bed-wetting"
+            },
+            "passive": {
+              "description": "Be required to urinate in bed to evoke humiliation",
+              "title": "Requiring bed-wetting"
+            }
+          },
+          "sourceLabel": "Requiring bed-wetting",
+          "warning": null
+        },
+        {
+          "detailId": "detail-humiliation-1podlwa",
+          "roles": {
+            "active": {
+              "description": "Require the other person to look in a mirror to evoke humiliation",
+              "title": "Requiring someone to look in a mirror"
+            },
+            "passive": {
+              "description": "Be required to look in a mirror to evoke humiliation",
+              "title": "Requiring someone to look in a mirror"
+            }
+          },
+          "sourceLabel": "Requiring someone to look in a mirror",
+          "warning": null
+        },
+        {
+          "detailId": "detail-humiliation-1amvb9e",
+          "roles": {
+            "active": {
+              "description": "Write humiliating words on the other person’s body",
+              "title": "Writing humiliating words on the body"
+            },
+            "passive": {
+              "description": "Have humiliating words written on your body",
+              "title": "Writing humiliating words on the body"
+            }
+          },
+          "sourceLabel": "Writing humiliating words on the body",
+          "warning": null
+        },
+        {
+          "detailId": "detail-humiliation-1vz66lf",
+          "roles": {
+            "active": {
+              "description": "Shave the other person’s hair to evoke humiliation",
+              "title": "Shaving the head"
+            },
+            "passive": {
+              "description": "Have your hair shaved to evoke humiliation",
+              "title": "Shaving the head"
+            }
+          },
+          "sourceLabel": "Shaving the head",
+          "warning": null
+        },
+        {
+          "detailId": "detail-humiliation-1w3livx",
+          "roles": {
+            "active": {
+              "description": "Require the other person to dress in a particular way as part of a humiliation scene",
+              "title": "Cross-dressing or costuming"
+            },
+            "passive": {
+              "description": "Be required to dress in a particular way as part of a humiliation scene",
+              "title": "Cross-dressing or costuming"
+            }
+          },
+          "sourceLabel": "Cross-dressing or costuming",
+          "warning": null
+        },
+        {
+          "detailId": "detail-humiliation-1h3yf1m",
+          "roles": {
+            "active": {
+              "description": "Humiliate the other person in a private place",
+              "title": "Humiliation in private"
+            },
+            "passive": {
+              "description": "Be humiliated by the other person in a private place",
+              "title": "Humiliation in private"
+            }
+          },
+          "sourceLabel": "Humiliation in private",
+          "warning": null
+        },
+        {
+          "detailId": "detail-humiliation-ri5nyc",
+          "roles": {
+            "active": {
+              "description": "Humiliate the other person in public or where others may see",
+              "title": "Public humiliation"
+            },
+            "passive": {
+              "description": "Be humiliated in public or where others may see",
+              "title": "Public humiliation"
+            }
+          },
+          "sourceLabel": "Public humiliation",
+          "warning": "Consider privacy, the scope of consent, social consequences, and irreversible effects"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 9,
+      "name": "Humiliation",
+      "roles": {
+        "active": {
+          "description": "Use words or actions to demean the other person or evoke humiliation"
+        },
+        "passive": {
+          "description": "Be demeaned through words or actions, or experience humiliation"
+        }
+      },
+      "sourceSheetName": "羞辱類項目"
+    },
+    {
+      "categoryId": "service",
+      "detailItems": [
+        {
+          "detailId": "detail-service-7v0tu6",
+          "roles": {
+            "active": {
+              "description": "Have the other person massage the soles of your feet",
+              "title": "Foot massage"
+            },
+            "passive": {
+              "description": "Massage the soles of the other person’s feet",
+              "title": "Foot massage"
+            }
+          },
+          "sourceLabel": "Foot massage",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-1rvnr6f",
+          "roles": {
+            "active": {
+              "description": "Have the other person give you a full-body massage",
+              "title": "Full-body massage"
+            },
+            "passive": {
+              "description": "Give the other person a full-body massage",
+              "title": "Full-body massage"
+            }
+          },
+          "sourceLabel": "Full-body massage",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-1cqhir7",
+          "roles": {
+            "active": {
+              "description": "Have the other person prepare a meal for you",
+              "title": "Preparing meals"
+            },
+            "passive": {
+              "description": "Prepare a meal for the other person",
+              "title": "Preparing meals"
+            }
+          },
+          "sourceLabel": "Preparing meals",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-5cfc80",
+          "roles": {
+            "active": {
+              "description": "Have the other person pour tea or prepare a drink for you",
+              "title": "Serving tea or drinks"
+            },
+            "passive": {
+              "description": "Pour tea or prepare a drink for the other person",
+              "title": "Serving tea or drinks"
+            }
+          },
+          "sourceLabel": "Serving tea or drinks",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-177yx3t",
+          "roles": {
+            "active": {
+              "description": "Have the other person carry your luggage or bags",
+              "title": "Carrying luggage or bags"
+            },
+            "passive": {
+              "description": "Carry the other person’s luggage or bags",
+              "title": "Carrying luggage or bags"
+            }
+          },
+          "sourceLabel": "Carrying luggage or bags",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-16nyopw",
+          "roles": {
+            "active": {
+              "description": "Have the other person clean your toys or equipment",
+              "title": "Cleaning toys or equipment"
+            },
+            "passive": {
+              "description": "Clean the other person’s toys or equipment",
+              "title": "Cleaning toys or equipment"
+            }
+          },
+          "sourceLabel": "Cleaning toys or equipment",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-176k705",
+          "roles": {
+            "active": {
+              "description": "Have the other person do housework for you",
+              "title": "Housework"
+            },
+            "passive": {
+              "description": "Do housework for the other person",
+              "title": "Housework"
+            }
+          },
+          "sourceLabel": "Housework",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-b75ksu",
+          "roles": {
+            "active": {
+              "description": "Have the other person bathe you or help clean your body",
+              "title": "Bathing service"
+            },
+            "passive": {
+              "description": "Bathe the other person or help clean their body",
+              "title": "Bathing service"
+            }
+          },
+          "sourceLabel": "Bathing service",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-z1q598",
+          "roles": {
+            "active": {
+              "description": "Have the other person trim, care for, or decorate your nails",
+              "title": "Nail care"
+            },
+            "passive": {
+              "description": "Trim, care for, or decorate the other person’s nails",
+              "title": "Nail care"
+            }
+          },
+          "sourceLabel": "Nail care",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-1nx0nqc",
+          "roles": {
+            "active": {
+              "description": "Have the other person drive you to and from a destination",
+              "title": "Receiving a ride"
+            },
+            "passive": {
+              "description": "Drive the other person to and from a destination",
+              "title": "Giving a ride"
+            }
+          },
+          "sourceLabel": "Providing transportation",
+          "warning": null
+        },
+        {
+          "detailId": "detail-service-15yxo0r",
+          "roles": {
+            "active": {
+              "description": "Receive service from the other person through sexual activity or interaction",
+              "title": "Receiving sexual service"
+            },
+            "passive": {
+              "description": "Serve the other person through sexual activity or interaction",
+              "title": "Providing sexual service"
+            }
+          },
+          "sourceLabel": "Sexual service",
+          "warning": null
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 11,
+      "name": "Service",
+      "roles": {
+        "active": {
+          "description": "Receive services that meet your everyday needs or desires"
+        },
+        "passive": {
+          "description": "Provide services that meet the other person’s everyday needs or desires"
+        }
+      },
+      "sourceSheetName": "服侍類項目"
+    },
+    {
+      "categoryId": "discipline",
+      "detailItems": [
+        {
+          "detailId": "detail-discipline-11uedoh",
+          "roles": {
+            "active": {
+              "description": "Require the other person to keep a journal for records or reflection",
+              "title": "Ask for a journal entry"
+            },
+            "passive": {
+              "description": "Be required to keep a journal for records or reflection",
+              "title": "Write a journal entry"
+            }
+          },
+          "sourceLabel": "Keeping a journal",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-11sxnh8",
+          "roles": {
+            "active": {
+              "description": "Require the other person to write a reflection for feedback or processing",
+              "title": "Ask for a reflection"
+            },
+            "passive": {
+              "description": "Be required to write a reflection for feedback or processing",
+              "title": "Write a reflection"
+            }
+          },
+          "sourceLabel": "Writing a reflection on a scene",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-1g2g00r",
+          "roles": {
+            "active": {
+              "description": "Require the other person to practice or hold a specified posture",
+              "title": "Posture training"
+            },
+            "passive": {
+              "description": "Be required to practice or hold a specified posture",
+              "title": "Posture training"
+            }
+          },
+          "sourceLabel": "Posture training",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-qp6v84",
+          "roles": {
+            "active": {
+              "description": "Require the other person to adjust diet or habits with weight gain as a goal",
+              "title": "Weight gain"
+            },
+            "passive": {
+              "description": "Be required to adjust diet or habits with weight gain as a goal",
+              "title": "Weight gain"
+            }
+          },
+          "sourceLabel": "Weight gain",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-nqdxf9",
+          "roles": {
+            "active": {
+              "description": "Require the other person to adjust diet or habits with weight loss as a goal",
+              "title": "Weight loss"
+            },
+            "passive": {
+              "description": "Be required to adjust diet or habits with weight loss as a goal",
+              "title": "Weight loss"
+            }
+          },
+          "sourceLabel": "Weight loss",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-18zxvtr",
+          "roles": {
+            "active": {
+              "description": "Set rules or restrictions for what and how the other person eats",
+              "title": "Dietary control"
+            },
+            "passive": {
+              "description": "Have what and how you eat regulated or restricted by the other person",
+              "title": "Dietary control"
+            }
+          },
+          "sourceLabel": "Dietary control",
+          "warning": "Watch for inadequate nutrition, health conditions, and boundaries around control"
+        },
+        {
+          "detailId": "detail-discipline-vrrge7",
+          "roles": {
+            "active": {
+              "description": "Require the other person to undergo a body inspection or show their physical condition",
+              "title": "Body inspection"
+            },
+            "passive": {
+              "description": "Be required to undergo a body inspection or show your physical condition",
+              "title": "Body inspection"
+            }
+          },
+          "sourceLabel": "Body inspection",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-mrnfh0",
+          "roles": {
+            "active": {
+              "description": "Assign a task for the other person to complete",
+              "title": "Assign a task"
+            },
+            "passive": {
+              "description": "Accept and complete a task assigned by the other person",
+              "title": "Complete an assigned task"
+            }
+          },
+          "sourceLabel": "Completing assigned tasks",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-1h3vvc3",
+          "roles": {
+            "active": {
+              "description": "Reprimand or correct the other person for behavior considered improper",
+              "title": "Correct behaviour"
+            },
+            "passive": {
+              "description": "Be reprimanded or corrected for behavior considered improper",
+              "title": "Receive correction"
+            }
+          },
+          "sourceLabel": "Correction for improper behavior",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-7ki0ex",
+          "roles": {
+            "active": {
+              "description": "Specify knowledge, skills, or material for the other person to learn",
+              "title": "Assign a learning topic"
+            },
+            "passive": {
+              "description": "Be assigned specific knowledge, skills, or material to learn",
+              "title": "Study an assigned topic"
+            }
+          },
+          "sourceLabel": "Assigned learning",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-1686v9k",
+          "roles": {
+            "active": {
+              "description": "Set rules for the other person’s wording, forms of address, or way of speaking",
+              "title": "Rules for speech"
+            },
+            "passive": {
+              "description": "Have your wording, forms of address, or way of speaking regulated by the other person",
+              "title": "Rules for speech"
+            }
+          },
+          "sourceLabel": "Rules for speech",
+          "warning": null
+        },
+        {
+          "detailId": "detail-discipline-s0l9h0",
+          "roles": {
+            "active": {
+              "description": "Create a specific ritual and require the other person to perform it",
+              "title": "Set a ritual"
+            },
+            "passive": {
+              "description": "Be required to perform a specific ritual created by the other person",
+              "title": "Carry out a ritual"
+            }
+          },
+          "sourceLabel": "Creating or performing rituals",
+          "warning": null
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 12,
+      "name": "Discipline",
+      "roles": {
+        "active": {
+          "description": "Set limits or rules focused on training and reaching a goal"
+        },
+        "passive": {
+          "description": "Accept limits or rules focused on training, improvement, or reaching a goal"
+        }
+      },
+      "sourceSheetName": "管教類項目"
+    },
+    {
+      "categoryId": "sexual_interaction",
+      "detailItems": [
+        {
+          "detailId": "detail-sexual_interaction-ln7hc7",
+          "roles": {
+            "active": {
+              "description": "Take the leading role during intercourse",
+              "title": "Intercourse"
+            },
+            "passive": {
+              "description": "Take the following role during intercourse",
+              "title": "Intercourse"
+            }
+          },
+          "sourceLabel": "Intercourse",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-1aef53n",
+          "roles": {
+            "active": {
+              "description": "Take the leading role during oral sex",
+              "title": "Oral sex"
+            },
+            "passive": {
+              "description": "Take the following role during oral sex",
+              "title": "Oral sex"
+            }
+          },
+          "sourceLabel": "Oral sex",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-1ytloln",
+          "roles": {
+            "active": {
+              "description": "Take the leading role during anal sex",
+              "title": "Anal sex"
+            },
+            "passive": {
+              "description": "Take the following role during anal sex",
+              "title": "Anal sex"
+            }
+          },
+          "sourceLabel": "Anal sex",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-wc6vs3",
+          "roles": {
+            "active": {
+              "description": "Take the leading role during breast intercourse",
+              "title": "Breast intercourse"
+            },
+            "passive": {
+              "description": "Take the following role during breast intercourse",
+              "title": "Breast intercourse"
+            }
+          },
+          "sourceLabel": "Breast intercourse",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-1k4ddkr",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in manual genital stimulation",
+              "title": "Manual genital stimulation"
+            },
+            "passive": {
+              "description": "Take the following role in manual genital stimulation",
+              "title": "Manual genital stimulation"
+            }
+          },
+          "sourceLabel": "Manual genital stimulation",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-1g5pujn",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in fisting",
+              "title": "Fisting"
+            },
+            "passive": {
+              "description": "Take the following role in fisting",
+              "title": "Fisting"
+            }
+          },
+          "sourceLabel": "Fisting",
+          "warning": "Watch for tearing, bleeding, infection risk, and physical distress"
+        },
+        {
+          "detailId": "detail-sexual_interaction-filrqn",
+          "roles": {
+            "active": {
+              "description": "Ejaculate in the other person’s mouth",
+              "title": "Ejaculate in their mouth"
+            },
+            "passive": {
+              "description": "Have the other person ejaculate in your mouth",
+              "title": "Receive ejaculation in the mouth"
+            }
+          },
+          "sourceLabel": "Ejaculation in the mouth",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-1rt5tu9",
+          "roles": {
+            "active": {
+              "description": "Ejaculate on the other person’s face",
+              "title": "Ejaculate on their face"
+            },
+            "passive": {
+              "description": "Have the other person ejaculate on your face",
+              "title": "Receive ejaculation on the face"
+            }
+          },
+          "sourceLabel": "Ejaculation on the face",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-1ue4af6",
+          "roles": {
+            "active": {
+              "description": "Ejaculate on the other person’s chest",
+              "title": "Ejaculate on their chest"
+            },
+            "passive": {
+              "description": "Have the other person ejaculate on your chest",
+              "title": "Receive ejaculation on the chest"
+            }
+          },
+          "sourceLabel": "Ejaculation on the chest",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-tvmpfz",
+          "roles": {
+            "active": {
+              "description": "Ejaculate inside the other person’s vagina",
+              "title": "Ejaculate in their vagina"
+            },
+            "passive": {
+              "description": "Have the other person ejaculate inside your vagina",
+              "title": "Receive ejaculation in the vagina"
+            }
+          },
+          "sourceLabel": "Ejaculation in the vagina",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-dsyi29",
+          "roles": {
+            "active": {
+              "description": "Ejaculate inside or around the other person’s anus",
+              "title": "Ejaculate at their anus"
+            },
+            "passive": {
+              "description": "Have the other person ejaculate inside or around your anus",
+              "title": "Receive ejaculation at the anus"
+            }
+          },
+          "sourceLabel": "Ejaculation in or around the anus",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-29csl5",
+          "roles": {
+            "active": {
+              "description": "Ejaculate on the other person’s hair",
+              "title": "Ejaculate on their hair"
+            },
+            "passive": {
+              "description": "Have the other person ejaculate on your hair",
+              "title": "Receive ejaculation on the hair"
+            }
+          },
+          "sourceLabel": "Ejaculation on the hair",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-qk9oti",
+          "roles": {
+            "active": {
+              "description": "Ask the other person to swallow semen",
+              "title": "Ask them to swallow semen"
+            },
+            "passive": {
+              "description": "Swallow the other person’s semen",
+              "title": "Swallow semen"
+            }
+          },
+          "sourceLabel": "Swallowing semen",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-ik3j9u",
+          "roles": {
+            "active": {
+              "description": "Have the other person eat food containing semen",
+              "title": "Ask them to eat food with semen"
+            },
+            "passive": {
+              "description": "Eat food containing semen",
+              "title": "Eat food with semen"
+            }
+          },
+          "sourceLabel": "Eating food containing semen",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-jfpa5h",
+          "roles": {
+            "active": {
+              "description": "Stimulate or guide the other person to squirt",
+              "title": "Encourage squirting"
+            },
+            "passive": {
+              "description": "Be guided or stimulated by the other person until you squirt",
+              "title": "Squirting"
+            }
+          },
+          "sourceLabel": "Squirting",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-8jcyoj",
+          "roles": {
+            "active": {
+              "description": "Continue stimulating the other person until one or multiple orgasms",
+              "title": "Bring them to orgasm"
+            },
+            "passive": {
+              "description": "Be continuously stimulated by the other person until one or multiple orgasms",
+              "title": "Be stimulated to orgasm"
+            }
+          },
+          "sourceLabel": "Forced orgasm",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-w99mgx",
+          "roles": {
+            "active": {
+              "description": "Ask the other person to masturbate for you to see",
+              "title": "Ask for a masturbation display"
+            },
+            "passive": {
+              "description": "Be asked to masturbate for the other person to see",
+              "title": "Show masturbation"
+            }
+          },
+          "sourceLabel": "Masturbation display",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-1sl20mr",
+          "roles": {
+            "active": {
+              "description": "Stimulate the other person with a sex toy",
+              "title": "Stimulate them with a sex toy"
+            },
+            "passive": {
+              "description": "Be stimulated by the other person with a sex toy",
+              "title": "Receive sex-toy stimulation"
+            }
+          },
+          "sourceLabel": "Using sex toys",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-1xo6keo",
+          "roles": {
+            "active": {
+              "description": "Use urethral sounds with the other person",
+              "title": "Use urethral sounding on them"
+            },
+            "passive": {
+              "description": "Receive urethral sounding from the other person",
+              "title": "Receive urethral sounding"
+            }
+          },
+          "sourceLabel": "Urethral sounding",
+          "warning": null
+        },
+        {
+          "detailId": "detail-sexual_interaction-6pp140",
+          "roles": {
+            "active": {
+              "description": "Take and control the other person’s remote vibrator",
+              "title": "Control the vibrator"
+            },
+            "passive": {
+              "description": "Hand control of your remote vibrator to the other person",
+              "title": "Hand over vibrator control"
+            }
+          },
+          "sourceLabel": "Handing over control of a remote vibrator",
+          "warning": "Consider the setting, intensity, physical discomfort, and a way to stop"
+        },
+        {
+          "detailId": "detail-sexual_interaction-flhbf2",
+          "roles": {
+            "active": {
+              "description": "Require the other person to wear a remote vibrator in public",
+              "title": "Ask for a public vibrator"
+            },
+            "passive": {
+              "description": "Wear a remote vibrator in public under the other person’s control or direction",
+              "title": "Wear a vibrator in public"
+            }
+          },
+          "sourceLabel": "Wearing a remote vibrator in public",
+          "warning": "Consider privacy, exposure of identity, boundaries in public, and a way to stop"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 21,
+      "name": "Sexual activity",
+      "roles": {
+        "active": {
+          "description": "Activities involving sexual organs"
+        },
+        "passive": {
+          "description": "Activities involving sexual organs"
+        }
+      },
+      "sourceSheetName": "性愛類項目"
+    },
+    {
+      "categoryId": "anal_interaction",
+      "detailItems": [
+        {
+          "detailId": "detail-anal_interaction-1oupd9i",
+          "roles": {
+            "active": {
+              "description": "Insert an anal plug under 3 cm in diameter into the other person",
+              "title": "Anal plug under 3 cm in diameter"
+            },
+            "passive": {
+              "description": "Have an anal plug under 3 cm in diameter inserted",
+              "title": "Anal plug under 3 cm in diameter"
+            }
+          },
+          "sourceLabel": "Anal plug under 3 cm in diameter",
+          "warning": null
+        },
+        {
+          "detailId": "detail-anal_interaction-1m59dfi",
+          "roles": {
+            "active": {
+              "description": "Insert an anal plug 3–5 cm in diameter into the other person",
+              "title": "Anal plug 3–5 cm in diameter"
+            },
+            "passive": {
+              "description": "Have an anal plug 3–5 cm in diameter inserted",
+              "title": "Anal plug 3–5 cm in diameter"
+            }
+          },
+          "sourceLabel": "Anal plug 3–5 cm in diameter",
+          "warning": "Watch lubrication, tearing, adaptation to size, and physical discomfort"
+        },
+        {
+          "detailId": "detail-anal_interaction-b8y6xr",
+          "roles": {
+            "active": {
+              "description": "Insert an anal plug over 5 cm in diameter into the other person",
+              "title": "Anal plug over 5 cm in diameter"
+            },
+            "passive": {
+              "description": "Have an anal plug over 5 cm in diameter inserted",
+              "title": "Anal plug over 5 cm in diameter"
+            }
+          },
+          "sourceLabel": "Anal plug over 5 cm in diameter",
+          "warning": "Watch for tearing, bleeding, sphincter injury, and physical discomfort"
+        },
+        {
+          "detailId": "detail-anal_interaction-1sgm90w",
+          "roles": {
+            "active": {
+              "description": "Stimulate the other person’s anus with an anal whip",
+              "title": "Anal whip"
+            },
+            "passive": {
+              "description": "Have your anus stimulated with an anal whip",
+              "title": "Anal whip"
+            }
+          },
+          "sourceLabel": "Anal whip",
+          "warning": null
+        },
+        {
+          "detailId": "detail-anal_interaction-4g0x9i",
+          "roles": {
+            "active": {
+              "description": "Stimulate the other person’s anus with anal beads",
+              "title": "Anal beads"
+            },
+            "passive": {
+              "description": "Have your anus stimulated with anal beads",
+              "title": "Anal beads"
+            }
+          },
+          "sourceLabel": "Anal beads",
+          "warning": null
+        },
+        {
+          "detailId": "detail-anal_interaction-ilmux2",
+          "roles": {
+            "active": {
+              "description": "Guide the other person through anal stretching practice",
+              "title": "Anal stretching practice"
+            },
+            "passive": {
+              "description": "Be guided through anal stretching practice by the other person",
+              "title": "Anal stretching practice"
+            }
+          },
+          "sourceLabel": "Anal stretching practice",
+          "warning": "Proceed gradually and watch lubrication, tearing, and physical discomfort"
+        },
+        {
+          "detailId": "detail-anal_interaction-n69t3o",
+          "roles": {
+            "active": {
+              "description": "Use an anal dilator to stretch the other person’s anus",
+              "title": "Anal dilator"
+            },
+            "passive": {
+              "description": "Have your anus stretched with an anal dilator",
+              "title": "Anal dilator"
+            }
+          },
+          "sourceLabel": "Anal dilator",
+          "warning": "Watch the size, lubrication, tearing, and bleeding"
+        },
+        {
+          "detailId": "detail-anal_interaction-v6v9dp",
+          "roles": {
+            "active": {
+              "description": "Use an anal speculum to open or observe the other person’s anus",
+              "title": "Anal speculum"
+            },
+            "passive": {
+              "description": "Have your anus opened or observed with an anal speculum",
+              "title": "Anal speculum"
+            }
+          },
+          "sourceLabel": "Anal speculum",
+          "warning": null
+        },
+        {
+          "detailId": "detail-anal_interaction-12ghyy9",
+          "roles": {
+            "active": {
+              "description": "Give the other person an enema",
+              "title": "Give an enema"
+            },
+            "passive": {
+              "description": "Receive an enema from the other person",
+              "title": "Receive an enema"
+            }
+          },
+          "sourceLabel": "Enema",
+          "warning": null
+        },
+        {
+          "detailId": "detail-anal_interaction-gwnjaf",
+          "roles": {
+            "active": {
+              "description": "Receive anilingus from the other person",
+              "title": "Receive anal oral service"
+            },
+            "passive": {
+              "description": "Provide anilingus to the other person",
+              "title": "Provide anal oral service"
+            }
+          },
+          "sourceLabel": "Anilingus",
+          "warning": null
+        },
+        {
+          "detailId": "detail-anal_interaction-1wf7u60",
+          "roles": {
+            "active": {
+              "description": "Require the other person to wear an anal plug for up to one hour",
+              "title": "Wearing an anal plug for up to one hour"
+            },
+            "passive": {
+              "description": "Wear an anal plug for up to one hour",
+              "title": "Wearing an anal plug for up to one hour"
+            }
+          },
+          "sourceLabel": "Wearing an anal plug for up to one hour",
+          "warning": null
+        },
+        {
+          "detailId": "detail-anal_interaction-19jmdrg",
+          "roles": {
+            "active": {
+              "description": "Require the other person to wear an anal plug for one to three hours",
+              "title": "Wearing an anal plug for one to three hours"
+            },
+            "passive": {
+              "description": "Wear an anal plug for one to three hours",
+              "title": "Wearing an anal plug for one to three hours"
+            }
+          },
+          "sourceLabel": "Wearing an anal plug for one to three hours",
+          "warning": "Watch for prolonged pressure, insufficient lubrication, and physical discomfort"
+        },
+        {
+          "detailId": "detail-anal_interaction-ww1hfr",
+          "roles": {
+            "active": {
+              "description": "Require the other person to wear an anal plug for more than three hours",
+              "title": "Wearing an anal plug for more than three hours"
+            },
+            "passive": {
+              "description": "Wear an anal plug for more than three hours",
+              "title": "Wearing an anal plug for more than three hours"
+            }
+          },
+          "sourceLabel": "Wearing an anal plug for more than three hours",
+          "warning": "Watch for prolonged pressure, mucous-membrane irritation, difficulty removing it, and physical discomfort"
+        },
+        {
+          "detailId": "detail-anal_interaction-npcnih",
+          "roles": {
+            "active": {
+              "description": "Require the other person to wear an anal plug while sleeping",
+              "title": "Wearing an anal plug while sleeping"
+            },
+            "passive": {
+              "description": "Wear an anal plug while sleeping",
+              "title": "Wearing an anal plug while sleeping"
+            }
+          },
+          "sourceLabel": "Wearing an anal plug while sleeping",
+          "warning": "Watch for prolonged pressure, discomfort during sleep, and difficulty with emergency removal"
+        },
+        {
+          "detailId": "detail-anal_interaction-1c35d5h",
+          "roles": {
+            "active": {
+              "description": "Require the other person to wear an anal plug in public",
+              "title": "Wearing an anal plug in public"
+            },
+            "passive": {
+              "description": "Wear an anal plug in public",
+              "title": "Wearing an anal plug in public"
+            }
+          },
+          "sourceLabel": "Wearing an anal plug in public",
+          "warning": "Consider privacy, exposure of identity, physical discomfort, and a way to remove it"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 15,
+      "name": "Anal play",
+      "roles": {
+        "active": {
+          "description": "Activities involving the anus"
+        },
+        "passive": {
+          "description": "Activities involving the anus"
+        }
+      },
+      "sourceSheetName": "肛門類項目"
+    },
+    {
+      "categoryId": "multi_party_interaction",
+      "detailItems": [
+        {
+          "detailId": "detail-multi_party_interaction-jy04v5",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in a relationship with one dominant and multiple slaves or pets",
+              "title": "One dominant with multiple slaves or pets"
+            },
+            "passive": {
+              "description": "Take a slave or pet role in a relationship with one dominant and multiple slaves or pets",
+              "title": "One dominant with multiple slaves or pets"
+            }
+          },
+          "sourceLabel": "One dominant with multiple slaves or pets",
+          "warning": null
+        },
+        {
+          "detailId": "detail-multi_party_interaction-1retpvp",
+          "roles": {
+            "active": {
+              "description": "Take one of the leading roles in a relationship with multiple dominants and one slave or pet",
+              "title": "Multiple dominants with one slave or pet"
+            },
+            "passive": {
+              "description": "Take the slave or pet role in a relationship with multiple dominants and one slave or pet",
+              "title": "Multiple dominants with one slave or pet"
+            }
+          },
+          "sourceLabel": "Multiple dominants with one slave or pet",
+          "warning": null
+        },
+        {
+          "detailId": "detail-multi_party_interaction-14o4ip9",
+          "roles": {
+            "active": {
+              "description": "Swap partners and interact or have sexual contact with someone else",
+              "title": "Partner swapping"
+            },
+            "passive": {
+              "description": "Interact or have sexual contact with someone else in a partner-swapping situation",
+              "title": "Partner swapping"
+            }
+          },
+          "sourceLabel": "Partner swapping",
+          "warning": null
+        },
+        {
+          "detailId": "detail-multi_party_interaction-rrbnk5",
+          "roles": {
+            "active": {
+              "description": "Arrange or guide the other person through a cuckold scenario",
+              "title": "Cuckold play"
+            },
+            "passive": {
+              "description": "Be placed in, watch, or participate in a cuckold scenario",
+              "title": "Cuckold play"
+            }
+          },
+          "sourceLabel": "Cuckold play",
+          "warning": null
+        },
+        {
+          "detailId": "detail-multi_party_interaction-2wnhye",
+          "roles": {
+            "active": {
+              "description": "Participate in or arrange sexual interaction involving multiple people",
+              "title": "Group sex"
+            },
+            "passive": {
+              "description": "Participate in sexual interaction involving multiple people",
+              "title": "Group sex"
+            }
+          },
+          "sourceLabel": "Group sex",
+          "warning": "Consider every participant’s consent, STI risk, contraception, and boundary management"
+        },
+        {
+          "detailId": "detail-multi_party_interaction-1rwzxqq",
+          "roles": {
+            "active": {
+              "description": "Arrange a gang-rape scenario involving multiple people with the other person’s informed consent",
+              "title": "Consensual gang-rape scenario"
+            },
+            "passive": {
+              "description": "Receive a gang-rape scenario involving multiple people with informed consent",
+              "title": "Consensual gang-rape scenario"
+            }
+          },
+          "sourceLabel": "Consensual gang-rape scenario",
+          "warning": "Ensure explicit consent, a way to stop, physical safety, and awareness of trauma triggers"
+        },
+        {
+          "detailId": "detail-multi_party_interaction-1p23a5n",
+          "roles": {
+            "active": {
+              "description": "Temporarily entrust the other person to interact with a third person",
+              "title": "Place them with a third person short term"
+            },
+            "passive": {
+              "description": "Be temporarily entrusted to interact with a third person",
+              "title": "Be placed with a third person short term"
+            }
+          },
+          "sourceLabel": "Short-term sharing or handover to a third person",
+          "warning": null
+        },
+        {
+          "detailId": "detail-multi_party_interaction-18qgi5",
+          "roles": {
+            "active": {
+              "description": "Entrust the other person to interact with a third person over a longer period",
+              "title": "Place them with a third person long term"
+            },
+            "passive": {
+              "description": "Be entrusted to interact with a third person over a longer period",
+              "title": "Be placed with a third person long term"
+            }
+          },
+          "sourceLabel": "Long-term sharing or handover to a third person",
+          "warning": "Consider relationship responsibilities, effects on daily life, renewed consent, and a way to leave"
+        },
+        {
+          "detailId": "detail-multi_party_interaction-8rm4og",
+          "roles": {
+            "active": {
+              "description": "Entrust the other person to interact with a third person in specific situations",
+              "title": "Place them with a third person conditionally"
+            },
+            "passive": {
+              "description": "Be entrusted to interact with a third person in specific situations",
+              "title": "Be placed with a third person conditionally"
+            }
+          },
+          "sourceLabel": "Sharing or handover to a third person in specific situations",
+          "warning": null
+        },
+        {
+          "detailId": "detail-multi_party_interaction-rxs1rf",
+          "roles": {
+            "active": {
+              "description": "Arrange or participate in a group-dating situation",
+              "title": "Group dating"
+            },
+            "passive": {
+              "description": "Participate in a group-dating situation",
+              "title": "Group dating"
+            }
+          },
+          "sourceLabel": "Group dating",
+          "warning": null
+        },
+        {
+          "detailId": "detail-multi_party_interaction-1ovw0ci",
+          "roles": {
+            "active": {
+              "description": "Arrange or participate in a multi-person training or play scene",
+              "title": "Multi-person play"
+            },
+            "passive": {
+              "description": "Participate in a multi-person training or play scene",
+              "title": "Multi-person play"
+            }
+          },
+          "sourceLabel": "Multi-person play",
+          "warning": null
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 11,
+      "name": "Multi-person interactions",
+      "roles": {
+        "active": {
+          "description": "Activities involving multiple people or a third person outside the relationship"
+        },
+        "passive": {
+          "description": "Activities involving multiple people or a third person outside the relationship"
+        }
+      },
+      "sourceSheetName": "多方互動類項目"
+    },
+    {
+      "categoryId": "enslavement",
+      "detailItems": [
+        {
+          "detailId": "detail-enslavement-bei8uo",
+          "roles": {
+            "active": {
+              "description": "Have the other person take a sex-slave role in a consensual scene",
+              "title": "Sex-slave role"
+            },
+            "passive": {
+              "description": "Take a sex-slave role in a consensual scene",
+              "title": "Sex-slave role"
+            }
+          },
+          "sourceLabel": "Sex-slave role",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-1lnxc6o",
+          "roles": {
+            "active": {
+              "description": "Have the other person take a domestic-slave role in a consensual scene",
+              "title": "Domestic-slave role"
+            },
+            "passive": {
+              "description": "Take a domestic-slave role in a consensual scene",
+              "title": "Domestic-slave role"
+            }
+          },
+          "sourceLabel": "Domestic-slave role",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-emvul7",
+          "roles": {
+            "active": {
+              "description": "Have the other person take a service-slave role in a consensual scene",
+              "title": "Service-slave role"
+            },
+            "passive": {
+              "description": "Take a service-slave role in a consensual scene",
+              "title": "Service-slave role"
+            }
+          },
+          "sourceLabel": "Service-slave role",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-5p38rr",
+          "roles": {
+            "active": {
+              "description": "Have the other person take a consensual role providing money or making payments",
+              "title": "ATM-slave role"
+            },
+            "passive": {
+              "description": "Take a consensual role providing money or making payments",
+              "title": "ATM-slave role"
+            }
+          },
+          "sourceLabel": "ATM-slave role",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-ktgyn6",
+          "roles": {
+            "active": {
+              "description": "Have the other person take a consensual role providing transport or driving service",
+              "title": "Driver-slave role"
+            },
+            "passive": {
+              "description": "Take a consensual role providing transport or driving service",
+              "title": "Driver-slave role"
+            }
+          },
+          "sourceLabel": "Driver-slave role",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-8hpgnn",
+          "roles": {
+            "active": {
+              "description": "Have the other person consensually take a role receiving pain or acting as an outlet",
+              "title": "Pain slave or outlet role"
+            },
+            "passive": {
+              "description": "Consensually take a role receiving pain or acting as an outlet",
+              "title": "Pain slave or outlet role"
+            }
+          },
+          "sourceLabel": "Pain slave or outlet role",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-p5y68w",
+          "roles": {
+            "active": {
+              "description": "Train the other person in a slave role",
+              "title": "Slave-role training"
+            },
+            "passive": {
+              "description": "Receive training related to a slave role",
+              "title": "Slave-role training"
+            }
+          },
+          "sourceLabel": "Slave-role training",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-8sl7b1",
+          "roles": {
+            "active": {
+              "description": "Give the other person a slave collar or symbol",
+              "title": "Give a slave collar"
+            },
+            "passive": {
+              "description": "Receive a slave collar or symbol from the other person",
+              "title": "Receive a slave collar"
+            }
+          },
+          "sourceLabel": "Giving or wearing a slave collar",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-wgiuuj",
+          "roles": {
+            "active": {
+              "description": "Lead the other person by a leash in a private space",
+              "title": "Leading by leash in private"
+            },
+            "passive": {
+              "description": "Be led by the other person with a leash in a private space",
+              "title": "Leading by leash in private"
+            }
+          },
+          "sourceLabel": "Leading by leash in private",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-bdsmspaceleash",
+          "roles": {
+            "active": {
+              "description": "Lead the other person by a leash in a BDSM-related space",
+              "title": "Leading by leash in a BDSM space"
+            },
+            "passive": {
+              "description": "Be led by the other person with a leash in a BDSM-related space",
+              "title": "Leading by leash in a BDSM space"
+            }
+          },
+          "sourceLabel": "Leading by leash in a BDSM space",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-1654r6x",
+          "roles": {
+            "active": {
+              "description": "Lead the other person by a leash in a public space",
+              "title": "Leading by leash in public"
+            },
+            "passive": {
+              "description": "Be led by the other person with a leash in a public space",
+              "title": "Leading by leash in public"
+            }
+          },
+          "sourceLabel": "Leading by leash in public",
+          "warning": "Consider exposure of identity, other people’s consent, boundaries in public, and safety risks"
+        },
+        {
+          "detailId": "detail-enslavement-w3wrxl",
+          "roles": {
+            "active": {
+              "description": "Put the other person in a slave cage or confine them inside it",
+              "title": "Place them in a slave cage"
+            },
+            "passive": {
+              "description": "Be put in a slave cage or confined inside it",
+              "title": "Be placed in a slave cage"
+            }
+          },
+          "sourceLabel": "Confinement in a slave cage",
+          "warning": "Watch for pressure from posture, panic responses, ventilation, and an emergency release method"
+        },
+        {
+          "detailId": "detail-enslavement-1d5ybf5",
+          "roles": {
+            "active": {
+              "description": "Have the other person enter a slave role or state briefly",
+              "title": "Short-term enslavement"
+            },
+            "passive": {
+              "description": "Enter a slave role or state briefly",
+              "title": "Short-term enslavement"
+            }
+          },
+          "sourceLabel": "Short-term enslavement",
+          "warning": null
+        },
+        {
+          "detailId": "detail-enslavement-tu6x63",
+          "roles": {
+            "active": {
+              "description": "Have the other person remain in a slave role or state over a longer period",
+              "title": "Long-term enslavement"
+            },
+            "passive": {
+              "description": "Remain in a slave role or state over a longer period",
+              "title": "Long-term enslavement"
+            }
+          },
+          "sourceLabel": "Long-term enslavement",
+          "warning": "Consider effects on daily life, identity boundaries, renewed consent, and a way to leave"
+        },
+        {
+          "detailId": "detail-enslavement-swx1g2",
+          "roles": {
+            "active": {
+              "description": "Enter a relationship framed as permanent enslavement with the other person",
+              "title": "Permanent enslavement"
+            },
+            "passive": {
+              "description": "Enter a relationship framed as permanent enslavement",
+              "title": "Permanent enslavement"
+            }
+          },
+          "sourceLabel": "Permanent enslavement",
+          "warning": "Consider long-term psychological effects, real-world legal limits, renewed consent, and a way to leave"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 15,
+      "name": "Enslavement",
+      "roles": {
+        "active": {
+          "description": "Have the other person take a slave role within an agreed scope"
+        },
+        "passive": {
+          "description": "Take a slave role within an agreed scope"
+        }
+      },
+      "sourceSheetName": "奴化類項目"
+    },
+    {
+      "categoryId": "pet_play",
+      "detailItems": [
+        {
+          "detailId": "detail-pet_play-1jsyyjh",
+          "roles": {
+            "active": {
+              "description": "Bathe or groom the other person while they play a pet",
+              "title": "Bathe or groom the pet"
+            },
+            "passive": {
+              "description": "Be bathed or groomed by the other person while playing a pet",
+              "title": "Be bathed or groomed"
+            }
+          },
+          "sourceLabel": "Bathing or grooming a pet",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-a609w4",
+          "roles": {
+            "active": {
+              "description": "Interact with the other person using pet toys while they play a pet",
+              "title": "Playing with pet toys"
+            },
+            "passive": {
+              "description": "Play with pet toys with the other person while playing a pet",
+              "title": "Playing with pet toys"
+            }
+          },
+          "sourceLabel": "Playing with pet toys",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-x5vjdy",
+          "roles": {
+            "active": {
+              "description": "Require the other person to crawl on all fours while playing an animal or pet",
+              "title": "Crawling on all fours"
+            },
+            "passive": {
+              "description": "Crawl on all fours while playing an animal or pet",
+              "title": "Crawling on all fours"
+            }
+          },
+          "sourceLabel": "Crawling on all fours",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-nv1pij",
+          "roles": {
+            "active": {
+              "description": "Require the other person to make animal or pet sounds",
+              "title": "Making animal or pet sounds"
+            },
+            "passive": {
+              "description": "Make animal or pet sounds while playing an animal or pet",
+              "title": "Making animal or pet sounds"
+            }
+          },
+          "sourceLabel": "Making animal or pet sounds",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-rvrxgu",
+          "roles": {
+            "active": {
+              "description": "Feed the other person human food from a pet bowl",
+              "title": "Human food in a pet bowl"
+            },
+            "passive": {
+              "description": "Eat human food from a pet bowl",
+              "title": "Human food in a pet bowl"
+            }
+          },
+          "sourceLabel": "Human food in a pet bowl",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-4bs8mo",
+          "roles": {
+            "active": {
+              "description": "Feed the other person wet pet food from a pet bowl",
+              "title": "Wet pet food in a pet bowl"
+            },
+            "passive": {
+              "description": "Eat wet pet food from a pet bowl",
+              "title": "Wet pet food in a pet bowl"
+            }
+          },
+          "sourceLabel": "Wet pet food in a pet bowl",
+          "warning": "Consider food safety, gastrointestinal illness, allergies, and hygiene"
+        },
+        {
+          "detailId": "detail-pet_play-1hw29un",
+          "roles": {
+            "active": {
+              "description": "Feed the other person dry pet food from a pet bowl",
+              "title": "Dry pet food in a pet bowl"
+            },
+            "passive": {
+              "description": "Eat dry pet food from a pet bowl",
+              "title": "Dry pet food in a pet bowl"
+            }
+          },
+          "sourceLabel": "Dry pet food in a pet bowl",
+          "warning": "Consider food safety, choking, gastrointestinal illness, and hygiene"
+        },
+        {
+          "detailId": "detail-pet_play-etd5x1",
+          "roles": {
+            "active": {
+              "description": "Train the other person to perform specified skills in a pet role",
+              "title": "Pet-skill training"
+            },
+            "passive": {
+              "description": "Receive training and perform specified skills in a pet role",
+              "title": "Pet-skill training"
+            }
+          },
+          "sourceLabel": "Pet-skill training",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-52x52j",
+          "roles": {
+            "active": {
+              "description": "Give the other person a pet collar or symbol",
+              "title": "Give a pet collar"
+            },
+            "passive": {
+              "description": "Receive a pet collar or symbol from the other person",
+              "title": "Receive a pet collar"
+            }
+          },
+          "sourceLabel": "Giving or wearing a pet collar",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-ljh0h7",
+          "roles": {
+            "active": {
+              "description": "Lead the other person by a leash in private while they play a pet",
+              "title": "Leading by leash in private"
+            },
+            "passive": {
+              "description": "Be led by the other person with a leash in private",
+              "title": "Leading by leash in private"
+            }
+          },
+          "sourceLabel": "Leading by leash in private",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-bdsmspaceleash",
+          "roles": {
+            "active": {
+              "description": "Lead the other person by a leash in a BDSM-related space while they play a pet",
+              "title": "Leading by leash in a BDSM space"
+            },
+            "passive": {
+              "description": "Be led by the other person with a leash in a BDSM-related space",
+              "title": "Leading by leash in a BDSM space"
+            }
+          },
+          "sourceLabel": "Leading by leash in a BDSM space",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-1efmrop",
+          "roles": {
+            "active": {
+              "description": "Lead the other person by a leash in public while they play a pet",
+              "title": "Leading by leash in public"
+            },
+            "passive": {
+              "description": "Be led by the other person with a leash in public",
+              "title": "Leading by leash in public"
+            }
+          },
+          "sourceLabel": "Leading by leash in public",
+          "warning": "Consider exposure of identity, other people’s consent, boundaries in public, and safety risks"
+        },
+        {
+          "detailId": "detail-pet_play-iua2gj",
+          "roles": {
+            "active": {
+              "description": "Put the other person in a pet cage or confine them inside it while they play a pet",
+              "title": "Place them in a pet cage"
+            },
+            "passive": {
+              "description": "Be put in a pet cage or confined inside it while playing a pet",
+              "title": "Be placed in a pet cage"
+            }
+          },
+          "sourceLabel": "Confinement in a pet cage",
+          "warning": "Watch for pressure from posture, panic responses, ventilation, and an emergency release method"
+        },
+        {
+          "detailId": "detail-pet_play-1hdeo81",
+          "roles": {
+            "active": {
+              "description": "Require the other person to wear pet-themed hair accessories or a tail",
+              "title": "Wearing pet ears or a tail"
+            },
+            "passive": {
+              "description": "Wear pet-themed hair accessories or a tail while playing a pet",
+              "title": "Wearing pet ears or a tail"
+            }
+          },
+          "sourceLabel": "Wearing pet ears or a tail",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-k9hood",
+          "roles": {
+            "active": {
+              "description": "Have the other person wear a K9 dog hood and interact with them",
+              "title": "K9 dog hood"
+            },
+            "passive": {
+              "description": "Wear a K9 dog hood and interact with the other person",
+              "title": "K9 dog hood"
+            }
+          },
+          "sourceLabel": "K9 dog hood",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-jkh6sm",
+          "roles": {
+            "active": {
+              "description": "Have the other person enter an animal or pet role briefly",
+              "title": "Short-term animal or pet role"
+            },
+            "passive": {
+              "description": "Enter an animal or pet role briefly",
+              "title": "Short-term animal or pet role"
+            }
+          },
+          "sourceLabel": "Short-term animal or pet role",
+          "warning": null
+        },
+        {
+          "detailId": "detail-pet_play-1o3a8sg",
+          "roles": {
+            "active": {
+              "description": "Have the other person remain in an animal or pet role over a longer period",
+              "title": "Long-term animal or pet role"
+            },
+            "passive": {
+              "description": "Remain in an animal or pet role over a longer period",
+              "title": "Long-term animal or pet role"
+            }
+          },
+          "sourceLabel": "Long-term animal or pet role",
+          "warning": "Consider effects on daily life, identity boundaries, renewed consent, and a way to leave"
+        },
+        {
+          "detailId": "detail-pet_play-7xqowr",
+          "roles": {
+            "active": {
+              "description": "Enter a relationship framed as permanent animal or pet play with the other person",
+              "title": "Permanent animal or pet role"
+            },
+            "passive": {
+              "description": "Enter a relationship framed as permanent animal or pet play",
+              "title": "Permanent animal or pet role"
+            }
+          },
+          "sourceLabel": "Permanent animal or pet role",
+          "warning": "Consider long-term psychological effects, real-world legal limits, renewed consent, and a way to leave"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 18,
+      "name": "Animal and pet play",
+      "roles": {
+        "active": {
+          "description": "Have the other person take an animal or pet role"
+        },
+        "passive": {
+          "description": "Take an animal or pet role"
+        }
+      },
+      "sourceSheetName": "獸/寵物化類項目"
+    },
+    {
+      "categoryId": "role_play",
+      "detailItems": [
+        {
+          "detailId": "detail-role_play-j6rqh7",
+          "roles": {
+            "active": {
+              "description": "Have the other person play a baby",
+              "title": "Baby role"
+            },
+            "passive": {
+              "description": "Play a baby in front of the other person",
+              "title": "Baby role"
+            }
+          },
+          "sourceLabel": "Playing a baby",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-1hqqab2",
+          "roles": {
+            "active": {
+              "description": "Have the other person play a child",
+              "title": "Child role"
+            },
+            "passive": {
+              "description": "Play a child in front of the other person",
+              "title": "Child role"
+            }
+          },
+          "sourceLabel": "Playing a child",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-1b6vck1",
+          "roles": {
+            "active": {
+              "description": "Have the other person play a teenager",
+              "title": "Teen role"
+            },
+            "passive": {
+              "description": "Play a teenager in front of the other person",
+              "title": "Teen role"
+            }
+          },
+          "sourceLabel": "Playing a teenager",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-1bf86f7",
+          "roles": {
+            "active": {
+              "description": "Have the other person play an older person",
+              "title": "Older-adult role"
+            },
+            "passive": {
+              "description": "Play an older person in front of the other person",
+              "title": "Older-adult role"
+            }
+          },
+          "sourceLabel": "Playing an older person",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-1qg4s3q",
+          "roles": {
+            "active": {
+              "description": "Have the other person play a doll",
+              "title": "Doll role"
+            },
+            "passive": {
+              "description": "Play a doll in front of the other person",
+              "title": "Doll role"
+            }
+          },
+          "sourceLabel": "Playing a doll",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-1i9t0en",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in an aristocrat-and-servant scenario",
+              "title": "Master–servant scenario"
+            },
+            "passive": {
+              "description": "Take the following role in an aristocrat-and-servant scenario",
+              "title": "Master–servant scenario"
+            }
+          },
+          "sourceLabel": "Master and servant roles",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-1n9uevy",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in a boss-and-subordinate scenario",
+              "title": "Boss–subordinate scenario"
+            },
+            "passive": {
+              "description": "Take the following role in a boss-and-subordinate scenario",
+              "title": "Boss–subordinate scenario"
+            }
+          },
+          "sourceLabel": "Boss and subordinate roles",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-kodrud",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in a medical-professional-and-patient scenario",
+              "title": "Medical-worker–patient scenario"
+            },
+            "passive": {
+              "description": "Take the following role in a medical-professional-and-patient scenario",
+              "title": "Medical-worker–patient scenario"
+            }
+          },
+          "sourceLabel": "Doctor or nurse and patient roles",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-1gts3i7",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in a prison-guard-and-prisoner scenario",
+              "title": "Prison-guard–prisoner scenario"
+            },
+            "passive": {
+              "description": "Take the following role in a prison-guard-and-prisoner scenario",
+              "title": "Prison-guard–prisoner scenario"
+            }
+          },
+          "sourceLabel": "Prison guard and prisoner roles",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-vepd7q",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in a teacher-and-student scenario",
+              "title": "Teacher–student scenario"
+            },
+            "passive": {
+              "description": "Take the following role in a teacher-and-student scenario",
+              "title": "Teacher–student scenario"
+            }
+          },
+          "sourceLabel": "Teacher and student roles",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-1virdb",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in a parent-and-child scenario",
+              "title": "Parent–child scenario"
+            },
+            "passive": {
+              "description": "Take the following role in a parent-and-child scenario",
+              "title": "Parent–child scenario"
+            }
+          },
+          "sourceLabel": "Parent and child roles",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-18ycvwm",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in a sibling scenario",
+              "title": "Sibling roles"
+            },
+            "passive": {
+              "description": "Take the following role in a sibling scenario",
+              "title": "Sibling roles"
+            }
+          },
+          "sourceLabel": "Sibling roles",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-pyo1lh",
+          "roles": {
+            "active": {
+              "description": "Have the other person wear a diaper",
+              "title": "Diaper scenario"
+            },
+            "passive": {
+              "description": "Wear a diaper in front of the other person",
+              "title": "Diaper scenario"
+            }
+          },
+          "sourceLabel": "Wearing a diaper",
+          "warning": null
+        },
+        {
+          "detailId": "detail-role_play-u5m4ic",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in a childlike doodling-play scenario",
+              "title": "Doodling play"
+            },
+            "passive": {
+              "description": "Take the following role in a childlike doodling-play scenario",
+              "title": "Doodling play"
+            }
+          },
+          "sourceLabel": "Doodling play",
+          "warning": null
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 14,
+      "name": "Role play",
+      "roles": {
+        "active": {
+          "description": "Guide the other person through a role-play scenario"
+        },
+        "passive": {
+          "description": "Take part in a role-play scenario"
+        }
+      },
+      "sourceSheetName": "角色扮演類項目"
+    },
+    {
+      "categoryId": "objectification",
+      "detailItems": [
+        {
+          "detailId": "detail-objectification-1l6nra5",
+          "roles": {
+            "active": {
+              "description": "Use the other person as a chair",
+              "title": "Use them as a chair"
+            },
+            "passive": {
+              "description": "Be used by the other person as a chair",
+              "title": "Be a chair"
+            }
+          },
+          "sourceLabel": "As a chair",
+          "warning": null
+        },
+        {
+          "detailId": "detail-objectification-1nqioit",
+          "roles": {
+            "active": {
+              "description": "Use the other person as a sofa",
+              "title": "Use them as a sofa"
+            },
+            "passive": {
+              "description": "Be used by the other person as a sofa",
+              "title": "Be a sofa"
+            }
+          },
+          "sourceLabel": "As a sofa",
+          "warning": null
+        },
+        {
+          "detailId": "detail-objectification-6z8u5c",
+          "roles": {
+            "active": {
+              "description": "Use the other person as a footrest",
+              "title": "Use them as a footstool"
+            },
+            "passive": {
+              "description": "Be used by the other person as a footrest",
+              "title": "Be a footstool"
+            }
+          },
+          "sourceLabel": "As a footrest",
+          "warning": null
+        },
+        {
+          "detailId": "detail-objectification-gmtfv3",
+          "roles": {
+            "active": {
+              "description": "Display the other person as a vase",
+              "title": "Display them as a vase"
+            },
+            "passive": {
+              "description": "Be displayed by the other person as a vase",
+              "title": "Be a vase"
+            }
+          },
+          "sourceLabel": "As a vase",
+          "warning": null
+        },
+        {
+          "detailId": "detail-objectification-1xfrg59",
+          "roles": {
+            "active": {
+              "description": "Use the other person as a clothes rack",
+              "title": "Use them as a clothes rack"
+            },
+            "passive": {
+              "description": "Be used by the other person as a clothes rack",
+              "title": "Be a clothes rack"
+            }
+          },
+          "sourceLabel": "As a clothes rack",
+          "warning": null
+        },
+        {
+          "detailId": "detail-objectification-11fzq08",
+          "roles": {
+            "active": {
+              "description": "Pose or display the other person as a doll",
+              "title": "Display them as a doll"
+            },
+            "passive": {
+              "description": "Be posed or displayed by the other person as a doll",
+              "title": "Be a doll"
+            }
+          },
+          "sourceLabel": "As a doll",
+          "warning": null
+        },
+        {
+          "detailId": "detail-objectification-ydg8ls",
+          "roles": {
+            "active": {
+              "description": "Use the other person as an ashtray",
+              "title": "Use them as an ashtray"
+            },
+            "passive": {
+              "description": "Be used by the other person as an ashtray",
+              "title": "Be an ashtray"
+            }
+          },
+          "sourceLabel": "As an ashtray",
+          "warning": "Watch for burns, contact with ash, hygiene, and respiratory discomfort"
+        },
+        {
+          "detailId": "detail-objectification-15peili",
+          "roles": {
+            "active": {
+              "description": "Use the other person’s body as a plate or bowl for food",
+              "title": "Use them as a plate or bowl"
+            },
+            "passive": {
+              "description": "Have your body used as a plate or bowl for food",
+              "title": "Be a plate or bowl"
+            }
+          },
+          "sourceLabel": "As a food plate or bowl",
+          "warning": null
+        },
+        {
+          "detailId": "detail-objectification-18d3dxj",
+          "roles": {
+            "active": {
+              "description": "Use the other person as a masturbation sleeve",
+              "title": "Use them as a masturbator"
+            },
+            "passive": {
+              "description": "Be used by the other person as a masturbation sleeve",
+              "title": "Be a masturbator"
+            }
+          },
+          "sourceLabel": "As a masturbation sleeve",
+          "warning": null
+        },
+        {
+          "detailId": "detail-objectification-gg0tot",
+          "roles": {
+            "active": {
+              "description": "Use the other person as a dildo",
+              "title": "Use them as a dildo"
+            },
+            "passive": {
+              "description": "Be used by the other person as a dildo",
+              "title": "Be a dildo"
+            }
+          },
+          "sourceLabel": "As a dildo",
+          "warning": null
+        },
+        {
+          "detailId": "detail-objectification-11y1b4u",
+          "roles": {
+            "active": {
+              "description": "Frame the other person as an asset that can be traded or exchanged",
+              "title": "Treat them as a trade asset"
+            },
+            "passive": {
+              "description": "Be framed as an asset that can be traded or exchanged",
+              "title": "Be a trade asset"
+            }
+          },
+          "sourceLabel": "As a tradable asset",
+          "warning": "Consider personal boundaries, legal limits in real life, the scope of consent, and a way to leave"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 11,
+      "name": "Objectification",
+      "roles": {
+        "active": {
+          "description": "Within a consensual scene, temporarily treat the other person as an object, piece of furniture, or tool"
+        },
+        "passive": {
+          "description": "Within a consensual scene, temporarily be treated as an object, piece of furniture, or tool"
+        }
+      },
+      "sourceSheetName": "物化類項目"
+    },
+    {
+      "categoryId": "exposure",
+      "detailItems": [
+        {
+          "detailId": "detail-exposure-yrd6oh",
+          "roles": {
+            "active": {
+              "description": "Require the other person to expose their body in front of you",
+              "title": "Ask them to expose themselves to you"
+            },
+            "passive": {
+              "description": "Expose your body in front of the other person",
+              "title": "Expose yourself to them"
+            }
+          },
+          "sourceLabel": "Exposure in front of the other person",
+          "warning": null
+        },
+        {
+          "detailId": "detail-exposure-84q67p",
+          "roles": {
+            "active": {
+              "description": "Require the other person to expose their body in front of friends",
+              "title": "Ask them to expose themselves to friends"
+            },
+            "passive": {
+              "description": "Expose your body in front of friends",
+              "title": "Expose yourself to friends"
+            }
+          },
+          "sourceLabel": "Exposure in front of friends",
+          "warning": null
+        },
+        {
+          "detailId": "detail-exposure-1c953fq",
+          "roles": {
+            "active": {
+              "description": "Require the other person to expose their body in front of strangers",
+              "title": "Ask them to expose themselves to strangers"
+            },
+            "passive": {
+              "description": "Expose your body in front of strangers",
+              "title": "Expose yourself to strangers"
+            }
+          },
+          "sourceLabel": "Exposure in front of strangers",
+          "warning": null
+        },
+        {
+          "detailId": "detail-exposure-cf5jn6",
+          "roles": {
+            "active": {
+              "description": "Require the other person to expose their body in a private space",
+              "title": "Ask for exposure in private"
+            },
+            "passive": {
+              "description": "Expose your body in a private space",
+              "title": "Expose yourself in private"
+            }
+          },
+          "sourceLabel": "Exposure in a private space",
+          "warning": null
+        },
+        {
+          "detailId": "detail-exposure-bdsmspace",
+          "roles": {
+            "active": {
+              "description": "Require the other person to expose their body in a BDSM-related space",
+              "title": "Exposure in a BDSM space"
+            },
+            "passive": {
+              "description": "Expose your body in a BDSM-related space",
+              "title": "Exposure in a BDSM space"
+            }
+          },
+          "sourceLabel": "Exposure in a BDSM space",
+          "warning": null
+        },
+        {
+          "detailId": "detail-exposure-jg19zi",
+          "roles": {
+            "active": {
+              "description": "Require the other person to expose their body in a public space",
+              "title": "Ask for exposure in public"
+            },
+            "passive": {
+              "description": "Expose your body in a public space",
+              "title": "Expose yourself in public"
+            }
+          },
+          "sourceLabel": "Exposure in a public space",
+          "warning": "Consider the consent of non-participants, legal risk, exposure of identity, and safety"
+        },
+        {
+          "detailId": "detail-exposure-14ngx9f",
+          "roles": {
+            "active": {
+              "description": "Watch other people having sex",
+              "title": "Watch sexual activity"
+            },
+            "passive": {
+              "description": "Let other people watch you having sex",
+              "title": "Be watched during sexual activity"
+            }
+          },
+          "sourceLabel": "Watching or being watched during sex",
+          "warning": null
+        },
+        {
+          "detailId": "detail-exposure-iztub",
+          "roles": {
+            "active": {
+              "description": "Require the other person to expose their upper body",
+              "title": "Ask for upper-body exposure"
+            },
+            "passive": {
+              "description": "Expose your upper body for the other person to see",
+              "title": "Expose your upper body"
+            }
+          },
+          "sourceLabel": "Upper-body exposure",
+          "warning": null
+        },
+        {
+          "detailId": "detail-exposure-lc5lxg",
+          "roles": {
+            "active": {
+              "description": "Require the other person to expose their lower body",
+              "title": "Ask for lower-body exposure"
+            },
+            "passive": {
+              "description": "Expose your lower body for the other person to see",
+              "title": "Expose your lower body"
+            }
+          },
+          "sourceLabel": "Lower-body exposure",
+          "warning": null
+        },
+        {
+          "detailId": "detail-exposure-rhnyao",
+          "roles": {
+            "active": {
+              "description": "Require the other person to go out without underwear",
+              "title": "Ask them to go out without underwear"
+            },
+            "passive": {
+              "description": "Go out without underwear",
+              "title": "Go out without underwear"
+            }
+          },
+          "sourceLabel": "Going out without underwear",
+          "warning": "Consider comfort, hygiene, exposure of identity, and risks in public"
+        },
+        {
+          "detailId": "detail-exposure-1on1gyu",
+          "roles": {
+            "active": {
+              "description": "Require the other person to masturbate in a public space",
+              "title": "Ask for public masturbation"
+            },
+            "passive": {
+              "description": "Masturbate in a public space",
+              "title": "Masturbate in public"
+            }
+          },
+          "sourceLabel": "Masturbating in public",
+          "warning": "Consider the consent of non-participants, legal risk, exposure of identity, and safety"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 11,
+      "name": "Exposure",
+      "roles": {
+        "active": {
+          "description": "Have the other person expose their body in different situations"
+        },
+        "passive": {
+          "description": "Expose your body in different situations"
+        }
+      },
+      "sourceSheetName": "暴露類項目"
+    },
+    {
+      "categoryId": "image_recording",
+      "detailItems": [
+        {
+          "detailId": "detail-image_recording-wr9mg2",
+          "roles": {
+            "active": {
+              "description": "Photograph or record the other person nude",
+              "title": "Record nudity"
+            },
+            "passive": {
+              "description": "Be photographed or recorded nude",
+              "title": "Have nudity recorded"
+            }
+          },
+          "sourceLabel": "Photographing or recording nudity",
+          "warning": null
+        },
+        {
+          "detailId": "detail-image_recording-pottfn",
+          "roles": {
+            "active": {
+              "description": "Photograph or record the other person during sex",
+              "title": "Record sexual activity"
+            },
+            "passive": {
+              "description": "Have sexual activity photographed or recorded",
+              "title": "Have sexual activity recorded"
+            }
+          },
+          "sourceLabel": "Photographing or recording sex",
+          "warning": null
+        },
+        {
+          "detailId": "detail-image_recording-ijadox",
+          "roles": {
+            "active": {
+              "description": "Photograph or record the other person during a play scene",
+              "title": "Record training activity"
+            },
+            "passive": {
+              "description": "Have a play scene photographed or recorded",
+              "title": "Have training activity recorded"
+            }
+          },
+          "sourceLabel": "Photographing or recording a play scene",
+          "warning": null
+        },
+        {
+          "detailId": "detail-image_recording-xuxzia",
+          "roles": {
+            "active": {
+              "description": "Ask the other person to send intimate images or videos",
+              "title": "Ask for private images"
+            },
+            "passive": {
+              "description": "Send intimate images or videos of yourself",
+              "title": "Send private images"
+            }
+          },
+          "sourceLabel": "Sending intimate images or videos",
+          "warning": null
+        },
+        {
+          "detailId": "detail-image_recording-1c6bdpw",
+          "roles": {
+            "active": {
+              "description": "Publish the other person’s intimate images or videos online",
+              "title": "Publish their private images"
+            },
+            "passive": {
+              "description": "Have your intimate images or videos published online",
+              "title": "Have private images published"
+            }
+          },
+          "sourceLabel": "Publishing intimate images or videos online",
+          "warning": "Consider irreversible distribution, platform rules, exposure of identity, and legal risk"
+        },
+        {
+          "detailId": "detail-image_recording-1942hqe",
+          "roles": {
+            "active": {
+              "description": "Use the other person’s intimate images or videos while masturbating",
+              "title": "Masturbate with private images"
+            },
+            "passive": {
+              "description": "Have your intimate images or videos used by the other person while masturbating",
+              "title": "Have private images used for masturbation"
+            }
+          },
+          "sourceLabel": "Masturbating with the other person’s intimate images or videos",
+          "warning": null
+        },
+        {
+          "detailId": "detail-image_recording-1ie3kyu",
+          "roles": {
+            "active": {
+              "description": "Use the Following side’s device to capture intimate images or videos",
+              "title": "Record with their device"
+            },
+            "passive": {
+              "description": "Have your own device used to capture intimate images or videos",
+              "title": "Have your device used for recording"
+            }
+          },
+          "sourceLabel": "Recording with the Following side’s device",
+          "warning": null
+        },
+        {
+          "detailId": "detail-image_recording-r9zfxi",
+          "roles": {
+            "active": {
+              "description": "Use your own device to capture intimate images or videos of the other person",
+              "title": "Record with your device"
+            },
+            "passive": {
+              "description": "Have intimate images or videos captured on the other person’s device",
+              "title": "Be recorded with their device"
+            }
+          },
+          "sourceLabel": "Recording with the Leading side’s device",
+          "warning": "Consider storage permissions, device security, distribution risk, and deletion agreements"
+        },
+        {
+          "detailId": "detail-image_recording-16hzzoq",
+          "roles": {
+            "active": {
+              "description": "Create a visual record of the other person’s body over time",
+              "title": "Create a body-image record"
+            },
+            "passive": {
+              "description": "Have a visual record of your body created over time",
+              "title": "Have a body-image record made"
+            }
+          },
+          "sourceLabel": "Creating a visual record of the body over time",
+          "warning": null
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 9,
+      "name": "Images and recording",
+      "roles": {
+        "active": {
+          "description": "Photograph, record, store, send, publish, or share images of the other person"
+        },
+        "passive": {
+          "description": "Have images of you photographed, recorded, stored, sent, published, or shared"
+        }
+      },
+      "sourceSheetName": "影像類項目"
+    },
+    {
+      "categoryId": "piercing_cutting",
+      "detailItems": [
+        {
+          "detailId": "detail-piercing_cutting-1rw9xzg",
+          "roles": {
+            "active": {
+              "description": "Give the other person a decorative body piercing",
+              "title": "Decorative body piercing"
+            },
+            "passive": {
+              "description": "Receive a decorative body piercing",
+              "title": "Decorative body piercing"
+            }
+          },
+          "sourceLabel": "Decorative body piercing",
+          "warning": "Consider sterilization, infection, allergies, scarring, and professional practice"
+        },
+        {
+          "detailId": "detail-piercing_cutting-2ewqgb",
+          "roles": {
+            "active": {
+              "description": "Pierce the other person’s body for stimulation",
+              "title": "Body piercing for stimulation"
+            },
+            "passive": {
+              "description": "Receive body piercing for stimulation",
+              "title": "Body piercing for stimulation"
+            }
+          },
+          "sourceLabel": "Body piercing for stimulation",
+          "warning": "Consider sterilization, infection, bleeding, pain, and physical distress"
+        },
+        {
+          "detailId": "detail-piercing_cutting-ypns2e",
+          "roles": {
+            "active": {
+              "description": "Apply weight or pulling force to the other person’s piercing",
+              "title": "Weight on a piercing"
+            },
+            "passive": {
+              "description": "Have weight or pulling force applied to a piercing",
+              "title": "Weight on a piercing"
+            }
+          },
+          "sourceLabel": "Weight on a piercing",
+          "warning": "Watch for tearing, bleeding, infection, and excessive pulling"
+        },
+        {
+          "detailId": "detail-piercing_cutting-1jvq8gi",
+          "roles": {
+            "active": {
+              "description": "Give the other person a temporary piercing or ring",
+              "title": "Temporary piercing or ring"
+            },
+            "passive": {
+              "description": "Receive a temporary piercing or ring",
+              "title": "Temporary piercing or ring"
+            }
+          },
+          "sourceLabel": "Temporary piercing or ring",
+          "warning": "Consider sterilization, infection, bleeding, and wound care"
+        },
+        {
+          "detailId": "detail-piercing_cutting-rdg71s",
+          "roles": {
+            "active": {
+              "description": "Give the other person a permanent piercing or ring",
+              "title": "Permanent piercing or ring"
+            },
+            "passive": {
+              "description": "Receive a permanent piercing or ring",
+              "title": "Permanent piercing or ring"
+            }
+          },
+          "sourceLabel": "Permanent piercing or ring",
+          "warning": "Consider permanent body changes, scarring, infection, and aftercare"
+        },
+        {
+          "detailId": "detail-piercing_cutting-5uq5u0",
+          "roles": {
+            "active": {
+              "description": "Pierce or fit jewelry to the other person’s nipple",
+              "title": "Nipple piercing"
+            },
+            "passive": {
+              "description": "Receive a nipple piercing or jewelry",
+              "title": "Nipple piercing"
+            }
+          },
+          "sourceLabel": "Nipple piercing",
+          "warning": "Watch for infection, tearing, circulation, and nipple sensitivity"
+        },
+        {
+          "detailId": "detail-piercing_cutting-rxxg5l",
+          "roles": {
+            "active": {
+              "description": "Pierce or fit jewelry to the other person’s navel",
+              "title": "Navel piercing"
+            },
+            "passive": {
+              "description": "Receive a navel piercing or jewelry",
+              "title": "Navel piercing"
+            }
+          },
+          "sourceLabel": "Navel piercing",
+          "warning": "Watch for infection, allergies, clothing friction, and wound care"
+        },
+        {
+          "detailId": "detail-piercing_cutting-az913p",
+          "roles": {
+            "active": {
+              "description": "Give the other person a genital piercing",
+              "title": "Genital piercing"
+            },
+            "passive": {
+              "description": "Receive a genital piercing",
+              "title": "Genital piercing"
+            }
+          },
+          "sourceLabel": "Genital piercing",
+          "warning": "Consider infection, bleeding, effects on sexual function, and professional practice"
+        },
+        {
+          "detailId": "detail-piercing_cutting-1rewigf",
+          "roles": {
+            "active": {
+              "description": "Pierce or fit jewelry to the other person’s tongue",
+              "title": "Tongue piercing"
+            },
+            "passive": {
+              "description": "Receive a tongue piercing or jewelry",
+              "title": "Tongue piercing"
+            }
+          },
+          "sourceLabel": "Tongue piercing",
+          "warning": "Watch for swelling, infection, tooth damage, and difficulty swallowing"
+        },
+        {
+          "detailId": "detail-piercing_cutting-1fkp3oe",
+          "roles": {
+            "active": {
+              "description": "Cut the other person’s skin without causing bleeding",
+              "title": "Cutting without bleeding"
+            },
+            "passive": {
+              "description": "Receive cutting that does not cause bleeding",
+              "title": "Cutting without bleeding"
+            }
+          },
+          "sourceLabel": "Cutting without bleeding",
+          "warning": "Consider skin damage, sterilization, pain, and scarring"
+        },
+        {
+          "detailId": "detail-piercing_cutting-126gchb",
+          "roles": {
+            "active": {
+              "description": "Cut the other person’s skin until it bleeds",
+              "title": "Cutting that causes bleeding"
+            },
+            "passive": {
+              "description": "Receive cutting that causes bleeding",
+              "title": "Cutting that causes bleeding"
+            }
+          },
+          "sourceLabel": "Cutting that causes bleeding",
+          "warning": "Consider bleeding, infection, scarring, wound care, and medical risk"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 11,
+      "name": "Piercing and cutting",
+      "roles": {
+        "active": {
+          "description": "Pierce or cut part of the other person’s body, or ask them to do so themselves"
+        },
+        "passive": {
+          "description": "Receive piercing or cutting on part of your body"
+        }
+      },
+      "sourceSheetName": "穿刺/割類項目"
+    },
+    {
+      "categoryId": "excretion",
+      "detailItems": [
+        {
+          "detailId": "detail-excretion-10mgbv7",
+          "roles": {
+            "active": {
+              "description": "Urinate on the other person’s body",
+              "title": "Urinate on their body"
+            },
+            "passive": {
+              "description": "Have the other person urinate on your body",
+              "title": "Be urinated on"
+            }
+          },
+          "sourceLabel": "Urinating on the body",
+          "warning": null
+        },
+        {
+          "detailId": "detail-excretion-18pmjci",
+          "roles": {
+            "active": {
+              "description": "Urinate on the other person’s head",
+              "title": "Urinate on their head"
+            },
+            "passive": {
+              "description": "Have the other person urinate on your head",
+              "title": "Be urinated on above the head"
+            }
+          },
+          "sourceLabel": "Urinating on the head",
+          "warning": "Watch the eyes, mouth, nose, ear canals, hygiene, and psychological strain"
+        },
+        {
+          "detailId": "detail-excretion-d0tfsd",
+          "roles": {
+            "active": {
+              "description": "Require the other person to drink urine",
+              "title": "Ask them to drink urine"
+            },
+            "passive": {
+              "description": "Drink the other person’s urine",
+              "title": "Drink urine"
+            }
+          },
+          "sourceLabel": "Drinking urine",
+          "warning": "Watch for infection risk, physical distress, hygiene, and psychological boundaries"
+        },
+        {
+          "detailId": "detail-excretion-bz8baf",
+          "roles": {
+            "active": {
+              "description": "Require the other person to touch bodily waste",
+              "title": "Ask them to touch excrement"
+            },
+            "passive": {
+              "description": "Touch the other person’s or your own bodily waste",
+              "title": "Touch excrement"
+            }
+          },
+          "sourceLabel": "Touching bodily waste",
+          "warning": "Watch for infection risk, skin contact, cleaning, and psychological strain"
+        },
+        {
+          "detailId": "detail-excretion-1d9pfly",
+          "roles": {
+            "active": {
+              "description": "Require the other person to consume bodily waste",
+              "title": "Ask them to eat excrement"
+            },
+            "passive": {
+              "description": "Consume the other person’s or your own bodily waste",
+              "title": "Eat excrement"
+            }
+          },
+          "sourceLabel": "Consuming bodily waste",
+          "warning": "Watch for serious infection, gastrointestinal illness, hygiene, and medical risk"
+        },
+        {
+          "detailId": "detail-excretion-1x972yx",
+          "roles": {
+            "active": {
+              "description": "Require the other person to masturbate using bodily waste",
+              "title": "Ask them to masturbate with excrement"
+            },
+            "passive": {
+              "description": "Masturbate using bodily waste",
+              "title": "Masturbate with excrement"
+            }
+          },
+          "sourceLabel": "Masturbating with bodily waste",
+          "warning": "Watch for mucous-membrane infection, skin irritation, cleaning, and medical risk"
+        },
+        {
+          "detailId": "detail-excretion-4yx1it",
+          "roles": {
+            "active": {
+              "description": "Have the other person act as a urinal",
+              "title": "Make them a urinal"
+            },
+            "passive": {
+              "description": "Act as a urinal for the other person",
+              "title": "Be a urinal"
+            }
+          },
+          "sourceLabel": "Acting as a urinal",
+          "warning": "Consider hygiene, body position, cleaning, and psychological boundaries"
+        },
+        {
+          "detailId": "detail-excretion-15e9ike",
+          "roles": {
+            "active": {
+              "description": "Have the other person act as a toilet seat",
+              "title": "Make them a toilet seat"
+            },
+            "passive": {
+              "description": "Act as a toilet seat for the other person",
+              "title": "Be a toilet seat"
+            }
+          },
+          "sourceLabel": "Acting as a toilet seat",
+          "warning": "Watch for infection risk, body position, cleaning, and psychological strain"
+        },
+        {
+          "detailId": "detail-excretion-36n9ra",
+          "roles": {
+            "active": {
+              "description": "Watch the other person eliminate or require them to display it",
+              "title": "Watch excretion"
+            },
+            "passive": {
+              "description": "Display elimination for the other person to watch",
+              "title": "Show excretion"
+            }
+          },
+          "sourceLabel": "Displaying or watching elimination",
+          "warning": null
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 9,
+      "name": "Bodily waste",
+      "roles": {
+        "active": {
+          "description": "Activities involving bodily waste"
+        },
+        "passive": {
+          "description": "Activities involving bodily waste"
+        }
+      },
+      "sourceSheetName": "排泄類項目"
+    },
+    {
+      "categoryId": "behavior_restriction",
+      "detailItems": [
+        {
+          "detailId": "detail-behavior_restriction-1q2915m",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person from masturbating",
+              "title": "Restrict masturbation"
+            },
+            "passive": {
+              "description": "Have the other person restrict you from masturbating",
+              "title": "Have masturbation restricted"
+            }
+          },
+          "sourceLabel": "Restricting masturbation",
+          "warning": null
+        },
+        {
+          "detailId": "detail-behavior_restriction-10wmuve",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person from having sex",
+              "title": "Restrict sexual activity"
+            },
+            "passive": {
+              "description": "Have the other person restrict you from having sex",
+              "title": "Have sexual activity restricted"
+            }
+          },
+          "sourceLabel": "Restricting sex",
+          "warning": null
+        },
+        {
+          "detailId": "detail-behavior_restriction-1v32uv6",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person from having an orgasm",
+              "title": "Restrict orgasm"
+            },
+            "passive": {
+              "description": "Have the other person restrict you from having an orgasm",
+              "title": "Have orgasm restricted"
+            }
+          },
+          "sourceLabel": "Restricting orgasm",
+          "warning": null
+        },
+        {
+          "detailId": "detail-behavior_restriction-1qutp1i",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person from urinating or having a bowel movement",
+              "title": "Restrict excretion"
+            },
+            "passive": {
+              "description": "Have the other person restrict you from urinating or having a bowel movement",
+              "title": "Have excretion restricted"
+            }
+          },
+          "sourceLabel": "Restricting urination or bowel movements",
+          "warning": "Watch for urinary and gastrointestinal harm, physical distress, and medical risks"
+        },
+        {
+          "detailId": "detail-behavior_restriction-7yynqx",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person’s sleep",
+              "title": "Restrict sleep"
+            },
+            "passive": {
+              "description": "Have the other person restrict your sleep",
+              "title": "Have sleep restricted"
+            }
+          },
+          "sourceLabel": "Restricting sleep",
+          "warning": "Watch mental and physical health, impaired judgment, and effects on daily life"
+        },
+        {
+          "detailId": "detail-behavior_restriction-p66lsr",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person from eating",
+              "title": "Restrict eating"
+            },
+            "passive": {
+              "description": "Have the other person restrict you from eating",
+              "title": "Have eating restricted"
+            }
+          },
+          "sourceLabel": "Restricting food",
+          "warning": "Watch for malnutrition, low blood sugar, disordered eating, and health risks"
+        },
+        {
+          "detailId": "detail-behavior_restriction-p4j1x",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person’s friendships or social contact",
+              "title": "Restrict social contact"
+            },
+            "passive": {
+              "description": "Have the other person restrict your friendships or social contact",
+              "title": "Have social contact restricted"
+            }
+          },
+          "sourceLabel": "Restricting friendships",
+          "warning": "Watch for isolation, effects on real-life relationships, and abuse of power"
+        },
+        {
+          "detailId": "detail-behavior_restriction-1jxhizx",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person from speaking",
+              "title": "Restrict speech"
+            },
+            "passive": {
+              "description": "Have the other person restrict you from speaking",
+              "title": "Have speech restricted"
+            }
+          },
+          "sourceLabel": "Restricting speech",
+          "warning": "Consider communication needs, psychological strain, and a way to seek help"
+        },
+        {
+          "detailId": "detail-behavior_restriction-1st1nqk",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person from bathing or cleaning themselves",
+              "title": "Restrict bathing"
+            },
+            "passive": {
+              "description": "Have the other person restrict you from bathing or cleaning yourself",
+              "title": "Have bathing restricted"
+            }
+          },
+          "sourceLabel": "Restricting bathing",
+          "warning": "Watch hygiene, skin discomfort, odor, and effects on daily life"
+        }
+      ],
+      "includeInCategoryRound": true,
+      "itemCount": 9,
+      "name": "Behavioral restrictions",
+      "roles": {
+        "active": {
+          "description": "Consensually restrict the other person’s needs or preferences"
+        },
+        "passive": {
+          "description": "Have your needs or preferences consensually restricted"
+        }
+      },
+      "sourceSheetName": "行為限制類項目"
+    },
+    {
+      "categoryId": "other",
+      "detailItems": [
+        {
+          "detailId": "detail-other-cx35l0",
+          "roles": {
+            "active": {
+              "description": "Restrict the other person’s breathing by choking their neck",
+              "title": "Control breathing by choking"
+            },
+            "passive": {
+              "description": "Have the other person restrict your breathing by choking your neck",
+              "title": "Have breathing controlled by choking"
+            }
+          },
+          "sourceLabel": "Breath restriction by choking the neck",
+          "warning": "Watch for suffocation, fainting, neck injury, and a way to stop"
+        },
+        {
+          "detailId": "detail-other-81imh3",
+          "roles": {
+            "active": {
+              "description": "Have the other person bury their face against your chest to restrict breathing",
+              "title": "Breathing control against the chest"
+            },
+            "passive": {
+              "description": "Have your face enclosed by the other person’s chest and your breathing restricted",
+              "title": "Breathing control against the chest"
+            }
+          },
+          "sourceLabel": "Breath restriction against the chest",
+          "warning": "Watch for suffocation, panic responses, pressure from posture, and a way to stop"
+        },
+        {
+          "detailId": "detail-other-12ak8nk",
+          "roles": {
+            "active": {
+              "description": "Use a vacuum bag to place the other person briefly in a suffocation scenario",
+              "title": "Vacuum-bag asphyxiation scenario"
+            },
+            "passive": {
+              "description": "Enter a brief suffocation scenario inside a vacuum bag",
+              "title": "Vacuum-bag asphyxiation scenario"
+            }
+          },
+          "sourceLabel": "Brief suffocation with a vacuum bag",
+          "warning": "Watch for suffocation, panic, fainting, and an emergency release method"
+        },
+        {
+          "detailId": "detail-other-11372gg",
+          "roles": {
+            "active": {
+              "description": "Perform a waterboarding scenario with the other person",
+              "title": "Water-torture scenario"
+            },
+            "passive": {
+              "description": "Receive a waterboarding scenario from the other person",
+              "title": "Water-torture scenario"
+            }
+          },
+          "sourceLabel": "Waterboarding scenario",
+          "warning": "Watch for aspiration, suffocation, panic, and trauma triggers"
+        },
+        {
+          "detailId": "detail-other-1weofdn",
+          "roles": {
+            "active": {
+              "description": "Use hypnosis or suggestion with the other person",
+              "title": "Hypnotise them"
+            },
+            "passive": {
+              "description": "Receive hypnosis or suggestion from the other person",
+              "title": "Receive hypnosis"
+            }
+          },
+          "sourceLabel": "Hypnosis",
+          "warning": "Consider psychological boundaries, the content of suggestions, withdrawal of consent, and recovery afterward"
+        },
+        {
+          "detailId": "detail-other-67684a",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in a scene that plays with food as a sexual or training prop",
+              "title": "Food-based interaction"
+            },
+            "passive": {
+              "description": "Take the following role in a scene that plays with food as a sexual or training prop",
+              "title": "Food-based interaction"
+            }
+          },
+          "sourceLabel": "Food play",
+          "warning": null
+        },
+        {
+          "detailId": "detail-other-6t50x3",
+          "roles": {
+            "active": {
+              "description": "Require or arrange for the other person to get a tattoo",
+              "title": "Ask for a tattoo"
+            },
+            "passive": {
+              "description": "Get a tattoo at the other person’s request or arrangement",
+              "title": "Receive a tattoo"
+            }
+          },
+          "sourceLabel": "Tattooing",
+          "warning": "Consider permanent body changes, infection, effects on work and daily life, and risk of regret"
+        },
+        {
+          "detailId": "detail-other-1k7dzxy",
+          "roles": {
+            "active": {
+              "description": "Leave a brand on the other person’s body",
+              "title": "Leave a brand"
+            },
+            "passive": {
+              "description": "Have the other person leave a brand on your body",
+              "title": "Receive a brand"
+            }
+          },
+          "sourceLabel": "Branding",
+          "warning": "Watch for burns, infection, scarring, permanent marks, and medical risk"
+        },
+        {
+          "detailId": "detail-other-cpl0rm",
+          "roles": {
+            "active": {
+              "description": "Specify particular clothing for the other person to wear",
+              "title": "Specify their clothing"
+            },
+            "passive": {
+              "description": "Have the other person specify particular clothing for you to wear",
+              "title": "Wear specified clothing"
+            }
+          },
+          "sourceLabel": "Specified clothing",
+          "warning": null
+        },
+        {
+          "detailId": "detail-other-latexclothing",
+          "roles": {
+            "active": {
+              "description": "Take the leading role in an interaction where you or the other person wears latex clothing",
+              "title": "Latex clothing"
+            },
+            "passive": {
+              "description": "Take the following role in an interaction where you or the other person wears latex clothing",
+              "title": "Latex clothing"
+            }
+          },
+          "sourceLabel": "Latex clothing",
+          "warning": null
+        },
+        {
+          "detailId": "detail-other-967tbj",
+          "roles": {
+            "active": {
+              "description": "Decide what the other person will eat",
+              "title": "Decide their food"
+            },
+            "passive": {
+              "description": "Have the other person decide what you will eat",
+              "title": "Have food decided for you"
+            }
+          },
+          "sourceLabel": "Choosing the other person’s food",
+          "warning": "Consider allergies, nutrition, dietary restrictions, and boundaries around control"
+        },
+        {
+          "detailId": "detail-other-9c5xzq",
+          "roles": {
+            "active": {
+              "description": "Require the other person to lick your feet",
+              "title": "Ask them to lick your feet"
+            },
+            "passive": {
+              "description": "Lick the other person’s feet",
+              "title": "Lick their feet"
+            }
+          },
+          "sourceLabel": "Licking feet",
+          "warning": "Consider foot hygiene, mouth injuries, infection risk, and psychological boundaries"
+        },
+        {
+          "detailId": "detail-other-1x8oaxq",
+          "roles": {
+            "active": {
+              "description": "Require the other person to lick your shoes",
+              "title": "Ask them to lick your shoes"
+            },
+            "passive": {
+              "description": "Lick the other person’s shoes",
+              "title": "Lick their shoes"
+            }
+          },
+          "sourceLabel": "Licking shoes",
+          "warning": "Watch for dirt, chemical residue, mouth injuries, and infection risk"
+        },
+        {
+          "detailId": "detail-other-yswhyo",
+          "roles": {
+            "active": {
+              "description": "Step or trample on the other person’s body",
+              "title": "Step on their body"
+            },
+            "passive": {
+              "description": "Have the other person step or trample on your body",
+              "title": "Have your body stepped on"
+            }
+          },
+          "sourceLabel": "Trampling the body",
+          "warning": null
+        },
+        {
+          "detailId": "detail-other-1cs7dja",
+          "roles": {
+            "active": {
+              "description": "Step on the other person’s face",
+              "title": "Step on their face"
+            },
+            "passive": {
+              "description": "Have the other person step on your face",
+              "title": "Have your face stepped on"
+            }
+          },
+          "sourceLabel": "Stepping on the face",
+          "warning": null
+        },
+        {
+          "detailId": "detail-other-1pwrugh",
+          "roles": {
+            "active": {
+              "description": "Feed or force-feed the other person with feeding equipment",
+              "title": "Feed with a feeder"
+            },
+            "passive": {
+              "description": "Be fed or force-fed by the other person with feeding equipment",
+              "title": "Be fed with a feeder"
+            }
+          },
+          "sourceLabel": "Using force-feeding equipment",
+          "warning": "Watch for coughing, aspiration, choking, hygiene, and physical distress"
+        },
+        {
+          "detailId": "detail-other-suxt6v",
+          "roles": {
+            "active": {
+              "description": "Leave a hickey on the other person’s body",
+              "title": "Leave a hickey"
+            },
+            "passive": {
+              "description": "Have the other person leave a hickey on your body",
+              "title": "Receive a hickey"
+            }
+          },
+          "sourceLabel": "Leaving a hickey",
+          "warning": null
+        },
+        {
+          "detailId": "detail-other-17kwb61",
+          "roles": {
+            "active": {
+              "description": "Engage in wrestling-style physical interaction with the other person",
+              "title": "Wrestling-style interaction"
+            },
+            "passive": {
+              "description": "Engage in wrestling-style physical interaction with the other person",
+              "title": "Wrestling-style interaction"
+            }
+          },
+          "sourceLabel": "Wrestling",
+          "warning": "Watch for falls, sprains, impacts, size differences, and safety of the space"
+        },
+        {
+          "detailId": "detail-other-g75mw6",
+          "roles": {
+            "active": {
+              "description": "Engage in fight-style physical interaction with the other person",
+              "title": "Fight-style interaction"
+            },
+            "passive": {
+              "description": "Engage in fight-style physical interaction with the other person",
+              "title": "Fight-style interaction"
+            }
+          },
+          "sourceLabel": "Fighting",
+          "warning": "Watch for injury, loss of control, protected body areas, and a way to stop"
+        },
+        {
+          "detailId": "detail-other-1q0idds",
+          "roles": {
+            "active": {
+              "description": "Arrange or lead a kidnapping role-play scenario",
+              "title": "Lead a kidnapping scenario"
+            },
+            "passive": {
+              "description": "Participate in role play as the person being kidnapped",
+              "title": "Be in a kidnapping scenario"
+            }
+          },
+          "sourceLabel": "Kidnapping scenario",
+          "warning": "Consider misunderstandings in public, legal risk, panic responses, and a safeword"
+        }
+      ],
+      "includeInCategoryRound": false,
+      "itemCount": 20,
+      "name": "Other",
+      "roles": {
+        "active": {
+          "description": "Breath restriction, hypnosis, food play, and other activities that do not fit the categories above"
+        },
+        "passive": {
+          "description": "Breath restriction, hypnosis, food play, and other activities that do not fit the categories above"
+        }
+      },
+      "sourceSheetName": "其他"
+    }
+  ]
+}

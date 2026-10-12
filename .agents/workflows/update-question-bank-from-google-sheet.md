@@ -53,6 +53,7 @@
 16. 產生或更新題庫變更摘要，至少列出新增、刪除、改名、警示變更與翻譯待確認項。
 17. 若新增分類，回報中必須提醒使用者完成該分類圖片製作；workflow 不需要自動建立缺圖待辦檔。
 18. 執行 schema validation、typecheck 或 build；若驗證受 Windows/Codex sandbox 影響，依 user-level Agent guidance 處理，並區分環境限制與真正程式錯誤。
+19. 依 [`data/question-bank/README.md`](../../data/question-bank/README.md) 重新產生並驗證社群使用的 JSON／CSV／TypeScript 題庫，與來源變更一併提交。
 
 ## 內容保護規則
 
