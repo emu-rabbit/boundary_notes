@@ -2,16 +2,11 @@
 import type { QuestionBank } from '../types';
 
 export const questionBank: QuestionBank = {
-  "exportSchemaVersion": 1,
-  "locale": "en",
-  "license": "MIT",
   "bankVersion": "2026-07-22",
   "schemaVersion": 1,
   "source": {
-    "fileId": "1shrEavMkoumIpe07vL3DXp0uj7tcHzqgPV6qzU6jvAE",
-    "kind": "google-sheet",
-    "modifiedTime": "2026-07-11T06:14:45.603Z",
-    "title": "BDSM boundary test items"
+    "kind": "repository",
+    "url": "https://github.com/emu-rabbit/boundary_notes/tree/main/src/features/question-bank"
   },
   "categories": [
     {
@@ -20,11 +15,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1qzzr10",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use your hand to spank the other person",
               "title": "By hand"
             },
-            "passive": {
+            "following": {
               "description": "Be spanked by the other person’s hand",
               "title": "By hand"
             }
@@ -35,11 +30,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-gwssxu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use a leather paddle to spank the other person",
               "title": "With a leather paddle"
             },
-            "passive": {
+            "following": {
               "description": "Be spanked with a leather paddle",
               "title": "With a leather paddle"
             }
@@ -50,11 +45,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1uy95nk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use a wooden paddle to spank the other person",
               "title": "With a wooden paddle"
             },
-            "passive": {
+            "following": {
               "description": "Be spanked with a wooden paddle",
               "title": "With a wooden paddle"
             }
@@ -65,11 +60,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-i4vf80",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use a wooden stick to strike the other person",
               "title": "With a wooden stick"
             },
-            "passive": {
+            "following": {
               "description": "Be struck with a wooden stick",
               "title": "With a wooden stick"
             }
@@ -80,11 +75,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-i4t2fc",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use a hard plastic or acrylic implement to strike the other person",
               "title": "With hard plastic or acrylic"
             },
-            "passive": {
+            "following": {
               "description": "Be struck with a hard plastic or acrylic implement",
               "title": "With hard plastic or acrylic"
             }
@@ -95,11 +90,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1uxz7gx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use a soft plastic implement to strike the other person",
               "title": "With soft plastic"
             },
-            "passive": {
+            "following": {
               "description": "Be struck with a soft plastic implement",
               "title": "With soft plastic"
             }
@@ -110,11 +105,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1lmlugr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use a hot-glue stick to strike the other person",
               "title": "With a hot-glue stick"
             },
-            "passive": {
+            "following": {
               "description": "Be struck with a hot-glue stick",
               "title": "With a hot-glue stick"
             }
@@ -125,11 +120,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1bcfzjw",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use a cane to strike the other person",
               "title": "With a cane"
             },
-            "passive": {
+            "following": {
               "description": "Be caned by the other person",
               "title": "With a cane"
             }
@@ -140,11 +135,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-14bm3qs",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use a comb to spank the other person",
               "title": "With a comb"
             },
-            "passive": {
+            "following": {
               "description": "Be spanked with a comb",
               "title": "With a comb"
             }
@@ -155,11 +150,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1i2vvrm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Spank the other person until their skin becomes red",
               "title": "Until the skin is red"
             },
-            "passive": {
+            "following": {
               "description": "Be spanked until your skin becomes red",
               "title": "Until the skin is red"
             }
@@ -170,11 +165,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-t3fgz5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Spank the other person until light bruising appears",
               "title": "Until there is light bruising"
             },
-            "passive": {
+            "following": {
               "description": "Be spanked until light bruising appears",
               "title": "Until there is light bruising"
             }
@@ -185,11 +180,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1ijb2cv",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Spank the other person until extensive, severe bruising appears",
               "title": "Until there is extensive, severe bruising"
             },
-            "passive": {
+            "following": {
               "description": "Be spanked until extensive, severe bruising appears",
               "title": "Until there is extensive, severe bruising"
             }
@@ -200,11 +195,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-19dbc6o",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Spank the other person until the skin breaks and releases wound fluid",
               "title": "Until the skin breaks and weeps"
             },
-            "passive": {
+            "following": {
               "description": "Be spanked until the skin breaks and releases wound fluid",
               "title": "Until the skin breaks and weeps"
             }
@@ -215,11 +210,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1q2onnn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Spank the other person until the skin breaks and bleeds",
               "title": "Until the skin breaks and bleeds"
             },
-            "passive": {
+            "following": {
               "description": "Be spanked until the skin breaks and bleeds",
               "title": "Until the skin breaks and bleeds"
             }
@@ -230,11 +225,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1744x4z",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Spank the other person’s buttocks",
               "title": "Spank the buttocks"
             },
-            "passive": {
+            "following": {
               "description": "Have your buttocks spanked",
               "title": "Spank the buttocks"
             }
@@ -245,11 +240,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-915jo9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Slap the other person’s chest",
               "title": "Slap the chest"
             },
-            "passive": {
+            "following": {
               "description": "Have your chest slapped",
               "title": "Slap the chest"
             }
@@ -260,11 +255,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-9ncnsk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Slap the other person’s genitals",
               "title": "Slap the genitals"
             },
-            "passive": {
+            "following": {
               "description": "Have your genitals slapped",
               "title": "Slap the genitals"
             }
@@ -275,11 +270,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-syc2dj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Slap the other person’s thighs",
               "title": "Slap the thighs"
             },
-            "passive": {
+            "following": {
               "description": "Have your thighs slapped",
               "title": "Slap the thighs"
             }
@@ -290,11 +285,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1lby5ih",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Slap the soles of the other person’s feet",
               "title": "Slap the soles"
             },
-            "passive": {
+            "following": {
               "description": "Have the soles of your feet slapped",
               "title": "Slap the soles"
             }
@@ -305,11 +300,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-18swthz",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Slap the other person’s palms",
               "title": "Slap the palms"
             },
-            "passive": {
+            "following": {
               "description": "Have your palms slapped",
               "title": "Slap the palms"
             }
@@ -320,11 +315,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1pli4vm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person lie across your lap to be spanked",
               "title": "Over-the-knee spanking"
             },
-            "passive": {
+            "following": {
               "description": "Lie across the other person’s lap and be spanked",
               "title": "Over-the-knee spanking"
             }
@@ -335,11 +330,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-m08x3j",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Place the other person in a diapering position and spank them",
               "title": "Spanking in a diapering position"
             },
-            "passive": {
+            "following": {
               "description": "Be placed in a diapering position and spanked",
               "title": "Spanking in a diapering position"
             }
@@ -350,11 +345,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-yjl4cm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person stand while you spank them",
               "title": "Standing spanking"
             },
-            "passive": {
+            "following": {
               "description": "Stand while the other person spanks you",
               "title": "Standing spanking"
             }
@@ -365,11 +360,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-cnf6uz",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person stand on tiptoe while you spank them",
               "title": "Spanking on tiptoe"
             },
-            "passive": {
+            "following": {
               "description": "Stand on tiptoe while the other person spanks you",
               "title": "Spanking on tiptoe"
             }
@@ -382,14 +377,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 24,
       "name": "Spanking",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Spank or paddle the other person, including on the buttocks"
         },
-        "passive": {
+        "following": {
           "description": "Receive spanking or paddling, including on the buttocks"
         }
       },
-      "sourceSheetName": "拍打類項目"
+      "originalName": "拍打類項目"
     },
     {
       "categoryId": "whipping",
@@ -397,11 +392,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-9q3jnv",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Flog the other person",
               "title": "With a flogger"
             },
-            "passive": {
+            "following": {
               "description": "Be flogged",
               "title": "With a flogger"
             }
@@ -412,11 +407,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1w83a3j",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person with a long whip",
               "title": "With a long whip"
             },
-            "passive": {
+            "following": {
               "description": "Be struck with a long whip",
               "title": "With a long whip"
             }
@@ -427,11 +422,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-d25qdd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person with a bullwhip",
               "title": "With a bullwhip"
             },
-            "passive": {
+            "following": {
               "description": "Be struck with a bullwhip",
               "title": "With a bullwhip"
             }
@@ -442,11 +437,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-pt4u3j",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Strike the other person with a belt",
               "title": "With a belt"
             },
-            "passive": {
+            "following": {
               "description": "Be struck with a belt",
               "title": "With a belt"
             }
@@ -457,11 +452,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-2nwvqy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person until their skin becomes red",
               "title": "Until the skin is red"
             },
-            "passive": {
+            "following": {
               "description": "Be whipped until your skin becomes red",
               "title": "Until the skin is red"
             }
@@ -472,11 +467,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-sw4wfd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person until light bruising appears",
               "title": "Until there is light bruising"
             },
-            "passive": {
+            "following": {
               "description": "Be whipped until light bruising appears",
               "title": "Until there is light bruising"
             }
@@ -487,11 +482,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-hekt6v",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person until extensive, severe bruising appears",
               "title": "Until there is extensive, severe bruising"
             },
-            "passive": {
+            "following": {
               "description": "Be whipped until extensive, severe bruising appears",
               "title": "Until there is extensive, severe bruising"
             }
@@ -502,11 +497,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-k3sn5k",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person until the skin breaks and releases wound fluid",
               "title": "Until the skin breaks and weeps"
             },
-            "passive": {
+            "following": {
               "description": "Be whipped until the skin breaks and releases wound fluid",
               "title": "Until the skin breaks and weeps"
             }
@@ -517,11 +512,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1oyyq0b",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person until the skin breaks and bleeds",
               "title": "Until the skin breaks and bleeds"
             },
-            "passive": {
+            "following": {
               "description": "Be whipped until the skin breaks and bleeds",
               "title": "Until the skin breaks and bleeds"
             }
@@ -532,11 +527,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-15c25xn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person’s buttocks",
               "title": "Whip the buttocks"
             },
-            "passive": {
+            "following": {
               "description": "Have your buttocks whipped",
               "title": "Whip the buttocks"
             }
@@ -547,11 +542,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1f72zmt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person’s back",
               "title": "Whip the back"
             },
-            "passive": {
+            "following": {
               "description": "Have your back whipped",
               "title": "Whip the back"
             }
@@ -562,11 +557,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1lvzphd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person’s chest",
               "title": "Whip the chest"
             },
-            "passive": {
+            "following": {
               "description": "Have your chest whipped",
               "title": "Whip the chest"
             }
@@ -577,11 +572,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1kkr5xo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person’s genitals",
               "title": "Whip the genitals"
             },
-            "passive": {
+            "following": {
               "description": "Have your genitals whipped",
               "title": "Whip the genitals"
             }
@@ -592,11 +587,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-pby8ov",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person’s thighs",
               "title": "Whip the thighs"
             },
-            "passive": {
+            "following": {
               "description": "Have your thighs whipped",
               "title": "Whip the thighs"
             }
@@ -607,11 +602,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1bop80o",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Whip the other person’s abdomen",
               "title": "Whip the abdomen"
             },
-            "passive": {
+            "following": {
               "description": "Have your abdomen whipped",
               "title": "Whip the abdomen"
             }
@@ -624,14 +619,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 15,
       "name": "Whipping",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Use a whip on the other person"
         },
-        "passive": {
+        "following": {
           "description": "Receive whipping"
         }
       },
-      "sourceSheetName": "鞭打類項目"
+      "originalName": "鞭打類項目"
     },
     {
       "categoryId": "bondage",
@@ -639,11 +634,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-122x6cf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person and limit their movement with jute rope",
               "title": "With jute rope"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained and have your movement limited with jute rope",
               "title": "With jute rope"
             }
@@ -654,11 +649,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1tiowlt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person and limit their movement with cotton rope",
               "title": "With cotton rope"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained and have your movement limited with cotton rope",
               "title": "With cotton rope"
             }
@@ -669,11 +664,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-3cl427",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person and limit their movement with belts",
               "title": "With belts"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained and have your movement limited with belts",
               "title": "With belts"
             }
@@ -684,11 +679,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1fq32i8",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person and limit their movement with handcuffs",
               "title": "With handcuffs"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained and have your movement limited with handcuffs",
               "title": "With handcuffs"
             }
@@ -699,11 +694,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1b5wnt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person and limit their movement with chains",
               "title": "With chains"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained and have your movement limited with chains",
               "title": "With chains"
             }
@@ -714,11 +709,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1atcv41",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person and limit their movement with cloth or fabric strips",
               "title": "With cloth or fabric strips"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained and have your movement limited with cloth or fabric strips",
               "title": "With cloth or fabric strips"
             }
@@ -729,11 +724,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1pcf9zg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person and limit their movement with self-fusing tape",
               "title": "With self-fusing tape"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained and have your movement limited with self-fusing tape",
               "title": "With self-fusing tape"
             }
@@ -744,11 +739,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1eqwak3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person and limit their movement with large bondage furniture",
               "title": "With large bondage furniture"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained and have your movement limited with large bondage furniture",
               "title": "With large bondage furniture"
             }
@@ -759,11 +754,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-14lh93b",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person and limit their movement with small bondage equipment",
               "title": "With small bondage equipment"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained and have your movement limited with small bondage equipment",
               "title": "With small bondage equipment"
             }
@@ -774,11 +769,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-9mjx48",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use your body to hold the other person down and limit their movement",
               "title": "With physical restraint"
             },
-            "passive": {
+            "following": {
               "description": "Be held down by the other person and have your movement limited",
               "title": "With physical restraint"
             }
@@ -789,11 +784,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1b013pq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person for up to about ten minutes",
               "title": "For up to about ten minutes"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained for up to about ten minutes",
               "title": "For up to about ten minutes"
             }
@@ -804,11 +799,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-spf6ae",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person for about ten minutes to one hour",
               "title": "For about ten minutes to one hour"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained for about ten minutes to one hour",
               "title": "For about ten minutes to one hour"
             }
@@ -819,11 +814,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-m6v84b",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person for about one to three hours",
               "title": "For about one to three hours"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained for about one to three hours",
               "title": "For about one to three hours"
             }
@@ -834,11 +829,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1ey2gp4",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person for more than three hours",
               "title": "For more than three hours"
             },
-            "passive": {
+            "following": {
               "description": "Be restrained for more than three hours",
               "title": "For more than three hours"
             }
@@ -849,11 +844,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-mueg5n",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person’s hands and limit their movement",
               "title": "Restrain the hands"
             },
-            "passive": {
+            "following": {
               "description": "Have your hands restrained and your movement limited",
               "title": "Restrain the hands"
             }
@@ -864,11 +859,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-o3hqfj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person’s legs and limit their movement",
               "title": "Restrain the legs"
             },
-            "passive": {
+            "following": {
               "description": "Have your legs restrained and your movement limited",
               "title": "Restrain the legs"
             }
@@ -879,11 +874,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1vyd9h5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrain the other person’s whole body and limit their movement",
               "title": "Restrain the whole body"
             },
-            "passive": {
+            "following": {
               "description": "Have your whole body restrained and your movement limited",
               "title": "Restrain the whole body"
             }
@@ -894,11 +889,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-gyoc0q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Suspend and restrain the other person, limiting their movement",
               "title": "Suspension bondage"
             },
-            "passive": {
+            "following": {
               "description": "Be suspended and restrained, with your movement limited",
               "title": "Suspension bondage"
             }
@@ -909,11 +904,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-bagc3e",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Wrap the other person in a mummified position and limit their movement",
               "title": "Mummification bondage"
             },
-            "passive": {
+            "following": {
               "description": "Be wrapped in a mummified position and have your movement limited",
               "title": "Mummification bondage"
             }
@@ -926,14 +921,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 19,
       "name": "Bondage",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Restrain the other person and limit their movement with rope or other equipment"
         },
-        "passive": {
+        "following": {
           "description": "Be restrained and have your movement limited with rope or other equipment"
         }
       },
-      "sourceSheetName": "束縛類項目"
+      "originalName": "束縛類項目"
     },
     {
       "categoryId": "tickling",
@@ -941,11 +936,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-hvz7o9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person with your hands",
               "title": "With hands"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled by the other person’s hands",
               "title": "With hands"
             }
@@ -956,11 +951,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-axmdvn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person with a comb",
               "title": "With a comb"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled with a comb",
               "title": "With a comb"
             }
@@ -971,11 +966,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-10fu930",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person with a feather",
               "title": "With a feather"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled with a feather",
               "title": "With a feather"
             }
@@ -986,11 +981,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1hi631w",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle or stimulate the other person with a pinwheel",
               "title": "With a pinwheel"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled or stimulated with a pinwheel",
               "title": "With a pinwheel"
             }
@@ -1001,11 +996,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1a2ptfb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle or stimulate the other person with a vibrating toy",
               "title": "With a vibrating toy"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled or stimulated with a vibrating toy",
               "title": "With a vibrating toy"
             }
@@ -1016,11 +1011,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1uurnpt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person lightly",
               "title": "Light tickling"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled lightly by the other person",
               "title": "Light tickling"
             }
@@ -1031,11 +1026,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-dhntqh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person more intensely",
               "title": "Intense tickling"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled more intensely by the other person",
               "title": "Intense tickling"
             }
@@ -1046,11 +1041,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-j94l9q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person while they are restrained",
               "title": "Tickling while restrained"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled by the other person while restrained",
               "title": "Tickling while restrained"
             }
@@ -1061,11 +1056,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1krfcvz",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person while they are naked",
               "title": "Tickling while naked"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled while naked",
               "title": "Tickling while naked"
             }
@@ -1076,11 +1071,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1nouw8a",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person while they are wearing only underwear",
               "title": "Tickling in underwear"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled while wearing only underwear",
               "title": "Tickling in underwear"
             }
@@ -1091,11 +1086,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-uttpwj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person through their clothing",
               "title": "Tickling through clothing"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled through your clothing",
               "title": "Tickling through clothing"
             }
@@ -1106,11 +1101,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-ni7x64",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person’s neck",
               "title": "Tickle the neck"
             },
-            "passive": {
+            "following": {
               "description": "Have your neck tickled",
               "title": "Tickle the neck"
             }
@@ -1121,11 +1116,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-11gglre",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person’s ears",
               "title": "Tickle the ears"
             },
-            "passive": {
+            "following": {
               "description": "Have your ears tickled",
               "title": "Tickle the ears"
             }
@@ -1136,11 +1131,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-ayd8dk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the other person’s armpits",
               "title": "Tickle the armpits"
             },
-            "passive": {
+            "following": {
               "description": "Have your armpits tickled",
               "title": "Tickle the armpits"
             }
@@ -1151,11 +1146,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-s5eumi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the soles of the other person’s feet",
               "title": "Tickle the soles"
             },
-            "passive": {
+            "following": {
               "description": "Have the soles of your feet tickled",
               "title": "Tickle the soles"
             }
@@ -1166,11 +1161,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-cypicd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Tickle the spaces between the other person’s ribs",
               "title": "Tickle between the ribs"
             },
-            "passive": {
+            "following": {
               "description": "Be tickled between the ribs",
               "title": "Tickle between the ribs"
             }
@@ -1183,14 +1178,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 16,
       "name": "Tickling",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Tickle the other person with hands or other items"
         },
-        "passive": {
+        "following": {
           "description": "Be tickled with hands or other items"
         }
       },
-      "sourceSheetName": "搔癢類項目"
+      "originalName": "搔癢類項目"
     },
     {
       "categoryId": "pain_stimulation",
@@ -1198,11 +1193,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-3jsgcf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use nipple clamps lightly on the other person’s nipples or breasts",
               "title": "Light nipple clamps"
             },
-            "passive": {
+            "following": {
               "description": "Have nipple clamps applied lightly to your nipples or breasts",
               "title": "Light nipple clamps"
             }
@@ -1213,11 +1208,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-qux8jb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use nipple clamps firmly on the other person’s nipples or breasts",
               "title": "Heavy nipple clamps"
             },
-            "passive": {
+            "following": {
               "description": "Have nipple clamps applied firmly to your nipples or breasts",
               "title": "Heavy nipple clamps"
             }
@@ -1228,11 +1223,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-6cy0m2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Add weight or pulling force to the other person’s nipple clamps",
               "title": "Weighted nipple clamps"
             },
-            "passive": {
+            "following": {
               "description": "Have weight or pulling force applied through nipple clamps",
               "title": "Weighted nipple clamps"
             }
@@ -1243,11 +1238,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-9h5col",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Squeeze, pull, or stimulate the other person’s breasts by hand to cause pain",
               "title": "Painful breast stimulation by hand"
             },
-            "passive": {
+            "following": {
               "description": "Have your breasts squeezed, pulled, or stimulated by hand to cause pain",
               "title": "Painful breast stimulation by hand"
             }
@@ -1258,11 +1253,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-fg5ey3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Give the other person mild electrical stimulation",
               "title": "Mild electrical stimulation"
             },
-            "passive": {
+            "following": {
               "description": "Receive mild electrical stimulation",
               "title": "Mild electrical stimulation"
             }
@@ -1273,11 +1268,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-rqbs5g",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Give the other person stronger electrical stimulation",
               "title": "Stronger electrical stimulation"
             },
-            "passive": {
+            "following": {
               "description": "Receive stronger electrical stimulation",
               "title": "Stronger electrical stimulation"
             }
@@ -1288,11 +1283,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-mjdyqb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Apply electrical stimulation to the other person’s genitals",
               "title": "Electrical stimulation of the genitals"
             },
-            "passive": {
+            "following": {
               "description": "Receive electrical stimulation on the genitals",
               "title": "Electrical stimulation of the genitals"
             }
@@ -1303,11 +1298,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-565m1l",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Apply ginger stimulation around the other person’s genitals",
               "title": "Ginger play around the genitals"
             },
-            "passive": {
+            "following": {
               "description": "Receive ginger stimulation around the genitals",
               "title": "Ginger play around the genitals"
             }
@@ -1318,11 +1313,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-10b0fb5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Apply ginger internally to the other person’s genitals",
               "title": "Internal genital ginger play"
             },
-            "passive": {
+            "following": {
               "description": "Receive internal genital stimulation with ginger",
               "title": "Internal genital ginger play"
             }
@@ -1333,11 +1328,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-145kjnj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Apply ginger stimulation around the other person’s anus",
               "title": "Ginger play around the anus"
             },
-            "passive": {
+            "following": {
               "description": "Receive ginger stimulation around the anus",
               "title": "Ginger play around the anus"
             }
@@ -1348,11 +1343,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-10kh2bt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Apply ginger internally to the other person’s anus",
               "title": "Internal anal ginger play"
             },
-            "passive": {
+            "following": {
               "description": "Receive internal anal stimulation with ginger",
               "title": "Internal anal ginger play"
             }
@@ -1363,11 +1358,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-369ag3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Drip low-temperature wax onto the other person’s body for stimulation",
               "title": "Wax play on the body"
             },
-            "passive": {
+            "following": {
               "description": "Have low-temperature wax dripped onto your body for heat or painful stimulation",
               "title": "Wax play on the body"
             }
@@ -1378,11 +1373,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-8lrs4c",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Drip low-temperature wax onto the other person’s chest for stimulation",
               "title": "Wax play on the chest"
             },
-            "passive": {
+            "following": {
               "description": "Have low-temperature wax dripped onto your chest for stimulation",
               "title": "Wax play on the chest"
             }
@@ -1393,11 +1388,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-j8e4pr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Drip low-temperature wax onto the other person’s genitals for stimulation",
               "title": "Wax play on the genitals"
             },
-            "passive": {
+            "following": {
               "description": "Have low-temperature wax dripped onto your genitals for stimulation",
               "title": "Wax play on the genitals"
             }
@@ -1408,11 +1403,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-1jrzewy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Bite the other person lightly to cause painful stimulation",
               "title": "Light biting"
             },
-            "passive": {
+            "following": {
               "description": "Be bitten lightly by the other person for painful stimulation",
               "title": "Being lightly bitten"
             }
@@ -1423,11 +1418,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-j9milm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Bite the other person hard to cause painful stimulation",
               "title": "Intense biting"
             },
-            "passive": {
+            "following": {
               "description": "Be bitten hard by the other person for painful stimulation",
               "title": "Being intensely bitten"
             }
@@ -1438,11 +1433,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-yllz3q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Pull the other person’s hair to cause painful stimulation",
               "title": "Hair pulling"
             },
-            "passive": {
+            "following": {
               "description": "Have your hair pulled by the other person for painful stimulation",
               "title": "Hair pulling"
             }
@@ -1453,11 +1448,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-151bev7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Apply clamps to the other person’s labia or clitoris",
               "title": "Labia or clitoral clamps"
             },
-            "passive": {
+            "following": {
               "description": "Have clamps applied to your labia or clitoris",
               "title": "Labia or clitoral clamps"
             }
@@ -1468,11 +1463,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-fdi4gl",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use ice to give the other person cold stimulation",
               "title": "Ice stimulation"
             },
-            "passive": {
+            "following": {
               "description": "Receive cold stimulation with ice from the other person",
               "title": "Ice stimulation"
             }
@@ -1485,14 +1480,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 19,
       "name": "Pain stimulation",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Give painful stimulation such as nipple clamps, wax, or electrical stimulation"
         },
-        "passive": {
+        "following": {
           "description": "Receive painful stimulation such as nipple clamps, wax, or electrical stimulation"
         }
       },
-      "sourceSheetName": "疼痛刺激類項目"
+      "originalName": "疼痛刺激類項目"
     },
     {
       "categoryId": "humiliation",
@@ -1500,11 +1495,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-ngy4jt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Slap the other person’s face as humiliation or discipline",
               "title": "Slapping the face"
             },
-            "passive": {
+            "following": {
               "description": "Be slapped in the face as humiliation or discipline",
               "title": "Slapping the face"
             }
@@ -1515,11 +1510,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-pn03",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Demean, mock, or humiliate the other person with words",
               "title": "Verbal humiliation"
             },
-            "passive": {
+            "following": {
               "description": "Be demeaned, mocked, or humiliated by the other person’s words",
               "title": "Verbal humiliation"
             }
@@ -1530,11 +1525,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-18rp5a3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to urinate in bed to evoke humiliation",
               "title": "Requiring bed-wetting"
             },
-            "passive": {
+            "following": {
               "description": "Be required to urinate in bed to evoke humiliation",
               "title": "Requiring bed-wetting"
             }
@@ -1545,11 +1540,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1podlwa",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to look in a mirror to evoke humiliation",
               "title": "Requiring someone to look in a mirror"
             },
-            "passive": {
+            "following": {
               "description": "Be required to look in a mirror to evoke humiliation",
               "title": "Requiring someone to look in a mirror"
             }
@@ -1560,11 +1555,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1amvb9e",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Write humiliating words on the other person’s body",
               "title": "Writing humiliating words on the body"
             },
-            "passive": {
+            "following": {
               "description": "Have humiliating words written on your body",
               "title": "Writing humiliating words on the body"
             }
@@ -1575,11 +1570,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1vz66lf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Shave the other person’s hair to evoke humiliation",
               "title": "Shaving the head"
             },
-            "passive": {
+            "following": {
               "description": "Have your hair shaved to evoke humiliation",
               "title": "Shaving the head"
             }
@@ -1590,11 +1585,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1w3livx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to dress in a particular way as part of a humiliation scene",
               "title": "Cross-dressing or costuming"
             },
-            "passive": {
+            "following": {
               "description": "Be required to dress in a particular way as part of a humiliation scene",
               "title": "Cross-dressing or costuming"
             }
@@ -1605,11 +1600,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1h3yf1m",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Humiliate the other person in a private place",
               "title": "Humiliation in private"
             },
-            "passive": {
+            "following": {
               "description": "Be humiliated by the other person in a private place",
               "title": "Humiliation in private"
             }
@@ -1620,11 +1615,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-ri5nyc",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Humiliate the other person in public or where others may see",
               "title": "Public humiliation"
             },
-            "passive": {
+            "following": {
               "description": "Be humiliated in public or where others may see",
               "title": "Public humiliation"
             }
@@ -1637,14 +1632,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 9,
       "name": "Humiliation",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Use words or actions to demean the other person or evoke humiliation"
         },
-        "passive": {
+        "following": {
           "description": "Be demeaned through words or actions, or experience humiliation"
         }
       },
-      "sourceSheetName": "羞辱類項目"
+      "originalName": "羞辱類項目"
     },
     {
       "categoryId": "service",
@@ -1652,11 +1647,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-7v0tu6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person massage the soles of your feet",
               "title": "Foot massage"
             },
-            "passive": {
+            "following": {
               "description": "Massage the soles of the other person’s feet",
               "title": "Foot massage"
             }
@@ -1667,11 +1662,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-1rvnr6f",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person give you a full-body massage",
               "title": "Full-body massage"
             },
-            "passive": {
+            "following": {
               "description": "Give the other person a full-body massage",
               "title": "Full-body massage"
             }
@@ -1682,11 +1677,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-1cqhir7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person prepare a meal for you",
               "title": "Preparing meals"
             },
-            "passive": {
+            "following": {
               "description": "Prepare a meal for the other person",
               "title": "Preparing meals"
             }
@@ -1697,11 +1692,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-5cfc80",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person pour tea or prepare a drink for you",
               "title": "Serving tea or drinks"
             },
-            "passive": {
+            "following": {
               "description": "Pour tea or prepare a drink for the other person",
               "title": "Serving tea or drinks"
             }
@@ -1712,11 +1707,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-177yx3t",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person carry your luggage or bags",
               "title": "Carrying luggage or bags"
             },
-            "passive": {
+            "following": {
               "description": "Carry the other person’s luggage or bags",
               "title": "Carrying luggage or bags"
             }
@@ -1727,11 +1722,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-16nyopw",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person clean your toys or equipment",
               "title": "Cleaning toys or equipment"
             },
-            "passive": {
+            "following": {
               "description": "Clean the other person’s toys or equipment",
               "title": "Cleaning toys or equipment"
             }
@@ -1742,11 +1737,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-176k705",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person do housework for you",
               "title": "Housework"
             },
-            "passive": {
+            "following": {
               "description": "Do housework for the other person",
               "title": "Housework"
             }
@@ -1757,11 +1752,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-b75ksu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person bathe you or help clean your body",
               "title": "Bathing service"
             },
-            "passive": {
+            "following": {
               "description": "Bathe the other person or help clean their body",
               "title": "Bathing service"
             }
@@ -1772,11 +1767,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-z1q598",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person trim, care for, or decorate your nails",
               "title": "Nail care"
             },
-            "passive": {
+            "following": {
               "description": "Trim, care for, or decorate the other person’s nails",
               "title": "Nail care"
             }
@@ -1787,11 +1782,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-1nx0nqc",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person drive you to and from a destination",
               "title": "Receiving a ride"
             },
-            "passive": {
+            "following": {
               "description": "Drive the other person to and from a destination",
               "title": "Giving a ride"
             }
@@ -1802,11 +1797,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-15yxo0r",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Receive service from the other person through sexual activity or interaction",
               "title": "Receiving sexual service"
             },
-            "passive": {
+            "following": {
               "description": "Serve the other person through sexual activity or interaction",
               "title": "Providing sexual service"
             }
@@ -1819,14 +1814,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "Service",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Receive services that meet your everyday needs or desires"
         },
-        "passive": {
+        "following": {
           "description": "Provide services that meet the other person’s everyday needs or desires"
         }
       },
-      "sourceSheetName": "服侍類項目"
+      "originalName": "服侍類項目"
     },
     {
       "categoryId": "discipline",
@@ -1834,11 +1829,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-11uedoh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to keep a journal for records or reflection",
               "title": "Ask for a journal entry"
             },
-            "passive": {
+            "following": {
               "description": "Be required to keep a journal for records or reflection",
               "title": "Write a journal entry"
             }
@@ -1849,11 +1844,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-11sxnh8",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to write a reflection for feedback or processing",
               "title": "Ask for a reflection"
             },
-            "passive": {
+            "following": {
               "description": "Be required to write a reflection for feedback or processing",
               "title": "Write a reflection"
             }
@@ -1864,11 +1859,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-1g2g00r",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to practice or hold a specified posture",
               "title": "Posture training"
             },
-            "passive": {
+            "following": {
               "description": "Be required to practice or hold a specified posture",
               "title": "Posture training"
             }
@@ -1879,11 +1874,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-qp6v84",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to adjust diet or habits with weight gain as a goal",
               "title": "Weight gain"
             },
-            "passive": {
+            "following": {
               "description": "Be required to adjust diet or habits with weight gain as a goal",
               "title": "Weight gain"
             }
@@ -1894,11 +1889,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-nqdxf9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to adjust diet or habits with weight loss as a goal",
               "title": "Weight loss"
             },
-            "passive": {
+            "following": {
               "description": "Be required to adjust diet or habits with weight loss as a goal",
               "title": "Weight loss"
             }
@@ -1909,11 +1904,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-18zxvtr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Set rules or restrictions for what and how the other person eats",
               "title": "Dietary control"
             },
-            "passive": {
+            "following": {
               "description": "Have what and how you eat regulated or restricted by the other person",
               "title": "Dietary control"
             }
@@ -1924,11 +1919,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-vrrge7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to undergo a body inspection or show their physical condition",
               "title": "Body inspection"
             },
-            "passive": {
+            "following": {
               "description": "Be required to undergo a body inspection or show your physical condition",
               "title": "Body inspection"
             }
@@ -1939,11 +1934,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-mrnfh0",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Assign a task for the other person to complete",
               "title": "Assign a task"
             },
-            "passive": {
+            "following": {
               "description": "Accept and complete a task assigned by the other person",
               "title": "Complete an assigned task"
             }
@@ -1954,11 +1949,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-1h3vvc3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Reprimand or correct the other person for behavior considered improper",
               "title": "Correct behaviour"
             },
-            "passive": {
+            "following": {
               "description": "Be reprimanded or corrected for behavior considered improper",
               "title": "Receive correction"
             }
@@ -1969,11 +1964,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-7ki0ex",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Specify knowledge, skills, or material for the other person to learn",
               "title": "Assign a learning topic"
             },
-            "passive": {
+            "following": {
               "description": "Be assigned specific knowledge, skills, or material to learn",
               "title": "Study an assigned topic"
             }
@@ -1984,11 +1979,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-1686v9k",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Set rules for the other person’s wording, forms of address, or way of speaking",
               "title": "Rules for speech"
             },
-            "passive": {
+            "following": {
               "description": "Have your wording, forms of address, or way of speaking regulated by the other person",
               "title": "Rules for speech"
             }
@@ -1999,11 +1994,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-s0l9h0",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Create a specific ritual and require the other person to perform it",
               "title": "Set a ritual"
             },
-            "passive": {
+            "following": {
               "description": "Be required to perform a specific ritual created by the other person",
               "title": "Carry out a ritual"
             }
@@ -2016,14 +2011,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 12,
       "name": "Discipline",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Set limits or rules focused on training and reaching a goal"
         },
-        "passive": {
+        "following": {
           "description": "Accept limits or rules focused on training, improvement, or reaching a goal"
         }
       },
-      "sourceSheetName": "管教類項目"
+      "originalName": "管教類項目"
     },
     {
       "categoryId": "sexual_interaction",
@@ -2031,11 +2026,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-ln7hc7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role during intercourse",
               "title": "Intercourse"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role during intercourse",
               "title": "Intercourse"
             }
@@ -2046,11 +2041,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1aef53n",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role during oral sex",
               "title": "Oral sex"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role during oral sex",
               "title": "Oral sex"
             }
@@ -2061,11 +2056,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1ytloln",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role during anal sex",
               "title": "Anal sex"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role during anal sex",
               "title": "Anal sex"
             }
@@ -2076,11 +2071,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-wc6vs3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role during breast intercourse",
               "title": "Breast intercourse"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role during breast intercourse",
               "title": "Breast intercourse"
             }
@@ -2091,11 +2086,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1k4ddkr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in manual genital stimulation",
               "title": "Manual genital stimulation"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in manual genital stimulation",
               "title": "Manual genital stimulation"
             }
@@ -2106,11 +2101,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1g5pujn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in fisting",
               "title": "Fisting"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in fisting",
               "title": "Fisting"
             }
@@ -2121,11 +2116,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-filrqn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Ejaculate in the other person’s mouth",
               "title": "Ejaculate in their mouth"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person ejaculate in your mouth",
               "title": "Receive ejaculation in the mouth"
             }
@@ -2136,11 +2131,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1rt5tu9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Ejaculate on the other person’s face",
               "title": "Ejaculate on their face"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person ejaculate on your face",
               "title": "Receive ejaculation on the face"
             }
@@ -2151,11 +2146,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1ue4af6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Ejaculate on the other person’s chest",
               "title": "Ejaculate on their chest"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person ejaculate on your chest",
               "title": "Receive ejaculation on the chest"
             }
@@ -2166,11 +2161,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-tvmpfz",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Ejaculate inside the other person’s vagina",
               "title": "Ejaculate in their vagina"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person ejaculate inside your vagina",
               "title": "Receive ejaculation in the vagina"
             }
@@ -2181,11 +2176,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-dsyi29",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Ejaculate inside or around the other person’s anus",
               "title": "Ejaculate at their anus"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person ejaculate inside or around your anus",
               "title": "Receive ejaculation at the anus"
             }
@@ -2196,11 +2191,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-29csl5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Ejaculate on the other person’s hair",
               "title": "Ejaculate on their hair"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person ejaculate on your hair",
               "title": "Receive ejaculation on the hair"
             }
@@ -2211,11 +2206,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-qk9oti",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Ask the other person to swallow semen",
               "title": "Ask them to swallow semen"
             },
-            "passive": {
+            "following": {
               "description": "Swallow the other person’s semen",
               "title": "Swallow semen"
             }
@@ -2226,11 +2221,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-ik3j9u",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person eat food containing semen",
               "title": "Ask them to eat food with semen"
             },
-            "passive": {
+            "following": {
               "description": "Eat food containing semen",
               "title": "Eat food with semen"
             }
@@ -2241,11 +2236,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-jfpa5h",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Stimulate or guide the other person to squirt",
               "title": "Encourage squirting"
             },
-            "passive": {
+            "following": {
               "description": "Be guided or stimulated by the other person until you squirt",
               "title": "Squirting"
             }
@@ -2256,11 +2251,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-8jcyoj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Continue stimulating the other person until one or multiple orgasms",
               "title": "Bring them to orgasm"
             },
-            "passive": {
+            "following": {
               "description": "Be continuously stimulated by the other person until one or multiple orgasms",
               "title": "Be stimulated to orgasm"
             }
@@ -2271,11 +2266,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-w99mgx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Ask the other person to masturbate for you to see",
               "title": "Ask for a masturbation display"
             },
-            "passive": {
+            "following": {
               "description": "Be asked to masturbate for the other person to see",
               "title": "Show masturbation"
             }
@@ -2286,11 +2281,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1sl20mr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Stimulate the other person with a sex toy",
               "title": "Stimulate them with a sex toy"
             },
-            "passive": {
+            "following": {
               "description": "Be stimulated by the other person with a sex toy",
               "title": "Receive sex-toy stimulation"
             }
@@ -2301,11 +2296,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1xo6keo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use urethral sounds with the other person",
               "title": "Use urethral sounding on them"
             },
-            "passive": {
+            "following": {
               "description": "Receive urethral sounding from the other person",
               "title": "Receive urethral sounding"
             }
@@ -2316,11 +2311,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-6pp140",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take and control the other person’s remote vibrator",
               "title": "Control the vibrator"
             },
-            "passive": {
+            "following": {
               "description": "Hand control of your remote vibrator to the other person",
               "title": "Hand over vibrator control"
             }
@@ -2331,11 +2326,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-flhbf2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to wear a remote vibrator in public",
               "title": "Ask for a public vibrator"
             },
-            "passive": {
+            "following": {
               "description": "Wear a remote vibrator in public under the other person’s control or direction",
               "title": "Wear a vibrator in public"
             }
@@ -2348,14 +2343,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 21,
       "name": "Sexual activity",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Activities involving sexual organs"
         },
-        "passive": {
+        "following": {
           "description": "Activities involving sexual organs"
         }
       },
-      "sourceSheetName": "性愛類項目"
+      "originalName": "性愛類項目"
     },
     {
       "categoryId": "anal_interaction",
@@ -2363,11 +2358,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1oupd9i",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Insert an anal plug under 3 cm in diameter into the other person",
               "title": "Anal plug under 3 cm in diameter"
             },
-            "passive": {
+            "following": {
               "description": "Have an anal plug under 3 cm in diameter inserted",
               "title": "Anal plug under 3 cm in diameter"
             }
@@ -2378,11 +2373,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1m59dfi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Insert an anal plug 3–5 cm in diameter into the other person",
               "title": "Anal plug 3–5 cm in diameter"
             },
-            "passive": {
+            "following": {
               "description": "Have an anal plug 3–5 cm in diameter inserted",
               "title": "Anal plug 3–5 cm in diameter"
             }
@@ -2393,11 +2388,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-b8y6xr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Insert an anal plug over 5 cm in diameter into the other person",
               "title": "Anal plug over 5 cm in diameter"
             },
-            "passive": {
+            "following": {
               "description": "Have an anal plug over 5 cm in diameter inserted",
               "title": "Anal plug over 5 cm in diameter"
             }
@@ -2408,11 +2403,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1sgm90w",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Stimulate the other person’s anus with an anal whip",
               "title": "Anal whip"
             },
-            "passive": {
+            "following": {
               "description": "Have your anus stimulated with an anal whip",
               "title": "Anal whip"
             }
@@ -2423,11 +2418,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-4g0x9i",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Stimulate the other person’s anus with anal beads",
               "title": "Anal beads"
             },
-            "passive": {
+            "following": {
               "description": "Have your anus stimulated with anal beads",
               "title": "Anal beads"
             }
@@ -2438,11 +2433,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-ilmux2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Guide the other person through anal stretching practice",
               "title": "Anal stretching practice"
             },
-            "passive": {
+            "following": {
               "description": "Be guided through anal stretching practice by the other person",
               "title": "Anal stretching practice"
             }
@@ -2453,11 +2448,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-n69t3o",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use an anal dilator to stretch the other person’s anus",
               "title": "Anal dilator"
             },
-            "passive": {
+            "following": {
               "description": "Have your anus stretched with an anal dilator",
               "title": "Anal dilator"
             }
@@ -2468,11 +2463,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-v6v9dp",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use an anal speculum to open or observe the other person’s anus",
               "title": "Anal speculum"
             },
-            "passive": {
+            "following": {
               "description": "Have your anus opened or observed with an anal speculum",
               "title": "Anal speculum"
             }
@@ -2483,11 +2478,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-12ghyy9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Give the other person an enema",
               "title": "Give an enema"
             },
-            "passive": {
+            "following": {
               "description": "Receive an enema from the other person",
               "title": "Receive an enema"
             }
@@ -2498,11 +2493,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-gwnjaf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Receive anilingus from the other person",
               "title": "Receive anal oral service"
             },
-            "passive": {
+            "following": {
               "description": "Provide anilingus to the other person",
               "title": "Provide anal oral service"
             }
@@ -2513,11 +2508,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1wf7u60",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to wear an anal plug for up to one hour",
               "title": "Wearing an anal plug for up to one hour"
             },
-            "passive": {
+            "following": {
               "description": "Wear an anal plug for up to one hour",
               "title": "Wearing an anal plug for up to one hour"
             }
@@ -2528,11 +2523,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-19jmdrg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to wear an anal plug for one to three hours",
               "title": "Wearing an anal plug for one to three hours"
             },
-            "passive": {
+            "following": {
               "description": "Wear an anal plug for one to three hours",
               "title": "Wearing an anal plug for one to three hours"
             }
@@ -2543,11 +2538,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-ww1hfr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to wear an anal plug for more than three hours",
               "title": "Wearing an anal plug for more than three hours"
             },
-            "passive": {
+            "following": {
               "description": "Wear an anal plug for more than three hours",
               "title": "Wearing an anal plug for more than three hours"
             }
@@ -2558,11 +2553,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-npcnih",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to wear an anal plug while sleeping",
               "title": "Wearing an anal plug while sleeping"
             },
-            "passive": {
+            "following": {
               "description": "Wear an anal plug while sleeping",
               "title": "Wearing an anal plug while sleeping"
             }
@@ -2573,11 +2568,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1c35d5h",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to wear an anal plug in public",
               "title": "Wearing an anal plug in public"
             },
-            "passive": {
+            "following": {
               "description": "Wear an anal plug in public",
               "title": "Wearing an anal plug in public"
             }
@@ -2590,14 +2585,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 15,
       "name": "Anal play",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Activities involving the anus"
         },
-        "passive": {
+        "following": {
           "description": "Activities involving the anus"
         }
       },
-      "sourceSheetName": "肛門類項目"
+      "originalName": "肛門類項目"
     },
     {
       "categoryId": "multi_party_interaction",
@@ -2605,11 +2600,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-jy04v5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in a relationship with one dominant and multiple slaves or pets",
               "title": "One dominant with multiple slaves or pets"
             },
-            "passive": {
+            "following": {
               "description": "Take a slave or pet role in a relationship with one dominant and multiple slaves or pets",
               "title": "One dominant with multiple slaves or pets"
             }
@@ -2620,11 +2615,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-1retpvp",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take one of the leading roles in a relationship with multiple dominants and one slave or pet",
               "title": "Multiple dominants with one slave or pet"
             },
-            "passive": {
+            "following": {
               "description": "Take the slave or pet role in a relationship with multiple dominants and one slave or pet",
               "title": "Multiple dominants with one slave or pet"
             }
@@ -2635,11 +2630,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-14o4ip9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Swap partners and interact or have sexual contact with someone else",
               "title": "Partner swapping"
             },
-            "passive": {
+            "following": {
               "description": "Interact or have sexual contact with someone else in a partner-swapping situation",
               "title": "Partner swapping"
             }
@@ -2650,11 +2645,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-rrbnk5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Arrange or guide the other person through a cuckold scenario",
               "title": "Cuckold play"
             },
-            "passive": {
+            "following": {
               "description": "Be placed in, watch, or participate in a cuckold scenario",
               "title": "Cuckold play"
             }
@@ -2665,11 +2660,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-2wnhye",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Participate in or arrange sexual interaction involving multiple people",
               "title": "Group sex"
             },
-            "passive": {
+            "following": {
               "description": "Participate in sexual interaction involving multiple people",
               "title": "Group sex"
             }
@@ -2680,11 +2675,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-1rwzxqq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Arrange a gang-rape scenario involving multiple people with the other person’s informed consent",
               "title": "Consensual gang-rape scenario"
             },
-            "passive": {
+            "following": {
               "description": "Receive a gang-rape scenario involving multiple people with informed consent",
               "title": "Consensual gang-rape scenario"
             }
@@ -2695,11 +2690,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-1p23a5n",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Temporarily entrust the other person to interact with a third person",
               "title": "Place them with a third person short term"
             },
-            "passive": {
+            "following": {
               "description": "Be temporarily entrusted to interact with a third person",
               "title": "Be placed with a third person short term"
             }
@@ -2710,11 +2705,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-18qgi5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Entrust the other person to interact with a third person over a longer period",
               "title": "Place them with a third person long term"
             },
-            "passive": {
+            "following": {
               "description": "Be entrusted to interact with a third person over a longer period",
               "title": "Be placed with a third person long term"
             }
@@ -2725,11 +2720,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-8rm4og",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Entrust the other person to interact with a third person in specific situations",
               "title": "Place them with a third person conditionally"
             },
-            "passive": {
+            "following": {
               "description": "Be entrusted to interact with a third person in specific situations",
               "title": "Be placed with a third person conditionally"
             }
@@ -2740,11 +2735,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-rxs1rf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Arrange or participate in a group-dating situation",
               "title": "Group dating"
             },
-            "passive": {
+            "following": {
               "description": "Participate in a group-dating situation",
               "title": "Group dating"
             }
@@ -2755,11 +2750,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-1ovw0ci",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Arrange or participate in a multi-person training or play scene",
               "title": "Multi-person play"
             },
-            "passive": {
+            "following": {
               "description": "Participate in a multi-person training or play scene",
               "title": "Multi-person play"
             }
@@ -2772,14 +2767,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "Multi-person interactions",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Activities involving multiple people or a third person outside the relationship"
         },
-        "passive": {
+        "following": {
           "description": "Activities involving multiple people or a third person outside the relationship"
         }
       },
-      "sourceSheetName": "多方互動類項目"
+      "originalName": "多方互動類項目"
     },
     {
       "categoryId": "enslavement",
@@ -2787,11 +2782,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-bei8uo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person take a sex-slave role in a consensual scene",
               "title": "Sex-slave role"
             },
-            "passive": {
+            "following": {
               "description": "Take a sex-slave role in a consensual scene",
               "title": "Sex-slave role"
             }
@@ -2802,11 +2797,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-1lnxc6o",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person take a domestic-slave role in a consensual scene",
               "title": "Domestic-slave role"
             },
-            "passive": {
+            "following": {
               "description": "Take a domestic-slave role in a consensual scene",
               "title": "Domestic-slave role"
             }
@@ -2817,11 +2812,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-emvul7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person take a service-slave role in a consensual scene",
               "title": "Service-slave role"
             },
-            "passive": {
+            "following": {
               "description": "Take a service-slave role in a consensual scene",
               "title": "Service-slave role"
             }
@@ -2832,11 +2827,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-5p38rr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person take a consensual role providing money or making payments",
               "title": "ATM-slave role"
             },
-            "passive": {
+            "following": {
               "description": "Take a consensual role providing money or making payments",
               "title": "ATM-slave role"
             }
@@ -2847,11 +2842,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-ktgyn6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person take a consensual role providing transport or driving service",
               "title": "Driver-slave role"
             },
-            "passive": {
+            "following": {
               "description": "Take a consensual role providing transport or driving service",
               "title": "Driver-slave role"
             }
@@ -2862,11 +2857,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-8hpgnn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person consensually take a role receiving pain or acting as an outlet",
               "title": "Pain slave or outlet role"
             },
-            "passive": {
+            "following": {
               "description": "Consensually take a role receiving pain or acting as an outlet",
               "title": "Pain slave or outlet role"
             }
@@ -2877,11 +2872,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-p5y68w",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Train the other person in a slave role",
               "title": "Slave-role training"
             },
-            "passive": {
+            "following": {
               "description": "Receive training related to a slave role",
               "title": "Slave-role training"
             }
@@ -2892,11 +2887,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-8sl7b1",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Give the other person a slave collar or symbol",
               "title": "Give a slave collar"
             },
-            "passive": {
+            "following": {
               "description": "Receive a slave collar or symbol from the other person",
               "title": "Receive a slave collar"
             }
@@ -2907,11 +2902,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-wgiuuj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Lead the other person by a leash in a private space",
               "title": "Leading by leash in private"
             },
-            "passive": {
+            "following": {
               "description": "Be led by the other person with a leash in a private space",
               "title": "Leading by leash in private"
             }
@@ -2922,11 +2917,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-bdsmspaceleash",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Lead the other person by a leash in a BDSM-related space",
               "title": "Leading by leash in a BDSM space"
             },
-            "passive": {
+            "following": {
               "description": "Be led by the other person with a leash in a BDSM-related space",
               "title": "Leading by leash in a BDSM space"
             }
@@ -2937,11 +2932,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-1654r6x",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Lead the other person by a leash in a public space",
               "title": "Leading by leash in public"
             },
-            "passive": {
+            "following": {
               "description": "Be led by the other person with a leash in a public space",
               "title": "Leading by leash in public"
             }
@@ -2952,11 +2947,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-w3wrxl",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Put the other person in a slave cage or confine them inside it",
               "title": "Place them in a slave cage"
             },
-            "passive": {
+            "following": {
               "description": "Be put in a slave cage or confined inside it",
               "title": "Be placed in a slave cage"
             }
@@ -2967,11 +2962,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-1d5ybf5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person enter a slave role or state briefly",
               "title": "Short-term enslavement"
             },
-            "passive": {
+            "following": {
               "description": "Enter a slave role or state briefly",
               "title": "Short-term enslavement"
             }
@@ -2982,11 +2977,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-tu6x63",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person remain in a slave role or state over a longer period",
               "title": "Long-term enslavement"
             },
-            "passive": {
+            "following": {
               "description": "Remain in a slave role or state over a longer period",
               "title": "Long-term enslavement"
             }
@@ -2997,11 +2992,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-swx1g2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Enter a relationship framed as permanent enslavement with the other person",
               "title": "Permanent enslavement"
             },
-            "passive": {
+            "following": {
               "description": "Enter a relationship framed as permanent enslavement",
               "title": "Permanent enslavement"
             }
@@ -3014,14 +3009,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 15,
       "name": "Enslavement",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Have the other person take a slave role within an agreed scope"
         },
-        "passive": {
+        "following": {
           "description": "Take a slave role within an agreed scope"
         }
       },
-      "sourceSheetName": "奴化類項目"
+      "originalName": "奴化類項目"
     },
     {
       "categoryId": "pet_play",
@@ -3029,11 +3024,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1jsyyjh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Bathe or groom the other person while they play a pet",
               "title": "Bathe or groom the pet"
             },
-            "passive": {
+            "following": {
               "description": "Be bathed or groomed by the other person while playing a pet",
               "title": "Be bathed or groomed"
             }
@@ -3044,11 +3039,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-a609w4",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Interact with the other person using pet toys while they play a pet",
               "title": "Playing with pet toys"
             },
-            "passive": {
+            "following": {
               "description": "Play with pet toys with the other person while playing a pet",
               "title": "Playing with pet toys"
             }
@@ -3059,11 +3054,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-x5vjdy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to crawl on all fours while playing an animal or pet",
               "title": "Crawling on all fours"
             },
-            "passive": {
+            "following": {
               "description": "Crawl on all fours while playing an animal or pet",
               "title": "Crawling on all fours"
             }
@@ -3074,11 +3069,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-nv1pij",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to make animal or pet sounds",
               "title": "Making animal or pet sounds"
             },
-            "passive": {
+            "following": {
               "description": "Make animal or pet sounds while playing an animal or pet",
               "title": "Making animal or pet sounds"
             }
@@ -3089,11 +3084,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-rvrxgu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Feed the other person human food from a pet bowl",
               "title": "Human food in a pet bowl"
             },
-            "passive": {
+            "following": {
               "description": "Eat human food from a pet bowl",
               "title": "Human food in a pet bowl"
             }
@@ -3104,11 +3099,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-4bs8mo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Feed the other person wet pet food from a pet bowl",
               "title": "Wet pet food in a pet bowl"
             },
-            "passive": {
+            "following": {
               "description": "Eat wet pet food from a pet bowl",
               "title": "Wet pet food in a pet bowl"
             }
@@ -3119,11 +3114,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1hw29un",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Feed the other person dry pet food from a pet bowl",
               "title": "Dry pet food in a pet bowl"
             },
-            "passive": {
+            "following": {
               "description": "Eat dry pet food from a pet bowl",
               "title": "Dry pet food in a pet bowl"
             }
@@ -3134,11 +3129,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-etd5x1",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Train the other person to perform specified skills in a pet role",
               "title": "Pet-skill training"
             },
-            "passive": {
+            "following": {
               "description": "Receive training and perform specified skills in a pet role",
               "title": "Pet-skill training"
             }
@@ -3149,11 +3144,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-52x52j",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Give the other person a pet collar or symbol",
               "title": "Give a pet collar"
             },
-            "passive": {
+            "following": {
               "description": "Receive a pet collar or symbol from the other person",
               "title": "Receive a pet collar"
             }
@@ -3164,11 +3159,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-ljh0h7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Lead the other person by a leash in private while they play a pet",
               "title": "Leading by leash in private"
             },
-            "passive": {
+            "following": {
               "description": "Be led by the other person with a leash in private",
               "title": "Leading by leash in private"
             }
@@ -3179,11 +3174,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-bdsmspaceleash",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Lead the other person by a leash in a BDSM-related space while they play a pet",
               "title": "Leading by leash in a BDSM space"
             },
-            "passive": {
+            "following": {
               "description": "Be led by the other person with a leash in a BDSM-related space",
               "title": "Leading by leash in a BDSM space"
             }
@@ -3194,11 +3189,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1efmrop",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Lead the other person by a leash in public while they play a pet",
               "title": "Leading by leash in public"
             },
-            "passive": {
+            "following": {
               "description": "Be led by the other person with a leash in public",
               "title": "Leading by leash in public"
             }
@@ -3209,11 +3204,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-iua2gj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Put the other person in a pet cage or confine them inside it while they play a pet",
               "title": "Place them in a pet cage"
             },
-            "passive": {
+            "following": {
               "description": "Be put in a pet cage or confined inside it while playing a pet",
               "title": "Be placed in a pet cage"
             }
@@ -3224,11 +3219,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1hdeo81",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to wear pet-themed hair accessories or a tail",
               "title": "Wearing pet ears or a tail"
             },
-            "passive": {
+            "following": {
               "description": "Wear pet-themed hair accessories or a tail while playing a pet",
               "title": "Wearing pet ears or a tail"
             }
@@ -3239,11 +3234,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-k9hood",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person wear a K9 dog hood and interact with them",
               "title": "K9 dog hood"
             },
-            "passive": {
+            "following": {
               "description": "Wear a K9 dog hood and interact with the other person",
               "title": "K9 dog hood"
             }
@@ -3254,11 +3249,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-jkh6sm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person enter an animal or pet role briefly",
               "title": "Short-term animal or pet role"
             },
-            "passive": {
+            "following": {
               "description": "Enter an animal or pet role briefly",
               "title": "Short-term animal or pet role"
             }
@@ -3269,11 +3264,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1o3a8sg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person remain in an animal or pet role over a longer period",
               "title": "Long-term animal or pet role"
             },
-            "passive": {
+            "following": {
               "description": "Remain in an animal or pet role over a longer period",
               "title": "Long-term animal or pet role"
             }
@@ -3284,11 +3279,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-7xqowr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Enter a relationship framed as permanent animal or pet play with the other person",
               "title": "Permanent animal or pet role"
             },
-            "passive": {
+            "following": {
               "description": "Enter a relationship framed as permanent animal or pet play",
               "title": "Permanent animal or pet role"
             }
@@ -3301,14 +3296,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 18,
       "name": "Animal and pet play",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Have the other person take an animal or pet role"
         },
-        "passive": {
+        "following": {
           "description": "Take an animal or pet role"
         }
       },
-      "sourceSheetName": "獸/寵物化類項目"
+      "originalName": "獸/寵物化類項目"
     },
     {
       "categoryId": "role_play",
@@ -3316,11 +3311,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-j6rqh7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person play a baby",
               "title": "Baby role"
             },
-            "passive": {
+            "following": {
               "description": "Play a baby in front of the other person",
               "title": "Baby role"
             }
@@ -3331,11 +3326,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1hqqab2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person play a child",
               "title": "Child role"
             },
-            "passive": {
+            "following": {
               "description": "Play a child in front of the other person",
               "title": "Child role"
             }
@@ -3346,11 +3341,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1b6vck1",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person play a teenager",
               "title": "Teen role"
             },
-            "passive": {
+            "following": {
               "description": "Play a teenager in front of the other person",
               "title": "Teen role"
             }
@@ -3361,11 +3356,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1bf86f7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person play an older person",
               "title": "Older-adult role"
             },
-            "passive": {
+            "following": {
               "description": "Play an older person in front of the other person",
               "title": "Older-adult role"
             }
@@ -3376,11 +3371,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1qg4s3q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person play a doll",
               "title": "Doll role"
             },
-            "passive": {
+            "following": {
               "description": "Play a doll in front of the other person",
               "title": "Doll role"
             }
@@ -3391,11 +3386,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1i9t0en",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in an aristocrat-and-servant scenario",
               "title": "Master–servant scenario"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in an aristocrat-and-servant scenario",
               "title": "Master–servant scenario"
             }
@@ -3406,11 +3401,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1n9uevy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in a boss-and-subordinate scenario",
               "title": "Boss–subordinate scenario"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in a boss-and-subordinate scenario",
               "title": "Boss–subordinate scenario"
             }
@@ -3421,11 +3416,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-kodrud",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in a medical-professional-and-patient scenario",
               "title": "Medical-worker–patient scenario"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in a medical-professional-and-patient scenario",
               "title": "Medical-worker–patient scenario"
             }
@@ -3436,11 +3431,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1gts3i7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in a prison-guard-and-prisoner scenario",
               "title": "Prison-guard–prisoner scenario"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in a prison-guard-and-prisoner scenario",
               "title": "Prison-guard–prisoner scenario"
             }
@@ -3451,11 +3446,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-vepd7q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in a teacher-and-student scenario",
               "title": "Teacher–student scenario"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in a teacher-and-student scenario",
               "title": "Teacher–student scenario"
             }
@@ -3466,11 +3461,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1virdb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in a parent-and-child scenario",
               "title": "Parent–child scenario"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in a parent-and-child scenario",
               "title": "Parent–child scenario"
             }
@@ -3481,11 +3476,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-18ycvwm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in a sibling scenario",
               "title": "Sibling roles"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in a sibling scenario",
               "title": "Sibling roles"
             }
@@ -3496,11 +3491,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-pyo1lh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person wear a diaper",
               "title": "Diaper scenario"
             },
-            "passive": {
+            "following": {
               "description": "Wear a diaper in front of the other person",
               "title": "Diaper scenario"
             }
@@ -3511,11 +3506,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-u5m4ic",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in a childlike doodling-play scenario",
               "title": "Doodling play"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in a childlike doodling-play scenario",
               "title": "Doodling play"
             }
@@ -3528,14 +3523,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 14,
       "name": "Role play",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Guide the other person through a role-play scenario"
         },
-        "passive": {
+        "following": {
           "description": "Take part in a role-play scenario"
         }
       },
-      "sourceSheetName": "角色扮演類項目"
+      "originalName": "角色扮演類項目"
     },
     {
       "categoryId": "objectification",
@@ -3543,11 +3538,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-1l6nra5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the other person as a chair",
               "title": "Use them as a chair"
             },
-            "passive": {
+            "following": {
               "description": "Be used by the other person as a chair",
               "title": "Be a chair"
             }
@@ -3558,11 +3553,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-1nqioit",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the other person as a sofa",
               "title": "Use them as a sofa"
             },
-            "passive": {
+            "following": {
               "description": "Be used by the other person as a sofa",
               "title": "Be a sofa"
             }
@@ -3573,11 +3568,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-6z8u5c",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the other person as a footrest",
               "title": "Use them as a footstool"
             },
-            "passive": {
+            "following": {
               "description": "Be used by the other person as a footrest",
               "title": "Be a footstool"
             }
@@ -3588,11 +3583,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-gmtfv3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Display the other person as a vase",
               "title": "Display them as a vase"
             },
-            "passive": {
+            "following": {
               "description": "Be displayed by the other person as a vase",
               "title": "Be a vase"
             }
@@ -3603,11 +3598,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-1xfrg59",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the other person as a clothes rack",
               "title": "Use them as a clothes rack"
             },
-            "passive": {
+            "following": {
               "description": "Be used by the other person as a clothes rack",
               "title": "Be a clothes rack"
             }
@@ -3618,11 +3613,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-11fzq08",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Pose or display the other person as a doll",
               "title": "Display them as a doll"
             },
-            "passive": {
+            "following": {
               "description": "Be posed or displayed by the other person as a doll",
               "title": "Be a doll"
             }
@@ -3633,11 +3628,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-ydg8ls",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the other person as an ashtray",
               "title": "Use them as an ashtray"
             },
-            "passive": {
+            "following": {
               "description": "Be used by the other person as an ashtray",
               "title": "Be an ashtray"
             }
@@ -3648,11 +3643,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-15peili",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the other person’s body as a plate or bowl for food",
               "title": "Use them as a plate or bowl"
             },
-            "passive": {
+            "following": {
               "description": "Have your body used as a plate or bowl for food",
               "title": "Be a plate or bowl"
             }
@@ -3663,11 +3658,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-18d3dxj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the other person as a masturbation sleeve",
               "title": "Use them as a masturbator"
             },
-            "passive": {
+            "following": {
               "description": "Be used by the other person as a masturbation sleeve",
               "title": "Be a masturbator"
             }
@@ -3678,11 +3673,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-gg0tot",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the other person as a dildo",
               "title": "Use them as a dildo"
             },
-            "passive": {
+            "following": {
               "description": "Be used by the other person as a dildo",
               "title": "Be a dildo"
             }
@@ -3693,11 +3688,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-11y1b4u",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Frame the other person as an asset that can be traded or exchanged",
               "title": "Treat them as a trade asset"
             },
-            "passive": {
+            "following": {
               "description": "Be framed as an asset that can be traded or exchanged",
               "title": "Be a trade asset"
             }
@@ -3710,14 +3705,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "Objectification",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Within a consensual scene, temporarily treat the other person as an object, piece of furniture, or tool"
         },
-        "passive": {
+        "following": {
           "description": "Within a consensual scene, temporarily be treated as an object, piece of furniture, or tool"
         }
       },
-      "sourceSheetName": "物化類項目"
+      "originalName": "物化類項目"
     },
     {
       "categoryId": "exposure",
@@ -3725,11 +3720,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-yrd6oh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to expose their body in front of you",
               "title": "Ask them to expose themselves to you"
             },
-            "passive": {
+            "following": {
               "description": "Expose your body in front of the other person",
               "title": "Expose yourself to them"
             }
@@ -3740,11 +3735,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-84q67p",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to expose their body in front of friends",
               "title": "Ask them to expose themselves to friends"
             },
-            "passive": {
+            "following": {
               "description": "Expose your body in front of friends",
               "title": "Expose yourself to friends"
             }
@@ -3755,11 +3750,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-1c953fq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to expose their body in front of strangers",
               "title": "Ask them to expose themselves to strangers"
             },
-            "passive": {
+            "following": {
               "description": "Expose your body in front of strangers",
               "title": "Expose yourself to strangers"
             }
@@ -3770,11 +3765,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-cf5jn6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to expose their body in a private space",
               "title": "Ask for exposure in private"
             },
-            "passive": {
+            "following": {
               "description": "Expose your body in a private space",
               "title": "Expose yourself in private"
             }
@@ -3785,11 +3780,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-bdsmspace",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to expose their body in a BDSM-related space",
               "title": "Exposure in a BDSM space"
             },
-            "passive": {
+            "following": {
               "description": "Expose your body in a BDSM-related space",
               "title": "Exposure in a BDSM space"
             }
@@ -3800,11 +3795,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-jg19zi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to expose their body in a public space",
               "title": "Ask for exposure in public"
             },
-            "passive": {
+            "following": {
               "description": "Expose your body in a public space",
               "title": "Expose yourself in public"
             }
@@ -3815,11 +3810,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-14ngx9f",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Watch other people having sex",
               "title": "Watch sexual activity"
             },
-            "passive": {
+            "following": {
               "description": "Let other people watch you having sex",
               "title": "Be watched during sexual activity"
             }
@@ -3830,11 +3825,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-iztub",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to expose their upper body",
               "title": "Ask for upper-body exposure"
             },
-            "passive": {
+            "following": {
               "description": "Expose your upper body for the other person to see",
               "title": "Expose your upper body"
             }
@@ -3845,11 +3840,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-lc5lxg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to expose their lower body",
               "title": "Ask for lower-body exposure"
             },
-            "passive": {
+            "following": {
               "description": "Expose your lower body for the other person to see",
               "title": "Expose your lower body"
             }
@@ -3860,11 +3855,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-rhnyao",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to go out without underwear",
               "title": "Ask them to go out without underwear"
             },
-            "passive": {
+            "following": {
               "description": "Go out without underwear",
               "title": "Go out without underwear"
             }
@@ -3875,11 +3870,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-1on1gyu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to masturbate in a public space",
               "title": "Ask for public masturbation"
             },
-            "passive": {
+            "following": {
               "description": "Masturbate in a public space",
               "title": "Masturbate in public"
             }
@@ -3892,14 +3887,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "Exposure",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Have the other person expose their body in different situations"
         },
-        "passive": {
+        "following": {
           "description": "Expose your body in different situations"
         }
       },
-      "sourceSheetName": "暴露類項目"
+      "originalName": "暴露類項目"
     },
     {
       "categoryId": "image_recording",
@@ -3907,11 +3902,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-wr9mg2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Photograph or record the other person nude",
               "title": "Record nudity"
             },
-            "passive": {
+            "following": {
               "description": "Be photographed or recorded nude",
               "title": "Have nudity recorded"
             }
@@ -3922,11 +3917,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-pottfn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Photograph or record the other person during sex",
               "title": "Record sexual activity"
             },
-            "passive": {
+            "following": {
               "description": "Have sexual activity photographed or recorded",
               "title": "Have sexual activity recorded"
             }
@@ -3937,11 +3932,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-ijadox",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Photograph or record the other person during a play scene",
               "title": "Record training activity"
             },
-            "passive": {
+            "following": {
               "description": "Have a play scene photographed or recorded",
               "title": "Have training activity recorded"
             }
@@ -3952,11 +3947,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-xuxzia",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Ask the other person to send intimate images or videos",
               "title": "Ask for private images"
             },
-            "passive": {
+            "following": {
               "description": "Send intimate images or videos of yourself",
               "title": "Send private images"
             }
@@ -3967,11 +3962,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-1c6bdpw",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Publish the other person’s intimate images or videos online",
               "title": "Publish their private images"
             },
-            "passive": {
+            "following": {
               "description": "Have your intimate images or videos published online",
               "title": "Have private images published"
             }
@@ -3982,11 +3977,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-1942hqe",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the other person’s intimate images or videos while masturbating",
               "title": "Masturbate with private images"
             },
-            "passive": {
+            "following": {
               "description": "Have your intimate images or videos used by the other person while masturbating",
               "title": "Have private images used for masturbation"
             }
@@ -3997,11 +3992,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-1ie3kyu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use the Following side’s device to capture intimate images or videos",
               "title": "Record with their device"
             },
-            "passive": {
+            "following": {
               "description": "Have your own device used to capture intimate images or videos",
               "title": "Have your device used for recording"
             }
@@ -4012,11 +4007,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-r9zfxi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use your own device to capture intimate images or videos of the other person",
               "title": "Record with your device"
             },
-            "passive": {
+            "following": {
               "description": "Have intimate images or videos captured on the other person’s device",
               "title": "Be recorded with their device"
             }
@@ -4027,11 +4022,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-16hzzoq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Create a visual record of the other person’s body over time",
               "title": "Create a body-image record"
             },
-            "passive": {
+            "following": {
               "description": "Have a visual record of your body created over time",
               "title": "Have a body-image record made"
             }
@@ -4044,14 +4039,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 9,
       "name": "Images and recording",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Photograph, record, store, send, publish, or share images of the other person"
         },
-        "passive": {
+        "following": {
           "description": "Have images of you photographed, recorded, stored, sent, published, or shared"
         }
       },
-      "sourceSheetName": "影像類項目"
+      "originalName": "影像類項目"
     },
     {
       "categoryId": "piercing_cutting",
@@ -4059,11 +4054,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-1rw9xzg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Give the other person a decorative body piercing",
               "title": "Decorative body piercing"
             },
-            "passive": {
+            "following": {
               "description": "Receive a decorative body piercing",
               "title": "Decorative body piercing"
             }
@@ -4074,11 +4069,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-2ewqgb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Pierce the other person’s body for stimulation",
               "title": "Body piercing for stimulation"
             },
-            "passive": {
+            "following": {
               "description": "Receive body piercing for stimulation",
               "title": "Body piercing for stimulation"
             }
@@ -4089,11 +4084,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-ypns2e",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Apply weight or pulling force to the other person’s piercing",
               "title": "Weight on a piercing"
             },
-            "passive": {
+            "following": {
               "description": "Have weight or pulling force applied to a piercing",
               "title": "Weight on a piercing"
             }
@@ -4104,11 +4099,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-1jvq8gi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Give the other person a temporary piercing or ring",
               "title": "Temporary piercing or ring"
             },
-            "passive": {
+            "following": {
               "description": "Receive a temporary piercing or ring",
               "title": "Temporary piercing or ring"
             }
@@ -4119,11 +4114,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-rdg71s",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Give the other person a permanent piercing or ring",
               "title": "Permanent piercing or ring"
             },
-            "passive": {
+            "following": {
               "description": "Receive a permanent piercing or ring",
               "title": "Permanent piercing or ring"
             }
@@ -4134,11 +4129,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-5uq5u0",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Pierce or fit jewelry to the other person’s nipple",
               "title": "Nipple piercing"
             },
-            "passive": {
+            "following": {
               "description": "Receive a nipple piercing or jewelry",
               "title": "Nipple piercing"
             }
@@ -4149,11 +4144,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-rxxg5l",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Pierce or fit jewelry to the other person’s navel",
               "title": "Navel piercing"
             },
-            "passive": {
+            "following": {
               "description": "Receive a navel piercing or jewelry",
               "title": "Navel piercing"
             }
@@ -4164,11 +4159,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-az913p",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Give the other person a genital piercing",
               "title": "Genital piercing"
             },
-            "passive": {
+            "following": {
               "description": "Receive a genital piercing",
               "title": "Genital piercing"
             }
@@ -4179,11 +4174,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-1rewigf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Pierce or fit jewelry to the other person’s tongue",
               "title": "Tongue piercing"
             },
-            "passive": {
+            "following": {
               "description": "Receive a tongue piercing or jewelry",
               "title": "Tongue piercing"
             }
@@ -4194,11 +4189,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-1fkp3oe",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Cut the other person’s skin without causing bleeding",
               "title": "Cutting without bleeding"
             },
-            "passive": {
+            "following": {
               "description": "Receive cutting that does not cause bleeding",
               "title": "Cutting without bleeding"
             }
@@ -4209,11 +4204,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-126gchb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Cut the other person’s skin until it bleeds",
               "title": "Cutting that causes bleeding"
             },
-            "passive": {
+            "following": {
               "description": "Receive cutting that causes bleeding",
               "title": "Cutting that causes bleeding"
             }
@@ -4226,14 +4221,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "Piercing and cutting",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Pierce or cut part of the other person’s body, or ask them to do so themselves"
         },
-        "passive": {
+        "following": {
           "description": "Receive piercing or cutting on part of your body"
         }
       },
-      "sourceSheetName": "穿刺/割類項目"
+      "originalName": "穿刺/割類項目"
     },
     {
       "categoryId": "excretion",
@@ -4241,11 +4236,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-10mgbv7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Urinate on the other person’s body",
               "title": "Urinate on their body"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person urinate on your body",
               "title": "Be urinated on"
             }
@@ -4256,11 +4251,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-18pmjci",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Urinate on the other person’s head",
               "title": "Urinate on their head"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person urinate on your head",
               "title": "Be urinated on above the head"
             }
@@ -4271,11 +4266,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-d0tfsd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to drink urine",
               "title": "Ask them to drink urine"
             },
-            "passive": {
+            "following": {
               "description": "Drink the other person’s urine",
               "title": "Drink urine"
             }
@@ -4286,11 +4281,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-bz8baf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to touch bodily waste",
               "title": "Ask them to touch excrement"
             },
-            "passive": {
+            "following": {
               "description": "Touch the other person’s or your own bodily waste",
               "title": "Touch excrement"
             }
@@ -4301,11 +4296,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-1d9pfly",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to consume bodily waste",
               "title": "Ask them to eat excrement"
             },
-            "passive": {
+            "following": {
               "description": "Consume the other person’s or your own bodily waste",
               "title": "Eat excrement"
             }
@@ -4316,11 +4311,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-1x972yx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to masturbate using bodily waste",
               "title": "Ask them to masturbate with excrement"
             },
-            "passive": {
+            "following": {
               "description": "Masturbate using bodily waste",
               "title": "Masturbate with excrement"
             }
@@ -4331,11 +4326,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-4yx1it",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person act as a urinal",
               "title": "Make them a urinal"
             },
-            "passive": {
+            "following": {
               "description": "Act as a urinal for the other person",
               "title": "Be a urinal"
             }
@@ -4346,11 +4341,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-15e9ike",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person act as a toilet seat",
               "title": "Make them a toilet seat"
             },
-            "passive": {
+            "following": {
               "description": "Act as a toilet seat for the other person",
               "title": "Be a toilet seat"
             }
@@ -4361,11 +4356,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-36n9ra",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Watch the other person eliminate or require them to display it",
               "title": "Watch excretion"
             },
-            "passive": {
+            "following": {
               "description": "Display elimination for the other person to watch",
               "title": "Show excretion"
             }
@@ -4378,14 +4373,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 9,
       "name": "Bodily waste",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Activities involving bodily waste"
         },
-        "passive": {
+        "following": {
           "description": "Activities involving bodily waste"
         }
       },
-      "sourceSheetName": "排泄類項目"
+      "originalName": "排泄類項目"
     },
     {
       "categoryId": "behavior_restriction",
@@ -4393,11 +4388,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1q2915m",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person from masturbating",
               "title": "Restrict masturbation"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict you from masturbating",
               "title": "Have masturbation restricted"
             }
@@ -4408,11 +4403,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-10wmuve",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person from having sex",
               "title": "Restrict sexual activity"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict you from having sex",
               "title": "Have sexual activity restricted"
             }
@@ -4423,11 +4418,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1v32uv6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person from having an orgasm",
               "title": "Restrict orgasm"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict you from having an orgasm",
               "title": "Have orgasm restricted"
             }
@@ -4438,11 +4433,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1qutp1i",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person from urinating or having a bowel movement",
               "title": "Restrict excretion"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict you from urinating or having a bowel movement",
               "title": "Have excretion restricted"
             }
@@ -4453,11 +4448,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-7yynqx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person’s sleep",
               "title": "Restrict sleep"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict your sleep",
               "title": "Have sleep restricted"
             }
@@ -4468,11 +4463,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-p66lsr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person from eating",
               "title": "Restrict eating"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict you from eating",
               "title": "Have eating restricted"
             }
@@ -4483,11 +4478,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-p4j1x",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person’s friendships or social contact",
               "title": "Restrict social contact"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict your friendships or social contact",
               "title": "Have social contact restricted"
             }
@@ -4498,11 +4493,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1jxhizx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person from speaking",
               "title": "Restrict speech"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict you from speaking",
               "title": "Have speech restricted"
             }
@@ -4513,11 +4508,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1st1nqk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person from bathing or cleaning themselves",
               "title": "Restrict bathing"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict you from bathing or cleaning yourself",
               "title": "Have bathing restricted"
             }
@@ -4530,14 +4525,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 9,
       "name": "Behavioral restrictions",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Consensually restrict the other person’s needs or preferences"
         },
-        "passive": {
+        "following": {
           "description": "Have your needs or preferences consensually restricted"
         }
       },
-      "sourceSheetName": "行為限制類項目"
+      "originalName": "行為限制類項目"
     },
     {
       "categoryId": "other",
@@ -4545,11 +4540,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-cx35l0",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Restrict the other person’s breathing by choking their neck",
               "title": "Control breathing by choking"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person restrict your breathing by choking your neck",
               "title": "Have breathing controlled by choking"
             }
@@ -4560,11 +4555,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-81imh3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Have the other person bury their face against your chest to restrict breathing",
               "title": "Breathing control against the chest"
             },
-            "passive": {
+            "following": {
               "description": "Have your face enclosed by the other person’s chest and your breathing restricted",
               "title": "Breathing control against the chest"
             }
@@ -4575,11 +4570,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-12ak8nk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use a vacuum bag to place the other person briefly in a suffocation scenario",
               "title": "Vacuum-bag asphyxiation scenario"
             },
-            "passive": {
+            "following": {
               "description": "Enter a brief suffocation scenario inside a vacuum bag",
               "title": "Vacuum-bag asphyxiation scenario"
             }
@@ -4590,11 +4585,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-11372gg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Perform a waterboarding scenario with the other person",
               "title": "Water-torture scenario"
             },
-            "passive": {
+            "following": {
               "description": "Receive a waterboarding scenario from the other person",
               "title": "Water-torture scenario"
             }
@@ -4605,11 +4600,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1weofdn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Use hypnosis or suggestion with the other person",
               "title": "Hypnotise them"
             },
-            "passive": {
+            "following": {
               "description": "Receive hypnosis or suggestion from the other person",
               "title": "Receive hypnosis"
             }
@@ -4620,11 +4615,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-67684a",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in a scene that plays with food as a sexual or training prop",
               "title": "Food-based interaction"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in a scene that plays with food as a sexual or training prop",
               "title": "Food-based interaction"
             }
@@ -4635,11 +4630,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-6t50x3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require or arrange for the other person to get a tattoo",
               "title": "Ask for a tattoo"
             },
-            "passive": {
+            "following": {
               "description": "Get a tattoo at the other person’s request or arrangement",
               "title": "Receive a tattoo"
             }
@@ -4650,11 +4645,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1k7dzxy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Leave a brand on the other person’s body",
               "title": "Leave a brand"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person leave a brand on your body",
               "title": "Receive a brand"
             }
@@ -4665,11 +4660,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-cpl0rm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Specify particular clothing for the other person to wear",
               "title": "Specify their clothing"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person specify particular clothing for you to wear",
               "title": "Wear specified clothing"
             }
@@ -4680,11 +4675,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-latexclothing",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Take the leading role in an interaction where you or the other person wears latex clothing",
               "title": "Latex clothing"
             },
-            "passive": {
+            "following": {
               "description": "Take the following role in an interaction where you or the other person wears latex clothing",
               "title": "Latex clothing"
             }
@@ -4695,11 +4690,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-967tbj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Decide what the other person will eat",
               "title": "Decide their food"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person decide what you will eat",
               "title": "Have food decided for you"
             }
@@ -4710,11 +4705,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-9c5xzq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to lick your feet",
               "title": "Ask them to lick your feet"
             },
-            "passive": {
+            "following": {
               "description": "Lick the other person’s feet",
               "title": "Lick their feet"
             }
@@ -4725,11 +4720,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1x8oaxq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Require the other person to lick your shoes",
               "title": "Ask them to lick your shoes"
             },
-            "passive": {
+            "following": {
               "description": "Lick the other person’s shoes",
               "title": "Lick their shoes"
             }
@@ -4740,11 +4735,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-yswhyo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Step or trample on the other person’s body",
               "title": "Step on their body"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person step or trample on your body",
               "title": "Have your body stepped on"
             }
@@ -4755,11 +4750,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1cs7dja",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Step on the other person’s face",
               "title": "Step on their face"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person step on your face",
               "title": "Have your face stepped on"
             }
@@ -4770,11 +4765,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1pwrugh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Feed or force-feed the other person with feeding equipment",
               "title": "Feed with a feeder"
             },
-            "passive": {
+            "following": {
               "description": "Be fed or force-fed by the other person with feeding equipment",
               "title": "Be fed with a feeder"
             }
@@ -4785,11 +4780,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-suxt6v",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Leave a hickey on the other person’s body",
               "title": "Leave a hickey"
             },
-            "passive": {
+            "following": {
               "description": "Have the other person leave a hickey on your body",
               "title": "Receive a hickey"
             }
@@ -4800,11 +4795,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-17kwb61",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Engage in wrestling-style physical interaction with the other person",
               "title": "Wrestling-style interaction"
             },
-            "passive": {
+            "following": {
               "description": "Engage in wrestling-style physical interaction with the other person",
               "title": "Wrestling-style interaction"
             }
@@ -4815,11 +4810,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-g75mw6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Engage in fight-style physical interaction with the other person",
               "title": "Fight-style interaction"
             },
-            "passive": {
+            "following": {
               "description": "Engage in fight-style physical interaction with the other person",
               "title": "Fight-style interaction"
             }
@@ -4830,11 +4825,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1q0idds",
           "roles": {
-            "active": {
+            "leading": {
               "description": "Arrange or lead a kidnapping role-play scenario",
               "title": "Lead a kidnapping scenario"
             },
-            "passive": {
+            "following": {
               "description": "Participate in role play as the person being kidnapped",
               "title": "Be in a kidnapping scenario"
             }
@@ -4847,16 +4842,23 @@ export const questionBank: QuestionBank = {
       "itemCount": 20,
       "name": "Other",
       "roles": {
-        "active": {
+        "leading": {
           "description": "Breath restriction, hypnosis, food play, and other activities that do not fit the categories above"
         },
-        "passive": {
+        "following": {
           "description": "Breath restriction, hypnosis, food play, and other activities that do not fit the categories above"
         }
       },
-      "sourceSheetName": "其他"
+      "originalName": "其他"
     }
-  ]
+  ],
+  "exportSchemaVersion": 2,
+  "locale": "en",
+  "license": "MIT",
+  "roleLabels": {
+    "leading": "Leading",
+    "following": "Following"
+  }
 };
 
 export default questionBank;

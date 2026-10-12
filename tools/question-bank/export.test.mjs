@@ -4,7 +4,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import ts from 'typescript';
-import { buildFiles, csv, locales } from './export.mjs';
+import { buildFiles, csv, locales, toPublicBank } from './export.mjs';
 
 const root = fileURLToPath(new URL('../../', import.meta.url));
 const files = buildFiles();
@@ -52,11 +52,13 @@ test('four-language CSV and standalone TS preserve every exported JSON field', (
       assert.equal(row.categoryId, category.categoryId);
       assert.equal(row.categoryOrder, String(categoryIndex + 1));
       assert.equal(row.name, category.name);
-      assert.equal(row.sourceSheetName, category.sourceSheetName);
+      assert.equal(row.originalName, category.originalName);
       assert.equal(row.includeInCategoryRound, String(category.includeInCategoryRound));
       assert.equal(row.itemCount, String(category.detailItems.length));
-      assert.equal(row.activeDescription, category.roles.active.description);
-      assert.equal(row.passiveDescription, category.roles.passive.description);
+      assert.equal(row.leadingDescription, category.roles.leading.description);
+      assert.equal(row.followingDescription, category.roles.following.description);
+      assert.equal(row.leadingLabel, bank.roleLabels.leading);
+      assert.equal(row.followingLabel, bank.roleLabels.following);
       category.detailItems.forEach((detail, index) => {
         const row = toObject(detailHeader, details[detailIndex++]);
         assert.equal(row.locale, locale);
@@ -66,7 +68,9 @@ test('four-language CSV and standalone TS preserve every exported JSON field', (
         assert.equal(row.detailOrder, String(index + 1));
         assert.equal(row.sourceLabel, detail.sourceLabel);
         assert.equal(row.warning, detail.warning ?? '');
-        for (const role of ['active', 'passive']) {
+        assert.equal(row.leadingLabel, bank.roleLabels.leading);
+        assert.equal(row.followingLabel, bank.roleLabels.following);
+        for (const role of ['leading', 'following']) {
           assert.equal(row[`${role}Title`], detail.roles[role].title);
           assert.equal(row[`${role}Description`], detail.roles[role].description);
         }
@@ -88,11 +92,47 @@ test('exports use direction-aware titles and preserve Other category details', (
   const bank = JSON.parse(files.get('zh-Hant/question-bank.json'));
   const biting = bank.categories.flatMap((category) => category.detailItems)
     .find((detail) => detail.detailId === 'detail-pain_stimulation-1jrzewy');
-  assert.equal(biting.roles.active.title, '輕度咬人');
-  assert.equal(biting.roles.passive.title, '輕度被咬');
+  assert.equal(biting.roles.leading.title, '輕度咬人');
+  assert.equal(biting.roles.following.title, '輕度被咬');
   const other = bank.categories.find((category) => category.categoryId === 'other');
   assert.equal(other.includeInCategoryRound, false);
   assert.ok(other.detailItems.length > 0);
+});
+
+test('public role mapping preserves source data without mutating internal keys', () => {
+  const roles = { active: { title: '主導題名', description: '主導描述' },
+    passive: { title: '配合題名', description: '配合描述' } };
+  const source = { bankVersion: 'unchanged', schemaVersion: 1,
+    source: { kind: 'google-sheet', fileId: 'private-source-id', modifiedTime: 'old-time' },
+    categories: [{ categoryId: 'category', sourceSheetName: '原始分類', roles,
+      detailItems: [{ detailId: 'stable-id', warning: '保留警示', roles }] }] };
+  const before = structuredClone(source);
+  const result = toPublicBank(source, 'zh-Hant');
+  assert.deepEqual(source, before);
+  assert.equal(result.exportSchemaVersion, 2);
+  assert.equal(result.bankVersion, source.bankVersion);
+  assert.equal(result.source.kind, 'repository');
+  assert.equal(result.categories[0].originalName, '原始分類');
+  assert.deepEqual(result.roleLabels, { leading: '主導側', following: '配合側' });
+  assert.deepEqual(result.categories[0].roles, { leading: roles.active, following: roles.passive });
+  assert.deepEqual(result.categories[0].detailItems[0], {
+    detailId: 'stable-id', warning: '保留警示', roles: result.categories[0].roles,
+  });
+  for (const locale of locales) {
+    const bank = JSON.parse(files.get(`${locale}/question-bank.json`));
+    assert.equal(bank.exportSchemaVersion, 2);
+    assert.equal(bank.source.kind, 'repository');
+    for (const format of ['question-bank.json', 'question-bank.ts', 'categories.csv', 'details.csv']) {
+      assert.ok(!/google[- ]?sheet|sourceSheetName|modifiedTime|fileId|1shrEav/i.test(files.get(`${locale}/${format}`)));
+    }
+    for (const category of bank.categories) {
+      for (const entry of [category, ...category.detailItems]) {
+        assert.deepEqual(Object.keys(entry.roles), ['leading', 'following']);
+      }
+    }
+    assert.ok(!/\b(active|passive)(Title|Description)?\b/.test(files.get(`${locale}/categories.csv`).split('\r\n')[0]));
+    assert.ok(!/\b(active|passive)(Title|Description)?\b/.test(files.get(`${locale}/details.csv`).split('\r\n')[0]));
+  }
 });
 
 test('standalone TS modules typecheck without website or ambient project types', () => {

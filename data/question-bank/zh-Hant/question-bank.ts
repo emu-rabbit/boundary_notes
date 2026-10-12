@@ -2,16 +2,11 @@
 import type { QuestionBank } from '../types';
 
 export const questionBank: QuestionBank = {
-  "exportSchemaVersion": 1,
-  "locale": "zh-Hant",
-  "license": "MIT",
   "bankVersion": "2026-07-22",
   "schemaVersion": 1,
   "source": {
-    "fileId": "1shrEavMkoumIpe07vL3DXp0uj7tcHzqgPV6qzU6jvAE",
-    "kind": "google-sheet",
-    "modifiedTime": "2026-07-11T06:14:45.603Z",
-    "title": "BDSM boundary test items"
+    "kind": "repository",
+    "url": "https://github.com/emu-rabbit/boundary_notes/tree/main/src/features/question-bank"
   },
   "categories": [
     {
@@ -20,11 +15,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1qzzr10",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用手拍打對方進行衝擊遊戲",
               "title": "用手"
             },
-            "passive": {
+            "following": {
               "description": "被手拍打進行衝擊遊戲",
               "title": "用手"
             }
@@ -35,11 +30,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-gwssxu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用皮拍拍打對方進行衝擊遊戲",
               "title": "用皮拍"
             },
-            "passive": {
+            "following": {
               "description": "被皮拍拍打進行衝擊遊戲",
               "title": "用皮拍"
             }
@@ -50,11 +45,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1uy95nk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用木拍拍打對方進行衝擊遊戲",
               "title": "用木拍"
             },
-            "passive": {
+            "following": {
               "description": "被木拍拍打進行衝擊遊戲",
               "title": "用木拍"
             }
@@ -65,11 +60,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-i4vf80",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用木條打擊對方進行衝擊遊戲",
               "title": "用木條"
             },
-            "passive": {
+            "following": {
               "description": "被木條打擊進行衝擊遊戲",
               "title": "用木條"
             }
@@ -80,11 +75,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-i4t2fc",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用硬塑膠/壓克力打擊對方進行衝擊遊戲",
               "title": "用硬塑膠/壓克力"
             },
-            "passive": {
+            "following": {
               "description": "被硬塑膠/壓克力打擊進行衝擊遊戲",
               "title": "用硬塑膠/壓克力"
             }
@@ -95,11 +90,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1uxz7gx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用軟塑膠打擊對方進行衝擊遊戲",
               "title": "用軟塑膠"
             },
-            "passive": {
+            "following": {
               "description": "被軟塑膠打擊進行衝擊遊戲",
               "title": "用軟塑膠"
             }
@@ -110,11 +105,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1lmlugr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用熱溶膠條打擊對方進行衝擊遊戲",
               "title": "用熱溶膠條"
             },
-            "passive": {
+            "following": {
               "description": "被熱溶膠條打擊進行衝擊遊戲",
               "title": "用熱溶膠條"
             }
@@ -125,11 +120,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1bcfzjw",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用藤條打擊對方進行衝擊遊戲",
               "title": "用藤條"
             },
-            "passive": {
+            "following": {
               "description": "被藤條打擊進行衝擊遊戲",
               "title": "用藤條"
             }
@@ -140,11 +135,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-14bm3qs",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用梳子拍打對方進行衝擊遊戲",
               "title": "用梳子"
             },
-            "passive": {
+            "following": {
               "description": "被梳子拍打進行衝擊遊戲",
               "title": "用梳子"
             }
@@ -155,11 +150,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1i2vvrm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方到泛紅的程度",
               "title": "泛紅的程度"
             },
-            "passive": {
+            "following": {
               "description": "被拍打到泛紅的程度",
               "title": "泛紅的程度"
             }
@@ -170,11 +165,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-t3fgz5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方到小瘀青的程度",
               "title": "小瘀青的程度"
             },
-            "passive": {
+            "following": {
               "description": "被拍打到小瘀青的程度",
               "title": "小瘀青的程度"
             }
@@ -185,11 +180,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1ijb2cv",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方到大範圍重瘀青的程度",
               "title": "大範圍重瘀青的程度"
             },
-            "passive": {
+            "following": {
               "description": "被拍打到大範圍重瘀青的程度",
               "title": "大範圍重瘀青的程度"
             }
@@ -200,11 +195,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-19dbc6o",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方到破皮滲組織液的程度",
               "title": "破皮滲組織液的程度"
             },
-            "passive": {
+            "following": {
               "description": "被拍打到破皮滲組織液的程度",
               "title": "破皮滲組織液的程度"
             }
@@ -215,11 +210,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1q2onnn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方到破皮流血的程度",
               "title": "破皮流血的程度"
             },
-            "passive": {
+            "following": {
               "description": "被拍打到破皮流血的程度",
               "title": "破皮流血的程度"
             }
@@ -230,11 +225,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1744x4z",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方的屁股",
               "title": "拍打屁股"
             },
-            "passive": {
+            "following": {
               "description": "被拍打屁股",
               "title": "拍打屁股"
             }
@@ -245,11 +240,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-915jo9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方的胸部",
               "title": "拍打胸部"
             },
-            "passive": {
+            "following": {
               "description": "被拍打胸部",
               "title": "拍打胸部"
             }
@@ -260,11 +255,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-9ncnsk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方的生殖器",
               "title": "拍打生殖器"
             },
-            "passive": {
+            "following": {
               "description": "被拍打生殖器",
               "title": "拍打生殖器"
             }
@@ -275,11 +270,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-syc2dj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方的大腿",
               "title": "拍打大腿"
             },
-            "passive": {
+            "following": {
               "description": "被拍打大腿",
               "title": "拍打大腿"
             }
@@ -290,11 +285,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1lby5ih",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方的腳底",
               "title": "拍打腳底"
             },
-            "passive": {
+            "following": {
               "description": "被拍打腳底",
               "title": "拍打腳底"
             }
@@ -305,11 +300,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-18swthz",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍打對方的手心",
               "title": "拍打手心"
             },
-            "passive": {
+            "following": {
               "description": "被拍打手心",
               "title": "拍打手心"
             }
@@ -320,11 +315,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-1pli4vm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方趴在自己膝蓋上的姿勢進行拍打",
               "title": "趴在膝蓋上打"
             },
-            "passive": {
+            "following": {
               "description": "趴在對方膝蓋上的姿勢被拍打",
               "title": "趴在膝蓋上打"
             }
@@ -335,11 +330,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-m08x3j",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方擺出包尿布的姿勢進行拍打",
               "title": "包尿布式姿勢打"
             },
-            "passive": {
+            "following": {
               "description": "擺出包尿布的姿勢被拍打",
               "title": "包尿布式姿勢打"
             }
@@ -350,11 +345,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-yjl4cm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方站著進行拍打",
               "title": "站姿打"
             },
-            "passive": {
+            "following": {
               "description": "站著被對方拍打",
               "title": "站姿打"
             }
@@ -365,11 +360,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-impact_spanking-cnf6uz",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方在墊腳狀態下進行拍打",
               "title": "墊腳打"
             },
-            "passive": {
+            "following": {
               "description": "在墊腳狀態下被對方拍打",
               "title": "墊腳打"
             }
@@ -382,14 +377,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 24,
       "name": "拍打類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "對對方進行包含打屁股在內的拍打相關衝擊遊戲"
         },
-        "passive": {
+        "following": {
           "description": "接受包含打屁股在內的拍打相關衝擊遊戲"
         }
       },
-      "sourceSheetName": "拍打類項目"
+      "originalName": "拍打類項目"
     },
     {
       "categoryId": "whipping",
@@ -397,11 +392,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-9q3jnv",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用散鞭鞭打對方進行衝擊遊戲",
               "title": "用散鞭"
             },
-            "passive": {
+            "following": {
               "description": "被散鞭鞭打進行衝擊遊戲",
               "title": "用散鞭"
             }
@@ -412,11 +407,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1w83a3j",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用長鞭鞭打對方進行衝擊遊戲",
               "title": "用長鞭"
             },
-            "passive": {
+            "following": {
               "description": "被長鞭鞭打進行衝擊遊戲",
               "title": "用長鞭"
             }
@@ -427,11 +422,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-d25qdd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用音爆鞭鞭打對方進行衝擊遊戲",
               "title": "用音爆鞭"
             },
-            "passive": {
+            "following": {
               "description": "被音爆鞭鞭打進行衝擊遊戲",
               "title": "用音爆鞭"
             }
@@ -442,11 +437,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-pt4u3j",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用皮帶鞭打對方進行衝擊遊戲",
               "title": "用皮帶"
             },
-            "passive": {
+            "following": {
               "description": "被皮帶鞭打進行衝擊遊戲",
               "title": "用皮帶"
             }
@@ -457,11 +452,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-2nwvqy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方到泛紅的程度",
               "title": "泛紅的程度"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打到泛紅的程度",
               "title": "泛紅的程度"
             }
@@ -472,11 +467,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-sw4wfd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方到小瘀青的程度",
               "title": "小瘀青的程度"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打到小瘀青的程度",
               "title": "小瘀青的程度"
             }
@@ -487,11 +482,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-hekt6v",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方到大範圍重瘀青的程度",
               "title": "大範圍重瘀青的程度"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打到大範圍重瘀青的程度",
               "title": "大範圍重瘀青的程度"
             }
@@ -502,11 +497,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-k3sn5k",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方到破皮滲組織液的程度",
               "title": "破皮滲組織液的程度"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打到破皮滲組織液的程度",
               "title": "破皮滲組織液的程度"
             }
@@ -517,11 +512,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1oyyq0b",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方到破皮流血的程度",
               "title": "破皮流血的程度"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打到破皮流血的程度",
               "title": "破皮流血的程度"
             }
@@ -532,11 +527,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-15c25xn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方的屁股",
               "title": "鞭打屁股"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打屁股",
               "title": "鞭打屁股"
             }
@@ -547,11 +542,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1f72zmt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方的背部",
               "title": "鞭打背部"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打背部",
               "title": "鞭打背部"
             }
@@ -562,11 +557,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1lvzphd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方的胸部",
               "title": "鞭打胸部"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打胸部",
               "title": "鞭打胸部"
             }
@@ -577,11 +572,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1kkr5xo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方的生殖器",
               "title": "鞭打生殖器"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打生殖器",
               "title": "鞭打生殖器"
             }
@@ -592,11 +587,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-pby8ov",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方的大腿",
               "title": "鞭打大腿"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打大腿",
               "title": "鞭打大腿"
             }
@@ -607,11 +602,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-whipping-1bop80o",
           "roles": {
-            "active": {
+            "leading": {
               "description": "鞭打對方的腹部",
               "title": "鞭打腹部"
             },
-            "passive": {
+            "following": {
               "description": "被鞭打腹部",
               "title": "鞭打腹部"
             }
@@ -624,14 +619,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 15,
       "name": "鞭打類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "對對方進行鞭打相關衝擊遊戲"
         },
-        "passive": {
+        "following": {
           "description": "接受鞭打相關的衝擊遊戲"
         }
       },
-      "sourceSheetName": "鞭打類項目"
+      "originalName": "鞭打類項目"
     },
     {
       "categoryId": "bondage",
@@ -639,11 +634,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-122x6cf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用麻繩拘束對方並限制行動",
               "title": "用麻繩"
             },
-            "passive": {
+            "following": {
               "description": "被麻繩拘束並限制行動",
               "title": "用麻繩"
             }
@@ -654,11 +649,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1tiowlt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用棉繩拘束對方並限制行動",
               "title": "用棉繩"
             },
-            "passive": {
+            "following": {
               "description": "被棉繩拘束並限制行動",
               "title": "用棉繩"
             }
@@ -669,11 +664,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-3cl427",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用皮帶拘束對方並限制行動",
               "title": "用皮帶"
             },
-            "passive": {
+            "following": {
               "description": "被皮帶拘束並限制行動",
               "title": "用皮帶"
             }
@@ -684,11 +679,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1fq32i8",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用手銬拘束對方並限制行動",
               "title": "用手銬"
             },
-            "passive": {
+            "following": {
               "description": "被手銬拘束並限制行動",
               "title": "用手銬"
             }
@@ -699,11 +694,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1b5wnt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用鎖鏈拘束對方並限制行動",
               "title": "用鎖鏈"
             },
-            "passive": {
+            "following": {
               "description": "被鎖鏈拘束並限制行動",
               "title": "用鎖鏈"
             }
@@ -714,11 +709,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1atcv41",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用布或布條拘束對方並限制行動",
               "title": "用布/布條"
             },
-            "passive": {
+            "following": {
               "description": "被布或布條拘束並限制行動",
               "title": "用布/布條"
             }
@@ -729,11 +724,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1pcf9zg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用靜電膠帶拘束對方並限制行動",
               "title": "用靜電膠帶"
             },
-            "passive": {
+            "following": {
               "description": "被靜電膠帶拘束並限制行動",
               "title": "用靜電膠帶"
             }
@@ -744,11 +739,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1eqwak3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用大型拘束家具拘束對方並限制行動",
               "title": "用大型拘束家具"
             },
-            "passive": {
+            "following": {
               "description": "被大型拘束家具拘束並限制行動",
               "title": "用大型拘束家具"
             }
@@ -759,11 +754,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-14lh93b",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用小型情趣道具拘束對方並限制行動",
               "title": "用小型情趣道具"
             },
-            "passive": {
+            "following": {
               "description": "被小型情趣道具拘束並限制行動",
               "title": "用小型情趣道具"
             }
@@ -774,11 +769,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-9mjx48",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用自己的肢體壓制對方並限制行動",
               "title": "用肢體壓制"
             },
-            "passive": {
+            "following": {
               "description": "被對方用肢體壓制並限制行動",
               "title": "用肢體壓制"
             }
@@ -789,11 +784,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1b013pq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將對方拘束約十分鐘內",
               "title": "約十分鐘內的長度"
             },
-            "passive": {
+            "following": {
               "description": "被拘束約十分鐘內",
               "title": "約十分鐘內的長度"
             }
@@ -804,11 +799,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-spf6ae",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將對方拘束約十分鐘到一小時",
               "title": "約十分鐘到一小時的長度"
             },
-            "passive": {
+            "following": {
               "description": "被拘束約十分鐘到一小時",
               "title": "約十分鐘到一小時的長度"
             }
@@ -819,11 +814,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-m6v84b",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將對方拘束約一小時到三小時",
               "title": "約一小時到三小時的長度"
             },
-            "passive": {
+            "following": {
               "description": "被拘束約一小時到三小時",
               "title": "約一小時到三小時的長度"
             }
@@ -834,11 +829,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1ey2gp4",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將對方拘束多於三小時",
               "title": "多於三小時的長度"
             },
-            "passive": {
+            "following": {
               "description": "被拘束多於三小時",
               "title": "多於三小時的長度"
             }
@@ -849,11 +844,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-mueg5n",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拘束對方的手部並限制行動",
               "title": "拘束手部"
             },
-            "passive": {
+            "following": {
               "description": "被拘束手部並限制行動",
               "title": "拘束手部"
             }
@@ -864,11 +859,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-o3hqfj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拘束對方的腿部並限制行動",
               "title": "拘束腿部"
             },
-            "passive": {
+            "following": {
               "description": "被拘束腿部並限制行動",
               "title": "拘束腿部"
             }
@@ -879,11 +874,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-1vyd9h5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拘束對方全身並限制行動",
               "title": "拘束全身"
             },
-            "passive": {
+            "following": {
               "description": "被拘束全身並限制行動",
               "title": "拘束全身"
             }
@@ -894,11 +889,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-gyoc0q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將對方吊縛起來並限制行動",
               "title": "吊縛"
             },
-            "passive": {
+            "following": {
               "description": "被吊縛起來並限制行動",
               "title": "吊縛"
             }
@@ -909,11 +904,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-bondage-bagc3e",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將對方包覆成木乃伊狀態並限制行動",
               "title": "木乃伊"
             },
-            "passive": {
+            "following": {
               "description": "被包覆成木乃伊狀態並限制行動",
               "title": "木乃伊"
             }
@@ -926,14 +921,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 19,
       "name": "束縛類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "使用繩子或各種道具將對方拘束並限制行動的項目"
         },
-        "passive": {
+        "following": {
           "description": "被繩子或各種道具拘束並限制行動的項目"
         }
       },
-      "sourceSheetName": "束縛類項目"
+      "originalName": "束縛類項目"
     },
     {
       "categoryId": "tickling",
@@ -941,11 +936,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-hvz7o9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用手搔癢對方",
               "title": "用手"
             },
-            "passive": {
+            "following": {
               "description": "被對方用手搔癢",
               "title": "用手"
             }
@@ -956,11 +951,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-axmdvn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用梳子搔癢對方",
               "title": "用梳子"
             },
-            "passive": {
+            "following": {
               "description": "被對方用梳子搔癢",
               "title": "用梳子"
             }
@@ -971,11 +966,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-10fu930",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用羽毛搔癢對方",
               "title": "用羽毛"
             },
-            "passive": {
+            "following": {
               "description": "被對方用羽毛搔癢",
               "title": "用羽毛"
             }
@@ -986,11 +981,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1hi631w",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用刺輪搔癢或刺激對方",
               "title": "用刺輪"
             },
-            "passive": {
+            "following": {
               "description": "被對方用刺輪搔癢或刺激",
               "title": "用刺輪"
             }
@@ -1001,11 +996,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1a2ptfb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用震動情趣用品搔癢或刺激對方",
               "title": "用震動情趣用品"
             },
-            "passive": {
+            "following": {
               "description": "被對方用震動情趣用品搔癢或刺激",
               "title": "用震動情趣用品"
             }
@@ -1016,11 +1011,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1uurnpt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "輕微搔癢對方",
               "title": "輕搔"
             },
-            "passive": {
+            "following": {
               "description": "被對方輕微搔癢",
               "title": "輕搔"
             }
@@ -1031,11 +1026,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-dhntqh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用較強烈的方式搔癢對方",
               "title": "重搔"
             },
-            "passive": {
+            "following": {
               "description": "被對方用較強烈的方式搔癢",
               "title": "重搔"
             }
@@ -1046,11 +1041,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-j94l9q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在對方被拘束的狀態下搔癢對方",
               "title": "拘束狀態搔癢"
             },
-            "passive": {
+            "following": {
               "description": "在被拘束的狀態下被對方搔癢",
               "title": "拘束狀態搔癢"
             }
@@ -1061,11 +1056,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1krfcvz",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在對方裸身狀態下搔癢對方",
               "title": "裸身搔癢"
             },
-            "passive": {
+            "following": {
               "description": "在裸身狀態下被對方搔癢",
               "title": "裸身搔癢"
             }
@@ -1076,11 +1071,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-1nouw8a",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在對方僅穿內衣褲狀態下搔癢對方",
               "title": "僅穿內衣褲搔癢"
             },
-            "passive": {
+            "following": {
               "description": "在僅穿內衣褲狀態下被對方搔癢",
               "title": "僅穿內衣褲搔癢"
             }
@@ -1091,11 +1086,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-uttpwj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "隔著衣服搔癢對方",
               "title": "穿衣服搔癢"
             },
-            "passive": {
+            "following": {
               "description": "隔著衣服被對方搔癢",
               "title": "穿衣服搔癢"
             }
@@ -1106,11 +1101,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-ni7x64",
           "roles": {
-            "active": {
+            "leading": {
               "description": "搔癢對方的脖子",
               "title": "搔癢脖子"
             },
-            "passive": {
+            "following": {
               "description": "被對方搔癢脖子",
               "title": "搔癢脖子"
             }
@@ -1121,11 +1116,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-11gglre",
           "roles": {
-            "active": {
+            "leading": {
               "description": "搔癢對方的耳朵",
               "title": "搔癢耳朵"
             },
-            "passive": {
+            "following": {
               "description": "被對方搔癢耳朵",
               "title": "搔癢耳朵"
             }
@@ -1136,11 +1131,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-ayd8dk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "搔癢對方的腋下",
               "title": "搔癢腋下"
             },
-            "passive": {
+            "following": {
               "description": "被對方搔癢腋下",
               "title": "搔癢腋下"
             }
@@ -1151,11 +1146,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-s5eumi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "搔癢對方的腳底",
               "title": "搔癢腳底"
             },
-            "passive": {
+            "following": {
               "description": "被對方搔癢腳底",
               "title": "搔癢腳底"
             }
@@ -1166,11 +1161,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-tickling-cypicd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "搔癢對方的肋骨間隙",
               "title": "搔癢肋骨間隙"
             },
-            "passive": {
+            "following": {
               "description": "被對方搔癢肋骨間隙",
               "title": "搔癢肋骨間隙"
             }
@@ -1183,14 +1178,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 16,
       "name": "搔癢類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "用手或各種道具，以造成對方癢感為目標的項目"
         },
-        "passive": {
+        "following": {
           "description": "被對方用手或各種道具搔癢，以造成自身癢感為目標的項目"
         }
       },
-      "sourceSheetName": "搔癢類項目"
+      "originalName": "搔癢類項目"
     },
     {
       "categoryId": "pain_stimulation",
@@ -1198,11 +1193,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-3jsgcf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "輕度的用乳夾夾住對方乳頭或乳房",
               "title": "輕度乳夾"
             },
-            "passive": {
+            "following": {
               "description": "被輕度的乳夾夾住乳頭或乳房",
               "title": "輕度乳夾"
             }
@@ -1213,11 +1208,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-qux8jb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "重度的用乳夾夾住對方乳頭或乳房",
               "title": "重度乳夾"
             },
-            "passive": {
+            "following": {
               "description": "被重度的乳夾夾住乳頭或乳房",
               "title": "重度乳夾"
             }
@@ -1228,11 +1223,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-6cy0m2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方在乳夾上承受重量或拉力",
               "title": "乳夾並且承重"
             },
-            "passive": {
+            "following": {
               "description": "在乳夾上承受重量或拉力",
               "title": "乳夾並且承重"
             }
@@ -1243,11 +1238,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-9h5col",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用手揉捏、拉扯或刺激對方乳房造成疼痛",
               "title": "用手虐乳"
             },
-            "passive": {
+            "following": {
               "description": "被對方用手揉捏、拉扯或刺激乳房造成疼痛",
               "title": "用手虐乳"
             }
@@ -1258,11 +1253,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-fg5ey3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行輕度電擊刺激",
               "title": "輕度電擊"
             },
-            "passive": {
+            "following": {
               "description": "接受輕度電擊刺激",
               "title": "輕度電擊"
             }
@@ -1273,11 +1268,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-rqbs5g",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行較強的電擊刺激",
               "title": "較強的電擊"
             },
-            "passive": {
+            "following": {
               "description": "接受較強的電擊刺激",
               "title": "較強的電擊"
             }
@@ -1288,11 +1283,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-mjdyqb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方生殖器進行電擊刺激",
               "title": "電擊生殖器"
             },
-            "passive": {
+            "following": {
               "description": "生殖器接受電擊刺激",
               "title": "電擊生殖器"
             }
@@ -1303,11 +1298,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-565m1l",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方生殖器周圍進行姜罰",
               "title": "在生殖器周圍姜罰"
             },
-            "passive": {
+            "following": {
               "description": "在生殖器周圍接受姜罰",
               "title": "在生殖器周圍姜罰"
             }
@@ -1318,11 +1313,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-10b0fb5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行生殖器插入式姜罰",
               "title": "插入生殖器的姜罰"
             },
-            "passive": {
+            "following": {
               "description": "接受生殖器插入式姜罰",
               "title": "插入生殖器的姜罰"
             }
@@ -1333,11 +1328,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-145kjnj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方肛門周圍進行姜罰",
               "title": "在肛門周圍姜罰"
             },
-            "passive": {
+            "following": {
               "description": "在肛門周圍接受姜罰",
               "title": "在肛門周圍姜罰"
             }
@@ -1348,11 +1343,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-10kh2bt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行肛門插入式姜罰",
               "title": "插入肛門的姜罰"
             },
-            "passive": {
+            "following": {
               "description": "接受肛門插入式姜罰",
               "title": "插入肛門的姜罰"
             }
@@ -1363,11 +1358,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-369ag3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將低溫蠟滴在對方身體上造成刺激",
               "title": "滴蠟在身體"
             },
-            "passive": {
+            "following": {
               "description": "被滴低溫蠟在身體上造成熱感或疼痛刺激",
               "title": "滴蠟在身體"
             }
@@ -1378,11 +1373,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-8lrs4c",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將低溫蠟滴在對方胸部造成刺激",
               "title": "滴蠟在胸部"
             },
-            "passive": {
+            "following": {
               "description": "被滴低溫蠟在胸部造成刺激",
               "title": "滴蠟在胸部"
             }
@@ -1393,11 +1388,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-j8e4pr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將低溫蠟滴在對方生殖器造成刺激",
               "title": "滴蠟在生殖器"
             },
-            "passive": {
+            "following": {
               "description": "被滴低溫蠟在生殖器造成刺激",
               "title": "滴蠟在生殖器"
             }
@@ -1408,11 +1403,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-1jrzewy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "輕度咬對方造成疼痛刺激",
               "title": "輕度咬人"
             },
-            "passive": {
+            "following": {
               "description": "被對方輕度咬造成疼痛刺激",
               "title": "輕度被咬"
             }
@@ -1423,11 +1418,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-j9milm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "重度咬對方造成疼痛刺激",
               "title": "重度咬人"
             },
-            "passive": {
+            "following": {
               "description": "被對方重度咬造成疼痛刺激",
               "title": "重度被咬"
             }
@@ -1438,11 +1433,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-yllz3q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拉扯對方頭髮造成疼痛刺激",
               "title": "拉扯頭髮"
             },
-            "passive": {
+            "following": {
               "description": "被對方拉扯頭髮造成疼痛刺激",
               "title": "拉扯頭髮"
             }
@@ -1453,11 +1448,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-151bev7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用夾具夾住對方陰唇或陰蒂",
               "title": "陰唇/陰蒂夾"
             },
-            "passive": {
+            "following": {
               "description": "被夾具夾住陰唇或陰蒂",
               "title": "陰唇/陰蒂夾"
             }
@@ -1468,11 +1463,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pain_stimulation-fdi4gl",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用冰塊對對方身體進行冷感刺激",
               "title": "冰塊刺激"
             },
-            "passive": {
+            "following": {
               "description": "被對方用冰塊進行冷感刺激",
               "title": "冰塊刺激"
             }
@@ -1485,14 +1480,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 19,
       "name": "疼痛刺激類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "施予乳夾、滴蠟、電擊等疼痛刺激相關項目"
         },
-        "passive": {
+        "following": {
           "description": "接受乳夾、滴蠟、電擊等疼痛刺激相關項目"
         }
       },
-      "sourceSheetName": "疼痛刺激類項目"
+      "originalName": "疼痛刺激類項目"
     },
     {
       "categoryId": "humiliation",
@@ -1500,11 +1495,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-ngy4jt",
           "roles": {
-            "active": {
+            "leading": {
               "description": "搧對方巴掌作為羞辱或管教",
               "title": "搧巴掌"
             },
-            "passive": {
+            "following": {
               "description": "被對方搧巴掌作為羞辱或管教",
               "title": "搧巴掌"
             }
@@ -1515,11 +1510,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-pn03",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用言語貶低、嘲弄或羞辱對方",
               "title": "言語羞辱"
             },
-            "passive": {
+            "following": {
               "description": "被對方用言語貶低、嘲弄或羞辱",
               "title": "言語羞辱"
             }
@@ -1530,11 +1525,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-18rp5a3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方尿床以造成羞辱感",
               "title": "強迫尿床"
             },
-            "passive": {
+            "following": {
               "description": "被要求尿床以造成羞辱感",
               "title": "強迫尿床"
             }
@@ -1545,11 +1540,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1podlwa",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方照鏡子以造成羞辱感",
               "title": "強迫照鏡子"
             },
-            "passive": {
+            "following": {
               "description": "被要求照鏡子以造成羞辱感",
               "title": "強迫照鏡子"
             }
@@ -1560,11 +1555,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1amvb9e",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在對方身體上寫下羞辱字眼",
               "title": "身體寫羞辱字眼"
             },
-            "passive": {
+            "following": {
               "description": "身體被寫下羞辱字眼",
               "title": "身體寫羞辱字眼"
             }
@@ -1575,11 +1570,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1vz66lf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "剃除對方頭髮以造成羞辱感",
               "title": "剃光頭"
             },
-            "passive": {
+            "following": {
               "description": "被剃除頭髮以造成羞辱感",
               "title": "剃光頭"
             }
@@ -1590,11 +1585,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1w3livx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方以變裝作為羞辱情境的一部分",
               "title": "變裝"
             },
-            "passive": {
+            "following": {
               "description": "被要求以變裝作為羞辱情境的一部分",
               "title": "變裝"
             }
@@ -1605,11 +1600,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-1h3yf1m",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在私人場所對對方進行羞辱",
               "title": "私人場所羞辱"
             },
-            "passive": {
+            "following": {
               "description": "在私人場所被對方羞辱",
               "title": "私人場所羞辱"
             }
@@ -1620,11 +1615,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-humiliation-ri5nyc",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在公開或可能被他人看見的情境中羞辱對方",
               "title": "公開羞辱"
             },
-            "passive": {
+            "following": {
               "description": "在公開或可能被他人看見的情境中被羞辱",
               "title": "公開羞辱"
             }
@@ -1637,14 +1632,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 9,
       "name": "羞辱類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "用語言或行為貶低對方，或造成對方羞辱感的項目"
         },
-        "passive": {
+        "following": {
           "description": "在語言或行為上被貶低，或感受到羞辱感的項目"
         }
       },
-      "sourceSheetName": "羞辱類項目"
+      "originalName": "羞辱類項目"
     },
     {
       "categoryId": "service",
@@ -1652,11 +1647,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-7v0tu6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "接受對方為自己按摩腳底",
               "title": "腳底按摩"
             },
-            "passive": {
+            "following": {
               "description": "為對方按摩腳底",
               "title": "腳底按摩"
             }
@@ -1667,11 +1662,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-1rvnr6f",
           "roles": {
-            "active": {
+            "leading": {
               "description": "接受對方為自己進行全身按摩",
               "title": "全身按摩"
             },
-            "passive": {
+            "following": {
               "description": "為對方進行全身按摩",
               "title": "全身按摩"
             }
@@ -1682,11 +1677,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-1cqhir7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "接受對方為自己準備餐點",
               "title": "準備餐點"
             },
-            "passive": {
+            "following": {
               "description": "為對方準備餐點",
               "title": "準備餐點"
             }
@@ -1697,11 +1692,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-5cfc80",
           "roles": {
-            "active": {
+            "leading": {
               "description": "接受對方為自己倒茶或準備飲料",
               "title": "倒茶/飲料"
             },
-            "passive": {
+            "following": {
               "description": "為對方倒茶或準備飲料",
               "title": "倒茶/飲料"
             }
@@ -1712,11 +1707,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-177yx3t",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方替自己提行李或包包",
               "title": "提行李/包包"
             },
-            "passive": {
+            "following": {
               "description": "替對方提行李或包包",
               "title": "提行李/包包"
             }
@@ -1727,11 +1722,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-16nyopw",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方替自己清潔玩具或道具",
               "title": "清潔玩具/道具"
             },
-            "passive": {
+            "following": {
               "description": "替對方清潔玩具或道具",
               "title": "清潔玩具/道具"
             }
@@ -1742,11 +1737,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-176k705",
           "roles": {
-            "active": {
+            "leading": {
               "description": "接受對方為自己做家事",
               "title": "做家事"
             },
-            "passive": {
+            "following": {
               "description": "為對方做家事",
               "title": "做家事"
             }
@@ -1757,11 +1752,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-b75ksu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "接受對方為自己洗澡或協助清潔身體",
               "title": "洗澡服侍"
             },
-            "passive": {
+            "following": {
               "description": "為對方洗澡或協助清潔身體",
               "title": "洗澡服侍"
             }
@@ -1772,11 +1767,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-z1q598",
           "roles": {
-            "active": {
+            "leading": {
               "description": "接受對方為自己修剪、保養或裝飾指甲",
               "title": "美甲"
             },
-            "passive": {
+            "following": {
               "description": "為對方修剪、保養或裝飾指甲",
               "title": "美甲"
             }
@@ -1787,11 +1782,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-1nx0nqc",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方載送自己往返目的地",
               "title": "接受接送"
             },
-            "passive": {
+            "following": {
               "description": "載送對方往返目的地",
               "title": "接送對方"
             }
@@ -1802,11 +1797,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-service-15yxo0r",
           "roles": {
-            "active": {
+            "leading": {
               "description": "接受對方以性行為或性互動服侍自己",
               "title": "接受性服侍"
             },
-            "passive": {
+            "following": {
               "description": "以性行為或性互動服侍對方",
               "title": "提供性服侍"
             }
@@ -1819,14 +1814,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "服侍類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "接受各種服務，用以滿足自己生活所需或慾望"
         },
-        "passive": {
+        "following": {
           "description": "提供各種服務，用以滿足對方生活所需或慾望"
         }
       },
-      "sourceSheetName": "服侍類項目"
+      "originalName": "服侍類項目"
     },
     {
       "categoryId": "discipline",
@@ -1834,11 +1829,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-11uedoh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方撰寫日記作為紀錄或回顧",
               "title": "要求寫日記"
             },
-            "passive": {
+            "following": {
               "description": "被要求撰寫日記作為紀錄或回顧",
               "title": "撰寫日記"
             }
@@ -1849,11 +1844,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-11sxnh8",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方撰寫實踐心得作為回饋或整理",
               "title": "要求寫心得"
             },
-            "passive": {
+            "following": {
               "description": "被要求撰寫實踐心得作為回饋或整理",
               "title": "撰寫心得"
             }
@@ -1864,11 +1859,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-1g2g00r",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方練習指定姿勢或維持姿勢",
               "title": "姿勢訓練"
             },
-            "passive": {
+            "following": {
               "description": "被要求練習指定姿勢或維持姿勢",
               "title": "姿勢訓練"
             }
@@ -1879,11 +1874,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-qp6v84",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方以增重為目標調整飲食或生活習慣",
               "title": "增肥"
             },
-            "passive": {
+            "following": {
               "description": "被要求以增重為目標調整飲食或生活習慣",
               "title": "增肥"
             }
@@ -1894,11 +1889,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-nqdxf9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方以減重為目標調整飲食或生活習慣",
               "title": "減肥"
             },
-            "passive": {
+            "following": {
               "description": "被要求以減重為目標調整飲食或生活習慣",
               "title": "減肥"
             }
@@ -1909,11 +1904,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-18zxvtr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "規範或限制對方的飲食內容與飲食方式",
               "title": "飲食控制"
             },
-            "passive": {
+            "following": {
               "description": "飲食內容與飲食方式受到對方規範或限制",
               "title": "飲食控制"
             }
@@ -1924,11 +1919,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-vrrge7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方接受身體檢查或展示身體狀態",
               "title": "身體檢查"
             },
-            "passive": {
+            "following": {
               "description": "被要求接受身體檢查或展示身體狀態",
               "title": "身體檢查"
             }
@@ -1939,11 +1934,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-mrnfh0",
           "roles": {
-            "active": {
+            "leading": {
               "description": "指派任務讓對方完成",
               "title": "指派任務"
             },
-            "passive": {
+            "following": {
               "description": "接受對方指派的任務並完成",
               "title": "執行指定任務"
             }
@@ -1954,11 +1949,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-1h3vvc3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "針對對方不當的行為進行訓誡或糾正",
               "title": "訓誡不當行為"
             },
-            "passive": {
+            "following": {
               "description": "因不當的行為被對方訓誡或糾正",
               "title": "接受訓誡"
             }
@@ -1969,11 +1964,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-7ki0ex",
           "roles": {
-            "active": {
+            "leading": {
               "description": "指定對方學習特定知識、技能或內容",
               "title": "指定學習項目"
             },
-            "passive": {
+            "following": {
               "description": "被指定學習特定知識、技能或內容",
               "title": "學習指定項目"
             }
@@ -1984,11 +1979,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-1686v9k",
           "roles": {
-            "active": {
+            "leading": {
               "description": "規範對方的用語、稱呼或說話方式",
               "title": "言語規範"
             },
-            "passive": {
+            "following": {
               "description": "用語、稱呼或說話方式受到對方規範",
               "title": "言語規範"
             }
@@ -1999,11 +1994,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-discipline-s0l9h0",
           "roles": {
-            "active": {
+            "leading": {
               "description": "制定並要求對方執行特定儀式",
               "title": "制定儀式"
             },
-            "passive": {
+            "following": {
               "description": "被要求執行對方制定的特定儀式",
               "title": "執行儀式"
             }
@@ -2016,14 +2011,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 12,
       "name": "管教類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "限制或立下規範，以訓練並達成目標為主的項目"
         },
-        "passive": {
+        "following": {
           "description": "接受限制或規範，並以訓練、改善或達成目標為主的項目"
         }
       },
-      "sourceSheetName": "管教類項目"
+      "originalName": "管教類項目"
     },
     {
       "categoryId": "sexual_interaction",
@@ -2031,11 +2026,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-ln7hc7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在性交中擔任主導側",
               "title": "性交"
             },
-            "passive": {
+            "following": {
               "description": "在性交中擔任配合側",
               "title": "性交"
             }
@@ -2046,11 +2041,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1aef53n",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在口交中擔任主導側",
               "title": "口交"
             },
-            "passive": {
+            "following": {
               "description": "在口交中擔任配合側",
               "title": "口交"
             }
@@ -2061,11 +2056,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1ytloln",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在肛交中擔任主導側",
               "title": "肛交"
             },
-            "passive": {
+            "following": {
               "description": "在肛交中擔任配合側",
               "title": "肛交"
             }
@@ -2076,11 +2071,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-wc6vs3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在乳交中擔任主導側",
               "title": "乳交"
             },
-            "passive": {
+            "following": {
               "description": "在乳交中擔任配合側",
               "title": "乳交"
             }
@@ -2091,11 +2086,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1k4ddkr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在手交中擔任主導側",
               "title": "手交"
             },
-            "passive": {
+            "following": {
               "description": "在手交中擔任配合側",
               "title": "手交"
             }
@@ -2106,11 +2101,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1g5pujn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在拳交中擔任主導側",
               "title": "拳交"
             },
-            "passive": {
+            "following": {
               "description": "在拳交中擔任配合側",
               "title": "拳交"
             }
@@ -2121,11 +2116,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-filrqn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "射精在對方嘴內",
               "title": "射在對方口中"
             },
-            "passive": {
+            "following": {
               "description": "被射精在嘴內",
               "title": "口中接受射精"
             }
@@ -2136,11 +2131,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1rt5tu9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "射精在對方臉上",
               "title": "射在對方臉上"
             },
-            "passive": {
+            "following": {
               "description": "被射精在臉上",
               "title": "臉上接受射精"
             }
@@ -2151,11 +2146,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1ue4af6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "射精在對方胸部",
               "title": "射在對方胸部"
             },
-            "passive": {
+            "following": {
               "description": "被射精在胸部",
               "title": "胸部接受射精"
             }
@@ -2166,11 +2161,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-tvmpfz",
           "roles": {
-            "active": {
+            "leading": {
               "description": "射精在對方陰道內",
               "title": "射在對方陰道"
             },
-            "passive": {
+            "following": {
               "description": "被射精在陰道內",
               "title": "陰道接受射精"
             }
@@ -2181,11 +2176,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-dsyi29",
           "roles": {
-            "active": {
+            "leading": {
               "description": "射精在對方肛門內或肛門周圍",
               "title": "射在對方肛門"
             },
-            "passive": {
+            "following": {
               "description": "被射精在肛門內或肛門周圍",
               "title": "肛門接受射精"
             }
@@ -2196,11 +2191,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-29csl5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "射精在對方頭髮上",
               "title": "射在對方頭髮"
             },
-            "passive": {
+            "following": {
               "description": "被射精在頭髮上",
               "title": "頭髮接受射精"
             }
@@ -2211,11 +2206,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-qk9oti",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方吞下精液",
               "title": "要求吞精"
             },
-            "passive": {
+            "following": {
               "description": "吞下對方精液",
               "title": "吞精"
             }
@@ -2226,11 +2221,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-ik3j9u",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方食用含有精液的食物",
               "title": "要求食用含精食物"
             },
-            "passive": {
+            "following": {
               "description": "食用含有精液的食物",
               "title": "食用含精食物"
             }
@@ -2241,11 +2236,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-jfpa5h",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方潮吹或引導對方潮吹",
               "title": "引導潮吹"
             },
-            "passive": {
+            "following": {
               "description": "被對方引導或刺激到潮吹",
               "title": "潮吹"
             }
@@ -2256,11 +2251,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-8jcyoj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "持續刺激對方直到高潮或多次高潮",
               "title": "使對方高潮"
             },
-            "passive": {
+            "following": {
               "description": "被對方持續刺激直到高潮或多次高潮",
               "title": "持續被刺激至高潮"
             }
@@ -2271,11 +2266,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-w99mgx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方展示自慰",
               "title": "要求自慰展示"
             },
-            "passive": {
+            "following": {
               "description": "被要求展示自慰",
               "title": "自慰展示"
             }
@@ -2286,11 +2281,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1sl20mr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用性玩具刺激對方",
               "title": "性玩具刺激對方"
             },
-            "passive": {
+            "following": {
               "description": "被對方用性玩具刺激",
               "title": "接受性玩具刺激"
             }
@@ -2301,11 +2296,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-1xo6keo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行尿道棒調教",
               "title": "尿道棒調教對方"
             },
-            "passive": {
+            "following": {
               "description": "接受對方進行尿道棒調教",
               "title": "接受尿道棒調教"
             }
@@ -2316,11 +2311,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-6pp140",
           "roles": {
-            "active": {
+            "leading": {
               "description": "取得並控制對方的跳蛋操作權",
               "title": "控制跳蛋"
             },
-            "passive": {
+            "following": {
               "description": "將跳蛋操作權交給對方控制",
               "title": "交出跳蛋控制權"
             }
@@ -2331,11 +2326,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-sexual_interaction-flhbf2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方在公共場所穿戴跳蛋",
               "title": "要求公共穿跳蛋"
             },
-            "passive": {
+            "following": {
               "description": "在公共場所穿戴由對方控制或指定的跳蛋",
               "title": "公共穿跳蛋"
             }
@@ -2348,14 +2343,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 21,
       "name": "性愛類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "與性器官互動相關的項目"
         },
-        "passive": {
+        "following": {
           "description": "與性器官互動相關的項目"
         }
       },
-      "sourceSheetName": "性愛類項目"
+      "originalName": "性愛類項目"
     },
     {
       "categoryId": "anal_interaction",
@@ -2363,11 +2358,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1oupd9i",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方放入直徑小於三公分的肛塞",
               "title": "直徑小於三公分的肛塞"
             },
-            "passive": {
+            "following": {
               "description": "被放入直徑小於三公分的肛塞",
               "title": "直徑小於三公分的肛塞"
             }
@@ -2378,11 +2373,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1m59dfi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方放入直徑介於三到五公分的肛塞",
               "title": "直徑介於三到五公分的肛塞"
             },
-            "passive": {
+            "following": {
               "description": "被放入直徑介於三到五公分的肛塞",
               "title": "直徑介於三到五公分的肛塞"
             }
@@ -2393,11 +2388,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-b8y6xr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方放入直徑大於五公分的肛塞",
               "title": "直徑大於五公分的肛塞"
             },
-            "passive": {
+            "following": {
               "description": "被放入直徑大於五公分的肛塞",
               "title": "直徑大於五公分的肛塞"
             }
@@ -2408,11 +2403,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1sgm90w",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用肛鞭刺激對方肛門",
               "title": "肛鞭"
             },
-            "passive": {
+            "following": {
               "description": "被對方用肛鞭刺激肛門",
               "title": "肛鞭"
             }
@@ -2423,11 +2418,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-4g0x9i",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用串珠情趣玩具刺激對方肛門",
               "title": "串珠情趣玩具"
             },
-            "passive": {
+            "following": {
               "description": "被對方用串珠情趣玩具刺激肛門",
               "title": "串珠情趣玩具"
             }
@@ -2438,11 +2433,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-ilmux2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "引導對方進行擴肛訓練",
               "title": "擴肛訓練"
             },
-            "passive": {
+            "following": {
               "description": "接受對方引導進行擴肛訓練",
               "title": "擴肛訓練"
             }
@@ -2453,11 +2448,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-n69t3o",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用肛門擴張器擴張對方肛門",
               "title": "肛門擴張器"
             },
-            "passive": {
+            "following": {
               "description": "被對方用肛門擴張器擴張肛門",
               "title": "肛門擴張器"
             }
@@ -2468,11 +2463,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-v6v9dp",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用肛門窺器撐開或觀察對方肛門",
               "title": "肛門窺器"
             },
-            "passive": {
+            "following": {
               "description": "被對方用肛門窺器撐開或觀察肛門",
               "title": "肛門窺器"
             }
@@ -2483,11 +2478,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-12ghyy9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方進行灌腸",
               "title": "為對方灌腸"
             },
-            "passive": {
+            "following": {
               "description": "接受對方灌腸",
               "title": "接受灌腸"
             }
@@ -2498,11 +2493,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-gwnjaf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "接受對方舔肛服務",
               "title": "接受舔肛服務"
             },
-            "passive": {
+            "following": {
               "description": "為對方提供舔肛服務",
               "title": "提供舔肛服務"
             }
@@ -2513,11 +2508,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1wf7u60",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方穿戴肛塞一小時內",
               "title": "一小時內穿戴肛塞"
             },
-            "passive": {
+            "following": {
               "description": "穿戴肛塞一小時內",
               "title": "一小時內穿戴肛塞"
             }
@@ -2528,11 +2523,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-19jmdrg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方穿戴肛塞一到三小時",
               "title": "一到三小時穿戴肛塞"
             },
-            "passive": {
+            "following": {
               "description": "穿戴肛塞一到三小時",
               "title": "一到三小時穿戴肛塞"
             }
@@ -2543,11 +2538,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-ww1hfr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方穿戴肛塞三小時以上",
               "title": "三小時以上穿戴肛塞"
             },
-            "passive": {
+            "following": {
               "description": "穿戴肛塞三小時以上",
               "title": "三小時以上穿戴肛塞"
             }
@@ -2558,11 +2553,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-npcnih",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方睡覺時穿戴肛塞",
               "title": "睡覺時穿戴肛塞"
             },
-            "passive": {
+            "following": {
               "description": "睡覺時穿戴肛塞",
               "title": "睡覺時穿戴肛塞"
             }
@@ -2573,11 +2568,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-anal_interaction-1c35d5h",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方在公共場所穿戴肛塞",
               "title": "於公共場所穿戴肛塞"
             },
-            "passive": {
+            "following": {
               "description": "在公共場所穿戴肛塞",
               "title": "於公共場所穿戴肛塞"
             }
@@ -2590,14 +2585,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 15,
       "name": "肛門類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "與肛門互動相關的項目"
         },
-        "passive": {
+        "following": {
           "description": "與肛門互動相關的項目"
         }
       },
-      "sourceSheetName": "肛門類項目"
+      "originalName": "肛門類項目"
     },
     {
       "categoryId": "multi_party_interaction",
@@ -2605,11 +2600,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-jy04v5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在一主多奴/寵關係中擔任主導側",
               "title": "一主多奴/寵"
             },
-            "passive": {
+            "following": {
               "description": "在一主多奴/寵關係中擔任奴方或寵物方",
               "title": "一主多奴/寵"
             }
@@ -2620,11 +2615,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-1retpvp",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在多主一奴/寵關係中擔任主導側之一",
               "title": "多主一奴/寵"
             },
-            "passive": {
+            "following": {
               "description": "在多主一奴/寵關係中擔任奴方或寵物方",
               "title": "多主一奴/寵"
             }
@@ -2635,11 +2630,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-14o4ip9",
           "roles": {
-            "active": {
+            "leading": {
               "description": "與他人交換伴侶進行互動或性互動",
               "title": "交換伴侶"
             },
-            "passive": {
+            "following": {
               "description": "在伴侶交換情境中與他人互動或性互動",
               "title": "交換伴侶"
             }
@@ -2650,11 +2645,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-rrbnk5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "安排或引導對方經歷綠帽情境",
               "title": "綠帽遊戲"
             },
-            "passive": {
+            "following": {
               "description": "在綠帽情境中被安排、觀看或參與",
               "title": "綠帽遊戲"
             }
@@ -2665,11 +2660,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-2wnhye",
           "roles": {
-            "active": {
+            "leading": {
               "description": "參與或安排多人性互動",
               "title": "群交"
             },
-            "passive": {
+            "following": {
               "description": "參與多人性互動",
               "title": "群交"
             }
@@ -2680,11 +2675,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-1rwzxqq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "安排多人在知情同意下對對方進行輪姦情境",
               "title": "知情同意下的輪姦"
             },
-            "passive": {
+            "following": {
               "description": "在知情同意下接受多人輪姦情境",
               "title": "知情同意下的輪姦"
             }
@@ -2695,11 +2690,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-1p23a5n",
           "roles": {
-            "active": {
+            "leading": {
               "description": "短期將對方分享或交予第三人互動",
               "title": "短期交予第三人"
             },
-            "passive": {
+            "following": {
               "description": "短期被分享或交予第三人互動",
               "title": "短期被交予第三人"
             }
@@ -2710,11 +2705,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-18qgi5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "長期將對方分享或交予第三人互動",
               "title": "長期交予第三人"
             },
-            "passive": {
+            "following": {
               "description": "長期被分享或交予第三人互動",
               "title": "長期被交予第三人"
             }
@@ -2725,11 +2720,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-8rm4og",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在特定情況下將對方分享或交予第三人互動",
               "title": "特定情況交予第三人"
             },
-            "passive": {
+            "following": {
               "description": "在特定情況下被分享或交予第三人互動",
               "title": "特定情況被交予第三人"
             }
@@ -2740,11 +2735,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-rxs1rf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "安排或參與多人約會情境",
               "title": "多人約會"
             },
-            "passive": {
+            "following": {
               "description": "參與多人約會情境",
               "title": "多人約會"
             }
@@ -2755,11 +2750,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-multi_party_interaction-1ovw0ci",
           "roles": {
-            "active": {
+            "leading": {
               "description": "安排或參與多人調教情境",
               "title": "多人調教"
             },
-            "passive": {
+            "following": {
               "description": "參與多人調教情境",
               "title": "多人調教"
             }
@@ -2772,14 +2767,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "多方互動類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "如多人、或關係外第三人相關的項目"
         },
-        "passive": {
+        "following": {
           "description": "如多人、或關係外第三人相關的項目"
         }
       },
-      "sourceSheetName": "多方互動類項目"
+      "originalName": "多方互動類項目"
     },
     {
       "categoryId": "enslavement",
@@ -2787,11 +2782,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-bei8uo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方在合意情境中扮演性奴角色",
               "title": "性奴"
             },
-            "passive": {
+            "following": {
               "description": "在合意情境中扮演性奴角色",
               "title": "性奴"
             }
@@ -2802,11 +2797,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-1lnxc6o",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方在合意情境中扮演家事奴角色",
               "title": "家事奴"
             },
-            "passive": {
+            "following": {
               "description": "在合意情境中扮演家事奴角色",
               "title": "家事奴"
             }
@@ -2817,11 +2812,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-emvul7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方在合意情境中扮演服侍奴角色",
               "title": "服侍奴"
             },
-            "passive": {
+            "following": {
               "description": "在合意情境中扮演服侍奴角色",
               "title": "服侍奴"
             }
@@ -2832,11 +2827,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-5p38rr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方在合意情境中扮演金錢供給或付款角色",
               "title": "ATM奴"
             },
-            "passive": {
+            "following": {
               "description": "在合意情境中扮演金錢供給或付款角色",
               "title": "ATM奴"
             }
@@ -2847,11 +2842,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-ktgyn6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方在合意情境中扮演接送或駕駛服務角色",
               "title": "司機奴"
             },
-            "passive": {
+            "following": {
               "description": "在合意情境中扮演接送或駕駛服務角色",
               "title": "司機奴"
             }
@@ -2862,11 +2857,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-8hpgnn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方在合意情境中扮演承受疼痛或出氣包角色",
               "title": "疼痛奴/出氣包"
             },
-            "passive": {
+            "following": {
               "description": "在合意情境中扮演承受疼痛或出氣包角色",
               "title": "疼痛奴/出氣包"
             }
@@ -2877,11 +2872,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-p5y68w",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行奴隸角色相關訓練",
               "title": "奴隸訓練"
             },
-            "passive": {
+            "following": {
               "description": "接受奴隸角色相關訓練",
               "title": "奴隸訓練"
             }
@@ -2892,11 +2887,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-8sl7b1",
           "roles": {
-            "active": {
+            "leading": {
               "description": "給予對方奴隸項圈或象徵",
               "title": "給予奴隸項圈"
             },
-            "passive": {
+            "following": {
               "description": "接受對方給予奴隸項圈或象徵",
               "title": "接受奴隸項圈"
             }
@@ -2907,11 +2902,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-wgiuuj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在私人空間以牽繩牽引對方",
               "title": "私人空間牽繩牽引"
             },
-            "passive": {
+            "following": {
               "description": "在私人空間被對方以牽繩牽引",
               "title": "私人空間牽繩牽引"
             }
@@ -2922,11 +2917,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-bdsmspaceleash",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在 BDSM 相關空間以牽繩牽引對方",
               "title": "BDSM 相關空間牽繩牽引"
             },
-            "passive": {
+            "following": {
               "description": "在 BDSM 相關空間被對方以牽繩牽引",
               "title": "BDSM 相關空間牽繩牽引"
             }
@@ -2937,11 +2932,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-1654r6x",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在公開空間以牽繩牽引對方",
               "title": "公開空間牽繩牽引"
             },
-            "passive": {
+            "following": {
               "description": "在公開空間被對方以牽繩牽引",
               "title": "公開空間牽繩牽引"
             }
@@ -2952,11 +2947,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-w3wrxl",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將對方關入奴隸籠子或限制在籠內",
               "title": "關入奴隸籠"
             },
-            "passive": {
+            "following": {
               "description": "被關入奴隸籠子或限制在籠內",
               "title": "被關入奴隸籠"
             }
@@ -2967,11 +2962,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-1d5ybf5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方短暫進入奴化角色或狀態",
               "title": "短暫奴化"
             },
-            "passive": {
+            "following": {
               "description": "短暫進入奴化角色或狀態",
               "title": "短暫奴化"
             }
@@ -2982,11 +2977,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-tu6x63",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方長期維持奴化角色或狀態",
               "title": "長期奴化"
             },
-            "passive": {
+            "following": {
               "description": "長期維持奴化角色或狀態",
               "title": "長期奴化"
             }
@@ -2997,11 +2992,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-enslavement-swx1g2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方進入永久奴化的關係設定",
               "title": "永久奴化"
             },
-            "passive": {
+            "following": {
               "description": "進入永久奴化的關係設定",
               "title": "永久奴化"
             }
@@ -3014,14 +3009,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 15,
       "name": "奴化類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "讓對方扮演某種範圍內的奴隸的項目"
         },
-        "passive": {
+        "following": {
           "description": "自己扮演某種範圍內奴隸的項目"
         }
       },
-      "sourceSheetName": "奴化類項目"
+      "originalName": "奴化類項目"
     },
     {
       "categoryId": "pet_play",
@@ -3029,11 +3024,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1jsyyjh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為扮演寵物的對方洗澡或梳毛",
               "title": "幫寵物洗澡／梳毛"
             },
-            "passive": {
+            "following": {
               "description": "在寵物角色中接受對方洗澡或梳毛",
               "title": "接受洗澡／梳毛"
             }
@@ -3044,11 +3039,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-a609w4",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拿寵物玩具與扮演寵物的對方互動",
               "title": "玩寵物玩具"
             },
-            "passive": {
+            "following": {
               "description": "在寵物角色中與對方玩寵物玩具",
               "title": "玩寵物玩具"
             }
@@ -3059,11 +3054,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-x5vjdy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方以四肢爬行方式扮演獸或寵物",
               "title": "四肢爬行"
             },
-            "passive": {
+            "following": {
               "description": "以四肢爬行方式扮演獸或寵物",
               "title": "四肢爬行"
             }
@@ -3074,11 +3069,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-nv1pij",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方發出獸或寵物叫聲",
               "title": "發出獸/寵物叫"
             },
-            "passive": {
+            "following": {
               "description": "發出獸或寵物叫聲扮演獸或寵物",
               "title": "發出獸/寵物叫"
             }
@@ -3089,11 +3084,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-rvrxgu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用寵物碗餵食對方人類食物",
               "title": "寵物碗餵食人類食物"
             },
-            "passive": {
+            "following": {
               "description": "用寵物碗進食人類食物",
               "title": "寵物碗餵食人類食物"
             }
@@ -3104,11 +3099,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-4bs8mo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用寵物碗餵食對方寵物濕食",
               "title": "寵物碗餵食寵物濕食"
             },
-            "passive": {
+            "following": {
               "description": "用寵物碗進食寵物濕食",
               "title": "寵物碗餵食寵物濕食"
             }
@@ -3119,11 +3114,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1hw29un",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用寵物碗餵食對方寵物乾食",
               "title": "寵物碗餵食寵物乾食"
             },
-            "passive": {
+            "following": {
               "description": "用寵物碗進食寵物乾食",
               "title": "寵物碗餵食寵物乾食"
             }
@@ -3134,11 +3129,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-etd5x1",
           "roles": {
-            "active": {
+            "leading": {
               "description": "訓練對方完成寵物角色中的指定技能",
               "title": "寵物技能訓練"
             },
-            "passive": {
+            "following": {
               "description": "接受對方訓練並完成寵物角色中的指定技能",
               "title": "寵物技能訓練"
             }
@@ -3149,11 +3144,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-52x52j",
           "roles": {
-            "active": {
+            "leading": {
               "description": "給予對方寵物項圈或象徵",
               "title": "給予寵物項圈"
             },
-            "passive": {
+            "following": {
               "description": "接受對方給予寵物項圈或象徵",
               "title": "接受寵物項圈"
             }
@@ -3164,11 +3159,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-ljh0h7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在私人空間以牽繩牽引扮演寵物的對方",
               "title": "私人空間牽繩牽引"
             },
-            "passive": {
+            "following": {
               "description": "在私人空間被對方以牽繩牽引",
               "title": "私人空間牽繩牽引"
             }
@@ -3179,11 +3174,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-bdsmspaceleash",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在 BDSM 相關空間以牽繩牽引扮演寵物的對方",
               "title": "BDSM 相關空間牽繩牽引"
             },
-            "passive": {
+            "following": {
               "description": "在 BDSM 相關空間被對方以牽繩牽引",
               "title": "BDSM 相關空間牽繩牽引"
             }
@@ -3194,11 +3189,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1efmrop",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在公開空間以牽繩牽引扮演寵物的對方",
               "title": "公開空間牽繩牽引"
             },
-            "passive": {
+            "following": {
               "description": "在公開空間被對方以牽繩牽引",
               "title": "公開空間牽繩牽引"
             }
@@ -3209,11 +3204,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-iua2gj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將扮演寵物的對方關入或限制在寵物籠內",
               "title": "關入寵物籠"
             },
-            "passive": {
+            "following": {
               "description": "在寵物角色中被關入或限制在寵物籠內",
               "title": "被關入寵物籠"
             }
@@ -3224,11 +3219,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1hdeo81",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方穿戴寵物髮飾或尾巴",
               "title": "穿戴寵物髮飾/尾巴"
             },
-            "passive": {
+            "following": {
               "description": "穿戴寵物髮飾或尾巴扮演寵物",
               "title": "穿戴寵物髮飾/尾巴"
             }
@@ -3239,11 +3234,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-k9hood",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方穿戴 K9 犬奴頭套並與對方互動",
               "title": "K9犬奴頭套"
             },
-            "passive": {
+            "following": {
               "description": "穿戴 K9 犬奴頭套並與對方互動",
               "title": "K9犬奴頭套"
             }
@@ -3254,11 +3249,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-jkh6sm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方短暫進入獸或寵物角色",
               "title": "短暫獸/寵物化"
             },
-            "passive": {
+            "following": {
               "description": "短暫進入獸或寵物角色",
               "title": "短暫獸/寵物化"
             }
@@ -3269,11 +3264,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-1o3a8sg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方長期維持獸或寵物角色",
               "title": "長期獸/寵物化"
             },
-            "passive": {
+            "following": {
               "description": "長期維持獸或寵物角色",
               "title": "長期獸/寵物化"
             }
@@ -3284,11 +3279,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-pet_play-7xqowr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方進入永久獸或寵物化的關係設定",
               "title": "永久獸/寵物化"
             },
-            "passive": {
+            "following": {
               "description": "進入永久獸或寵物化的關係設定",
               "title": "永久獸/寵物化"
             }
@@ -3301,14 +3296,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 18,
       "name": "獸/寵物化類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "讓對方扮演獸/寵物相關的項目"
         },
-        "passive": {
+        "following": {
           "description": "自己扮演獸或寵物相關的項目"
         }
       },
-      "sourceSheetName": "獸/寵物化類項目"
+      "originalName": "獸/寵物化類項目"
     },
     {
       "categoryId": "role_play",
@@ -3316,11 +3311,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-j6rqh7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方扮演小寶寶",
               "title": "小寶寶角色"
             },
-            "passive": {
+            "following": {
               "description": "在對方面前扮演小寶寶",
               "title": "小寶寶角色"
             }
@@ -3331,11 +3326,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1hqqab2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方扮演小孩",
               "title": "小孩角色"
             },
-            "passive": {
+            "following": {
               "description": "在對方面前扮演小孩",
               "title": "小孩角色"
             }
@@ -3346,11 +3341,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1b6vck1",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方扮演青少年",
               "title": "青少年角色"
             },
-            "passive": {
+            "following": {
               "description": "在對方面前扮演青少年",
               "title": "青少年角色"
             }
@@ -3361,11 +3356,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1bf86f7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方扮演老年人",
               "title": "老年人角色"
             },
-            "passive": {
+            "following": {
               "description": "在對方面前扮演老年人",
               "title": "老年人角色"
             }
@@ -3376,11 +3371,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1qg4s3q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方扮演人偶或娃娃",
               "title": "人偶／娃娃角色"
             },
-            "passive": {
+            "following": {
               "description": "在對方面前扮演人偶或娃娃",
               "title": "人偶／娃娃角色"
             }
@@ -3391,11 +3386,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1i9t0en",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在貴族僕役情境中扮演主導側",
               "title": "主僕情境"
             },
-            "passive": {
+            "following": {
               "description": "在貴族僕役情境中扮演配合側",
               "title": "主僕情境"
             }
@@ -3406,11 +3401,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1n9uevy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在上司和下屬的情境中扮演主導側",
               "title": "上司／下屬情境"
             },
-            "passive": {
+            "following": {
               "description": "在上司和下屬的情境中扮演配合側",
               "title": "上司／下屬情境"
             }
@@ -3421,11 +3416,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-kodrud",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在醫護和病患的情境中扮演主導側",
               "title": "醫護／病患情境"
             },
-            "passive": {
+            "following": {
               "description": "在醫護和病患的情境中扮演配合側",
               "title": "醫護／病患情境"
             }
@@ -3436,11 +3431,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1gts3i7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在獄卒和服刑人的情境中扮演主導側",
               "title": "獄卒／服刑人情境"
             },
-            "passive": {
+            "following": {
               "description": "在獄卒和服刑人的情境中扮演配合側",
               "title": "獄卒／服刑人情境"
             }
@@ -3451,11 +3446,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-vepd7q",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在老師和學生的情境中扮演主導側",
               "title": "老師／學生情境"
             },
-            "passive": {
+            "following": {
               "description": "在老師和學生的情境中扮演配合側",
               "title": "老師／學生情境"
             }
@@ -3466,11 +3461,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-1virdb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在父母和兒女的情境中扮演主導側",
               "title": "父母／兒女情境"
             },
-            "passive": {
+            "following": {
               "description": "在父母和兒女的情境中扮演配合側",
               "title": "父母／兒女情境"
             }
@@ -3481,11 +3476,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-18ycvwm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在兄弟姊妹的情境中扮演主導側",
               "title": "扮演兄弟姊妹"
             },
-            "passive": {
+            "following": {
               "description": "在兄弟姊妹的情境中扮演配合側",
               "title": "扮演兄弟姊妹"
             }
@@ -3496,11 +3491,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-pyo1lh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方包尿布",
               "title": "尿布情境"
             },
-            "passive": {
+            "following": {
               "description": "在對方面前包尿布",
               "title": "尿布情境"
             }
@@ -3511,11 +3506,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-role_play-u5m4ic",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在小孩子塗鴉玩樂的情境中擔任主導側",
               "title": "塗鴉遊戲"
             },
-            "passive": {
+            "following": {
               "description": "在小孩子塗鴉玩樂的情境中擔任配合側",
               "title": "塗鴉遊戲"
             }
@@ -3528,14 +3523,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 14,
       "name": "角色扮演類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "引導對方進行情境扮演的項目"
         },
-        "passive": {
+        "following": {
           "description": "自己進行情境扮演的項目"
         }
       },
-      "sourceSheetName": "角色扮演類項目"
+      "originalName": "角色扮演類項目"
     },
     {
       "categoryId": "objectification",
@@ -3543,11 +3538,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-1l6nra5",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方當作椅子使用",
               "title": "把對方當椅子"
             },
-            "passive": {
+            "following": {
               "description": "被對方當作椅子使用",
               "title": "作為椅子"
             }
@@ -3558,11 +3553,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-1nqioit",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方當作沙發使用",
               "title": "把對方當沙發"
             },
-            "passive": {
+            "following": {
               "description": "被對方當作沙發使用",
               "title": "作為沙發"
             }
@@ -3573,11 +3568,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-6z8u5c",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方當作踏腳墊使用",
               "title": "把對方當踏腳墊"
             },
-            "passive": {
+            "following": {
               "description": "被對方當作踏腳墊使用",
               "title": "作為踏腳墊"
             }
@@ -3588,11 +3583,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-gmtfv3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方當作花瓶展示",
               "title": "把對方當花瓶"
             },
-            "passive": {
+            "following": {
               "description": "被對方當作花瓶展示",
               "title": "作為花瓶"
             }
@@ -3603,11 +3598,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-1xfrg59",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方當作衣架使用",
               "title": "把對方當衣架"
             },
-            "passive": {
+            "following": {
               "description": "被對方當作衣架使用",
               "title": "作為衣架"
             }
@@ -3618,11 +3613,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-11fzq08",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方當作人偶擺放或展示",
               "title": "把對方當人偶"
             },
-            "passive": {
+            "following": {
               "description": "被對方當作人偶擺放或展示",
               "title": "作為人偶"
             }
@@ -3633,11 +3628,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-ydg8ls",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方當作菸灰缸使用",
               "title": "把對方當菸灰缸"
             },
-            "passive": {
+            "following": {
               "description": "被對方當作菸灰缸使用",
               "title": "作為菸灰缸"
             }
@@ -3648,11 +3643,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-15peili",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方身體當作食物盤子或碗使用",
               "title": "把對方當餐盤或碗"
             },
-            "passive": {
+            "following": {
               "description": "身體被當作食物盤子或碗使用",
               "title": "作為餐盤或碗"
             }
@@ -3663,11 +3658,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-18d3dxj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方當作自慰套使用",
               "title": "把對方當自慰套"
             },
-            "passive": {
+            "following": {
               "description": "被對方當作自慰套使用",
               "title": "作為自慰套"
             }
@@ -3678,11 +3673,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-gg0tot",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方當作假陽具使用",
               "title": "把對方當假陽具"
             },
-            "passive": {
+            "following": {
               "description": "被對方當作假陽具使用",
               "title": "作為假陽具"
             }
@@ -3693,11 +3688,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-objectification-11y1b4u",
           "roles": {
-            "active": {
+            "leading": {
               "description": "把對方設定為可交易或交換的資產",
               "title": "將對方設為交易資產"
             },
-            "passive": {
+            "following": {
               "description": "被設定為可交易或交換的資產",
               "title": "作為交易資產"
             }
@@ -3710,14 +3705,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "物化類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "在合意情境中，暫時把對方當作物品、家具或工具對待的項目"
         },
-        "passive": {
+        "following": {
           "description": "在合意情境中，暫時被當作物品、家具或工具對待的項目"
         }
       },
-      "sourceSheetName": "物化類項目"
+      "originalName": "物化類項目"
     },
     {
       "categoryId": "exposure",
@@ -3725,11 +3720,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-yrd6oh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方在自己面前暴露身體",
               "title": "要求在自己面前暴露"
             },
-            "passive": {
+            "following": {
               "description": "在對方面前暴露身體",
               "title": "在對方面前暴露"
             }
@@ -3740,11 +3735,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-84q67p",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方在朋友面前暴露身體",
               "title": "要求在朋友面前暴露"
             },
-            "passive": {
+            "following": {
               "description": "在朋友面前暴露身體",
               "title": "在朋友面前暴露"
             }
@@ -3755,11 +3750,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-1c953fq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方在陌生人面前暴露身體",
               "title": "要求在陌生人面前暴露"
             },
-            "passive": {
+            "following": {
               "description": "在陌生人面前暴露身體",
               "title": "在陌生人面前暴露"
             }
@@ -3770,11 +3765,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-cf5jn6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方在私人空間暴露身體",
               "title": "要求在私人空間暴露"
             },
-            "passive": {
+            "following": {
               "description": "在私人空間暴露身體",
               "title": "在私人空間暴露"
             }
@@ -3785,11 +3780,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-bdsmspace",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方在 BDSM 相關空間暴露身體",
               "title": "在 BDSM 相關空間暴露"
             },
-            "passive": {
+            "following": {
               "description": "在 BDSM 相關空間暴露身體",
               "title": "在 BDSM 相關空間暴露"
             }
@@ -3800,11 +3795,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-jg19zi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方在公共空間暴露身體",
               "title": "要求在公共空間暴露"
             },
-            "passive": {
+            "following": {
               "description": "在公共空間暴露身體",
               "title": "在公共空間暴露"
             }
@@ -3815,11 +3810,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-14ngx9f",
           "roles": {
-            "active": {
+            "leading": {
               "description": "觀看他人的性愛過程",
               "title": "觀看性愛過程"
             },
-            "passive": {
+            "following": {
               "description": "讓他人觀看自己的性愛過程",
               "title": "被觀看性愛過程"
             }
@@ -3830,11 +3825,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-iztub",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方暴露上半身",
               "title": "要求上半身暴露"
             },
-            "passive": {
+            "following": {
               "description": "暴露上半身給對方觀看",
               "title": "上半身暴露"
             }
@@ -3845,11 +3840,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-lc5lxg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方暴露下半身",
               "title": "要求下半身暴露"
             },
-            "passive": {
+            "following": {
               "description": "暴露下半身給對方觀看",
               "title": "下半身暴露"
             }
@@ -3860,11 +3855,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-rhnyao",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方外出時不穿內衣褲",
               "title": "要求外出不穿內衣褲"
             },
-            "passive": {
+            "following": {
               "description": "外出時不穿內衣褲",
               "title": "外出不穿內衣褲"
             }
@@ -3875,11 +3870,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-exposure-1on1gyu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方在公共空間自慰",
               "title": "要求公共自慰"
             },
-            "passive": {
+            "following": {
               "description": "在公共空間自慰",
               "title": "公共自慰"
             }
@@ -3892,14 +3887,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "暴露類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "讓對方在各種情境下裸露身體的項目"
         },
-        "passive": {
+        "following": {
           "description": "讓自己在各種情境下裸露身體的項目"
         }
       },
-      "sourceSheetName": "暴露類項目"
+      "originalName": "暴露類項目"
     },
     {
       "categoryId": "image_recording",
@@ -3907,11 +3902,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-wr9mg2",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍攝或錄製對方裸體",
               "title": "拍攝裸體"
             },
-            "passive": {
+            "following": {
               "description": "被拍攝或錄製裸體",
               "title": "裸體被拍攝"
             }
@@ -3922,11 +3917,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-pottfn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍攝或錄製對方性愛過程",
               "title": "拍攝性愛過程"
             },
-            "passive": {
+            "following": {
               "description": "性愛過程被拍攝或錄製",
               "title": "性愛過程被拍攝"
             }
@@ -3937,11 +3932,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-ijadox",
           "roles": {
-            "active": {
+            "leading": {
               "description": "拍攝或錄製對方調教過程",
               "title": "拍攝調教過程"
             },
-            "passive": {
+            "following": {
               "description": "調教過程被拍攝或錄製",
               "title": "調教過程被拍攝"
             }
@@ -3952,11 +3947,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-xuxzia",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方傳送私密影像或影片",
               "title": "要求傳送私密影像"
             },
-            "passive": {
+            "following": {
               "description": "傳送自己的私密影像或影片",
               "title": "傳送私密影像"
             }
@@ -3967,11 +3962,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-1c6bdpw",
           "roles": {
-            "active": {
+            "leading": {
               "description": "將對方私密影像或影片公開到網路",
               "title": "公開對方私密影像"
             },
-            "passive": {
+            "following": {
               "description": "自己的私密影像或影片被公開到網路",
               "title": "私密影像被公開"
             }
@@ -3982,11 +3977,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-1942hqe",
           "roles": {
-            "active": {
+            "leading": {
               "description": "使用對方私密影像或影片自慰",
               "title": "用私密影像自慰"
             },
-            "passive": {
+            "following": {
               "description": "自己的私密影像或影片被對方用於自慰",
               "title": "私密影像被用於自慰"
             }
@@ -3997,11 +3992,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-1ie3kyu",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用配合側的裝置拍攝私密影像或影片",
               "title": "使用對方裝置拍攝"
             },
-            "passive": {
+            "following": {
               "description": "自己的裝置被用來拍攝私密影像或影片",
               "title": "自己的裝置被用於拍攝"
             }
@@ -4012,11 +4007,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-r9zfxi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用自己的裝置拍攝對方私密影像或影片",
               "title": "用自己的裝置拍攝"
             },
-            "passive": {
+            "following": {
               "description": "被對方用其裝置拍攝私密影像或影片",
               "title": "被對方用其裝置拍攝"
             }
@@ -4027,11 +4022,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-image_recording-16hzzoq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方製作身體影像歷程紀錄",
               "title": "製作身體影像紀錄"
             },
-            "passive": {
+            "following": {
               "description": "被製作身體影像歷程紀錄",
               "title": "接受身體影像紀錄"
             }
@@ -4044,14 +4039,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 9,
       "name": "影像類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "拍攝、保存、傳送、公開或分享對方影像的項目"
         },
-        "passive": {
+        "following": {
           "description": "自己被拍攝、保存、傳送、公開或分享影像的項目"
         }
       },
-      "sourceSheetName": "影像類項目"
+      "originalName": "影像類項目"
     },
     {
       "categoryId": "piercing_cutting",
@@ -4059,11 +4054,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-1rw9xzg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方進行裝飾性的身體穿刺",
               "title": "作為裝飾的身體穿刺"
             },
-            "passive": {
+            "following": {
               "description": "接受裝飾性的身體穿刺",
               "title": "作為裝飾的身體穿刺"
             }
@@ -4074,11 +4069,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-2ewqgb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方進行刺激性的身體穿刺",
               "title": "作為刺激的身體穿刺"
             },
-            "passive": {
+            "following": {
               "description": "接受刺激性的身體穿刺",
               "title": "作為刺激的身體穿刺"
             }
@@ -4089,11 +4084,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-ypns2e",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方在穿刺處承受重量或拉力",
               "title": "穿刺後承重"
             },
-            "passive": {
+            "following": {
               "description": "在穿刺處承受重量或拉力",
               "title": "穿刺後承重"
             }
@@ -4104,11 +4099,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-1jvq8gi",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方進行暫時穿孔或穿環",
               "title": "暫時穿孔/環"
             },
-            "passive": {
+            "following": {
               "description": "接受暫時穿孔或穿環",
               "title": "暫時穿孔/環"
             }
@@ -4119,11 +4114,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-rdg71s",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方進行永久穿孔或穿環",
               "title": "永久穿孔/環"
             },
-            "passive": {
+            "following": {
               "description": "接受永久穿孔或穿環",
               "title": "永久穿孔/環"
             }
@@ -4134,11 +4129,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-5uq5u0",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方進行乳環穿刺或配戴",
               "title": "乳環"
             },
-            "passive": {
+            "following": {
               "description": "接受乳環穿刺或配戴",
               "title": "乳環"
             }
@@ -4149,11 +4144,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-rxxg5l",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方進行肚環穿刺或配戴",
               "title": "肚環"
             },
-            "passive": {
+            "following": {
               "description": "接受肚環穿刺或配戴",
               "title": "肚環"
             }
@@ -4164,11 +4159,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-az913p",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方進行生殖器穿環",
               "title": "生殖器穿環"
             },
-            "passive": {
+            "following": {
               "description": "接受生殖器穿環",
               "title": "生殖器穿環"
             }
@@ -4179,11 +4174,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-1rewigf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "為對方進行舌環穿刺或配戴",
               "title": "舌環"
             },
-            "passive": {
+            "following": {
               "description": "接受舌環穿刺或配戴",
               "title": "舌環"
             }
@@ -4194,11 +4189,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-1fkp3oe",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行不流血程度的割或切",
               "title": "不流血程度的割/切"
             },
-            "passive": {
+            "following": {
               "description": "接受不流血程度的割或切",
               "title": "不流血程度的割/切"
             }
@@ -4209,11 +4204,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-piercing_cutting-126gchb",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行流血程度的割或切",
               "title": "流血程度的割/切"
             },
-            "passive": {
+            "following": {
               "description": "接受流血程度的割或切",
               "title": "流血程度的割/切"
             }
@@ -4226,14 +4221,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 11,
       "name": "穿刺/割類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "對對方或要求對方身體某處進行穿刺或刀割相關的項目"
         },
-        "passive": {
+        "following": {
           "description": "在自己身體某處接受穿刺或刀割相關的項目"
         }
       },
-      "sourceSheetName": "穿刺/割類項目"
+      "originalName": "穿刺/割類項目"
     },
     {
       "categoryId": "excretion",
@@ -4241,11 +4236,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-10mgbv7",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在對方身體上淋尿",
               "title": "在對方身上淋尿"
             },
-            "passive": {
+            "following": {
               "description": "被對方在身體上淋尿",
               "title": "被淋尿"
             }
@@ -4256,11 +4251,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-18pmjci",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在對方頭部以上淋尿",
               "title": "在對方頭部淋尿"
             },
-            "passive": {
+            "following": {
               "description": "被對方在頭部以上淋尿",
               "title": "頭部被淋尿"
             }
@@ -4271,11 +4266,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-d0tfsd",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方飲尿",
               "title": "要求飲尿"
             },
-            "passive": {
+            "following": {
               "description": "飲用對方尿液",
               "title": "飲尿"
             }
@@ -4286,11 +4281,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-bz8baf",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方碰觸排泄物",
               "title": "要求碰觸排泄物"
             },
-            "passive": {
+            "following": {
               "description": "碰觸對方或自己的排泄物",
               "title": "碰觸排泄物"
             }
@@ -4301,11 +4296,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-1d9pfly",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方食用排泄物",
               "title": "要求食用排泄物"
             },
-            "passive": {
+            "following": {
               "description": "食用對方或自己的排泄物",
               "title": "食用排泄物"
             }
@@ -4316,11 +4311,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-1x972yx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方用排泄物自慰",
               "title": "要求用排泄物自慰"
             },
-            "passive": {
+            "following": {
               "description": "使用排泄物自慰",
               "title": "用排泄物自慰"
             }
@@ -4331,11 +4326,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-4yx1it",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方扮演尿壺",
               "title": "讓對方扮演尿壺"
             },
-            "passive": {
+            "following": {
               "description": "扮演尿壺接受對方使用",
               "title": "扮演尿壺"
             }
@@ -4346,11 +4341,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-15e9ike",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方扮演便座",
               "title": "讓對方扮演便座"
             },
-            "passive": {
+            "following": {
               "description": "扮演便座接受對方使用",
               "title": "扮演便座"
             }
@@ -4361,11 +4356,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-excretion-36n9ra",
           "roles": {
-            "active": {
+            "leading": {
               "description": "觀看對方排泄或要求對方展示排泄",
               "title": "觀看排泄展示"
             },
-            "passive": {
+            "following": {
               "description": "展示排泄給對方觀看",
               "title": "展示排泄"
             }
@@ -4378,14 +4373,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 9,
       "name": "排泄類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "與排泄物相關的項目"
         },
-        "passive": {
+        "following": {
           "description": "與排泄物相關的項目"
         }
       },
-      "sourceSheetName": "排泄類項目"
+      "originalName": "排泄類項目"
     },
     {
       "categoryId": "behavior_restriction",
@@ -4393,11 +4388,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1q2915m",
           "roles": {
-            "active": {
+            "leading": {
               "description": "限制對方自慰",
               "title": "限制自慰"
             },
-            "passive": {
+            "following": {
               "description": "被對方限制自慰",
               "title": "被限制自慰"
             }
@@ -4408,11 +4403,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-10wmuve",
           "roles": {
-            "active": {
+            "leading": {
               "description": "限制對方進行性愛",
               "title": "限制性愛"
             },
-            "passive": {
+            "following": {
               "description": "被對方限制進行性愛",
               "title": "被限制性愛"
             }
@@ -4423,11 +4418,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1v32uv6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "限制對方高潮",
               "title": "限制高潮"
             },
-            "passive": {
+            "following": {
               "description": "被對方限制高潮",
               "title": "被限制高潮"
             }
@@ -4438,11 +4433,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1qutp1i",
           "roles": {
-            "active": {
+            "leading": {
               "description": "限制對方排泄",
               "title": "限制排泄"
             },
-            "passive": {
+            "following": {
               "description": "被對方限制排泄",
               "title": "被限制排泄"
             }
@@ -4453,11 +4448,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-7yynqx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "限制對方睡眠",
               "title": "限制睡眠"
             },
-            "passive": {
+            "following": {
               "description": "被對方限制睡眠",
               "title": "被限制睡眠"
             }
@@ -4468,11 +4463,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-p66lsr",
           "roles": {
-            "active": {
+            "leading": {
               "description": "限制對方進食",
               "title": "限制進食"
             },
-            "passive": {
+            "following": {
               "description": "被對方限制進食",
               "title": "被限制進食"
             }
@@ -4483,11 +4478,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-p4j1x",
           "roles": {
-            "active": {
+            "leading": {
               "description": "限制對方交友或社交",
               "title": "限制交友"
             },
-            "passive": {
+            "following": {
               "description": "被對方限制交友或社交",
               "title": "被限制交友"
             }
@@ -4498,11 +4493,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1jxhizx",
           "roles": {
-            "active": {
+            "leading": {
               "description": "限制對方說話",
               "title": "限制說話"
             },
-            "passive": {
+            "following": {
               "description": "被對方限制說話",
               "title": "被限制說話"
             }
@@ -4513,11 +4508,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-behavior_restriction-1st1nqk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "限制對方洗澡或清潔",
               "title": "限制洗澡"
             },
-            "passive": {
+            "following": {
               "description": "被對方限制洗澡或清潔",
               "title": "被限制洗澡"
             }
@@ -4530,14 +4525,14 @@ export const questionBank: QuestionBank = {
       "itemCount": 9,
       "name": "行為限制類項目",
       "roles": {
-        "active": {
+        "leading": {
           "description": "在合意下，限制對方的需求或偏好的項目"
         },
-        "passive": {
+        "following": {
           "description": "在合意下，被限制自身需求或偏好的項目"
         }
       },
-      "sourceSheetName": "行為限制類項目"
+      "originalName": "行為限制類項目"
     },
     {
       "categoryId": "other",
@@ -4545,11 +4540,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-cx35l0",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用掐脖子的方式限制對方呼吸",
               "title": "掐脖子控制呼吸"
             },
-            "passive": {
+            "following": {
               "description": "被對方用掐脖子的方式限制呼吸",
               "title": "被掐脖子控制呼吸"
             }
@@ -4560,11 +4555,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-81imh3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "讓對方埋進胸部以限制呼吸",
               "title": "胸部埋壓呼吸控制"
             },
-            "passive": {
+            "following": {
               "description": "被對方胸部包覆並限制呼吸",
               "title": "胸部埋壓呼吸控制"
             }
@@ -4575,11 +4570,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-12ak8nk",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用真空袋讓對方短暫進入窒息情境",
               "title": "真空袋窒息情境"
             },
-            "passive": {
+            "following": {
               "description": "在真空袋中短暫進入窒息情境",
               "title": "真空袋窒息情境"
             }
@@ -4590,11 +4585,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-11372gg",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行水刑情境",
               "title": "水刑情境"
             },
-            "passive": {
+            "following": {
               "description": "接受對方進行水刑情境",
               "title": "水刑情境"
             }
@@ -4605,11 +4600,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1weofdn",
           "roles": {
-            "active": {
+            "leading": {
               "description": "對對方進行催眠或暗示",
               "title": "催眠對方"
             },
-            "passive": {
+            "following": {
               "description": "接受對方催眠或暗示",
               "title": "接受催眠"
             }
@@ -4620,11 +4615,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-67684a",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在把食物當作性互動或調教道具玩弄的情境中擔任主導側",
               "title": "食物互動"
             },
-            "passive": {
+            "following": {
               "description": "在把食物當作性互動或調教道具玩弄的情境中擔任配合側",
               "title": "食物互動"
             }
@@ -4635,11 +4630,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-6t50x3",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方刺青或為對方安排刺青",
               "title": "要求刺青"
             },
-            "passive": {
+            "following": {
               "description": "接受對方要求或安排刺青",
               "title": "接受刺青"
             }
@@ -4650,11 +4645,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1k7dzxy",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在對方身上留下烙印",
               "title": "留下烙印"
             },
-            "passive": {
+            "following": {
               "description": "身體被對方留下烙印",
               "title": "接受烙印"
             }
@@ -4665,11 +4660,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-cpl0rm",
           "roles": {
-            "active": {
+            "leading": {
               "description": "指定對方穿著特定服裝",
               "title": "指定服裝"
             },
-            "passive": {
+            "following": {
               "description": "被對方指定穿著特定服裝",
               "title": "依指定穿著"
             }
@@ -4680,11 +4675,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-latexclothing",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在自己或對方穿著膠衣的互動中擔任主導側",
               "title": "膠衣"
             },
-            "passive": {
+            "following": {
               "description": "在自己或對方穿著膠衣的互動中擔任配合側",
               "title": "膠衣"
             }
@@ -4695,11 +4690,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-967tbj",
           "roles": {
-            "active": {
+            "leading": {
               "description": "決定對方要吃的食物",
               "title": "決定對方飲食"
             },
-            "passive": {
+            "following": {
               "description": "由對方決定自己要吃的食物",
               "title": "由對方決定飲食"
             }
@@ -4710,11 +4705,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-9c5xzq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方舔自己的腳",
               "title": "要求舔腳"
             },
-            "passive": {
+            "following": {
               "description": "舔對方的腳",
               "title": "舔對方的腳"
             }
@@ -4725,11 +4720,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1x8oaxq",
           "roles": {
-            "active": {
+            "leading": {
               "description": "要求對方舔自己的鞋",
               "title": "要求舔鞋"
             },
-            "passive": {
+            "following": {
               "description": "舔對方的鞋",
               "title": "舔對方的鞋"
             }
@@ -4740,11 +4735,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-yswhyo",
           "roles": {
-            "active": {
+            "leading": {
               "description": "踩踏對方身體",
               "title": "踩踏對方身體"
             },
-            "passive": {
+            "following": {
               "description": "被對方踩踏身體",
               "title": "被踩踏身體"
             }
@@ -4755,11 +4750,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1cs7dja",
           "roles": {
-            "active": {
+            "leading": {
               "description": "踩踏對方臉部",
               "title": "踩踏對方臉部"
             },
-            "passive": {
+            "following": {
               "description": "被對方踩踏臉部",
               "title": "被踩踏臉部"
             }
@@ -4770,11 +4765,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1pwrugh",
           "roles": {
-            "active": {
+            "leading": {
               "description": "用灌食器餵食或灌食對方",
               "title": "使用灌食器餵食"
             },
-            "passive": {
+            "following": {
               "description": "被對方用灌食器餵食或灌食",
               "title": "接受灌食器餵食"
             }
@@ -4785,11 +4780,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-suxt6v",
           "roles": {
-            "active": {
+            "leading": {
               "description": "在對方身上留下吻痕",
               "title": "留下吻痕"
             },
-            "passive": {
+            "following": {
               "description": "被對方在身上留下吻痕",
               "title": "被留下吻痕"
             }
@@ -4800,11 +4795,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-17kwb61",
           "roles": {
-            "active": {
+            "leading": {
               "description": "與對方進行摔角式肢體互動",
               "title": "摔角互動"
             },
-            "passive": {
+            "following": {
               "description": "與對方進行摔角式肢體互動",
               "title": "摔角互動"
             }
@@ -4815,11 +4810,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-g75mw6",
           "roles": {
-            "active": {
+            "leading": {
               "description": "與對方進行打架式肢體互動",
               "title": "打架式互動"
             },
-            "passive": {
+            "following": {
               "description": "與對方進行打架式肢體互動",
               "title": "打架式互動"
             }
@@ -4830,11 +4825,11 @@ export const questionBank: QuestionBank = {
         {
           "detailId": "detail-other-1q0idds",
           "roles": {
-            "active": {
+            "leading": {
               "description": "安排或主導綁架情境角色扮演",
               "title": "主導綁架情境"
             },
-            "passive": {
+            "following": {
               "description": "參與被綁架的情境角色扮演",
               "title": "被綁架情境"
             }
@@ -4847,16 +4842,23 @@ export const questionBank: QuestionBank = {
       "itemCount": 20,
       "name": "其他",
       "roles": {
-        "active": {
+        "leading": {
           "description": "如呼吸控制、催眠、玩弄食物等無法被分類的項目"
         },
-        "passive": {
+        "following": {
           "description": "如呼吸控制、催眠、玩弄食物等無法被分類的項目"
         }
       },
-      "sourceSheetName": "其他"
+      "originalName": "其他"
     }
-  ]
+  ],
+  "exportSchemaVersion": 2,
+  "locale": "zh-Hant",
+  "license": "MIT",
+  "roleLabels": {
+    "leading": "主導側",
+    "following": "配合側"
+  }
 };
 
 export default questionBank;

@@ -1,22 +1,22 @@
-exportSchemaVersion,schemaVersion,bankVersion,locale,categoryId,categoryOrder,name,sourceSheetName,includeInCategoryRound,itemCount,activeDescription,passiveDescription
-1,1,2026-07-22,en,impact_spanking,1,Spanking,拍打類項目,true,24,"Spank or paddle the other person, including on the buttocks","Receive spanking or paddling, including on the buttocks"
-1,1,2026-07-22,en,whipping,2,Whipping,鞭打類項目,true,15,Use a whip on the other person,Receive whipping
-1,1,2026-07-22,en,bondage,3,Bondage,束縛類項目,true,19,Restrain the other person and limit their movement with rope or other equipment,Be restrained and have your movement limited with rope or other equipment
-1,1,2026-07-22,en,tickling,4,Tickling,搔癢類項目,true,16,Tickle the other person with hands or other items,Be tickled with hands or other items
-1,1,2026-07-22,en,pain_stimulation,5,Pain stimulation,疼痛刺激類項目,true,19,"Give painful stimulation such as nipple clamps, wax, or electrical stimulation","Receive painful stimulation such as nipple clamps, wax, or electrical stimulation"
-1,1,2026-07-22,en,humiliation,6,Humiliation,羞辱類項目,true,9,Use words or actions to demean the other person or evoke humiliation,"Be demeaned through words or actions, or experience humiliation"
-1,1,2026-07-22,en,service,7,Service,服侍類項目,true,11,Receive services that meet your everyday needs or desires,Provide services that meet the other person’s everyday needs or desires
-1,1,2026-07-22,en,discipline,8,Discipline,管教類項目,true,12,Set limits or rules focused on training and reaching a goal,"Accept limits or rules focused on training, improvement, or reaching a goal"
-1,1,2026-07-22,en,sexual_interaction,9,Sexual activity,性愛類項目,true,21,Activities involving sexual organs,Activities involving sexual organs
-1,1,2026-07-22,en,anal_interaction,10,Anal play,肛門類項目,true,15,Activities involving the anus,Activities involving the anus
-1,1,2026-07-22,en,multi_party_interaction,11,Multi-person interactions,多方互動類項目,true,11,Activities involving multiple people or a third person outside the relationship,Activities involving multiple people or a third person outside the relationship
-1,1,2026-07-22,en,enslavement,12,Enslavement,奴化類項目,true,15,Have the other person take a slave role within an agreed scope,Take a slave role within an agreed scope
-1,1,2026-07-22,en,pet_play,13,Animal and pet play,獸/寵物化類項目,true,18,Have the other person take an animal or pet role,Take an animal or pet role
-1,1,2026-07-22,en,role_play,14,Role play,角色扮演類項目,true,14,Guide the other person through a role-play scenario,Take part in a role-play scenario
-1,1,2026-07-22,en,objectification,15,Objectification,物化類項目,true,11,"Within a consensual scene, temporarily treat the other person as an object, piece of furniture, or tool","Within a consensual scene, temporarily be treated as an object, piece of furniture, or tool"
-1,1,2026-07-22,en,exposure,16,Exposure,暴露類項目,true,11,Have the other person expose their body in different situations,Expose your body in different situations
-1,1,2026-07-22,en,image_recording,17,Images and recording,影像類項目,true,9,"Photograph, record, store, send, publish, or share images of the other person","Have images of you photographed, recorded, stored, sent, published, or shared"
-1,1,2026-07-22,en,piercing_cutting,18,Piercing and cutting,穿刺/割類項目,true,11,"Pierce or cut part of the other person’s body, or ask them to do so themselves",Receive piercing or cutting on part of your body
-1,1,2026-07-22,en,excretion,19,Bodily waste,排泄類項目,true,9,Activities involving bodily waste,Activities involving bodily waste
-1,1,2026-07-22,en,behavior_restriction,20,Behavioral restrictions,行為限制類項目,true,9,Consensually restrict the other person’s needs or preferences,Have your needs or preferences consensually restricted
-1,1,2026-07-22,en,other,21,Other,其他,false,20,"Breath restriction, hypnosis, food play, and other activities that do not fit the categories above","Breath restriction, hypnosis, food play, and other activities that do not fit the categories above"
+exportSchemaVersion,schemaVersion,bankVersion,locale,leadingLabel,followingLabel,categoryId,categoryOrder,name,originalName,includeInCategoryRound,itemCount,leadingDescription,followingDescription
+2,1,2026-07-22,en,Leading,Following,impact_spanking,1,Spanking,拍打類項目,true,24,"Spank or paddle the other person, including on the buttocks","Receive spanking or paddling, including on the buttocks"
+2,1,2026-07-22,en,Leading,Following,whipping,2,Whipping,鞭打類項目,true,15,Use a whip on the other person,Receive whipping
+2,1,2026-07-22,en,Leading,Following,bondage,3,Bondage,束縛類項目,true,19,Restrain the other person and limit their movement with rope or other equipment,Be restrained and have your movement limited with rope or other equipment
+2,1,2026-07-22,en,Leading,Following,tickling,4,Tickling,搔癢類項目,true,16,Tickle the other person with hands or other items,Be tickled with hands or other items
+2,1,2026-07-22,en,Leading,Following,pain_stimulation,5,Pain stimulation,疼痛刺激類項目,true,19,"Give painful stimulation such as nipple clamps, wax, or electrical stimulation","Receive painful stimulation such as nipple clamps, wax, or electrical stimulation"
+2,1,2026-07-22,en,Leading,Following,humiliation,6,Humiliation,羞辱類項目,true,9,Use words or actions to demean the other person or evoke humiliation,"Be demeaned through words or actions, or experience humiliation"
+2,1,2026-07-22,en,Leading,Following,service,7,Service,服侍類項目,true,11,Receive services that meet your everyday needs or desires,Provide services that meet the other person’s everyday needs or desires
+2,1,2026-07-22,en,Leading,Following,discipline,8,Discipline,管教類項目,true,12,Set limits or rules focused on training and reaching a goal,"Accept limits or rules focused on training, improvement, or reaching a goal"
+2,1,2026-07-22,en,Leading,Following,sexual_interaction,9,Sexual activity,性愛類項目,true,21,Activities involving sexual organs,Activities involving sexual organs
+2,1,2026-07-22,en,Leading,Following,anal_interaction,10,Anal play,肛門類項目,true,15,Activities involving the anus,Activities involving the anus
+2,1,2026-07-22,en,Leading,Following,multi_party_interaction,11,Multi-person interactions,多方互動類項目,true,11,Activities involving multiple people or a third person outside the relationship,Activities involving multiple people or a third person outside the relationship
+2,1,2026-07-22,en,Leading,Following,enslavement,12,Enslavement,奴化類項目,true,15,Have the other person take a slave role within an agreed scope,Take a slave role within an agreed scope
+2,1,2026-07-22,en,Leading,Following,pet_play,13,Animal and pet play,獸/寵物化類項目,true,18,Have the other person take an animal or pet role,Take an animal or pet role
+2,1,2026-07-22,en,Leading,Following,role_play,14,Role play,角色扮演類項目,true,14,Guide the other person through a role-play scenario,Take part in a role-play scenario
+2,1,2026-07-22,en,Leading,Following,objectification,15,Objectification,物化類項目,true,11,"Within a consensual scene, temporarily treat the other person as an object, piece of furniture, or tool","Within a consensual scene, temporarily be treated as an object, piece of furniture, or tool"
+2,1,2026-07-22,en,Leading,Following,exposure,16,Exposure,暴露類項目,true,11,Have the other person expose their body in different situations,Expose your body in different situations
+2,1,2026-07-22,en,Leading,Following,image_recording,17,Images and recording,影像類項目,true,9,"Photograph, record, store, send, publish, or share images of the other person","Have images of you photographed, recorded, stored, sent, published, or shared"
+2,1,2026-07-22,en,Leading,Following,piercing_cutting,18,Piercing and cutting,穿刺/割類項目,true,11,"Pierce or cut part of the other person’s body, or ask them to do so themselves",Receive piercing or cutting on part of your body
+2,1,2026-07-22,en,Leading,Following,excretion,19,Bodily waste,排泄類項目,true,9,Activities involving bodily waste,Activities involving bodily waste
+2,1,2026-07-22,en,Leading,Following,behavior_restriction,20,Behavioral restrictions,行為限制類項目,true,9,Consensually restrict the other person’s needs or preferences,Have your needs or preferences consensually restricted
+2,1,2026-07-22,en,Leading,Following,other,21,Other,其他,false,20,"Breath restriction, hypnosis, food play, and other activities that do not fit the categories above","Breath restriction, hypnosis, food play, and other activities that do not fit the categories above"
