@@ -5,18 +5,29 @@ import { parseArgs } from '../src/cli.mjs';
 
 const now = new Date('2026-07-20T12:00:00.000Z');
 
-test('requires the explicit production project', () => {
-  assert.throws(() => parseArgs([]), /--project is required/);
+test('requires an explicitly configured audit project and rejects other projects', () => {
+  const environment = { BOUNDARY_NOTES_AUDIT_PROJECT_ID: 'demo-audit-project' };
+  assert.throws(() => parseArgs([], environment), /--project is required/);
   assert.throws(
-    () => parseArgs(['--project', 'boundary-notes-staging']),
-    /only allows --project boundary-notes-prod/,
+    () => parseArgs(['--project', 'demo-other-project'], environment),
+    /does not match the authorized audit project/,
   );
-  assert.deepEqual(parseArgs(['--project', 'boundary-notes-prod', '--json']), {
+  assert.deepEqual(parseArgs(['--project', 'demo-audit-project', '--json'], environment), {
     databaseId: '(default)',
     includeProfileNames: false,
     json: true,
-    projectId: 'boundary-notes-prod',
+    projectId: 'demo-audit-project',
   });
+});
+
+test('fails closed without private project configuration', () => {
+  for (const environment of [{}, { BOUNDARY_NOTES_AUDIT_PROJECT_ID: '   ' }]) {
+    assert.throws(
+      () => parseArgs(['--project', 'demo-audit-project'], environment),
+      /BOUNDARY_NOTES_AUDIT_PROJECT_ID must be configured/,
+    );
+  }
+  assert.equal(parseArgs(['--help'], {}).help, true);
 });
 
 test('summarizes successful uploads and flags near-limit source activity', () => {

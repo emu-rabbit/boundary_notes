@@ -6,28 +6,26 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { Firestore } from '@google-cloud/firestore';
 import { analyzeAuditData, createSafeReport } from './audit.mjs';
 
-const productionProjectId = 'boundary-notes-prod';
-const auditorServiceAccount = 'firestore-auditor@boundary-notes-prod.iam.gserviceaccount.com';
 const defaultOutputDirectory = fileURLToPath(new URL('../output/', import.meta.url));
 
 function printHelp() {
   console.log(`Boundary Notes Firestore audit
 
 Usage:
-  npm run audit -- --project ${productionProjectId} [--json] [--include-profile-names]
+  npm run audit -- --project <authorized-project-id> [--json] [--include-profile-names]
 
 Options:
-  --project <id>             Required. First version only accepts ${productionProjectId}.
+  --project <id>             Required. Must match BOUNDARY_NOTES_AUDIT_PROJECT_ID.
   --database <id>            Firestore database ID. Defaults to (default).
   --json                     Print machine-readable JSON.
   --include-profile-names    Include raw profileName values in local output.
   --help                     Show this help.
 
-Expected impersonated service account:
-  ${auditorServiceAccount}`);
+Configure BOUNDARY_NOTES_AUDIT_PROJECT_ID through your private operations settings.
+Use authorized read-only ADC credentials.`);
 }
 
-export function parseArgs(args) {
+export function parseArgs(args, environment = process.env) {
   const options = {
     databaseId: '(default)',
     includeProfileNames: false,
@@ -58,8 +56,12 @@ export function parseArgs(args) {
   }
 
   if (!options.projectId) throw new Error('--project is required.');
-  if (options.projectId !== productionProjectId) {
-    throw new Error(`This first version only allows --project ${productionProjectId}.`);
+  const authorizedProjectId = environment.BOUNDARY_NOTES_AUDIT_PROJECT_ID?.trim();
+  if (!authorizedProjectId) {
+    throw new Error('BOUNDARY_NOTES_AUDIT_PROJECT_ID must be configured before running an audit.');
+  }
+  if (options.projectId !== authorizedProjectId) {
+    throw new Error('--project does not match the authorized audit project.');
   }
   return options;
 }
@@ -247,10 +249,7 @@ async function main() {
   } catch (error) {
     console.error('Firestore audit failed.');
     console.error(error instanceof Error ? error.message : String(error));
-    console.error('Expected ADC impersonation command:');
-    console.error(
-      `gcloud auth application-default login --impersonate-service-account=${auditorServiceAccount}`,
-    );
+    console.error('Check the authorized read-only ADC credentials provided through your private operations settings.');
     process.exitCode = 1;
   }
 }
