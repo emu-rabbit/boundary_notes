@@ -14,7 +14,7 @@
 
 ## Production 與部署 Invariants
 
-- production 使用 `boundary-notes-prod`，staging 使用 `boundary-notes-staging`；兩者分開 Hosting、Firestore、Security Rules、IAM、quota 與 billing blast radius。
+- production 與 staging 使用不同 Firebase projects；兩者分開 Hosting、Firestore、Security Rules、IAM、quota 與 billing blast radius。實際 project IDs 由各 environment 的部署設定提供。
 - `main` 只可通往 production live；`staging` 與 PR preview 只可使用 staging project。不得因 Hosting preview channel 可用而共用 production backend。
 - GitHub Actions 使用 Workload Identity Federation 與短效 credentials，不保存 service-account JSON key。production、staging live 與 preview 身分維持不同條件與最小權限。
 - deployment 依實際 changed files 分開判斷 Hosting 與 backend targets，不因其中一側改變而順帶部署另一側。
@@ -51,7 +51,7 @@
 
 - create path 在 server 重新執行 strict schema、scope consistency、備註安全、答案數量與 payload cap，不能信任 client summary。
 - App Check、limited-use token、replay protection、server transaction rate limit、`maxInstances` 與 payload cap 共同構成防護；任何單一機制都不得宣稱能完全阻擋濫用。
-- 目前產品限制基準為同一匿名來源 60 分鐘 5 次、24 小時 10 次；project 60 分鐘 300 次、24 小時 2000 次成功建立。若調整，必須同步 server tests、client UX 與成本評估。
+- 來源與全站限流的精確基準由 `functions/src/contract.ts` 與對應 tests 管理，不在公開文件重複數值。若調整，必須同步 server tests、client UX 與成本評估。
 - client-side rate limit、cooldown cache 與同頁面去重只是 UX／成本緩衝，不取代 server enforcement。
 - 匿名來源 signal 是近似防濫用資訊，不是帳號、真實身份、人數或濫用證明。
 - 原始 IP 與 user agent 不持久化；只保存最小、依用途分離的 HMAC 衍生 signal 與必要 server metadata。

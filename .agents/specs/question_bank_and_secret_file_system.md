@@ -266,12 +266,7 @@
 
 已分享版本是長期不可編輯、不可由一般使用者刪除、不可撤回且永不過期的分享快照。唯一例外是網站管理員因法律要求手動移除或批次處理資料；這不是一般使用者功能。
 
-Firestore 建議集合：
-
-- `sharedSecretFiles/{shareId}`：保存可分享的秘密檔案快照。
-- `sharedSecretFileMetadata/{shareId}`：保存不對一般閱覽者回傳的匿名防濫用 metadata。
-- `uploadRateLimits/{sourceHash}`：保存最近 24 小時的匿名來源上傳時間；以 `expiresAt` TTL 清理。
-- `uploadGlobalRateLimits/project`：保存整個 project 最近 24 小時的成功上傳時間；以 `expiresAt` TTL 清理。
+分享快照、私有防濫用 metadata 與限流紀錄分開保存。集合與欄位的精確實作以 `functions/src/index.ts`、`firestore.rules` 與對應 tests 為準；限流紀錄的清理由部署設定管理。
 
 雲端文件應至少包含：
 
@@ -284,11 +279,14 @@ Firestore 建議集合：
 - `answers`
 - `spotlight`
 - `clientSummary`
-- 私有 metadata 文件中的 `sourceFingerprintHash` 或等價匿名防護欄位
 
-公開雲端文件可在秘密檔案 JSON 外層保存 `shareId`、server `createdAt` 與 `clientSummary`。`sourceFingerprintHash`、`sourceHash`、`userAgentHash`、App ID 與 payload size 等私有防濫用資料必須放在獨立 metadata 集合，不得出現在 direct read 可取得的公開文件。這些 server metadata 不是使用者私下轉傳 JSON 的必要內容。`profileName` 必須存在於秘密檔案 JSON 本體；閱覽雲端檔案時，結果頁與必要警語使用雲端檔案紀錄的 `profileName`。
+公開雲端文件可在秘密檔案 JSON 外層保存 `shareId`、server `createdAt` 與 `clientSummary`。匿名來源訊號與其他私有防濫用資料必須放在獨立 metadata 集合，不得出現在 direct read 可取得的公開文件。這些 server metadata 不是使用者私下轉傳 JSON 的必要內容。`profileName` 必須存在於秘密檔案 JSON 本體；閱覽雲端檔案時，結果頁與必要警語使用雲端檔案紀錄的 `profileName`。
 
-匿名運作不代表完全無防護。建立分享只能經過強制 App Check 的 `createSharedSecretFile` callable；依 ID 讀取則由 browser Firestore Lite SDK 直接單筆 `get sharedSecretFiles/{shareId}`。Cloud Firestore 必須開啟 App Check enforcement，Security Rules 只能允許符合 `sf_` 加 144-bit random 格式的 document `get`，並拒絕 collection `list`、所有 client writes，以及 `sharedSecretFileMetadata`、`uploadRateLimits`、`uploadGlobalRateLimits` 等私有集合的全部 client access。分享 ID 是 bearer capability：任何取得有效連結且通過 App Check 的人都可讀取，這不是閱讀者身份驗證。同一匿名來源上傳限制為 60 分鐘內最多 5 次、24 小時內最多 10 次；整個 project 另限制 60 分鐘內最多 300 次、24 小時內最多 2000 次成功建立。兩組計數由 Firestore transaction 與 server timestamp 原子檢查並增加；不得把前端節流描述為後端防刷。browser 另記錄本機成功上傳 timestamps 與後端回傳的來源／全站冷卻時間，在呼叫 Function 前先攔下本機已知超額請求；24 小時窗口只顯示向上取整至整小時的約略時間，60 分鐘窗口只顯示向上取整至 10 分鐘的約略時間。成功上傳後，同一結果編輯頁對相同檔案、相同分享內容直接重用既有 share URL，不建立重複快照；這兩項前端措施皆可被繞過，後端限制仍是唯一權威。來源 IP 依 Cloud Run functions／Cloud Functions 的 managed header contract，取 `X-Forwarded-For` 第一個位址作為正常瀏覽器請求的 best-effort 來源，再以 HMAC source hash 執行 5／10 次限流；不得取代理鏈倒數第二段而把不同使用者合併到共同 Google proxy，也不得在正式 forwarded header 無效時退回共用 runtime socket address。第一個位址仍可能被能取得合法 App Check limited-use token 的進階自製 client 預填，因此不是不可偽造的身份或唯一防刷邊界；App Check 與 replay protection 提高濫用成本，全站 300／2000 次限制、`maxInstances`、payload cap 與 timeout 共同限制最終成本。若未來要求強 IP 限流，必須改由受控 External Application Load Balancer／Cloud Armor 覆寫可信來源 header，並封鎖直接呼叫 Function。create 另保留 512 KiB payload、最多 700 answers 等限制。原始 IP／user agent 不持久化；HMAC key 只存 Secret Manager。
+匿名運作不代表完全無防護。建立分享只能經過強制 App Check 的 `createSharedSecretFile` callable；依 ID 讀取則由 browser Firestore Lite SDK 執行單筆 get。Cloud Firestore 必須開啟 App Check enforcement，Security Rules 只能允許符合正式 share ID 格式的 document get，並拒絕 collection list、所有 client writes 與私有集合的全部 client access。分享 ID 是 bearer capability：任何取得有效連結且通過 App Check 的人都可讀取，這不是閱讀者身份驗證。
+
+來源與全站限流由 Firestore transaction 與 server timestamp 原子檢查並增加，精確數值、來源解析與輸入限制由 `functions/src/contract.ts`、`functions/src/index.ts` 及對應 tests 管理。來源訊號不是身份驗證；變更解析方式前必須核對目前部署環境的 header contract 與既有 tests。原始 IP／user agent 不持久化；衍生訊號所需的 key 只存 Secret Manager。App Check、replay protection、限流、runtime 與輸入限制共同限制濫用成本。
+
+browser 另記錄本機成功上傳 timestamps 與後端回傳的來源／全站冷卻時間，在呼叫 Function 前先攔下本機已知超額請求；24 小時窗口只顯示向上取整至整小時的約略時間，60 分鐘窗口只顯示向上取整至 10 分鐘的約略時間。成功上傳後，同一結果編輯頁對相同檔案、相同分享內容直接重用既有 share URL，不建立重複快照。前端節流與去重只是 UX／成本緩衝，後端限制仍是唯一權威。
 
 ## 新檔案與結果流程
 

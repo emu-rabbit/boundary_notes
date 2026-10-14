@@ -15,11 +15,11 @@
 - 日期：2026-07-13
 - 狀態：已確認
 - 觸發來源：使用者在比較 Firebase 同 project staging／preview channel 與完全拆分 project 的風險後，明確決定第一階段即建立兩個不共用 backend 的 projects，並同意記錄本決策。
-- 決策內容：production 使用 `boundary-notes-prod`，staging 使用 `boundary-notes-staging`。`main` 只部署 production live channel；`staging` 與 PR previews 只使用 staging project。兩者分開 Firestore、Security Rules、IAM、quota 與帳單爆炸半徑，不把 staging site 或 preview channel 接回 production backend。
+- 決策內容：production 與 staging 使用不同 Firebase projects。`main` 只部署 production live channel；`staging` 與 PR previews 只使用 staging project。兩者分開 Firestore、Security Rules、IAM、quota 與帳單爆炸半徑，不把 staging site 或 preview channel 接回 production backend。
 - 選擇理由：Firebase Hosting 的同 project preview channel 主要隔離前端 release 與 URL，不會同時隔離 Firestore、Security Rules、IAM、project quota 與計費風險。對獨立開發者而言，production 被測試資料污染、staging 錯誤規則影響正式資料，或濫用流量集中到同一 project 的風險，高於多維護一個 Firebase project 的設定成本。
 - 排除替代方案：不採用同一 Firebase project 內的多 Hosting sites 或 preview channels 同時承載 production 與 staging；雖然設定較少、共用 backend 較方便，但無法提供本專案要求的資料、權限、quota 與費用風險隔離。
 - 影響範圍：Firebase Hosting、後續 Firestore 與 Security Rules、Google Cloud IAM／WIF、GitHub environments、quota／budget 監控、部署流程與事故處理。
-- 後續 Agent 行動：不得把 staging 或 PR deployer 授權到 `boundary-notes-prod`；兩個 projects 必須使用獨立 service accounts、WIF 條件與監控。可分階段啟用 workflow，但不得為了省略設定而取消 project 隔離。
+- 後續 Agent 行動：不得把 staging 或 PR deployer 授權到 production project；兩個 projects 必須使用獨立 service accounts、WIF 條件與監控。可分階段啟用 workflow，但不得為了省略設定而取消 project 隔離。
 
 ### D-2026-07-13-01：採用 Boundary Notes 作為穩定品牌層
 

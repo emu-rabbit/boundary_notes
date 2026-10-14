@@ -36,8 +36,8 @@ verify_against:
 
 ## Deployment snapshot
 
-- production project：`boundary-notes-prod`，Hosting live channel，正式網域 `https://boundarynotes.com`，`www` redirect 到 apex。
-- staging project：`boundary-notes-staging`，使用自己的 Hosting、Firestore、Rules、IAM、quota 與 billing boundary。
+- production 使用獨立 project 的 Hosting live channel，正式網域 `https://boundarynotes.com`，`www` redirect 到 apex。
+- staging 使用另一個 project，具有自己的 Hosting、Firestore、Rules、IAM、quota 與 billing boundary。實際 project IDs 以各 environment 的部署設定為準。
 - production live channel 已完成第一次部署驗證。staging／preview 是否啟用必須從 GitHub repository variables、environments 與目前 workflow 查證；不得只依本 snapshot。
 - `main` 只通往 production live，`staging` 只通往 staging live；同 repository PR preview 只可使用 staging project，fork PR 只執行 test/build。
 - GitHub Actions 使用 Workload Identity Federation 與短效 credentials，不保存 service-account JSON key；第三方 Actions 固定完整 commit SHA。
@@ -77,17 +77,16 @@ verify_against:
 
 ## Cloud sharing 與防濫用 implementation
 
-- `createSharedSecretFile` 部署在 `asia-east1`，使用 App Check limited-use token 與 replay protection；精確 runtime 設定以 Functions source 與 deployment config 為準。
+- `createSharedSecretFile` 使用 App Check limited-use token 與 replay protection；部署區域與精確 runtime 設定以 Functions source 與 deployment config 為準。
 - browser read 使用 Firestore Lite SDK 依完整 `shareId` 單筆 `get` `sharedSecretFiles/{shareId}`；不使用 realtime listener 或 offline persistence。
 - `firestore.rules` 拒絕 collection list、client writes、私有 metadata 與 rate-limit collections。
 - create function 重新執行 strict schema、scope／spotlight consistency、備註安全、答案數量與 payload cap。精確數值以 Functions code/tests 為準。
 - share ID 使用 `sf_` 加 cryptographic random value；不提供列舉或全量查詢 API。
-- 上傳節流由 Firestore transaction 原子執行；目前產品基準是來源 60 分鐘 5 次／24 小時 10 次、project 60 分鐘 300 次／24 小時 2000 次。
-- 正常 managed request 的 `X-Forwarded-For` 第一個位址目前作為 best-effort client IP；它不是可信身份或不可偽造的安全邊界。不得套用 External Application Load Balancer 的倒數第二段假設。
-- 無效 forwarded address 在正式請求中拒絕；只有 emulator／本機且沒有 forwarded header 時可使用 socket fallback。IPv6 先正規化為 `/64`。
+- 上傳節流由 Firestore transaction 原子執行；精確限制以 `functions/src/contract.ts` 與 tests 為準。
+- 來源解析、代理信任與 emulator fallback 由 `functions/src/contract.ts` 的 resolver 與 tests 管理；來源訊號不是身份驗證，變更前必須檢查目前部署環境的 header contract。
 - 原始 IP／user agent 不持久化；只保存依用途分離的 HMAC hash、App ID、payload size 與 server timestamp。HMAC key 位於 Secret Manager，rate-limit documents 使用 TTL。
 - browser localStorage 節流、server cooldown cache 與同頁面內容去重只是 UX／成本緩衝，不取代後端 transaction、App Check 或 schema validation。
-- create Function 使用 project-local share-writer service account；production 人工 audit 使用 `firestore-auditor@boundary-notes-prod.iam.gserviceaccount.com`、ADC impersonation 與 `roles/datastore.viewer`。版本控制工具位於 `ops/firestore-audit/`，不得讀取 answers、notes、Spotlight 或輸出完整匿名 signals。
+- create Function 與人工 audit 使用獨立、最小權限身分；實際稽核 project、帳號與 IAM 設定由私人維運管道提供。版本控制工具與操作入口位於 `ops/firestore-audit/README.md`，不得讀取 answers、notes、Spotlight 或輸出完整匿名 signals。
 
 ## Analytics 與預熱
 
