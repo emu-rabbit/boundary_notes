@@ -2,6 +2,9 @@ node_modules/
 dist/
 tmp/
 *.local
+.env
+.env.*
+!.env.example
 gha-creds-*.json
 firebase-debug.log
 firestore-debug.log
