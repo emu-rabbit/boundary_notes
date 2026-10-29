@@ -2,7 +2,7 @@ import { createApp, createSSRApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';
 import { createAppRouter } from './app/router';
-import { loadStoredLocale } from './app/i18n';
+import { getBrowserLocale, loadStoredLocaleOrNull, resolveInitialLocale } from './app/i18n';
 import { loadStoredProfileName } from './app/useProfileNameStorage';
 import { installAnalyticsRouterTracking } from './features/analytics/analytics';
 import { useSecretFileStore } from './features/secret-file/application/useSecretFileStore';
@@ -25,7 +25,14 @@ import './styles/analytics-consent.css';
 import './styles/responsive.css';
 
 const initialProfileName = loadStoredProfileName();
-const initialLocale = loadStoredLocale();
+const storedLocaleAtBootstrap = loadStoredLocaleOrNull();
+const browserLocaleAtBootstrap = getBrowserLocale();
+const initialLocale = resolveInitialLocale(
+  null,
+  storedLocaleAtBootstrap,
+  false,
+  browserLocaleAtBootstrap,
+);
 const router = createAppRouter(
   import.meta.env.BASE_URL,
   initialProfileName ? 'home' : 'story',

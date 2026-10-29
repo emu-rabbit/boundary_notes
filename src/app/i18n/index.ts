@@ -46,7 +46,7 @@ function storageAvailable(): Storage | null {
 }
 
 export function loadStoredLocale(): AppLocale {
-  return loadStoredLocaleOrNull() ?? defaultLocale;
+  return loadStoredLocaleOrNull() ?? getBrowserLocale() ?? defaultLocale;
 }
 
 export function loadStoredLocaleOrNull(): AppLocale | null {
@@ -62,9 +62,43 @@ export function resolveInitialLocale(
   routeLocale: AppLocale | null,
   storedLocale: AppLocale | null,
   preferStoredLocale: boolean,
+  browserLocale: AppLocale | null = null,
 ): AppLocale {
   if (preferStoredLocale && storedLocale) return storedLocale;
-  return routeLocale ?? storedLocale ?? defaultLocale;
+  return routeLocale ?? storedLocale ?? browserLocale ?? defaultLocale;
+}
+
+export function resolveBrowserLocale(languages: readonly string[]): AppLocale | null {
+  for (const language of languages) {
+    const parts = language.toLowerCase().replace(/_/gu, '-').split('-');
+    const [languageCode, ...subtags] = parts;
+
+    if (languageCode === 'en') return 'en';
+    if (languageCode === 'ja') return 'ja';
+    if (languageCode === 'zh') {
+      if (
+        subtags.includes('hant')
+        || ['tw', 'hk', 'mo'].some((region) => subtags.includes(region))
+      ) {
+        return 'zh-Hant';
+      }
+      if (
+        subtags.includes('hans')
+        || ['cn', 'sg'].some((region) => subtags.includes(region))
+      ) {
+        return 'zh-Hans';
+      }
+      return 'zh-Hant';
+    }
+  }
+
+  return null;
+}
+
+export function getBrowserLocale(): AppLocale | null {
+  if (typeof navigator === 'undefined') return null;
+  const languages = [...navigator.languages, navigator.language];
+  return resolveBrowserLocale(languages);
 }
 
 export function saveStoredLocale(locale: AppLocale): void {

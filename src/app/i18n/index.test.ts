@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { resolveInitialLocale } from './index';
+import { resolveBrowserLocale, resolveInitialLocale } from './index';
 
 describe('initial locale resolution', () => {
   it('preserves an existing viewer locale for a cloud share entry', () => {
@@ -16,5 +16,18 @@ describe('initial locale resolution', () => {
 
   it('uses English when neither source can identify a locale', () => {
     expect(resolveInitialLocale(null, null, false)).toBe('en');
+  });
+
+  it('uses the first supported browser language for an unlocalized first visit', () => {
+    const browserLocale = resolveBrowserLocale(['zh-TW', 'zh', 'en-US', 'en']);
+
+    expect(browserLocale).toBe('zh-Hant');
+    expect(resolveInitialLocale(null, null, false, browserLocale)).toBe('zh-Hant');
+  });
+
+  it('keeps an already stored locale ahead of browser preferences on root entry', () => {
+    const browserLocale = resolveBrowserLocale(['zh-TW', 'zh', 'en-US', 'en']);
+
+    expect(resolveInitialLocale(null, 'en', false, browserLocale)).toBe('en');
   });
 });
