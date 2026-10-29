@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createMemoryHistory } from 'vue-router';
+import { resolveBrowserLocale } from './i18n';
 import { createAppRouter } from './router';
 
 async function navigate(
@@ -18,6 +19,17 @@ describe('localized entry routing', () => {
     const route = await navigate('/', 'story', 'en');
     expect(route.name).toBe('entry');
     expect(route.fullPath).toBe('/en');
+  });
+
+  it('resolves the root entry from browser languages when no locale is stored', async () => {
+    const browserLocale = resolveBrowserLocale(['zh-TW', 'zh', 'en-US', 'en']);
+    expect(browserLocale).toBe('zh-Hant');
+
+    const route = await navigate('/', 'story', browserLocale ?? 'en');
+
+    expect(route.name).toBe('entry');
+    expect(route.fullPath).toBe('/zh-hant');
+    expect(route.redirectedFrom?.name).toBe('rootEntry');
   });
 
   it('sends a returning root visit to Home in the stored locale', async () => {
